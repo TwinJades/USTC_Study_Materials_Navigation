@@ -38,6 +38,42 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "intake-login-017146-d50024de6623089e",
+      "type": "exams",
+      "title": "回归分析 期末试卷(压缩包)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "final",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/1350/#review-21634",
+        "note": "抽读 7z 包内 2/2 个 PDF 的首页；其中 1 个 PDF 首页明确标注本课程和期末试卷。摘要对应原帖 7z 整包，不是包内文件。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/1350/#review-21634",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "110a72f95eb05e8c8a622c181734253367b051e5b5ad6132b0703482426a9a40",
+              "bytes": 664990,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "hum-017146-homework-regression",
       "type": "homework",
       "title": "回归分析 2025 Lab1–4 讲义与作业",

@@ -1071,6 +1071,42 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "intake-login-MATH3002-d0b226a30fa5384d",
+      "type": "exams",
+      "title": "实分析 期中试卷(扫描版)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "midterm",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/24273/#review-83894",
+        "note": "核验两页扫描件；首页 OCR 有课程标识及期中考试字样。年份、卷型及解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/24273/#review-83894",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "e48d9699879e3aed6bea98c250b827525caeb990ec6357947da37e2e6ecfb9af",
+              "bytes": 273756,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "mp-gh-math3002-exam-ny-ebb67c",
       "type": "homework",
       "title": "实变函数习题答案（2007–2008 学年第二学期）",
@@ -1315,8 +1351,8 @@
     "ustc-math-exam": "USTC 数学课程往年试卷",
     "feixu-alist": "feixu 学习资料分享站（AList）",
     "gh-weiyu-mathstat": "Weiyu-USTC/USTCmath-stat",
-    "gh-lucien-fa": "Luciennnnnnn/ustc-functional-analysis-exercise-set",
     "icourse-club": "USTC 评课社区",
+    "gh-lucien-fa": "Luciennnnnnn/ustc-functional-analysis-exercise-set",
     "cardigan0214-ra-2026": "实分析 2026 春课程主页（刘聪文）"
   }
 }

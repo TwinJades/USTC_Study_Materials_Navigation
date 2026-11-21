@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "intake-login-210045-b5189b6cda65e8cb",
+      "type": "exams",
+      "title": "电路基本理论 2024 夏期末试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "academic_years": [],
+        "exam_kind": "final",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/4984/#review-87153",
+        "note": "卷头前两页 OCR 支持课程和试卷；原帖附件题名标注 2024 夏季期末。未逐页核验。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/4984/#review-87153",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "6d7aa439f8153f45a66bc54d4441c4469c8aa22408a135224ebbdde304035f9e",
+              "bytes": 2072278,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-210045-d56f6785a2d9f2e5",
       "type": "exams",
       "title": "电路基本理论 2017–2018 学年试卷答案",
@@ -67,6 +105,158 @@
         }
       ],
       "verified_at": "2026-11-18"
+    },
+    {
+      "id": "intake-login-210045-80353e8ab04429d1",
+      "type": "exams",
+      "title": "电路基本理论 2020–2021 学年考试试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [
+          "2020-2021"
+        ],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/4989/#review-71301",
+        "note": "核验该份附件的完整字节与首页卷头；学年与原帖附件题名一致。抽读前四页内可提取文本，未逐页核验，卷别与解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/4989/#review-71301",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "efb3ab6b2e1fe5484474fdf7a6e782ea5d35e3aea4553bdd04115a4fe3704b09",
+              "bytes": 196939,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
+      "id": "intake-login-210045-b7f55aa5d963e3bc",
+      "type": "exams",
+      "title": "电路基本理论 2021–2022 学年考试试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [
+          "2021-2022"
+        ],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/4989/#review-71301",
+        "note": "核验该份附件的完整字节与首页卷头；学年与原帖附件题名一致。抽读前四页内可提取文本，未逐页核验，卷别与解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/4989/#review-71301",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "2d9a39a9cb25e960ce3aeedde7e7c627f792c9b940159704890dc0a54c5b1334",
+              "bytes": 201321,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
+      "id": "intake-login-210045-00ac14f290d6f34e",
+      "type": "exams",
+      "title": "电路基本理论 2022–2023 学年考试试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [
+          "2022-2023"
+        ],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/4989/#review-71301",
+        "note": "核验该份附件的完整字节与首页卷头；学年与原帖附件题名一致。抽读前四页内可提取文本，未逐页核验，卷别与解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/4989/#review-71301",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "9d9ebcae461bca554bc9b9edd791f02fde52a24bbe8c5397d0de713bc84e2671",
+              "bytes": 207931,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
+      "id": "intake-login-210045-f76c8e6c4328d07e",
+      "type": "exams",
+      "title": "电路基本理论 2023–2024 学年考试试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [
+          "2023-2024"
+        ],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/4987/#review-95863",
+        "note": "核验该份附件的完整字节与首页卷头；学年与原帖附件题名一致。抽读前四页内可提取文本，未逐页核验，卷别与解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/4987/#review-95863",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "f27ae9d5ec2626e4e7044f00747edbb4f8055c4209d7ebf23e87d4b48665068d",
+              "bytes": 198982,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
     },
     {
       "id": "intake-login-210045-77659f046c63d960",

@@ -218,6 +218,42 @@
         }
       ],
       "verified_at": "2026-11-18"
+    },
+    {
+      "id": "intake-login-MATH3010-a18fa2d479d7a702",
+      "type": "exams",
+      "title": "组合学期中考试试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "midterm",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/20622/#review-72646",
+        "note": "已核验本条 1/1 个附件的完整字节及唯一一页可提取文本；卷头含课程标识及期中考试字样。年份、卷型及答案未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/20622/#review-72646",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "d4ee5d6cd2cf6144fd0219469e60bc71a37f4264ffdab79b3e397c5b3a9aba8b",
+              "bytes": 38961,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
     }
   ],
   "sources": {

@@ -1324,6 +1324,37 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "gh-ddndles-qbank-math1009",
+      "type": "study",
+      "title": "线性代数(B1) 结构化题库与知识点树（885 题，JSONL / SQLite）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "结构化题库目录 courses/MATH1009/（含 questions.jsonl、taxonomy.json、meta.json），收录 885 道 Markdown+LaTeX 题目与分步解析，覆盖 2010–2026 学年 42 套期中/期末真题及李尚志《线性代数学习指导》第 1–4、6、8、9 章例题解答（official 611 / community 273 / ai 1），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/MATH1009/meta.json",
+        "note": "已核对仓库 courses/MATH1009/meta.json、taxonomy.json 与 questions.jsonl（885 题，41 个知识点节点）；按官方课号 MATH1009 建目录，花开花败参考解答标为 origin=community，单卷原卷答案与学习指导标为 official，仓库不含原扫描 PDF。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1009",
+          "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+          "download_url": null,
+          "access": "public",
+          "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+          "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-21"
+    },
+    {
       "id": "mp-gh-math1009-notes-5893e7",
       "type": "study",
       "title": "线性代数(B1) 线代B1（notes）",
@@ -1532,6 +1563,7 @@
     "icourse-club": "USTC 评课社区",
     "gh-fandahao17-ustc-cs": "fandahao17/USTC-CS-Courses-Resource（历史课程资料）",
     "feixu-alist": "feixu 学习资料分享站（AList）",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）",
     "gh-wloner0809": "Wloner0809/ustc-course-resource"
   }
 }

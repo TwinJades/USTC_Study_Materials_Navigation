@@ -47,6 +47,42 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "intake-login-210078-78212ce4e84d86d1",
+      "type": "exams",
+      "title": "电子系统设计期末试卷(年份未核实)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "final",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/25899/#review-97710",
+        "note": "已核验本条 1/1 个附件的完整字节；第 1 页卷头含课程标识与期末考试字样，抽样比对前三页题面与已收录试卷，未发现相同题面。未逐页核验，年份、卷型及答案未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/25899/#review-97710",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "0b7a9e70a167120a62c36078c11340ac58573d809c1ebd5bd2002e28d7cd1906",
+              "bytes": 252992,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-210078-ca16a68feffefc27",
       "type": "homework",
       "title": "电子系统设计 思考题2025(V1.0)",

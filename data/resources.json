@@ -82934,5 +82934,203 @@
       }
     ],
     "verified_at": "2026-11-20"
+  },
+  {
+    "id": "gh-ddndles-qbank-001548",
+    "course_codes": [
+      "001548"
+    ],
+    "type": "study",
+    "title": "复变函数B 结构化题库与知识点树（571 题，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/001548/（含 questions.jsonl、taxonomy.json、meta.json），收录 571 道 Markdown+LaTeX 题目与分步解析，覆盖 2003–2025 历年真题、讲义例题、公开复习题库及严镇军教材书末习题（official 229 / community 26 / ai 316，7 题低置信隔离），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/001548/meta.json",
+      "note": "已核对仓库 courses/001548/meta.json、taxonomy.json 与 questions.jsonl（571 题，35 个知识点节点）；按官方课号 001548 建目录，含每题出处与 answer.origin 可信分级，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/001548",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-20"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1006",
+    "course_codes": [
+      "MATH1006"
+    ],
+    "type": "study",
+    "title": "数学分析(B1) 结构化题库与知识点树（445 题，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/MATH1006/（含 questions.jsonl、taxonomy.json、meta.json），收录 445 道 Markdown+LaTeX 题目与分步解析，覆盖 2016–2025 期中/期末/小测真题及《数学分析讲义》第一册第 1–7 章习题（official 133 / community 300 / ai 12），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/MATH1006/meta.json",
+      "note": "已核对仓库 courses/MATH1006/meta.json、taxonomy.json 与 questions.jsonl（445 题，31 个知识点节点）；按官方课号 MATH1006 建目录，教材非官方详解标注为 origin=community 并署名上游，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1006",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-20"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1007",
+    "course_codes": [
+      "MATH1007"
+    ],
+    "type": "study",
+    "title": "数学分析(B2) 结构化题库与知识点树（569 题，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/MATH1007/（含 questions.jsonl、taxonomy.json、meta.json），收录 569 道 Markdown+LaTeX 题目与分步解析，覆盖 2018–2026 期中/期末真题及《数学分析讲义》第二册第 8–13 章习题（official 131 / community 438 / ai 0），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/MATH1007/meta.json",
+      "note": "已核对仓库 courses/MATH1007/meta.json、taxonomy.json 与 questions.jsonl（569 题，28 个知识点节点）；按官方课号 MATH1007 建目录，教材非官方详解标注为 origin=community 并署名上游，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1007",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-20"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1009",
+    "course_codes": [
+      "MATH1009"
+    ],
+    "type": "study",
+    "title": "线性代数(B1) 结构化题库与知识点树（885 题，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/MATH1009/（含 questions.jsonl、taxonomy.json、meta.json），收录 885 道 Markdown+LaTeX 题目与分步解析，覆盖 2010–2026 学年 42 套期中/期末真题及李尚志《线性代数学习指导》第 1–4、6、8、9 章例题解答（official 611 / community 273 / ai 1），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/MATH1009/meta.json",
+      "note": "已核对仓库 courses/MATH1009/meta.json、taxonomy.json 与 questions.jsonl（885 题，41 个知识点节点）；按官方课号 MATH1009 建目录，花开花败参考解答标为 origin=community，单卷原卷答案与学习指导标为 official，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1009",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-21"
+  },
+  {
+    "id": "gh-ddndles-qbank-cs1003",
+    "course_codes": [
+      "CS1003"
+    ],
+    "type": "study",
+    "title": "计算机程序设计 结构化题库与知识点树（1,533 题，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/CS1003/（含 questions.jsonl、taxonomy.json、meta.json），收录 1,533 道 C 语言结构化题目与分步解析，覆盖 2018–2025 期中/期末/补考/机考 13 套真题、2012/2024/2025 综合模拟测试、公开 C 语言题库及习题课练习（official 1,231 / community 188 / ai 114），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/CS1003/meta.json",
+      "note": "已核对仓库 courses/CS1003/meta.json、taxonomy.json 与 questions.jsonl（1,533 题，31 个知识点节点）；按官方课号 CS1003 建目录，sxl/评课社区/duxiaoyang 非官方解答标为 origin=community，无标答卷 AI 补解经 gcc 编译核对，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1003",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-21"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1001a",
+    "course_codes": [
+      "PHYS1001A"
+    ],
+    "type": "study",
+    "title": "力学A 结构化题库、配图与知识点树（253 题 + 91 图，JSONL / SQLite）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "结构化题库目录 courses/PHYS1001A/（含 questions.jsonl、taxonomy.json、meta.json 与 assets/*.webp），收录 253 道 Markdown+LaTeX 题目与分步解析，覆盖 2005–2026 学年期中/期末真题、力学历年考题合集与刚体笔记例题（official 49 / community 1 / ai 203，14 题低置信隔离），附 91 张灰度优化 WebP 配图（共 668 KB），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/PHYS1001A/meta.json",
+      "note": "已核对仓库 courses/PHYS1001A/meta.json、taxonomy.json、questions.jsonl 与 assets/*.webp（253 题，46 个知识点节点，86 题含 91 张 WebP 配图）；按官方课号 PHYS1001A 建目录，14 道歧义/估算低置信题标为 quarantined=true，仓库不含原扫描 PDF。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001A",
+        "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+        "download_url": null,
+        "access": "public",
+        "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+        "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-21"
   }
 ]

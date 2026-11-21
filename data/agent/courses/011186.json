@@ -174,6 +174,42 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "intake-login-011186-90f7a79870e4feb9",
+      "type": "exams",
+      "title": "大数据算法 期末试卷(2 页,年份未核实)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "final",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/18025/#review-92594",
+        "note": "核验两页扫描件及本课程期末卷头；是否完整试卷、年份与解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/18025/#review-92594",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "fdf5a4bb16560f72c3d5c0765f3ddb0ae81b2433ecc55baa109659026feaf40a",
+              "bytes": 1041796,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "computing-homework-gh-ly382965-011186-3sp-minor-algorithms-for-big-data",
       "type": "homework",
       "title": "大数据算法 作业（USTC_learning_materials）",
@@ -442,8 +478,8 @@
   ],
   "sources": {
     "eng-github-guch8017": "guch8017/USTC_CS_EXAM（跨课试卷索引）",
-    "eng-github-ly382965-materials": "ly382965/USTC_learning_materials（6系课程资料）",
     "icourse-club": "USTC 评课社区",
+    "eng-github-ly382965-materials": "ly382965/USTC_learning_materials（6系课程资料）",
     "gh-sigma-aster-bigdata-algo": "sigma-aster/Big-data-algorithms（大数据算法笔记）",
     "ustc-teacher-pages": "USTC 教师个人主页（staff/faculty）",
     "sketchingbigdata-nelson": "Sketching Algorithms（Jelani Nelson 讲义）",

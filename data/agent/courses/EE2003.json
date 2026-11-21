@@ -10,6 +10,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "intake-login-EE2003-495095a53cd17cda",
+      "type": "exams",
+      "title": "计算机原理与嵌入式系统 2024 试卷",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2024
+        ],
+        "academic_years": [],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/25202/#review-94948",
+        "note": "7 页扫描件，OCR 取样前两页；首页有课程标识、考试及试卷字样和 2024。卷别、卷型及解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/25202/#review-94948",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "a9d032c1b4f0f777fcf29a8232de44c83ac9d37828e23b5f4f543ce3fef70969",
+              "bytes": 4681522,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "eng-exam-ee2003-57d8aa22",
       "type": "exams",
       "title": "计算机原理与嵌入式系统 2019—2020 学年第二学期期末试卷（A 卷，卷面旧名微机原理与嵌入式系统）",
@@ -718,9 +756,9 @@
     }
   ],
   "sources": {
+    "icourse-club": "USTC 评课社区",
     "eng-github-epihio-automation": "EpiHio/USTC_Automation（自动化专业课程资料）",
     "feixu-alist": "feixu 学习资料分享站（AList）",
-    "icourse-club": "USTC 评课社区",
     "gh-li-qi-lin": "li-qi-lin/USTC-Course-Materials-Sharing",
     "eng-github-ly382965-materials": "ly382965/USTC_learning_materials（6系课程资料）",
     "eng-github-duxiaoyang-materials": "duxiaoyang-creator/USTC-Course-Materials（本科课程存档）"

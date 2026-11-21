@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "intake-login-PHYS1010-957f23f1a65c0e16",
+      "type": "exams",
+      "title": "量子物理试卷(2026)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/25424/#review-103115",
+        "note": "全 2 页文本层读取，两页均检出 PHYS1010、「试卷」与 2026；年份取自卷面字样，未核对具体学期与卷别。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/25424/#review-103115",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "68a29328d564ae82465a97f32019e820afe1b091fea6512d91b8c64654fa3c17",
+              "bytes": 83024,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "mp-feixu-phys1010-exams-0a723f",
       "type": "exams",
       "title": "2025期末",
@@ -38,6 +76,44 @@
         }
       ],
       "verified_at": "2026-11-18"
+    },
+    {
+      "id": "intake-login-PHYS1010-ec177d57e72b477f",
+      "type": "exams",
+      "title": "量子物理试卷(2025)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2025
+        ],
+        "academic_years": [],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/25424/#review-103115",
+        "note": "全 3 页文本层读取，三页均检出 PHYS1010、「试卷」与 2025；年份取自卷面字样。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/25424/#review-103115",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "ecc62913700b9ff68cabc143407516a553ee11f8b974addc0c90cc1e61ee8833",
+              "bytes": 84745,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
     },
     {
       "id": "mp-feixu-phys1010-exams-5c4eeb",
@@ -100,6 +176,44 @@
         }
       ],
       "verified_at": "2026-11-18"
+    },
+    {
+      "id": "intake-login-PHYS1010-48b4c859e93b06f4",
+      "type": "exams",
+      "title": "量子物理试卷(2023)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2023
+        ],
+        "academic_years": [],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/25424/#review-103115",
+        "note": "全 2 页文本层读取，两页均检出 PHYS1010、「试卷」与 2023；年份取自卷面字样。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/25424/#review-103115",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "5a4fb9e6261feb4b5cebdb6422b51f0dc44871f9d1bf18679da9ff22c9ae6b34",
+              "bytes": 79718,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
     },
     {
       "id": "intake-login-PHYS1010-5ed3134d33c21e46",
@@ -1215,8 +1329,8 @@
     }
   ],
   "sources": {
-    "feixu-alist": "feixu 学习资料分享站（AList）",
     "icourse-club": "USTC 评课社区",
+    "feixu-alist": "feixu 学习资料分享站（AList）",
     "gh-kobe972": "Kobe972/ustc_course_plus"
   }
 }

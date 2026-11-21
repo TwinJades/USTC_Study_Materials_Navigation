@@ -468,6 +468,37 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "gh-ddndles-qbank-phys1001a",
+      "type": "study",
+      "title": "力学A 结构化题库、配图与知识点树（253 题 + 91 图，JSONL / SQLite）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "结构化题库目录 courses/PHYS1001A/（含 questions.jsonl、taxonomy.json、meta.json 与 assets/*.webp），收录 253 道 Markdown+LaTeX 题目与分步解析，覆盖 2005–2026 学年期中/期末真题、力学历年考题合集与刚体笔记例题（official 49 / community 1 / ai 203，14 题低置信隔离），附 91 张灰度优化 WebP 配图（共 668 KB），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/PHYS1001A/meta.json",
+        "note": "已核对仓库 courses/PHYS1001A/meta.json、taxonomy.json、questions.jsonl 与 assets/*.webp（253 题，46 个知识点节点，86 题含 91 张 WebP 配图）；按官方课号 PHYS1001A 建目录，14 道歧义/估算低置信题标为 quarantined=true，仓库不含原扫描 PDF。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001A",
+          "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+          "download_url": null,
+          "access": "public",
+          "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+          "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-21"
+    },
+    {
       "id": "intake-login-PHYS1001A-d14eee1e8f760320",
       "type": "study",
       "title": "力学A：学习资料（4 个附件）",
@@ -587,6 +618,7 @@
   "sources": {
     "feixu-alist": "feixu 学习资料分享站（AList）",
     "ustc-phy-exam": "USTC 物理课程往年试卷",
-    "icourse-club": "USTC 评课社区"
+    "icourse-club": "USTC 评课社区",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

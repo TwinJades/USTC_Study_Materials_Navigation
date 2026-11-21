@@ -1000,6 +1000,37 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "gh-ddndles-qbank-math1007",
+      "type": "study",
+      "title": "数学分析(B2) 结构化题库与知识点树（569 题，JSONL / SQLite）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "结构化题库目录 courses/MATH1007/（含 questions.jsonl、taxonomy.json、meta.json），收录 569 道 Markdown+LaTeX 题目与分步解析，覆盖 2018–2026 期中/期末真题及《数学分析讲义》第二册第 8–13 章习题（official 131 / community 438 / ai 0），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/MATH1007/meta.json",
+        "note": "已核对仓库 courses/MATH1007/meta.json、taxonomy.json 与 questions.jsonl（569 题，28 个知识点节点）；按官方课号 MATH1007 建目录，教材非官方详解标注为 origin=community 并署名上游，仓库不含原扫描 PDF。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1007",
+          "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+          "download_url": null,
+          "access": "public",
+          "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+          "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-MATH1007-d2a263307e45fc76",
       "type": "study",
       "title": "数学分析(B2) 课程讲稿",
@@ -1177,6 +1208,7 @@
   "sources": {
     "ustc-math-exam": "USTC 数学课程往年试卷",
     "feixu-alist": "feixu 学习资料分享站（AList）",
-    "icourse-club": "USTC 评课社区"
+    "icourse-club": "USTC 评课社区",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

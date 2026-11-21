@@ -46,6 +46,44 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "intake-login-PHYS1002B-042c0df46f668070",
+      "type": "exams",
+      "title": "热学B 试卷(2021)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [
+          2021
+        ],
+        "academic_years": [],
+        "exam_kind": "unknown",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/20196/#review-34378",
+        "note": "核验附件完整字节与前四页，首页有课程与试卷标识和 2021；期中或期末、卷型及解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/20196/#review-34378",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "0aeaf4f956e5c35df592057e9f28df6abe9255c7b1d56a127be0e4f8ca09623d",
+              "bytes": 684813,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-PHYS1002B-076f3d20c1869d7d",
       "type": "exams",
       "title": "2019力热春期中考试参考答案",

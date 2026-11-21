@@ -580,6 +580,42 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "intake-login-017144-d57fb36e5ee1c279",
+      "type": "exams",
+      "title": "随机过程B 期末试卷(年份未核实)",
+      "authors": [],
+      "notes": "",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": "final",
+        "exam_form": "unknown",
+        "has_solutions": null,
+        "evidence_url": "https://icourse.club/course/6777/#review-87547",
+        "note": "8 页 PDF，抽读前四页；前两页均有本课程和期末试卷标识。年份及解答未核实。"
+      },
+      "locations": [
+        {
+          "source_id": "icourse-club",
+          "page_url": "https://icourse.club/course/6777/#review-87547",
+          "download_page": null,
+          "download_url": null,
+          "access": "login",
+          "license_note": "仅链接原帖；须登录 USTC 评课社区下载，版权归原作者。",
+          "attribution": "USTC 评课社区原帖",
+          "page_kind": "page",
+          "attachment_snapshots": [
+            {
+              "sha256": "193bb9e02c7e9ed6810b1f2f0a326e527c51a21f59b95011a566951c6011af0b",
+              "bytes": 385437,
+              "checked_at": "2026-11-19"
+            }
+          ]
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-017144-616d607a9991e415",
       "type": "exams",
       "title": "随机过程B 试卷",

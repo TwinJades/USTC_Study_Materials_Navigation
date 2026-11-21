@@ -743,6 +743,37 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "gh-ddndles-qbank-cs1003",
+      "type": "study",
+      "title": "计算机程序设计 结构化题库与知识点树（1,533 题，JSONL / SQLite）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "结构化题库目录 courses/CS1003/（含 questions.jsonl、taxonomy.json、meta.json），收录 1,533 道 C 语言结构化题目与分步解析，覆盖 2018–2025 期中/期末/补考/机考 13 套真题、2012/2024/2025 综合模拟测试、公开 C 语言题库及习题课练习（official 1,231 / community 188 / ai 114），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/CS1003/meta.json",
+        "note": "已核对仓库 courses/CS1003/meta.json、taxonomy.json 与 questions.jsonl（1,533 题，31 个知识点节点）；按官方课号 CS1003 建目录，sxl/评课社区/duxiaoyang 非官方解答标为 origin=community，无标答卷 AI 补解经 gcc 编译核对，仓库不含原扫描 PDF。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1003",
+          "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+          "download_url": null,
+          "access": "public",
+          "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+          "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-21"
+    },
+    {
       "id": "intake-login-CS1003-477e5d7e9b0091c9",
       "type": "study",
       "title": "计算机程序设计：学习资料（2 个附件）",
@@ -867,6 +898,7 @@
     "eng-github-duxiaoyang-materials": "duxiaoyang-creator/USTC-Course-Materials（本科课程存档）",
     "feixu-alist": "feixu 学习资料分享站（AList）",
     "eng-github-guch8017": "guch8017/USTC_CS_EXAM（跨课试卷索引）",
-    "icourse-club": "USTC 评课社区"
+    "icourse-club": "USTC 评课社区",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

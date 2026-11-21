@@ -585,6 +585,37 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "gh-ddndles-qbank-001548",
+      "type": "study",
+      "title": "复变函数B 结构化题库与知识点树（571 题，JSONL / SQLite）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "结构化题库目录 courses/001548/（含 questions.jsonl、taxonomy.json、meta.json），收录 571 道 Markdown+LaTeX 题目与分步解析，覆盖 2003–2025 历年真题、讲义例题、公开复习题库及严镇军教材书末习题（official 229 / community 26 / ai 316，7 题低置信隔离），提供 Python 加载库与 SQLite FTS5 构建脚本。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/main/courses/001548/meta.json",
+        "note": "已核对仓库 courses/001548/meta.json、taxonomy.json 与 questions.jsonl（571 题，35 个知识点节点）；按官方课号 001548 建目录，含每题出处与 answer.origin 可信分级，仓库不含原扫描 PDF。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/001548",
+          "download_page": "https://github.com/DDNdles/USTC-Question-Bank/releases/tag/v0.3.0",
+          "download_url": null,
+          "access": "public",
+          "license_note": "仓库代码、Schema 与元数据采用 MIT；第三方真题、教材习题与引用解答版权归原作者与出版社所有，不适用 MIT（见 NOTICE.md）。",
+          "attribution": "GitHub @DDNdles/USTC-Question-Bank（整理与结构化；上游来源见仓库 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-20"
+    },
+    {
       "id": "intake-login-001548-ec2f400117be93c2",
       "type": "study",
       "title": "复变函数B 课程课件与讲义（第 1—7 章）",
@@ -647,6 +678,7 @@
     "icourse-club": "USTC 评课社区",
     "feixu-alist": "feixu 学习资料分享站（AList）",
     "ustc-math-exam": "USTC 数学课程往年试卷",
-    "web-fubianb-answers": "USTC 复变函数B 习题解答"
+    "web-fubianb-answers": "USTC 复变函数B 习题解答",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }
