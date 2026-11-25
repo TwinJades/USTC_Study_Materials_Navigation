@@ -40,7 +40,7 @@ jobs:
         run: node scripts/monitor.mjs --publish
 
       - name: Validate data strictly for publishing
-        run: npm run validate -- --strict-research
+        run: npm run validate -- --strict-research --require-monitoring
 
       - name: Collect visit counts
         env:

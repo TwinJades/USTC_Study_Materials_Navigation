@@ -34,6 +34,7 @@ import {
 const NOW = new Date('2026-11-18T00:00:00.000Z');
 const HEAD_OLD = 'a'.repeat(40);
 const HEAD_NEW = 'b'.repeat(40);
+const MONITORING_BRANCH = 'monitoring-data';
 const PUBLIC_LOOKUP = async () => [{ address: '93.184.216.34', family: 4 }];
 
 function linkRecord(url) {
@@ -384,6 +385,7 @@ function createGithubFixture(options = {}) {
     nextCommentId: 1,
     monitoringSha: options.monitoringSha ?? null,
     monitoringContent: options.monitoringContent ?? null,
+    defaultBranch: options.defaultBranch ?? 'main',
     puts: [],
     requests: [],
     treeCalls: [],
@@ -405,7 +407,7 @@ function createGithubFixture(options = {}) {
     if (headers.authorization) state.tokenSeen.push(headers.authorization);
 
     if (method === 'GET' && path === '/repos/o/r') {
-      return json(200, { default_branch: 'main', full_name: 'o/r' });
+      return json(200, { default_branch: state.defaultBranch, full_name: 'o/r' });
     }
     if (method === 'GET' && path === '/repos/o/r/branches/main') {
       return json(200, { name: 'main', commit: { sha: state.head } });
@@ -456,6 +458,7 @@ function createGithubFixture(options = {}) {
       return json(201, comment);
     }
     if (path === `/repos/o/r/contents/${MONITORING_RELATIVE_PATH}` && method === 'GET') {
+      assert.equal(parsed.searchParams.get('ref'), MONITORING_BRANCH);
       if (!state.monitoringSha) return json(404, { message: 'Not Found' });
       return json(200, {
         type: 'file',
@@ -470,13 +473,14 @@ function createGithubFixture(options = {}) {
     }
     if (path === `/repos/o/r/contents/${MONITORING_RELATIVE_PATH}` && method === 'PUT') {
       const payload = JSON.parse(body);
+      assert.equal(payload.branch, MONITORING_BRANCH);
       if (state.conflictOnPut || (payload.sha && payload.sha !== state.monitoringSha)) {
         return json(409, { message: 'sha does not match the current file' });
       }
       state.puts.push(payload);
-      state.monitoringSha = 'mon-sha-2';
+      state.monitoringSha = blobSha(Buffer.from(payload.content, 'base64'));
       state.monitoringContent = payload.content;
-      return json(200, { content: { sha: 'mon-sha-2' }, commit: { sha: 'commit-1' } });
+      return json(200, { content: { sha: state.monitoringSha }, commit: { sha: 'commit-1' } });
     }
     return json(404, { message: `unhandled ${method} ${path}` });
   }
@@ -513,6 +517,16 @@ function treeFromFiles(files) {
   };
 }
 
+function blobSha(bytes) {
+  return createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+}
+
+function seedMonitoring(fixture, monitoring) {
+  const content = encodeMonitoring(monitoring);
+  fixture.state.monitoringContent = content;
+  fixture.state.monitoringSha = blobSha(Buffer.from(content, 'base64'));
+}
+
 function encodeMonitoring(value) {
   return Buffer.from(`${JSON.stringify(value, null, 2)}\n`, 'utf8').toString('base64');
 }
@@ -534,6 +548,9 @@ function monitoringWith(files, { head = HEAD_OLD, issueNumber = null } = {}) {
 }
 
 function baseRunOptions(fixture, { monitoring = null, mode = 'dry-run' } = {}) {
+  if (mode === 'publish' && monitoring && fixture.state && !fixture.state.monitoringSha) {
+    seedMonitoring(fixture, monitoring);
+  }
   const saved = { value: null };
   const sources = [
     {
@@ -718,24 +735,28 @@ test('monitor: write-local keeps the old baseline while file changes await publi
   assert.equal(fixture.state.issue, null);
 });
 
-test('monitor: the first publish only stores a baseline, without creating a notification issue', async () => {
-  const fixture = createGithubFixture({ tree: treeFromFiles({ 'a.txt': 'sha-a' }) });
-  const { options, saved } = baseRunOptions(fixture, { mode: 'publish', monitoring: null });
-  const report = await runMonitor(options);
+test('monitor: publish refuses a missing seed even when the checkout has a baseline', async () => {
+  const fixture = createGithubFixture();
+  const { options, saved } = baseRunOptions(fixture, { mode: 'publish' });
+  options.loadMonitoring = () => monitoringWith({ 'local.txt': HEAD_OLD });
+  options.checkLinksImpl = () => assert.fail('must not check links with no published baseline');
+  await assert.rejects(runMonitor(options), { code: 'remote_monitoring_missing' });
+  assert.equal(saved.value, null);
+  assert.ok(fixture.state.requests.every(({ method }) => method === 'GET'));
+});
 
-  assert.equal(report.repositories[0].status, 'initialized');
-  assert.equal(report.pending_sources.length, 0);
-  assert.equal(fixture.state.issue, null);
-  assert.equal(fixture.state.comments.length, 0);
-  assert.equal(saved.value.repositories['src-a'].head_sha, HEAD_OLD);
-  assert.equal(fixture.state.puts.length, 1);
+test('monitor: publish refuses to write when monitoring-data is the default branch', async () => {
+  const fixture = createGithubFixture({ defaultBranch: MONITORING_BRANCH });
+  const { options } = baseRunOptions(fixture, { mode: 'publish', monitoring: monitoringWith({}) });
+  await assert.rejects(runMonitor(options), { code: 'invalid_target' });
+  assert.ok(fixture.state.requests.every(({ method }) => method === 'GET'));
 });
 
 function largeMonitoringFixture(bytes, { blobStatus, blobPatch, contentsPatch } = {}) {
-  const sha = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
+  const sha = blobSha(bytes);
   return createGithubFixture({
     head: HEAD_NEW,
-    tree: treeFromFiles({ 'new.txt': 'sha-new' }),
+    tree: treeFromFiles({ 'new.txt': HEAD_NEW }),
     monitoringSha: sha,
     monitoringMetadata: { encoding: 'none', content: '', size: bytes.length, ...contentsPatch },
     blobStatus,
@@ -809,11 +830,11 @@ test('monitor: an unreadable or invalid large remote baseline makes no writes', 
 });
 
 test('monitor: publish creates the marked issue, posts once and advances the baseline', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
   tree[HEAD_NEW].recursive.tree = [
-    { path: 'old.txt', type: 'blob', sha: 'sha-old' },
-    { path: 'new.txt', type: 'blob', sha: 'sha-new' },
+    { path: 'old.txt', type: 'blob', sha: HEAD_OLD },
+    { path: 'new.txt', type: 'blob', sha: HEAD_NEW },
   ];
   const fixture = createGithubFixture({ head: HEAD_NEW, tree });
   const monitoring = monitoringWith(oldFiles);
@@ -836,9 +857,9 @@ test('monitor: publish creates the marked issue, posts once and advances the bas
 });
 
 test('monitor: repeated publish is idempotent and posts no duplicate comments', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: 'sha-new' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: HEAD_NEW }];
   const fixture = createGithubFixture({ head: HEAD_NEW, tree });
   const first = baseRunOptions(fixture, { mode: 'publish', monitoring: monitoringWith(oldFiles) });
   await runMonitor(first.options);
@@ -852,9 +873,9 @@ test('monitor: repeated publish is idempotent and posts no duplicate comments', 
 });
 
 test('monitor: notification failure rejects the run and does not advance the baseline or write monitoring', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: 'sha-new' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: HEAD_NEW }];
   const fixture = createGithubFixture({
     head: HEAD_NEW,
     tree,
@@ -875,14 +896,14 @@ test('monitor: notification failure rejects the run and does not advance the bas
 });
 
 test('monitor: long change reports are chunked under the comment limit and stay idempotent', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'old.txt', type: 'blob', sha: 'sha-old' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'old.txt', type: 'blob', sha: HEAD_OLD }];
   for (let i = 0; i < 900; i += 1) {
     tree[HEAD_NEW].recursive.tree.push({
       path: `exams/2025/course-${String(i).padStart(4, '0')}-final-paper-with-a-long-name.pdf`,
       type: 'blob',
-      sha: `sha-${i}`,
+      sha: i.toString(16).padStart(40, '0'),
     });
   }
   const fixture = createGithubFixture({ head: HEAD_NEW, tree });
@@ -960,13 +981,13 @@ test('monitor: a truncated recursive tree is expanded through subtrees without l
 });
 
 test('monitor: publish keeps the starting SHA so a remote edit during checks causes a conflict', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: 'sha-new' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: HEAD_NEW }];
   const fixture = createGithubFixture({
     head: HEAD_NEW,
     tree,
-    monitoringSha: 'mon-start',
+    monitoringSha: HEAD_OLD,
     monitoringContent: encodeMonitoring(monitoringWith(oldFiles)),
   });
   const baseTransport = fixture.transport;
@@ -1000,13 +1021,13 @@ test('monitor: publish keeps the starting SHA so a remote edit during checks cau
   assert.equal(fixture.state.monitoringSha, 'mon-remote-edit');
   const putRequest = fixture.state.requests.filter((request) => request.method === 'PUT').at(-1);
   assert.ok(putRequest, 'publish must attempt the final PUT');
-  assert.equal(JSON.parse(putRequest.body).sha, 'mon-start');
+  assert.equal(JSON.parse(putRequest.body).sha, HEAD_OLD);
 });
 
 test('monitor: contents update conflict is reported and never overwrites the concurrent file', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: 'sha-new' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: HEAD_NEW }];
   const fixture = createGithubFixture({ head: HEAD_NEW, tree, conflictOnPut: true });
   const { options, saved } = baseRunOptions(fixture, {
     mode: 'publish',
@@ -1123,6 +1144,7 @@ test('monitor: arguments default to dry-run and reject conflicting modes', () =>
   assert.deepEqual(parseArgs([]), { mode: 'dry-run', repo: null, help: false });
   assert.equal(parseArgs(['--publish', '--repo', 'o/r']).mode, 'publish');
   assert.equal(parseArgs(['--publish', '--repo', 'o/r']).repo, 'o/r');
+  assert.equal(parseArgs(['--load-published']).mode, 'load-published');
   assert.throws(() => parseArgs(['--dry-run', '--publish']), /只能选择一个运行模式/);
   assert.throws(() => parseArgs(['--unknown']), /未知参数/);
 });
@@ -1269,9 +1291,9 @@ test('monitor: a wholly preflighted write-local run keeps usable baseline covera
 });
 
 test('monitor: publish keeps monitoring and the notification issue untouched when every link is preflighted', async () => {
-  const oldFiles = { 'old.txt': 'sha-old' };
+  const oldFiles = { 'old.txt': HEAD_OLD };
   const tree = treeFromFiles(oldFiles);
-  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: 'sha-new' }];
+  tree[HEAD_NEW].recursive.tree = [{ path: 'new.txt', type: 'blob', sha: HEAD_NEW }];
   const fixture = createGithubFixture({ head: HEAD_NEW, tree });
   const baseline = monitoringWith(oldFiles);
   baseline.links = [
@@ -1302,7 +1324,7 @@ test('monitor: publish keeps monitoring and the notification issue untouched whe
   assert.equal(report.write_skipped.reason, 'preflight_only');
   assert.deepEqual(report.pending_sources, ['src-a']);
   assert.equal(report.remote, null);
-  assert.equal(saved.value, null);
+  assert.deepEqual(saved.value, baseline, 'deploy uses the previous usable snapshot');
   assert.equal(fixture.state.puts.length, 0);
   assert.equal(fixture.state.comments.length, 0);
   assert.equal(fixture.state.issue, null);

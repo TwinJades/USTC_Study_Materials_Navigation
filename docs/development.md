@@ -41,7 +41,7 @@ docs/sources-and-search.md  构建生成：来源、检索记录与致谢
 | `data/resources.json` | 正式资料条目，结构见下 |
 | `data/sources.json` | `[{id,name,url,maintainer,kind,github,notes}]`；`kind` 为 `repository/website/index/tool/stub/mirror`，`github` 为 `{owner,repo,branch}` 或 `null` |
 | `data/research-log.jsonl` | 每行一条实际检索记录，11 个字段见下 |
-| `data/monitoring.json` | `{schema_version,checked_at,links,repositories,issue_number}`；`links` 为逐 URL 结果数组，`repositories` 以 `source_id` 为键保存文件基线 |
+| `data/monitoring.json` | `monitoring-data` 分支唯一文件。本地同路径是忽略的快照；`links` 保存逐 URL 结果，`repositories` 以 `source_id` 为键保存文件基线 |
 | `data/generated-files.json` | 构建写的自有产物清单 `{files:[…]}`（仓库相对 POSIX 路径） |
 
 资料：
@@ -124,6 +124,7 @@ npm run serve
 npm test
 npm run monitor -- --dry-run
 npm run monitor -- --write-local
+npm run monitor -- --load-published
 npm run monitor -- --publish
 ```
 
@@ -131,7 +132,7 @@ npm run monitor -- --publish
 - `build`：先验证（非严格），失败时不写任何生成文件；随后生成两类分区、`docs/sources-and-search.md`、`dist/data/catalog.json`、`dist/sources.html` 与 `dist/` 站点文件。
 - 分区：每门课程恰好一个，`with-resources` 仅当存在已确认归属的正式资料；由脚本重新计算，禁止手工移动。
 - 构建是确定性的：不写构建时间戳；排序与清单稳定；重复构建内容一致。
-- 发布会话（两个工作流）在构建前执行 `npm run validate -- --strict-research`。
+- 两个发布工作流读取 `monitoring-data`，在构建前执行 `npm run validate -- --strict-research --require-monitoring`。本地和普通 PR 仍可离线构建；未取快照时显示「从未检查」。
 
 `dist/data/catalog.json` 是脱敏后的浏览器数据：课程、合并后的枚举与标签、实际使用的来源、逐 URL 健康结果（`status` 与 `evidence` 证据类别：从未检查、预检中止未发出请求、已发出请求但无响应、需登录或认证、确认 404/410、已收到 HTTP 响应），以及 `health_evidence` 枚举；**不包含**检索日志、未确认候选、GitHub 文件基线和监控仓库信息。
 
@@ -173,8 +174,9 @@ npm run monitor -- --publish
 ## 监控
 
 - `--dry-run`：真实检查并输出报告，不写任何文件或 GitHub 对象。
-- `--write-local`：真实检查，仅写本地 `data/monitoring.json`（首次建立基线），不调用 GitHub 写 API。
-- `--publish`：在 Actions 中写 Issue 通知并用 Contents API 更新 `data/monitoring.json`；需要 `GITHUB_TOKEN` 与目标仓库。
+- `--write-local`：真实检查，仅写本地 `data/monitoring.json`，不调用 GitHub 写 API。
+- `--load-published`：从 `monitoring-data` 获取、校验快照，移除本次构建已下架的来源基线后写入本地。缺失或读取失败时退出，不用空快照替代。
+- `--publish`：在 Actions 中写 Issue 通知并只更新 `monitoring-data` 分支；需要 `GITHUB_TOKEN` 与目标仓库。不会更新默认分支。
 
 链接检查：15 秒超时、并发 4、按实际请求主机每域 1；先 HEAD，405 等不支持时 GET 读取必要小段；最多 5 跳，每跳重新校验公开 http/https，并将连接绑定到已验证的 DNS 地址。401/403/429、登录跳转、超时、网络错误、5xx → `unknown`；404/410 → `missing`；正常 2xx 且未识别登录/错误页 → `reachable`。需认证/校园网/付费不尝试绕门。
 
@@ -184,7 +186,11 @@ npm run monitor -- --publish
 
 GitHub 检查只读登记资料库的确定 `branch`；头未变跳过树，变化时读取完整树按 path+SHA 比较，`truncated` 逐子树读取；通知失败不推进对应基线。文件变化写入固定 Issue“资料来源变化待核验”，不自动增删正式资料。
 
-发布前先读取远端 monitoring 内容及起始 SHA，以远端有效内容为基线。仅当 Contents API 返回 `type: file`、`encoding: none` 时，按该响应的 SHA 补读 Git blob，并验证其内容与监控结构（包括链接和仓库条目）。读取或校验失败时停止发布，不写 Issue 或文件。已下架来源不视为结构错误，仍由发布流程清理。检查结束仍使用起始 SHA 通过 Contents API 更新单个文件，期间发生并发编辑即冲突失败，不覆盖新内容。Authorization 仅发送到 `https://api.github.com`；通知分块全部成功后才推进相应来源基线，并在远端更新成功后同步 runner 本地文件供本次构建使用。
+两种远端读取都先校验快照结构；Contents API 返回 `type: file`、`encoding: none` 时按同一响应的 SHA 补读并校验 Git blob。读取或校验失败不写 Issue 或文件。发布按起始文件 SHA 更新专用分支上的单个文件；并发编辑冲突时不覆盖。通知分块成功才推进对应来源基线。发布成功后同步 runner 本地快照；若整轮预检中止，则以原远端快照构建，不写远端。
+
+监控快照和目录可以独立更新：构建只把健康状态匹配到当前索引引用的 URL；新链接没有对应证据时显示「从未检查」。下架的来源基线不进入当前目录校验；只在成功发布新快照时从远端移除。
+
+首次切换前，在 `monitoring-data` 的独立根提交中复制 `main` 最后有效的 `data/monitoring.json`，保留原 Git blob。合并切换 PR 前比较两个分支的文件 blob；如果旧工作流在此期间推进了 `main` 上的快照，先把对应 blob 快进同步到 `monitoring-data`。确认旧周维护未在运行再合并；之后手动跑一次 Weekly source maintenance，核对仅数据分支前进且 Pages 部署成功，再启用 `main` 的 PR-only 规则。不要将 PR-only 规则匹配到数据分支。
 
 ## 测试
 

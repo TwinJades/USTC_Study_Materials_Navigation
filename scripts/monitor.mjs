@@ -3,10 +3,10 @@
 //
 // Modes:
 //   --dry-run    real checks, print report, write nothing (default)
-//   --write-local  real checks, write only data/monitoring.json
-//   --publish    real checks, notify the monitor issue, then update
-//                data/monitoring.json through the GitHub Contents API using
-//                the file SHA as an optimistic lock
+//   --write-local     real checks, write only the local monitoring snapshot
+//   --load-published  copy the published snapshot into the local checkout
+//   --publish         real checks, notify the monitor issue, then update the
+//                     monitoring-data branch using the starting file SHA
 //
 // Monitoring data is a health report and change baseline. It never adds,
 // removes or reclassifies courses/resources. A failed link check is reported
@@ -31,6 +31,7 @@ import {
 } from './lib/github.mjs';
 
 export const MONITORING_RELATIVE_PATH = 'data/monitoring.json';
+const MONITORING_BRANCH = 'monitoring-data';
 export const MONITOR_MODES = ['dry-run', 'write-local', 'publish'];
 
 export class MonitorError extends Error {
@@ -42,11 +43,12 @@ export class MonitorError extends Error {
   }
 }
 
-const USAGE = `用法: node scripts/monitor.mjs [--dry-run|--write-local|--publish] [--repo owner/name]
+const USAGE = `用法: node scripts/monitor.mjs [--dry-run|--write-local|--load-published|--publish] [--repo owner/name]
 
   --dry-run     真实检查链接与仓库文件，只输出报告（默认）
   --write-local 真实检查，仅写本地 data/monitoring.json（首次建立基线）
-  --publish     真实检查，发送 Issue 通知并用 Contents API 更新 monitoring
+  --load-published 读取 monitoring-data 的快照供本地校验和构建，不写 GitHub
+  --publish     真实检查，发送 Issue 通知并更新 monitoring-data 分支
   --repo        指定目标 owner/name（默认取 GITHUB_REPOSITORY 或 git remote origin）
 
   环境变量: GITHUB_TOKEN（publish 必需）, GITHUB_REPOSITORY（可选）`;
@@ -55,7 +57,7 @@ export function parseArgs(argv) {
   const options = { mode: null, repo: null, help: false };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === '--dry-run' || arg === '--write-local' || arg === '--publish') {
+    if (['--dry-run', '--write-local', '--load-published', '--publish'].includes(arg)) {
       const mode = arg.slice(2);
       if (options.mode && options.mode !== mode) {
         throw new MonitorError(`只能选择一个运行模式（已有 --${options.mode}）`, {
@@ -391,6 +393,56 @@ function applyBaselineUpdates(baseline, repoResults, { mode, nowIso }) {
   return repositories;
 }
 
+async function readPublishedMonitoring(client, { owner, repo }) {
+  const file = await client.getContents(owner, repo, MONITORING_RELATIVE_PATH, { ref: MONITORING_BRANCH });
+  if (!file) {
+    throw new MonitorError(`${MONITORING_BRANCH} 缺少 ${MONITORING_RELATIVE_PATH}，已停止。`, {
+      code: 'remote_monitoring_missing',
+    });
+  }
+  if (file.type !== 'file' || (file.encoding !== 'none' &&
+      (file.encoding !== 'base64' || typeof file.content !== 'string'))) {
+    throw new MonitorError('无法读取已发布的监控快照，已停止。', { code: 'remote_content_unavailable' });
+  }
+  if (typeof file.sha !== 'string' || !/^[0-9a-f]{40}$/.test(file.sha)) {
+    throw new MonitorError('监控快照缺少有效的 blob SHA，已停止。', { code: 'invalid_response' });
+  }
+  const bytes = file.encoding === 'none'
+    ? await client.getBlob(owner, repo, file.sha)
+    : Buffer.from(file.content, 'base64');
+  let monitoring;
+  try {
+    monitoring = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
+  } catch (cause) {
+    throw new MonitorError('已发布的监控快照不是有效 JSON，已停止。', {
+      code: 'invalid_remote_monitoring', cause,
+    });
+  }
+  const { validateMonitoringBaseline, formatIssue } = await import('./lib/data.mjs');
+  const [error] = validateMonitoringBaseline(monitoring);
+  if (error) {
+    throw new MonitorError(`远程监控基线无效，已停止：${formatIssue(error)}`, { code: 'invalid_monitoring' });
+  }
+  return { monitoring, sha: file.sha };
+}
+
+function removeRetiredBaselines(repositories, sources) {
+  const registered = new Set(sources.map(({ id }) => id));
+  for (const id of Object.keys(repositories)) {
+    if (!registered.has(id)) delete repositories[id];
+  }
+}
+
+async function loadPublishedMonitoring(repo) {
+  const { loadSources, paths, writeJsonAtomic } = await import('./lib/data.mjs');
+  const target = await resolveTarget({ explicit: repo });
+  const client = createGitHubClient({ token: process.env.GITHUB_TOKEN || null });
+  const { monitoring, sha } = await readPublishedMonitoring(client, target);
+  removeRetiredBaselines(monitoring.repositories, loadSources());
+  writeJsonAtomic(paths.monitoring, monitoring);
+  console.log(`已读取 ${MONITORING_BRANCH}:${MONITORING_RELATIVE_PATH}（blob ${sha}）`);
+}
+
 /**
  * Run one monitor pass. All I/O boundaries are injectable for tests.
  */
@@ -431,8 +483,6 @@ export async function runMonitor(options = {}) {
     throw new MonitorError('数据层返回的 sources/resources 不是数组', { code: 'invalid_data' });
   }
 
-  let baseline = normalizeMonitoring(await loadMonitoring(), schemaVersion);
-
   let target = null;
   if (options.target) {
     target = { ...options.target };
@@ -458,54 +508,19 @@ export async function runMonitor(options = {}) {
       transport: options.githubTransport,
     });
 
-  // Read the remote baseline and its blob SHA *before* the long network
-  // checks. The final PUT uses this starting SHA, so any edit made by a user
-  // while the monitor is running produces a 409 instead of being overwritten.
-  let publishStart = null;
+  let baseline;
+  // Retain the starting blob SHA so a concurrent snapshot update is not overwritten.
+  let startingSha;
   if (mode === 'publish') {
-    const repoInfo = await client.getRepo(target.owner, target.repo);
-    const branch = repoInfo.default_branch;
-    const remoteFile = await client.getContents(
-      target.owner,
-      target.repo,
-      MONITORING_RELATIVE_PATH,
-      { ref: branch },
-    );
-    if (remoteFile) {
-      const needsBlob = remoteFile.type === 'file' && remoteFile.encoding === 'none';
-      const blob = needsBlob ? await client.getBlob(target.owner, target.repo, remoteFile.sha) : null;
-      if (
-        !needsBlob && (Array.isArray(remoteFile) ||
-          typeof remoteFile.content !== 'string' || remoteFile.encoding !== 'base64')
-      ) {
-        throw new MonitorError(
-          '无法读取远程 monitoring.json 内容，为避免覆盖并发编辑已停止发布',
-          { code: 'remote_content_unavailable' },
-        );
-      }
-      let remoteMonitoring;
-      try {
-        remoteMonitoring = JSON.parse(needsBlob
-          ? new TextDecoder('utf-8', { fatal: true }).decode(blob)
-          : Buffer.from(remoteFile.content, 'base64').toString('utf8'));
-      } catch (error) {
-        throw new MonitorError(
-          '远程 monitoring.json 不是有效 JSON，为避免覆盖并发编辑已停止发布',
-          { code: 'invalid_remote_monitoring', cause: error },
-        );
-      }
-      if (needsBlob) {
-        const { validateMonitoringBaseline, formatIssue } = await import('./lib/data.mjs');
-        const [error] = validateMonitoringBaseline(remoteMonitoring);
-        if (error) {
-          throw new MonitorError(`远程监控基线无效，已停止发布：${formatIssue(error)}`, {
-            code: 'invalid_monitoring',
-          });
-        }
-      }
-      baseline = normalizeMonitoring(remoteMonitoring, schemaVersion);
+    const { default_branch } = await client.getRepo(target.owner, target.repo);
+    if (default_branch === MONITORING_BRANCH) {
+      throw new MonitorError('监控数据分支不能是默认分支，已停止发布。', { code: 'invalid_target' });
     }
-    publishStart = { branch, sha: remoteFile?.sha ?? null };
+    const published = await readPublishedMonitoring(client, target);
+    baseline = published.monitoring;
+    startingSha = published.sha;
+  } else {
+    baseline = normalizeMonitoring(await loadMonitoring(), schemaVersion);
   }
 
   const urls = options.urls ?? collectMonitorUrls(sources, resources);
@@ -556,10 +571,7 @@ export async function runMonitor(options = {}) {
   let repositories = applyBaselineUpdates(baseline.repositories, repoResults, { mode, nowIso });
   // Baselines for deregistered sources are removed: the monitoring schema
   // requires every repository key to exist in data/sources.json.
-  const registeredSourceIds = new Set(sources.map((source) => source.id));
-  for (const sourceId of Object.keys(repositories)) {
-    if (!registeredSourceIds.has(sourceId)) delete repositories[sourceId];
-  }
+  removeRetiredBaselines(repositories, sources);
 
   if (mode === 'publish' && !writeSkipped) {
     const notificationResult = await publishNotifications({
@@ -595,8 +607,11 @@ export async function runMonitor(options = {}) {
   let remote = null;
   if (mode === 'write-local') {
     if (!writeSkipped) await saveMonitoring(monitoring);
-  } else if (mode === 'publish' && !writeSkipped) {
-    const branch = publishStart.branch;
+  } else if (mode === 'publish' && writeSkipped) {
+    // The sibling build still needs the last usable evidence, not this run's preflight failures.
+    removeRetiredBaselines(baseline.repositories, sources);
+    await saveMonitoring(baseline);
+  } else if (mode === 'publish') {
     const payload = `${JSON.stringify(monitoring, null, 2)}\n`;
     const result = await client.putContents(
       target.owner,
@@ -605,14 +620,14 @@ export async function runMonitor(options = {}) {
       {
         content: payload,
         message: `chore: update source monitoring ${nowIso}`,
-        branch,
-        sha: publishStart.sha,
+        branch: MONITORING_BRANCH,
+        sha: startingSha,
       },
     );
     remote = {
       sha: result.data?.content?.sha ?? null,
       commit: result.data?.commit?.sha ?? null,
-      branch,
+      branch: MONITORING_BRANCH,
     };
     try {
       await saveMonitoring(monitoring);
@@ -734,7 +749,7 @@ export function formatReport(report) {
     lines.push('write-local：已写入本地 data/monitoring.json，未发送 GitHub 写请求。');
   } else {
     lines.push(
-      `publish：monitoring 已更新（${report.remote?.branch ?? '默认分支'}，commit ${report.remote?.commit ?? '未知'}）。`,
+      `publish：monitoring 已更新（${report.remote.branch}，commit ${report.remote.commit ?? '未知'}）。`,
     );
   }
   return lines.join('\n');
@@ -755,6 +770,10 @@ async function main() {
     return;
   }
   try {
+    if (args.mode === 'load-published') {
+      await loadPublishedMonitoring(args.repo);
+      return;
+    }
     const report = await runMonitor({ mode: args.mode, repo: args.repo });
     console.log(formatReport(report));
   } catch (error) {
