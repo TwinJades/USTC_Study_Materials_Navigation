@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { publishReviewGate, resolvePullRequests } from '../scripts/review-gate.mjs';
+import { publishReviewGate, resolveHeadShas } from '../scripts/review-gate.mjs';
 
 const HEAD = 'a'.repeat(40);
 const NEW_HEAD = 'b'.repeat(40);
@@ -12,6 +12,7 @@ const makeReview = (id, state = 'APPROVED', sha = HEAD, type = 'User') => ({
 function fixture() {
   const pr = { number: 28, user: { id: 1 }, state: 'open', base: { ref: 'main' },
     head: { sha: HEAD }, labels: [{ name: 'high-risk' }] };
+  const other = { ...structuredClone(pr), number: 29, labels: [] };
   const reviews = [];
   const writes = [];
   const api = {
@@ -23,36 +24,40 @@ function fixture() {
       assert.fail(`Unexpected GET ${path}`);
     },
     async *list(path) {
+      if (path === '/pulls?state=open&base=main') {
+        yield* structuredClone([pr, other].filter(item => item.state === 'open'));
+        return;
+      }
       assert.equal(path, '/pulls/28/reviews');
       yield* reviews;
     },
     async post(path, payload) { writes.push({ path, ...payload }); },
   };
-  return { api, pr, reviews, writes };
+  return { api, pr, other, reviews, writes };
 }
 
 test('high-risk gate passes on two distinct qualified approvals and fails after dismissal or a new head', async () => {
   const { api, pr, reviews, writes } = fixture();
   reviews.push(makeReview(1), makeReview(2), makeReview(2), makeReview(4), makeReview(5, 'APPROVED', HEAD, 'Bot'));
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, HEAD, RUN);
   assert.equal(writes.at(-1).state, 'failure');
   assert.match(writes.at(-1).description, /1\/2/);
 
   const second = makeReview(3);
   reviews.push(second, makeReview(3, 'COMMENTED', NEW_HEAD));
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, HEAD, RUN);
   assert.deepEqual(writes.at(-1), {
     path: `/statuses/${HEAD}`, context: 'Review gate', state: 'success',
-    description: 'High risk: 2/2 valid approvals for current revision', target_url: RUN,
+    description: 'All high-risk PRs at this head have two valid approvals', target_url: RUN,
   });
 
   second.state = 'DISMISSED';
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, HEAD, RUN);
   assert.equal(writes.at(-1).state, 'failure');
   assert.match(writes.at(-1).description, /1\/2/);
 
   pr.head.sha = NEW_HEAD;
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, NEW_HEAD, RUN);
   assert.equal(writes.at(-1).path, `/statuses/${NEW_HEAD}`);
   assert.match(writes.at(-1).description, /0\/2/);
 });
@@ -60,8 +65,7 @@ test('high-risk gate passes on two distinct qualified approvals and fails after 
 test('standard risk delegates approval enforcement to GitHub and does not read reviews', async () => {
   const { api, pr, writes } = fixture();
   pr.labels = [];
-  api.list = () => assert.fail('standard PR must not load votes');
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, HEAD, RUN);
   assert.equal(writes.length, 1);
   assert.equal(writes[0].state, 'success');
 });
@@ -74,7 +78,7 @@ test('a changing head is not marked green using votes from an earlier API snapsh
     if (path.endsWith('/user3/permission')) pr.head.sha = NEW_HEAD;
     return get(path);
   };
-  await publishReviewGate(api, pr.number, RUN);
+  await publishReviewGate(api, HEAD, RUN);
   assert.deepEqual(writes.map(({ state }) => state), ['pending']);
 });
 
@@ -83,9 +87,27 @@ test('fork review run with an empty PR list resolves via repository ID and sourc
     head_repository: { id: 7 }, head_branch: 'topic', pull_requests: [] } };
   const api = { async *list(path) {
     assert.equal(path, '/pulls?state=open&base=main');
-    yield { number: 42, head: { repo: { id: 8 }, ref: 'topic' } };
-    yield { number: 43, head: { repo: { id: 7 }, ref: 'other' } };
-    yield { number: 44, head: { repo: { id: 7 }, ref: 'topic' } };
+    yield { number: 42, head: { repo: { id: 8 }, ref: 'topic', sha: NEW_HEAD } };
+    yield { number: 43, head: { repo: { id: 7 }, ref: 'other', sha: NEW_HEAD } };
+    yield { number: 44, head: { repo: { id: 7 }, ref: 'topic', sha: HEAD } };
   } };
-  assert.deepEqual(await resolvePullRequests(api, 'workflow_run', event), [44]);
+  assert.deepEqual(await resolveHeadShas(api, 'workflow_run', event), [HEAD]);
+});
+
+test('an ordinary PR sharing a head cannot clear the block of a high-risk PR', async () => {
+  const { api, pr, other, reviews, writes } = fixture();
+  reviews.push(makeReview(2));
+  const resolveOrdinary = () => resolveHeadShas(api, 'pull_request_target', { action: 'opened', pull_request: other });
+  let [sha] = await resolveOrdinary();
+  await publishReviewGate(api, sha, RUN);
+  assert.equal(writes.at(-1).state, 'failure');
+  assert.match(writes.at(-1).description, /PR #28 has 1\/2/);
+
+  pr.head.sha = NEW_HEAD;
+  const shas = await resolveHeadShas(api, 'pull_request_target', { action: 'synchronize', before: HEAD, pull_request: pr });
+  assert.deepEqual(shas, [NEW_HEAD, HEAD]);
+  for (sha of shas) await publishReviewGate(api, sha, RUN);
+  assert.equal(writes.filter(write => write.path === `/statuses/${NEW_HEAD}`).at(-1).state, 'failure');
+  assert.equal(writes.at(-1).path, `/statuses/${HEAD}`);
+  assert.equal(writes.at(-1).state, 'success');
 });

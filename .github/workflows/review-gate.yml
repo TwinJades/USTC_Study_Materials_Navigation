@@ -2,8 +2,7 @@ name: Recalculate review gate
 
 on:
   pull_request_target:
-    branches: [main]
-    types: [opened, reopened, synchronize, ready_for_review, labeled, unlabeled, edited]
+    types: [opened, reopened, closed, synchronize, ready_for_review, labeled, unlabeled, edited]
   workflow_run:
     workflows: [Review gate events]
     types: [completed]
@@ -23,7 +22,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     outputs:
-      numbers: ${{ steps.resolve.outputs.numbers }}
+      shas: ${{ steps.resolve.outputs.shas }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -36,7 +35,7 @@ jobs:
 
   publish:
     needs: resolve
-    if: needs.resolve.outputs.numbers != '[]'
+    if: needs.resolve.outputs.shas != '[]'
     runs-on: ubuntu-24.04
     timeout-minutes: 4
     permissions:
@@ -46,9 +45,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        number: ${{ fromJSON(needs.resolve.outputs.numbers) }}
+        sha: ${{ fromJSON(needs.resolve.outputs.shas) }}
     concurrency:
-      group: review-gate-pr-${{ matrix.number }}
+      group: review-gate-sha-${{ matrix.sha }}
       cancel-in-progress: false
     steps:
       # Never check out the proposing branch or consume its artifacts or caches.
@@ -58,5 +57,5 @@ jobs:
           persist-credentials: false
       - env:
           GITHUB_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ matrix.number }}
+          HEAD_SHA: ${{ matrix.sha }}
         run: node scripts/review-gate.mjs publish

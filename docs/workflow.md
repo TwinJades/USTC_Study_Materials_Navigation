@@ -53,6 +53,8 @@
 
 合并工作流后先试跑，不立即设为必需。确认仓库已有 `high-risk` 标签；对已打开的 PR，可在 Actions 的 **Recalculate review gate** 中输入 PR 编号手动刷新。用真实 fork PR 核对：普通 PR 交给原生一票；高风险当前版本一票为失败、两票为成功、撤销第二票后重新失败，推送新提交不沿用旧票。检查 `Review gate` 出现在 PR 的检查区，且状态属于对应的提交。fork 的审核事件只读，默认分支工作流重读 API 后写入状态，不执行 PR 代码。
 
+GitHub 按提交共享检查结果。同一 head SHA 有多条指向 `main` 的开放 PR 时，所有带 `high-risk` 标签的 PR 各自满足两票才会亮绿灯；验收时用一条普通 PR 与一条高风险 PR 共用 head，确认普通 PR 的刷新不会覆盖高风险的一票阻断。若两条 PR 不应一起等待，让其中一条使用不同的提交。
+
 验收通过后，在 `Protect Main` 的必需检查保留 `PR checks`，加上 `Review gate`（来源选 GitHub Actions），原生批准数保持 **1**。最后在测试 PR 合并框确认高风险一票被挡、两票通过后才放行。若状态未刷新，可手动重算；不要用合并来跳过未完成的检查。
 
 个人账号仓库的批准按写权限计数。请将写权限授予承担审核职责的维护者。配置术语见 [GitHub Rulesets 文档](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)。

@@ -8,24 +8,32 @@ const validNumber = (n) => Number.isSafeInteger(n) && n > 0;
 const highRisk = (pr) => pr.labels.some(({ name }) => name === RISK_LABEL);
 const openMain = (pr) => pr.state === 'open' && pr.base.ref === 'main';
 
-// The workflow_run payload can omit pull_requests for forks. Use its GitHub
-// repository ID and branch, not a contributor-provided artifact or branch name alone.
-export async function resolvePullRequests(api, eventName, event) {
-  if (eventName === 'pull_request_target' || eventName === 'workflow_dispatch') {
-    const number = eventName === 'workflow_dispatch' ? Number(event.inputs.pull_request) : event.number;
+export async function resolveHeadShas(api, eventName, event) {
+  if (eventName === 'pull_request_target') {
+    if (event.pull_request.base.ref !== 'main' && event.changes?.base?.ref?.from !== 'main') return [];
+    return [...new Set([
+      event.pull_request.head.sha,
+      ...(event.action === 'synchronize' ? [event.before] : []),
+    ].filter(sha => typeof sha === 'string' && SHA.test(sha)))];
+  }
+  if (eventName === 'workflow_dispatch') {
+    const number = Number(event.inputs.pull_request);
     if (!validNumber(number)) throw new Error('Expected a positive pull request number');
-    return [number];
+    const pr = await api.get(`/pulls/${number}`);
+    return openMain(pr) ? [pr.head.sha] : [];
   }
   if (eventName !== 'workflow_run') throw new Error(`Unsupported event: ${eventName}`);
   const run = event.workflow_run;
   if (run.event !== 'pull_request_review' || run.path !== '.github/workflows/review-events.yml') return [];
+  // Fork workflow runs can omit pull_requests. Resolve the source repo and ref
+  // via GitHub's API without reading contributor-provided artifacts.
   const repo = run.head_repository;
   if (!repo || !run.head_branch) throw new Error('Review run has no source repository or branch');
-  const numbers = [];
+  const shas = new Set();
   for await (const pr of api.list('/pulls?state=open&base=main')) {
-    if (pr.head.repo?.id === repo.id && pr.head.ref === run.head_branch) numbers.push(pr.number);
+    if (pr.head.repo?.id === repo.id && pr.head.ref === run.head_branch) shas.add(pr.head.sha);
   }
-  return numbers;
+  return [...shas];
 }
 
 async function validApprovals(api, pr) {
@@ -47,27 +55,43 @@ async function validApprovals(api, pr) {
   return count;
 }
 
-export async function publishReviewGate(api, number, runUrl) {
-  const pr = await api.get(`/pulls/${number}`);
-  if (!openMain(pr)) return;
-  // Match the SHA used by the repository's existing PR checks. A new head
-  // cannot inherit a result; GitHub separately enforces base synchronization.
-  const sha = pr.head.sha;
-  if (!SHA.test(sha)) throw new Error(`PR #${number} has no valid head SHA`);
+async function pullRequestsAtHead(api, sha) {
+  const numbers = [];
+  const risky = [];
+  for await (const pr of api.list('/pulls?state=open&base=main')) {
+    if (pr.head.sha !== sha) continue;
+    numbers.push(pr.number);
+    if (highRisk(pr)) risky.push(pr);
+  }
+  risky.sort((a, b) => a.number - b.number);
+  return { numbers, risky };
+}
+
+export async function publishReviewGate(api, sha, runUrl) {
+  if (typeof sha !== 'string' || !SHA.test(sha)) throw new Error('Expected a valid head SHA');
+  // Commit statuses are shared by every PR at this head. Re-read the whole
+  // group under the SHA-level workflow lock, regardless of which PR triggered it.
+  const { numbers, risky } = await pullRequestsAtHead(api, sha);
+  if (!numbers.length) return;
   const post = (state, description) => api.post(`/statuses/${sha}`, {
     state, context: CONTEXT, description, target_url: runUrl,
   });
-  const risky = highRisk(pr);
-  if (risky) await post('pending', 'Counting approvals for this revision');
-  const count = risky ? await validApprovals(api, pr) : null;
-  const current = await api.get(`/pulls/${number}`);
-  if (!openMain(current) || current.head.sha !== sha || highRisk(current) !== risky) return;
-  const success = !risky || count >= 2;
-  const description = risky
-    ? `High risk: ${Math.min(count, 2)}/2 valid approvals for current revision`
-    : 'Standard risk: GitHub enforces the normal approval requirement';
-  await post(success ? 'success' : 'failure', description);
-  console.log(`PR #${number} (${sha}): ${description}`);
+  if (risky.length) await post('pending', 'Counting approvals for high-risk PRs at this head');
+  let blocked;
+  for (const pr of risky) {
+    const count = await validApprovals(api, pr);
+    if (count < 2) {
+      blocked = `High risk: PR #${pr.number} has ${count}/2 valid approvals for current revision`;
+      break;
+    }
+  }
+  const current = await pullRequestsAtHead(api, sha);
+  if (!current.numbers.length || risky.map(pr => pr.number).join() !== current.risky.map(pr => pr.number).join()) return;
+  const description = blocked ?? (risky.length
+    ? 'All high-risk PRs at this head have two valid approvals'
+    : 'Standard risk: GitHub enforces the normal approval requirement');
+  await post(blocked ? 'failure' : 'success', description);
+  console.log(`${sha}: ${description}`);
 }
 
 function githubApi(repo, token) {
@@ -108,12 +132,10 @@ async function main(env, mode) {
   const api = githubApi(env.GITHUB_REPOSITORY, env.GITHUB_TOKEN);
   if (mode === 'resolve') {
     const event = JSON.parse(readFileSync(env.GITHUB_EVENT_PATH, 'utf8'));
-    const numbers = await resolvePullRequests(api, env.GITHUB_EVENT_NAME, event);
-    appendFileSync(env.GITHUB_OUTPUT, `numbers=${JSON.stringify(numbers)}\n`);
+    const shas = await resolveHeadShas(api, env.GITHUB_EVENT_NAME, event);
+    appendFileSync(env.GITHUB_OUTPUT, `shas=${JSON.stringify(shas)}\n`);
   } else if (mode === 'publish') {
-    const number = Number(env.PR_NUMBER);
-    if (!validNumber(number)) throw new Error('Expected a positive pull request number');
-    await publishReviewGate(api, number, `https://github.com/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}`);
+    await publishReviewGate(api, env.HEAD_SHA, `https://github.com/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}`);
   } else {
     throw new Error(`Unknown review gate mode: ${mode}`);
   }
