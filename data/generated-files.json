@@ -2370,6 +2370,7 @@
     "data/without-resources/WZ014001.json",
     "data/without-resources/WZ206002.json",
     "dist/.nojekyll",
+    "dist/assets/announcements.mjs",
     "dist/assets/app.mjs",
     "dist/assets/health-evidence.mjs",
     "dist/assets/logo.png",

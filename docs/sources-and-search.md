@@ -5,12 +5,13 @@
 ## 概览
 
 - 课程：1184 门（已收录资料 405 门，暂未收录 779 门）。
-- 资料：2742 条（按资料类型与试题年份的覆盖见下一节）。
-- 来源：177 个登记来源，其中 167 个被正式资料引用。
-- 检索记录：6742 条，覆盖 1184 门课程。
+- 资料：2782 条（按资料类型与试题年份的覆盖见下一节）。
+- 来源：179 个登记来源，其中 169 个被正式资料引用。
+- 检索记录：6753 条，覆盖 1184 门课程。
 - 查缺记录：0 门课程尚未记录全部 GitHub / 评课社区 / 公开网页三条检索路径；未记录不等于没有资料，只表示本文件未覆盖。
-- 外链检查：2026-11-23T18:04:59.848Z；统计分母是站点引用的 3123 个网址，监控文件覆盖其中 3123 个。
-- 检查结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 0。
+- 外链检查：2026-11-23T18:04:59.848Z；统计分母是站点引用的 3172 个网址，监控文件覆盖其中 3123 个。
+- 检查结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 49。
+- 从未检查的网址没有监控记录，与“已检查但无法确认”不同。
 
 ## 课程 × 资料类型 × 试题年份覆盖
 
@@ -852,6 +853,7 @@
 
 - **学习资料**
   - 机械制图多媒体教程（分章 HTML 课件） —— 机械制图多媒体教程；核验于 2026-11-19 http://202.38.71.7/chap01/html/default.html（资料目录）
+  - 机械制图及CAD基础 结构化题库与知识点树（236 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/009501（资料目录）
 
 ### 010009 模式识别导论
 
@@ -1657,6 +1659,7 @@
   - 有机化学(A1) 第二次小测（答案） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/3482/#review-101489
   - 有机化学(A1) 小测 1 试卷与答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/26009/#review-99678
 - **学习资料**
+  - 有机化学(A1) 结构化题库与知识点树（1,559 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019011（资料目录）
   - 有机化学(A1)：学习资料（10 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/26009/#review-99678
 
 ### 019012 有机化学(A2)
@@ -1672,6 +1675,7 @@
   - 有机化学(AII) 2018—2019 学年习题课练习题参考答案（第二、三次） —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E5%85%B6%E4%BB%96/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6A1/2018-2019%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6AII%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%B9%A0%E9%A2%98%E8%AF%BE%E7%BB%83%E4%B9%A0%E9%A2%98%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
 - **学习资料**
   - 有机化学(A2) 分章复习图（羧酸、胺、糖、杂环、周环反应等 9 张） —— USTC 评课社区；核验于 2026-11-18 https://icourse.club/course/3490/
+  - 有机化学(A2) 结构化题库与知识点树（99 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019012（资料目录）
 
 ### 019029 仪器分析实验
 
@@ -1697,6 +1701,8 @@
 - **作业、习题与小测**
   - 有机化学习题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/3503/#review-40885
   - 有机化学B：作业与习题（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20670/#review-57564
+- **学习资料**
+  - 有机化学B 结构化题库与知识点树（193 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019047（资料目录）
 
 ### 019060 物理有机化学
 
@@ -1755,6 +1761,7 @@
   - 化学原理 习题答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/19010/#review-96756
 - **学习资料**
   - 化学原理A 第三次习题课：氧化还原反应与电化学及期中复习（2022 秋，王建平） —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E5%85%B6%E4%BB%96/%E5%8C%96%E5%AD%A6%E5%8E%9F%E7%90%86%20%E6%97%A0%E6%9C%BA%E5%8C%96%E5%AD%A6/%E5%8C%96%E5%AD%A6%E5%8E%9F%E7%90%86%E6%9C%9F%E4%B8%AD%20%E4%B8%80%E4%BA%8C%E4%B8%89%E5%9B%9B%E4%BA%94%E7%AB%A0.pdf（文件页）
+  - 化学原理A 结构化题库与知识点树（132 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019161（资料目录）
   - 化学原理A 课程手写笔记(31 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/19010/#review-106578
   - 化学原理A 课程手写笔记(绪论与第一章,10 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20677/#review-44390
   - 化学原理A 期中习题课资料(5 个附件) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/1073/#review-52731
@@ -1767,6 +1774,7 @@
 - **作业、习题与小测**
   - 化学原理B：作业与习题（5 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/14198/#review-31974
 - **学习资料**
+  - 化学原理B 结构化题库与知识点树（86 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019163（资料目录）
   - 化学原理B 课程 PPT 合集【时亮】（压缩包 37.7 MB） —— USTC 课程资料簿（GitBook）；核验于 2026-11-18 https://ustcguide.gitbook.io/coursedata/ke-cheng-zi-liao/hua-xue/hua-xue-yuan-li-b.md
   - 化学原理B 课程课件、作业与参考解答合集(ZIP) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/12862/#review-24427
   - 化学原理B 课件/讲义（6 份） —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/14198/#review-31974
@@ -1779,12 +1787,14 @@
 
 - **学习资料**
   - 2024 年：普通化学 2024秋 课程笔记 —— USTC 评课社区；核验于 2026-11-18 https://icourse.club/course/13429/
+  - 普通化学 结构化题库与知识点树（328 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019165（资料目录）
 
 ### 019166 无机化学I
 
 专业课 · 化学
 
 - **学习资料**
+  - 无机化学I 结构化题库与知识点树（252 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019166（资料目录）
   - 无机化学I 课件与习题课讲义（C/O/F 区、BN、ds,d,f 区金属） —— USTC 评课社区；核验于 2026-11-18 https://icourse.club/course/21245/
   - 无机化学I：学习资料（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21245/#review-84119
   - 无机化学I：学习资料（6 个附件） —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21244/#review-84043
@@ -2637,6 +2647,7 @@
   - 离散数学：作业与习题（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/23469/#review-88316
 - **学习资料**
   - 离散数学 讲义与习题 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/22485/#review-102166
+  - 离散数学 结构化题库与知识点树（431 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/229001（资料目录）
   - 离散数学复习提纲 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/23469/#review-73005
 - **教材与参考书**
   - Discrete Mathematics: An Open Introduction（第 4 版，补充参考） —— Oscar Levin · Discrete Mathematics: An Open Introduction；免登录公开全文 PDF；核验于 2026-11-18 https://discrete.openmathbooks.org/pdfs/dmoi4.pdf
@@ -2857,6 +2868,7 @@
 通修课 · 计算机
 
 - **试题与解析**
+  - 2025 年（期中、回忆版、无解答）：计算系统概论A 2025 秋期中（学生回忆版） —— tree127：计算系统概论 A 2025 秋期中回忆版 https://raw.githubusercontent.com/tree127/ustc-ics-midterm-2025/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf
   - 2023 年（期中、形式不明、解答情况不明）：计算系统概论A(ICS) 2023 期中（安虹班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ICS2023Mid.pdf
   - 年份待确认（期中、形式不明、解答情况不明）：计算系统概论A：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/20776/#review-88115
   - 年份待确认（期末、形式不明、解答情况不明）：期末考试 —— USTC 评课社区 https://icourse.club/course/20777/#review-42132
@@ -2869,6 +2881,7 @@
   - LCS 2021 作业与实验包 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20776/#review-42538
 - **学习资料**
   - 2021 midterm重点 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20777/#review-42132
+  - 计算系统概论A 结构化题库与知识点树（232 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1002A（资料目录）
   - 计算系统概论A：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20776/#review-88115
 - **大作业与考核作品**
   - 计算系统概论 实验（labs，USTC-Courses-Data） —— hwp-lab/USTC-Courses-Data（计算机学院课程资料）；核验于 2026-11-19 https://github.com/hwp-lab/USTC-Courses-Data/tree/main/Introduction%20to%20Computer%20Science/labs
@@ -2921,6 +2934,7 @@
   - 2025 年（类型不明、原题、解答情况不明）：计算机程序设计(L) 2025 秋机考一（唐建班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2025LQuiz1.pdf
   - 年份待确认（类型不明、形式不明、解答情况不明）：计算机程序设计(L)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/25885/#review-96896
 - **学习资料**
+  - 计算机程序设计(L) 结构化题库与知识点树（191 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1003L（资料目录）
   - 计算机程序设计(L)：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25885/#review-96896
 
 ### CS1502 计算机系统详解
@@ -3918,6 +3932,7 @@
   - 中国近现代史纲要题库（2022春） —— feixu 学习资料分享站（AList）；核验于 2026-11-19 https://share.feixu.site/%E6%94%BF%E6%B2%BB%E7%B1%BB/%E4%B8%AD%E5%9B%BD%E8%BF%91%E7%8E%B0%E4%BB%A3%E5%8F%B2%E7%BA%B2%E8%A6%81/%E3%80%8A%E4%B8%AD%E5%9B%BD%E8%BF%91%E7%8E%B0%E4%BB%A3%E5%8F%B2%E7%BA%B2%E8%A6%81%E3%80%8B%E9%A2%98%E5%BA%93%EF%BC%882022%E6%98%A5%EF%BC%89.xls（文件页）
 - **学习资料**
   - 中国近现代史纲要 简记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/14036/#review-70487
+  - 中国近现代史纲要 结构化题库与知识点树（1,106 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1010（资料目录）
   - 中国近现代史纲要 课堂内容记录 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/uploads/files/1b66acb0502febd20945ccb4ade01373d028b94e.png
   - 中国近现代史纲要：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21340/#review-85185
   - 中国近现代史纲要：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20145/#review-50104
@@ -3939,6 +3954,7 @@
   - 《马克思主义基本原理》重点整理 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E6%94%BF%E6%B2%BB%E7%B1%BB/%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/%E3%80%8A%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E3%80%8B%E9%87%8D%E7%82%B9%E6%95%B4%E7%90%86.pdf（文件页）
   - 18年版《马原》期末复习资料 —— li-qi-lin/USTC-Course-Materials-Sharing；核验于 2026-11-18 https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E5%8E%9F%E7%90%86/%E9%A9%AC%E5%8E%9F/18%E5%B9%B4%E7%89%88%E3%80%8A%E9%A9%AC%E5%8E%9F%E3%80%8B%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99-%E6%91%98%E4%BA%91%E5%AD%90.pdf
   - 马克思主义基本原理 教学要点 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20920/#review-59289
+  - 马克思主义基本原理 结构化题库与知识点树（511 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1011（资料目录）
   - 马克思主义基本原理：学习资料（10 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/6868/#review-4611
   - 马克思主义基本原理：学习资料（11 个附件） —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/6868/#review-15908
   - 马克思主义基本原理：学习资料（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/23671/#review-82069
@@ -3968,6 +3984,7 @@
   - 思政课后题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21948/#review-85186
 - **学习资料**
   - 思想道德法治提纲 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20930/#review-98354
+  - 思想道德与法治 结构化题库与知识点树（1,227 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1012（资料目录）
   - 思想道德与法治 专题学习思考与拓展阅读课件(前 4/47 页已核) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20925/#review-86242
   - 思想道德与法治：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20930/#review-100348
   - 思想道德与法治课本索引 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E6%94%BF%E6%B2%BB%E7%B1%BB/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB/%E3%80%8A%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB%E3%80%8B%E8%AF%BE%E6%9C%AC%E7%B4%A2%E5%BC%95.pdf（文件页）
@@ -3991,6 +4008,7 @@
   - 毛概期末试卷考场抄写版（2022春） —— Kobe972/ustc_course_plus；核验于 2026-11-18 https://github.com/Kobe972/ustc_course_plus/blob/main/%E6%AF%9B%E6%B3%BD%E4%B8%9C%E6%80%9D%E6%83%B3%E5%92%8C%E4%B8%AD%E5%9B%BD%E7%89%B9%E8%89%B2%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E7%90%86%E8%AE%BA%E4%BD%93%E7%B3%BB%E6%A6%82%E8%AE%BA/%E6%AF%9B%E6%A6%82%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7%E8%80%83%E5%9C%BA%E6%8A%84%E5%86%99%E7%89%88.docx
   - 毛概提纲 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18072/#review-50115
   - 毛概一些资料 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18075/#review-93198
+  - 毛泽东思想和中国特色社会主义理论体系概论 结构化题库与知识点树（681 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1013（资料目录）
   - 毛泽东思想和中国特色社会主义理论体系概论：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18075/#review-85184
 
 ### MARX1014 习近平新时代中国特色社会主义思想概论
@@ -4003,6 +4021,7 @@
 - **学习资料**
   - 习概 2025 秋学期总结 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25826/#review-98252
   - 习概笔记（Word 版） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/22355/#review-81611
+  - 习近平新时代中国特色社会主义思想概论 结构化题库与知识点树（285 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1014（资料目录）
   - 习近平新时代中国特色社会主义思想概论：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/24800/#review-100341
   - 习近平新时代中国特色社会主义思想概论：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/22354/#review-96639
   - 习近平新时代中国特色社会主义思想概论：学习资料（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/24800/#review-98600
@@ -4015,6 +4034,7 @@
 通修课 · 数学
 
 - **试题与解析**
+  - 2026 年（期中、原题、含解答）：数学分析A1 2026 秋期中（含答案与评分标准） —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026MAA1mid.pdf
   - 2025 年（期末、原题、解答情况不明）：数学分析A1 2024 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2024MAA1final.pdf
   - 2025 年（期末、形式不明、解答情况不明）：数学分析A1 2025 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025MAA1final.pdf
   - 2025 年（期中、形式不明、解答情况不明）：数学分析A1 2025 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025MAA1mid.pdf
@@ -4029,6 +4049,8 @@
   - 2019 年（期中、形式不明、解答情况不明）：2019数学分析(A1)期中 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E7%9C%9F%E9%A2%98/2019%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E6%9C%9F%E4%B8%AD.pdf（文件页）
   - 2018 年（期末、形式不明、解答情况不明）：2018数学分析(A1)期末 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E7%9C%9F%E9%A2%98/2018%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E6%9C%9F%E6%9C%AB.pdf（文件页）
   - 2015 年（期末、形式不明、解答情况不明）：2015数学分析(A1)期末 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E7%9C%9F%E9%A2%98/2015%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A1%29%E6%9C%9F%E6%9C%AB.pdf（文件页）
+- **学习资料**
+  - 数学分析(A1) 结构化题库与知识点树（169 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1001（资料目录）
 
 ### MATH1002 数学分析(A2)
 
@@ -4070,6 +4092,7 @@
   - 2018 年（小测、原题、无解答）：数学分析A2 2018 第三次单元测试 —— USTC 评课社区 https://icourse.club/course/12392/#review-23487
 - **学习资料**
   - 第13章《场的数学》期末复习讲义 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/2828/#review-104519
+  - 数学分析(A2) 结构化题库与知识点树（299 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1002（资料目录）
   - 数学分析(A2)：学习资料（5 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/2828/#review-104519
 
 ### MATH1003 数学分析(A3)
@@ -4095,6 +4118,7 @@
   - 2017 年（期末、原题、解答情况不明）：数学分析A3 2017 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2017MAA3final.pdf
   - 2016 年（期末、原题、解答情况不明）：2016数学分析(A3)期末 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A3%29%E7%9C%9F%E9%A2%98/2016%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A3%29%E6%9C%9F%E6%9C%AB.pdf（文件页）
 - **学习资料**
+  - 数学分析(A3) 结构化题库与知识点树（247 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1003（资料目录）
   - 数学分析(A3)：学习资料（5 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/13494/#review-68716
 
 ### MATH1004 线性代数(A1)
@@ -4125,6 +4149,8 @@
   - 习题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/12386/#review-84696
   - 线性代数(A1)：作业与习题（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/13221/#review-85795
   - 线性代数习题解答（配套王新茂讲义） —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%EF%BC%88%E7%8E%8B%E6%96%B0%E8%8C%82%EF%BC%89%E4%B9%A0%E9%A2%98%E8%A7%A3%E7%AD%94.pdf（文件页）
+- **学习资料**
+  - 线性代数(A1) 结构化题库与知识点树（171 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1004（资料目录）
 - **教材与参考书**
   - Linear Algebra Done Right（第 4 版，作者开放获取） —— Linear Algebra Done Right（Sheldon Axler）；免登录公开全文 PDF；核验于 2026-11-19 https://linear.axler.net/LADR4e.pdf（文件页）
 
@@ -4153,12 +4179,14 @@
   - 线性代数习题解答（配套王新茂讲义） —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%EF%BC%88%E7%8E%8B%E6%96%B0%E8%8C%82%EF%BC%89%E4%B9%A0%E9%A2%98%E8%A7%A3%E7%AD%94.pdf（文件页）
 - **学习资料**
   - 线性代数：相似标准形专题笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18270/#review-72509
+  - 线性代数(A2) 结构化题库与知识点树（166 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1005（资料目录）
 
 ### MATH1006 数学分析(B1)
 
 通修课 · 数学
 
 - **试题与解析**
+  - 2026 年（期中、形式不明、含解答）：数学分析B1 2026 秋期中（参考答案与题目） —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026MAB1mid.pdf
   - 2025 年（期末、原题、含解答）：2024秋数学分析(B1)期末考试试卷(A卷)含解答与点评 —— USTC 评课社区 https://icourse.club/course/13486/#review-91217
   - 2025 年（期末、形式不明、解答情况不明）：2025数学分析B1期末考试参考答案 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2025%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2025 年（期中、形式不明、解答情况不明）：2025数学分析B1期中考试参考答案 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2025%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
@@ -4208,6 +4236,7 @@
   - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B1)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
   - 年份待确认（期末、形式不明、解答情况不明）：数学分析B1 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/MAB1exams.zip
 - **作业、习题与小测**
+  - 《数学分析讲义（第一、二册）》习题解析（李清臣整理） —— 李清臣：《数学分析讲义（第一、二册）》习题解析；核验于 2026-11-25 https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf
   - 数学分析(B1)：作业与习题（5 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/13486/#review-69910
   - 2016 年（小测、形式不明、解答情况不明）：数学分析B1 2016 小测 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2016MAB1test.pdf
 - **学习资料**
@@ -4263,6 +4292,7 @@
   - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B2) 期中期末试卷合集 —— USTC 评课社区 https://icourse.club/course/13222/#review-86578
   - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B2)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
 - **作业、习题与小测**
+  - 《数学分析讲义（第一、二册）》习题解析（李清臣整理） —— 李清臣：《数学分析讲义（第一、二册）》习题解析；核验于 2026-11-25 https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf
   - 数学分析(B2) 2018–2019 春季练习 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/13222/#review-70644
   - 2020 年（小测、原题、无解答）：数学分析(B2) 2020 春第8–9章测验 —— USTC 评课社区 https://icourse.club/course/2854/#review-21739
   - 数学分析(B2) 教材习题答案（第一部分） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/2847/#review-83583
@@ -4300,6 +4330,8 @@
   - 2003—2004 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2011—2012 学年、2012—2013 学年、2013—2014 学年、2015—2016 学年、2016—2017 学年、2017—2018 学年、2018—2019 学年、2019—2020 学年、2020—2021 学年（期中期末混合、原题、解答情况不明）：数学分析(B)历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
 - **作业、习题与小测**
   - 2026 年（小测、原题、解答情况不明）：数学分析B3 2026 小测 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026MAB3mid2.pdf
+- **学习资料**
+  - 数学分析(B3) 结构化题库与知识点树（270 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1008（资料目录）
 
 ### MATH1009 线性代数(B1)
 
@@ -4308,6 +4340,7 @@
 - **试题与解析**
   - 2026 年（期末、原题、含解答）：线性代数B1 2026 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026SLAB1Final.pdf（资料目录）
   - 2026 年（期中、形式不明、含解答）：线性代数B1 2026 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026SLAB1mid.pdf（资料目录）
+  - 2026 年（期中、形式不明、含解答）：线性代数B1 2026 秋期中（答案与题目） —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2026LAB1mid.pdf
   - 2025 年（期末、形式不明、含解答）：线性代数B1 2025 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025FLAB1final.pdf（资料目录）
   - 2025 年（期中、原题、含解答）：线性代数B1 2025 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025FLAB1mid.pdf（资料目录）
   - 2025 年（期中、原题、含解答）：线性代数B1 2025 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025SLAB1mid.pdf（资料目录）
@@ -4378,6 +4411,7 @@
   - 年份待确认（期末、形式不明、解答情况不明）：线性代数B2 2022—2023 学年期末试卷 —— USTC 评课社区 https://icourse.club/course/5493/#review-89897
   - 年份待确认（期中、形式不明、解答情况不明）：线性代数B2 2023 秋期中参考答案 —— USTC 评课社区 https://icourse.club/course/5494/#review-81564
 - **学习资料**
+  - 线性代数(B2) 结构化题库与知识点树（131 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1010（资料目录）
   - 线性代数趣味应用案例 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/5494/#review-78102
 
 ### MATH1012 微积分II
@@ -5001,6 +5035,7 @@
 
 - **试题与解析**
   - 2026 年（期末、原题、解答情况不明）：2025-2026秋力学A期末 —— feixu 学习资料分享站（AList）、USTC 物理课程往年试卷 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2025-2026%E7%A7%8B%E5%8A%9B%E5%AD%A6A%E6%9C%9F%E6%9C%AB.pdf（文件页）
+  - 2026 年（期中、原题、无解答）：力学A 2026 秋期中（刘斌等） —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/26FaMechAMid.pdf
   - 2025 年（期末、形式不明、含解答）：2025力学A期末答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2025%E5%8A%9B%E5%AD%A6A%E6%9C%9F%E6%9C%AB%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2024 年（期末、回忆版、解答情况不明）：力学 2024 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaMechAFinal.pdf
   - 2023 年（期末、原题、解答情况不明）：力学 2023 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/23FaMechAFinal.pdf
@@ -5051,6 +5086,7 @@
   - 力学B 作业（一份） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20178/#review-46266
 - **学习资料**
   - 力学B 复习课课件 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20179/#review-49998
+  - 力学B 结构化题库与知识点树（379 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001B（资料目录）
   - 力学B：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/19594/#review-92925
 
 ### PHYS1001H 力学(H)
@@ -5064,6 +5100,8 @@
   - 2024 年（期末、回忆版、解答情况不明）：力学 2024 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaMechAFinal.pdf
   - 2024 年（期中、原题、解答情况不明）：力学 2024 期中 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24FaMechHMid.pdf
   - 2023 年（期末、原题、解答情况不明）：力学 2023 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/23FaMechAFinal.pdf
+- **学习资料**
+  - 力学(H) 结构化题库与知识点树（78 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001H（资料目录）
 
 ### PHYS1002A 热学A
 
@@ -5107,6 +5145,7 @@
   - 《热学(第二版)》教材习题解答(v1.0) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20194/#review-85779
   - 热学B第二次习题课 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/19598/#review-95127
 - **学习资料**
+  - 热学B 结构化题库与知识点树（277 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1002B（资料目录）
   - 热学B 考前手写复习大抄(两页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20194/#review-85779
   - 热学B A4 复习纸(第 1–4 章知识点汇总) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/19598/#review-33910
 
@@ -5115,6 +5154,7 @@
 通修课 · 物理
 
 - **试题与解析**
+  - 2026 年（期中、原题、无解答）：光学A 2026 秋期中（王沛） —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/26FaOpticsAMidWP.pdf
   - 2025 年（期末、回忆版、解答情况不明）：光学 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaOpticsAfinal.pdf
   - 2024 年（期末、原题、解答情况不明）：光学 2024 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24FaOpticsAfinal.pdf
   - 2023 年（期末、原题、解答情况不明）：光学 2023 期末 —— USTC 物理课程往年试卷、USTC 评课社区 https://ustcphyexam.github.io/USTC/23FaOpticsAfinal.pdf
@@ -5150,6 +5190,7 @@
   - 光学复习讲义 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21394/#review-88983
   - 光学公式 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21397/#review-82691
   - 2020 年：光学B 光学复习指导(2020 秋,75 页,含习题解答与模拟卷) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21394/#review-88226
+  - 光学B 结构化题库与知识点树（147 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1003B（资料目录）
   - 光学B 知识点总结与习题笔记(两页纸) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21395/#review-102569
   - 光学B：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21395/#review-102569
 
@@ -5190,6 +5231,7 @@
   - 2020 年（期末、形式不明、解答情况不明）：2020春《电磁学》期末考试试卷 —— USTC 评课社区 https://icourse.club/course/14403/#review-86577
 - **学习资料**
   - 电磁学B 讲义 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4969/#review-59283
+  - 电磁学B 结构化题库与知识点树（151 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004B（资料目录）
   - 电磁学B 期末复习课件(第 4–8 章) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/4969/#review-18443
   - 电磁学B：学习资料（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/14403/#review-86577
 
@@ -5213,6 +5255,7 @@
   - 电磁学C 磁学部分期末复习提纲（手写） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4977/#review-78846
   - 电磁学C 电磁学C（notes） —— Kobe972/ustc_course_plus；核验于 2026-11-18 https://github.com/Kobe972/ustc_course_plus/tree/main/%E7%94%B5%E7%A3%81%E5%AD%A6C
   - 电磁学C 电学部分总结 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25875/#review-97448
+  - 电磁学C 结构化题库与知识点树（151 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004C（资料目录）
   - 电磁学C 期中考试知识总结 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/23768/#review-75011
   - 电磁学C第三次习题课 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%94%B5%E7%A3%81%E5%AD%A6C%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B9%A0%E9%A2%98%E8%AF%BE.pdf（文件页）
   - 电磁学C期末考试知识总结 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%94%B5%E7%A3%81%E5%AD%A6/%E7%94%B5%E7%A3%81%E5%AD%A6C%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93.pdf（文件页）
@@ -5234,6 +5277,8 @@
   - 2024 年（期末、回忆版、解答情况不明）：电磁学 2024 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24SpEMHFinal.pdf
   - 2024 年（期中、形式不明、解答情况不明）：电磁学(H) 2024sp_midterm —— USTC 评课社区 https://icourse.club/course/24422/#review-86019
   - 2023 年（期中、原题、解答情况不明）：电磁学 2023 期中 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23SpEMAMid.pdf
+- **学习资料**
+  - 电磁学(H) 结构化题库与知识点树（131 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004H（资料目录）
 
 ### PHYS1005A 原子物理A
 
@@ -5253,6 +5298,7 @@
 - **学习资料**
   - 原子物理 笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21407/#review-94548
   - 原子物理 简记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21411/#review-87080
+  - 原子物理A 结构化题库与知识点树（165 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1005A（资料目录）
   - 原子物理A 课程讲义课件与往年试题合集(ZIP) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21410/#review-84041
   - 2022 年：原子物理A LaTeX 课程笔记(2022 年,67 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21411/#review-49429
   - 原子物理A：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21409/#review-90701
@@ -5277,6 +5323,7 @@
 - **学习资料**
   - 原子物理B 复习笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21021/#review-100861
   - 原子物理B 复习公式 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21022/#review-49500
+  - 原子物理B 结构化题库与知识点树（156 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1005B（资料目录）
   - 原子物理B 课件内容整理笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21021/#review-93895
   - 原子物理B 期末复习 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21413/#review-48922
   - 原子物理B：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21021/#review-37410
@@ -5375,6 +5422,7 @@
   - 量子力学 20250506 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%2020250506.pdf（文件页）
   - 量子力学 20250506 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/4%20%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%A4%87%E8%80%83/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%2020250506.pdf（文件页）
   - 量子物理 电子手写课堂笔记(6份PDF合集) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21420/#review-47023
+  - 量子物理 结构化题库与知识点树（716 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1010（资料目录）
   - 量子物理 课件/讲义（9 份） —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/24427/#review-94941
   - 量子物理 量子物理（notes） —— Kobe972/ustc_course_plus；核验于 2026-11-18 https://github.com/Kobe972/ustc_course_plus/tree/main/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86
   - 量子物理 期末复习问答汇总(含光学、原子物理、量子力学与量子计算) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/24427/#review-94941
@@ -5932,7 +5980,7 @@
 - 维护者：ustcmathexam（学生运营）
 - GitHub：ustcmathexam/ustcmathexam.github.io（分支 master）
 - 说明：按课程分类的数学试卷站，文件在仓库 USTC/；站点模板 MIT 不覆盖试卷权利。
-- 被正式资料引用：401 处
+- 被正式资料引用：404 处
 
 ### 中国科学技术大学慕课平台
 
@@ -5949,7 +5997,7 @@
 - 维护者：ustcphyexam（学生运营）
 - GitHub：ustcphyexam/ustcphyexam.github.io（分支 main）
 - 说明：按课程分类的物理试卷站，文件在仓库 USTC/；站点模板 MIT 不覆盖试卷权利。
-- 被正式资料引用：164 处
+- 被正式资料引用：166 处
 
 ### USTC 教师个人主页（staff/faculty）
 
@@ -7031,8 +7079,8 @@
 - 地址：<https://github.com/DDNdles/USTC-Question-Bank>
 - 维护者：DDNdles
 - GitHub：DDNdles/USTC-Question-Bank（分支 main）
-- 说明：机读题库，不是网盘或在线刷题站：仓库内是 JSONL 题目流、知识点树与配图，直接打开是原始文本，需要配合 DDNdles/dsh-study 插件、Python 脚本或 AI Agent 使用。校内可走免代理镜像 https://git.ustc.edu.cn/zzl_stella05/USTC-Question-Bank 。按中科大官方课号组织，当前 14 门课共 7,159 题：复变函数B（001548，571 题）、数学分析(B1)（MATH1006，445 题）、数学分析(B2)（MATH1007，569 题）、线性代数(B1)（MATH1009，885 题）、计算机程序设计（CS1003，1,533 题）、力学A（PHYS1001A，253 题 + 91 图）、热学A（PHYS1002A，352 题 + 48 图）、电磁学A（PHYS1004A，121 题 + 59 图）、数据结构及其算法（210070，347 题 + 17 图）、概率论与数理统计（STAT2002，431 题 + 1 图）、光学A（PHYS1003A，228 题 + 20 图）、数字逻辑电路（210050，512 题 + 506 图）、线性电子线路（023181，407 题 + 340 图）、计算机原理与嵌入式系统（EE2003，505 题 + 20 图）。其中力学A、电磁学A、复变B、数电、光学A、数据结构、热学A 等课的 ai 生成解答占比较高，使用前核对 origin=ai 的题目。仓库代码、Schema 与元数据采用 MIT；NOTICE.md 明确第三方真题、教材习题及引用解答版权归原作者与出版社所有、不适用 MIT，仅供学习研究。
-- 被正式资料引用：14 处
+- 说明：中科大本科课程结构化题库，提供 JSONL 题目、知识点树与配图，不是在线刷题站或原卷网盘。v0.18.0 的清单列 47 门、18,512 题。原仓库按课号组织并标注出处和解答来源；AI 解答请核对。代码、Schema 与元数据采用 MIT，第三方试题、教材习题和引用解答不适用该许可，详见 NOTICE.md。
+- 被正式资料引用：47 处
 
 ### 黄文超：形式化方法导引
 
@@ -7082,12 +7130,35 @@
 - 说明：课程实验说明、代码与配套数据；仓库 README 列明主讲和整理者。
 - 被正式资料引用：1 处
 
+### tree127：计算系统概论 A 2025 秋期中回忆版
+
+- 类型：资料库
+- 地址：<https://github.com/tree127/ustc-ics-midterm-2025>
+- 维护者：tree127
+- GitHub：tree127/ustc-ics-midterm-2025（分支 main）
+- 说明：投稿人公开发布的学生回忆版；README 说明部分题目数值未还原，原卷版权归原作者与开课单位。
+- 被正式资料引用：1 处
+
+### 李清臣：《数学分析讲义（第一、二册）》习题解析
+
+- 类型：资料库
+- 地址：<https://github.com/wanzhao-ysy/ustc-math-analysis-solutions>
+- 维护者：李清臣（wanzhao-ysy）
+- GitHub：wanzhao-ysy/ustc-math-analysis-solutions（分支 main）
+- 说明：项目公开发布第一版讲义前两册的第三方习题解析，GitHub Release 提供完整解析 PDF。
+- 被正式资料引用：1 处
+
 ## 检索记录
 
 记录的是实际打开或检查过的页面、目录与文件，不是机械拼接的查询 URL。受阻不等于没有资料。
 
 ### 通用来源检索
 
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcphyexam.github.io/USTC/26FaQFT1MidGDN.pdf>
+  - 查询：#14 高道能 2026 秋量子场论期中回忆版
+  - 检查范围：公开 PDF 卷头与全文、原站 _pages/Physics.md、评课社区 PHYS5003P01、物理学学科硕士培养方案（2025 版）和本站本科课号清单。
+  - 说明：确为 2026 年 11 月 15 日期中的回忆版；对应 PHYS5003P，未在本站固定本科开课清单内，不挂到 PHYS1010 或其他课程。
+  - 来源 ID：ustc-phy-exam
 - 2026-11-20 · 公开网页 · 候选未确认 · <https://cfmath-notes.pages.dev/cours/proba-dis/>
   - 查询：Probabilités discrètes / 离散概率
   - 检查范围：读 2024/2025 原站资料页并查现有课程索引、官方课程搜索。
@@ -14806,6 +14877,12 @@
 
 ### 009501 机械制图及CAD基础
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 受阻 · <https://icourse.club/course/25815/#review-104669>
   - 查询：评课包历史资料逐条复核（blocked）
   - 检查范围：逐条重判 1 条候选的原页、附件与课程归属，核对公开可访问性
@@ -19051,6 +19128,12 @@
 
 ### 019011 有机化学(A1)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/26009/#review-99678>
   - 查询：有机化学(A1)：学习资料（10 个附件）
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -19131,6 +19214,12 @@
 
 ### 019012 有机化学(A2)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 受阻 · <https://icourse.club/course/3490/#review-45480>
   - 查询：评课包历史资料逐条复核（blocked）
   - 检查范围：逐条重判 9 条候选的原页、附件与课程归属，核对公开可访问性
@@ -19277,6 +19366,12 @@
 
 ### 019047 有机化学B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/3503/#review-40885>
   - 查询：有机化学习题
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -19970,6 +20065,12 @@
 
 ### 019161 化学原理A
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/20677/#review-44390>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -20061,6 +20162,12 @@
 
 ### 019163 化学原理B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/12862/#review-29117>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -20128,6 +20235,12 @@
 
 ### 019165 普通化学
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 受阻 · <https://icourse.club/course/13429/#review-87608>
   - 查询：评课包历史资料逐条复核（blocked）
   - 检查范围：逐条重判 2 条候选的原页、附件与课程归属，核对公开可访问性
@@ -20153,6 +20266,12 @@
 
 ### 019166 无机化学I
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/21244/#review-84043>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -24815,6 +24934,12 @@
 
 ### 229001 离散数学
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/22485/#review-102166>
   - 查询：评课原帖附件正文取样
   - 检查范围：核对匿名定位、完整文件字节与正文取样。
@@ -27371,6 +27496,18 @@
 
 ### CS1002A 计算系统概论A
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/tree127/ustc-ics-midterm-2025>
+  - 查询：#16 计算系统概论A 2025 秋期中学生回忆版
+  - 检查范围：投递说明、公开 README、10 页 PDF 及现有 CS1002A 期中入口。
+  - 说明：卷首明确 2025 秋期中回忆版；README 指明 CS1002A，部分题目数值未还原，无解答。原站文件已取样。
+  - 来源 ID：gh-tree127-ics-midterm-2025
+  - 课程代码：CS1002A
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/20776/#review-88115>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -27561,6 +27698,12 @@
 
 ### CS1003L 计算机程序设计(L)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/25885/#review-96896>
   - 查询：计算机程序设计(L)：学习资料（2 个附件）
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -36954,6 +37097,12 @@
 
 ### MARX1010 中国近现代史纲要
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/21340/#review-102955>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -37064,6 +37213,12 @@
 
 ### MARX1011 马克思主义基本原理
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/6868/#review-15908>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -37215,6 +37370,12 @@
 
 ### MARX1012 思想道德与法治
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/20925/#review-86242>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -37300,6 +37461,12 @@
 
 ### MARX1013 毛泽东思想和中国特色社会主义理论体系概论
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 候选未确认 · <https://icourse.club/course/18075/>
   - 查询：评课社区：毛泽东思想和中国特色社会主义理论体系概论（叶政）
   - 检查范围：按作业原页、文件或可读部分的逐条复核记录裁定，不代表逐页通读。
@@ -37380,6 +37547,12 @@
 
 ### MARX1014 习近平新时代中国特色社会主义思想概论
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/24800/#review-98600>
   - 查询：习近平新时代中国特色社会主义思想概论：学习资料（3 个附件）
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -37535,6 +37708,18 @@
 
 ### MATH1001 数学分析(A1)
 
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcmathexam.github.io/USTC/2026MAA1mid.pdf>
+  - 查询：#14 数学分析A1 2026 秋期中（含答案与评分标准）
+  - 检查范围：原站目录、完整 PDF 与同课既有条目。PDF 前两页为题面，其后是同卷参考答案与评分标准，日期为 2026 年 11 月 21 日。
+  - 说明：核对实际字节数与完整 SHA-256；未与既有同年不同学期资料合并。
+  - 来源 ID：ustc-math-exam
+  - 课程代码：MATH1001
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 无相关结果 · <https://icourse.club/course/2826/#review-106>
   - 查询：评课包历史资料逐条复核（no_relevant_result）
   - 检查范围：逐条重判 10 条候选的原页、附件与课程归属，核对公开可访问性
@@ -37603,6 +37788,12 @@
 
 ### MATH1002 数学分析(A2)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/12392/#review-23487>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -37731,6 +37922,12 @@
 
 ### MATH1003 数学分析(A3)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/2831/#review-27987>
   - 查询：数学分析A3 2020 秋期末试卷
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -37811,6 +38008,12 @@
 
 ### MATH1004 线性代数(A1)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/13221/#review-85795>
   - 查询：线性代数(A1)：作业与习题（2 个附件）
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -37909,6 +38112,12 @@
 
 ### MATH1005 线性代数(A2)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/18270/#review-72509>
   - 查询：线性代数：相似标准形专题笔记
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -37995,6 +38204,24 @@
 
 ### MATH1006 数学分析(B1)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3>
+  - 查询：#29《数学分析讲义（第一、二册）》习题解析
+  - 检查范围：README、Release v3.0.3、PDF 封面、目录与习题解析正文；既有 190 页第一册评课附件与两册发布版的范围不同。
+  - 说明：834 页 PDF，署名李清臣整理，覆盖第 1–13 章；按一份两册合订解析挂 B1/B2，不当教材或官方答案。
+  - 来源 ID：gh-wanzhao-math-analysis-solutions
+  - 课程代码：MATH1006、MATH1007
+- 2026-11-25 · 公开网页 · 已查看 · <http://home.ustc.edu.cn/~pzr201663/coursecontent.html>
+  - 查询：数学分析 B1 教材第一册
+  - 检查范围：潘永亮班课程内容页的数学分析 B1 教材条目；张瑞教师主页所列书名和作者。
+  - 说明：对应程艺、陈卿、李平《数学分析讲义》第一册；参考资料另列常庚哲《数学分析教程》为 A1 教材。
+  - 来源 ID：gh-wanzhao-math-analysis-solutions
+  - 课程代码：MATH1006
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcmathexam.github.io/USTC/2026MAB1mid.pdf>
+  - 查询：#14 数学分析B1 2026 秋期中（参考答案与题目）
+  - 检查范围：原站目录、完整 PDF 与同课既有条目。PDF 页首为 2026–2027 学年第一学期数学分析B1 期中参考答案，题干随解答列出；未找到独立原卷。
+  - 说明：核对实际字节数与完整 SHA-256；未与既有同年不同学期资料合并。
+  - 来源 ID：ustc-math-exam
+  - 课程代码：MATH1006
 - 2026-11-20 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank>
   - 查询：DDNdles/USTC-Question-Bank 首发课程结构化题库核验
   - 检查范围：README.md, NOTICE.md, manifest.json, courses/001548/, courses/MATH1006/, courses/MATH1007/
@@ -38429,6 +38656,18 @@
 
 ### MATH1007 数学分析(B2)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3>
+  - 查询：#29《数学分析讲义（第一、二册）》习题解析
+  - 检查范围：README、Release v3.0.3、PDF 封面、目录与习题解析正文；既有 190 页第一册评课附件与两册发布版的范围不同。
+  - 说明：834 页 PDF，署名李清臣整理，覆盖第 1–13 章；按一份两册合订解析挂 B1/B2，不当教材或官方答案。
+  - 来源 ID：gh-wanzhao-math-analysis-solutions
+  - 课程代码：MATH1006、MATH1007
+- 2026-11-25 · 公开网页 · 已查看 · <http://home.ustc.edu.cn/~fa1247/courseMAB2/index.html>
+  - 查询：数学分析 B2 教材第二册
+  - 检查范围：课程页工作进度与侯新民班公开作业（如第 17 周 13.4.8）；对照第二册目录和解析中对应题号。
+  - 说明：按章次、题号和内容对应核验 B2，不根据书名推断适用于数学分析 A 系列。
+  - 来源 ID：gh-wanzhao-math-analysis-solutions
+  - 课程代码：MATH1007
 - 2026-11-20 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank>
   - 查询：DDNdles/USTC-Question-Bank 首发课程结构化题库核验
   - 检查范围：README.md, NOTICE.md, manifest.json, courses/001548/, courses/MATH1006/, courses/MATH1007/
@@ -38671,6 +38910,12 @@
 
 ### MATH1008 数学分析(B3)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/14210/#review-87955>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -38727,6 +38972,12 @@
 
 ### MATH1009 线性代数(B1)
 
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcmathexam.github.io/USTC/2026LAB1mid.pdf>
+  - 查询：#14 线性代数B1 2026 秋期中（答案与题目）
+  - 检查范围：原站目录、完整 PDF 与同课既有条目。PDF 页首为 2026–2027 学年第一学期期中考试答案，题干随解答列出；未找到独立原卷。原站目录链接文件名有误，使用已实测的文件路径。
+  - 说明：核对实际字节数与完整 SHA-256；未与既有同年不同学期资料合并。
+  - 来源 ID：ustc-math-exam
+  - 课程代码：MATH1009
 - 2026-11-21 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1009>
   - 查询：DDNdles/USTC-Question-Bank 新增 MATH1009 线性代数(B1) 核验
   - 检查范围：courses/MATH1009/{meta.json,taxonomy.json,questions.jsonl}, manifest.json (v0.2.0), NOTICE.md
@@ -39180,6 +39431,12 @@
 
 ### MATH1010 线性代数(B2)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/5495/#review-88028>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -46396,6 +46653,12 @@
 
 ### PHYS1001A 力学A
 
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcphyexam.github.io/USTC/26FaMechAMid.pdf>
+  - 查询：#14 力学A 2026 秋期中（刘斌等）
+  - 检查范围：原站目录、完整 PDF 与同课既有条目。卷首为 2026 年秋季力学A期中考试，日期 11 月 17 日，列刘斌、毛文哲、李翔、龚雷、范璐璐；单页题面，无解答。
+  - 说明：核对实际字节数与完整 SHA-256；未与既有同年不同学期资料合并。
+  - 来源 ID：ustc-phy-exam
+  - 课程代码：PHYS1001A
 - 2026-11-23 · GitHub · 已查看 · <https://git.ustc.edu.cn/zzl_stella05/USTC-Question-Bank/-/raw/main/manifest.json>
   - 查询：DDNdles/USTC-Question-Bank 扩库复核：14 门 7,159 题
   - 检查范围：manifest.json 汇总（14 门、7,159 题、quarantined 35）；各课 meta.json 的 stats 与 assets 文件清单经镜像分页核到；210050 由 92 题增至 512 题（新增辅导书与自测试卷两批），PHYS1003A 配图为 20 个文件，新增 023181 线性电子线路与 EE2003 计算机原理与嵌入式系统。
@@ -46538,6 +46801,12 @@
 
 ### PHYS1001B 力学B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/20179/#review-84332>
   - 查询：评课原帖压缩包试卷复核
   - 检查范围：核验匿名原帖、完整压缩包字节与两个成员的首页。
@@ -46618,6 +46887,12 @@
 
 ### PHYS1001H 力学(H)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 无相关结果 · <https://icourse.club/course/23763/#review-97527>
   - 查询：评课包历史资料逐条复核（no_relevant_result）
   - 检查范围：逐条重判 8 条候选的原页、附件与课程归属，核对公开可访问性
@@ -46766,6 +47041,12 @@
 
 ### PHYS1002B 热学B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/20196/#review-34378>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点；核对附件完整 SHA-256 与字节数，按已记录范围取样。
@@ -46852,6 +47133,12 @@
 
 ### PHYS1003A 光学A
 
+- 2026-11-25 · 公开网页 · 已查看 · <https://ustcphyexam.github.io/USTC/26FaOpticsAMidWP.pdf>
+  - 查询：#14 光学A 2026 秋期中（王沛）
+  - 检查范围：原站目录、完整 PDF 与同课既有条目。逐页核对扫描件：卷首为 2026 年秋季学期光学 A 期中试卷，4 页全为题面；王沛见原站目录。目录链接文件名有误，使用已实测的文件路径。
+  - 说明：核对实际字节数与完整 SHA-256；未与既有同年不同学期资料合并。
+  - 来源 ID：ustc-phy-exam
+  - 课程代码：PHYS1003A
 - 2026-11-23 · GitHub · 已查看 · <https://git.ustc.edu.cn/zzl_stella05/USTC-Question-Bank/-/raw/main/manifest.json>
   - 查询：DDNdles/USTC-Question-Bank 扩库复核：14 门 7,159 题
   - 检查范围：manifest.json 汇总（14 门、7,159 题、quarantined 35）；各课 meta.json 的 stats 与 assets 文件清单经镜像分页核到；210050 由 92 题增至 512 题（新增辅导书与自测试卷两批），PHYS1003A 配图为 20 个文件，新增 023181 线性电子线路与 EE2003 计算机原理与嵌入式系统。
@@ -46962,6 +47249,12 @@
 
 ### PHYS1003B 光学B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/21395/#review-102569>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -47157,6 +47450,12 @@
 
 ### PHYS1004B 电磁学B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/4969/#review-18443>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -47224,6 +47523,12 @@
 
 ### PHYS1004C 电磁学C
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/23768/#review-75011>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点；核对附件完整 SHA-256 与字节数。
@@ -47317,6 +47622,12 @@
 
 ### PHYS1004H 电磁学(H)
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-19 · 评课社区 · 已查看 · <https://icourse.club/course/24422/#review-86019>
   - 查询：电磁学(H) 2024sp_midterm
   - 检查范围：匿名回查原帖可定位；在正常登录的会话核对附件入口与标题，不读取文件正文。
@@ -47355,6 +47666,12 @@
 
 ### PHYS1005A 原子物理A
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-23 · 公开网页 · 已查看 · <https://ustcguide.gitbook.io/coursedata/ke-cheng-zi-liao/wu-li-cong-ru-men-dao-ru-tu/yuan-zi-wu-li>
   - 查询：原子物理A：知识归纳与课程拾遗（2022 春）
   - 检查范围：两份材料的前言均署 2022 春原子物理 A 课程助教，并注明班号；分别为知识归纳和形式理论、微扰论补充讲义。
@@ -47447,6 +47764,12 @@
 
 ### PHYS1005B 原子物理B
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/21021/#review-93895>
   - 查询：评课原帖附件正文取样及课程归属复核
   - 检查范围：匿名核对原帖锚点与可见附件名；核对附件完整 SHA-256 与字节数。
@@ -47892,6 +48215,12 @@
 
 ### PHYS1010 量子物理
 
+- 2026-11-25 · GitHub · 已查看 · <https://github.com/DDNdles/USTC-Question-Bank/compare/4c3dac9a8fec91bdf05b43f74088bab4ea098337...1a11953afe65e3cb0718aa0d69535dce41a9607e>
+  - 查询：#14 DDNdles 题库 v0.9.0 → v0.18.0
+  - 检查范围：两个版本的 manifest、完整 Git 树的课程文件、#14 七段新增文件列表、仓库 NOTICE 与官方课号清单。
+  - 说明：975 个新增路径＝847 WebP＋29 SVG＋33 份 questions.jsonl＋33 份 taxonomy.json＋33 份 meta.json；另有 6 个修改。题库从 14 门 7,159 题到 47 门 18,512 题。新增 33 个课程级入口；不逐题重审、不登记配图或拆分题目。
+  - 来源 ID：gh-ddndles-ustc-question-bank
+  - 课程代码：MATH1001、MATH1002、PHYS1001B、PHYS1002B、MATH1004、MATH1005、MATH1010、PHYS1004H、PHYS1004C、PHYS1004B、PHYS1001H、019161、019163、019165、019166、CS1003L、CS1002A、MARX1012、229001、MATH1003、MATH1008、PHYS1005A、PHYS1005B、PHYS1003B、MARX1011、MARX1010、MARX1013、MARX1014、009501、PHYS1010、019011、019012、019047
 - 2026-11-20 · 评课社区 · 已查看 · <https://icourse.club/course/21420/#review-94405>
   - 查询：评课原帖附件正文取样
   - 检查范围：核对匿名定位、完整文件字节与正文取样。
@@ -50812,7 +51141,8 @@
 ## 外链健康检查
 
 - 最近一次检查：2026-11-23T18:04:59.848Z
-- 统计范围：统计分母是站点引用的 3123 个网址，监控文件覆盖其中 3123 个。
-- 结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 0。
+- 统计范围：统计分母是站点引用的 3172 个网址，监控文件覆盖其中 3123 个。
+- 结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 49。
+- 从未检查的网址没有监控记录，与“已检查但无法确认”不同。
 - 判定口径：只有确认的 404/410 计为“无法找到”。需登录/认证说明服务器有响应但要求身份验证；目录列表页、软错误页、超时与预检拦截都不证明文件可下载或不存在。重定向中前一跳已收到响应、最终目标被预检拦截的条目归入预检中止，但仍计入“实际收到过 HTTP 响应”的条目。
 - 匿名检查只代表当次网络访问结果，不代表资料内容、课程归属、年份或授权已确认；失败不会自动删除资料或改变“是否收录”的分区。

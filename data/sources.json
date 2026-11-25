@@ -1984,7 +1984,7 @@
       "repo": "USTC-Question-Bank",
       "branch": "main"
     },
-    "notes": "机读题库，不是网盘或在线刷题站：仓库内是 JSONL 题目流、知识点树与配图，直接打开是原始文本，需要配合 DDNdles/dsh-study 插件、Python 脚本或 AI Agent 使用。校内可走免代理镜像 https://git.ustc.edu.cn/zzl_stella05/USTC-Question-Bank 。按中科大官方课号组织，当前 14 门课共 7,159 题：复变函数B（001548，571 题）、数学分析(B1)（MATH1006，445 题）、数学分析(B2)（MATH1007，569 题）、线性代数(B1)（MATH1009，885 题）、计算机程序设计（CS1003，1,533 题）、力学A（PHYS1001A，253 题 + 91 图）、热学A（PHYS1002A，352 题 + 48 图）、电磁学A（PHYS1004A，121 题 + 59 图）、数据结构及其算法（210070，347 题 + 17 图）、概率论与数理统计（STAT2002，431 题 + 1 图）、光学A（PHYS1003A，228 题 + 20 图）、数字逻辑电路（210050，512 题 + 506 图）、线性电子线路（023181，407 题 + 340 图）、计算机原理与嵌入式系统（EE2003，505 题 + 20 图）。其中力学A、电磁学A、复变B、数电、光学A、数据结构、热学A 等课的 ai 生成解答占比较高，使用前核对 origin=ai 的题目。仓库代码、Schema 与元数据采用 MIT；NOTICE.md 明确第三方真题、教材习题及引用解答版权归原作者与出版社所有、不适用 MIT，仅供学习研究。"
+    "notes": "中科大本科课程结构化题库，提供 JSONL 题目、知识点树与配图，不是在线刷题站或原卷网盘。v0.18.0 的清单列 47 门、18,512 题。原仓库按课号组织并标注出处和解答来源；AI 解答请核对。代码、Schema 与元数据采用 MIT，第三方试题、教材习题和引用解答不适用该许可，详见 NOTICE.md。"
   },
   {
     "id": "ustc-huangwenchao-fm",
@@ -2039,5 +2039,23 @@
     "kind": "repository",
     "github": null,
     "notes": "课程实验说明、代码与配套数据；仓库 README 列明主讲和整理者。"
+  },
+  {
+    "id": "gh-tree127-ics-midterm-2025",
+    "name": "tree127：计算系统概论 A 2025 秋期中回忆版",
+    "url": "https://github.com/tree127/ustc-ics-midterm-2025",
+    "maintainer": "tree127",
+    "kind": "repository",
+    "github": { "owner": "tree127", "repo": "ustc-ics-midterm-2025", "branch": "main" },
+    "notes": "投稿人公开发布的学生回忆版；README 说明部分题目数值未还原，原卷版权归原作者与开课单位。"
+  },
+  {
+    "id": "gh-wanzhao-math-analysis-solutions",
+    "name": "李清臣：《数学分析讲义（第一、二册）》习题解析",
+    "url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions",
+    "maintainer": "李清臣（wanzhao-ysy）",
+    "kind": "repository",
+    "github": { "owner": "wanzhao-ysy", "repo": "ustc-math-analysis-solutions", "branch": "main" },
+    "notes": "项目公开发布第一版讲义前两册的第三方习题解析，GitHub Release 提供完整解析 PDF。"
   }
 ]

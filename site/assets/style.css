@@ -1051,6 +1051,63 @@
     display: block;
   }
 
+  button.announcement-toggle svg {
+    display: block;
+  }
+
+  .announcement-panel {
+    inline-size: min(29rem, calc(100% - 2rem));
+    max-block-size: 80vh;
+    margin: min(5rem, 15vh) auto auto;
+    padding: 1rem;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow-search);
+
+    &::backdrop {
+      background: rgb(0 0 0 / 24%);
+    }
+
+    & header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    & h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    & [role="tablist"] {
+      display: flex;
+      gap: 0.25rem;
+      padding: 0.25rem;
+      overflow-x: auto;
+    }
+
+    & [role="tab"] {
+      position: relative;
+      flex: none;
+    }
+
+    & button:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: -3px;
+    }
+
+    & [aria-selected="true"]::after {
+      content: "";
+      position: absolute;
+      inset: auto 0.5rem 0;
+      border-block-end: 2px solid currentColor;
+    }
+  }
+
   /* 筛选控制条（统一白底 + 对齐高度与边框） */
 
   .filter-groups {

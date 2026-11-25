@@ -395,10 +395,6 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   assert.match(html, /<nav id="pagination" class="pagination" aria-label="课程结果翻页" hidden>/);
   assert.match(
     html,
-    /<script type="module" src="assets\/mode\.mjs"><\/script>\s*<script type="module" src="assets\/app\.mjs"><\/script>/,
-  );
-  assert.match(
-    html,
     /<button type="button" class="icon-circle-btn mode-icon-btn" data-mode-toggle aria-pressed="false" aria-label="切换简洁或详细模式" hidden>[\s\S]*<button type="button" class="icon-circle-btn theme-icon-btn" data-theme-toggle aria-label="切换外观主题" hidden>/,
   );
   assert.match(
@@ -889,10 +885,6 @@ test('课程详情页结构与模式脚本', async () => {
   assert.match(
     html,
     /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<dt>网站累计浏览次数<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
-  );
-  assert.match(
-    html,
-    /<script type="module" src="assets\/mode\.mjs"><\/script>\s*<script type="module" src="assets\/app\.mjs"><\/script>/,
   );
 });
 

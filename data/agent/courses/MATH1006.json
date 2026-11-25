@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "monitor-issue14-2026mab1mid",
+      "type": "exams",
+      "title": "数学分析B1 2026 秋期中（参考答案与题目）",
+      "authors": [],
+      "notes": "PDF 页首为 2026–2027 学年第一学期数学分析B1 期中参考答案，题干随解答列出；未找到独立原卷。",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [
+          "2026-2027"
+        ],
+        "exam_kind": "midterm",
+        "exam_form": "unknown",
+        "has_solutions": true,
+        "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAB1mid.pdf",
+        "note": "PDF 页首为 2026–2027 学年第一学期数学分析B1 期中参考答案，题干随解答列出；未找到独立原卷。"
+      },
+      "locations": [
+        {
+          "source_id": "ustc-math-exam",
+          "page_url": "https://ustcmathexam.github.io/Services/",
+          "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAB1mid.pdf",
+          "download_url": "https://ustcmathexam.github.io/USTC/2026MAB1mid.pdf",
+          "access": "public",
+          "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+          "attribution": "USTC 数学课程往年试卷",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "268e749e7b398d9cac38373ada56ae085476707a40e55b1b276e006300a70cb0",
+            "bytes": 99611,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "intake-login-MATH1006-8dfbc33b7b8ef0f7",
       "type": "exams",
       "title": "2024秋数学分析(B1)期末考试试卷(A卷)含解答与点评",
@@ -1714,6 +1752,43 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "issue-29-math-analysis-b1-b2-exercise-solutions",
+      "type": "homework",
+      "title": "《数学分析讲义（第一、二册）》习题解析（李清臣整理）",
+      "authors": [
+        "李清臣（wanzhao-ysy）"
+      ],
+      "notes": "独立整理的教材习题详解，覆盖前两册第 1–13 章；不是课程组官方答案。",
+      "exercise_source": "程艺、陈卿、李平《数学分析讲义》（第一版，第一、二册）",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+        "note": "核对 Release PDF 封面、目录与正文。潘永亮班 B1 课程内容页列第一册为教材；侯新民班 B2 公开作业章节和编号与第二册对应。A1 公开参考页另列常庚哲《数学分析教程》，未据教材通名挂数分 A 系列。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-wanzhao-math-analysis-solutions",
+          "page_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions",
+          "download_page": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+          "download_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf",
+          "access": "public",
+          "license_note": "项目声明采用 GFDL 1.3；原教材权利不变，此处仅链接原发布页。",
+          "attribution": "程艺、陈卿、李平（原教材）；李清臣（习题解析整理）",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "8d83c83e6a7a949992b4f9bb03c1078a299b10cf334570d41eb655ff691b08a6",
+            "bytes": 4765145,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "intake-login-MATH1006-a78029554fa9f914",
       "type": "homework",
       "title": "数学分析(B1)：作业与习题（5 个附件）",
@@ -2388,10 +2463,11 @@
     }
   ],
   "sources": {
+    "ustc-math-exam": "USTC 数学课程往年试卷",
     "icourse-club": "USTC 评课社区",
     "feixu-alist": "feixu 学习资料分享站（AList）",
-    "ustc-math-exam": "USTC 数学课程往年试卷",
     "gh-passiflora-sago-site": "Passiflora-sago 课程主页与讲义发布",
+    "gh-wanzhao-math-analysis-solutions": "李清臣：《数学分析讲义（第一、二册）》习题解析",
     "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }
