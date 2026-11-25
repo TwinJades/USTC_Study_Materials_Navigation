@@ -26,7 +26,7 @@ scripts/
 tests/                      隔离 fixture 的边界测试
 data/                       正式索引数据（见下）
 docs/sources-and-search.md  构建生成：来源、检索记录与致谢
-.github/workflows/          Pages 部署与每周维护
+.github/workflows/          PR 校验、Pages 部署与定时维护
 ```
 
 `data/with-resources/`、`data/without-resources/`、`data/generated-files.json`、`docs/sources-and-search.md` 与 `dist/` 由构建生成。构建只更新清单中属于自己的文件，不删除陌生文件；不要手工搬动课程分区文件。
