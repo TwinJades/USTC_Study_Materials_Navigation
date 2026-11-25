@@ -37,7 +37,7 @@ jobs:
         run: |
           chrome_path=$(command -v google-chrome)
           "$chrome_path" --version
-          CHROME_PATH="$chrome_path" npm test | tee "$RUNNER_TEMP/node-tests.log"
+          CHROME_PATH="$chrome_path" npm test -- --test-reporter=spec | tee "$RUNNER_TEMP/node-tests.log"
           grep -Fxq 'ℹ skipped 0' "$RUNNER_TEMP/node-tests.log"
 
       - name: Build static site
