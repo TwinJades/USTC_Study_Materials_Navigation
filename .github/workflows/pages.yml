@@ -2,6 +2,8 @@ name: Deploy course navigation site
 
 on:
   push:
+    branches-ignore:
+      - monitoring-data
   workflow_dispatch:
   schedule:
     - cron: '23 */4 * * *'
@@ -32,8 +34,13 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Load published link monitoring
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run monitor -- --load-published
+
       - name: Validate data strictly for publishing
-        run: npm run validate -- --strict-research
+        run: npm run validate -- --strict-research --require-monitoring
 
       - name: Collect visit counts
         env:
