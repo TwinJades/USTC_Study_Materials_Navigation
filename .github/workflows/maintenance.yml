@@ -17,7 +17,9 @@ concurrency:
 jobs:
   monitor-and-build:
     name: Check links, publish report, build
-    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    if: >-
+      github.repository == 'TwinJades/USTC_Study_Materials_Navigation' &&
+      github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
