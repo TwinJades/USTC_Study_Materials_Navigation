@@ -70,13 +70,51 @@ test('standard risk delegates approval enforcement to GitHub and does not read r
   assert.equal(writes[0].state, 'success');
 });
 
-test('a changing head is not marked green using votes from an earlier API snapshot', async () => {
+test('a moved high-risk PR leaves the old head standard without carrying approvals to the new head', async () => {
   const { api, pr, reviews, writes } = fixture();
   reviews.push(makeReview(2), makeReview(3));
   const get = api.get;
   api.get = async (path) => {
     if (path.endsWith('/user3/permission')) pr.head.sha = NEW_HEAD;
     return get(path);
+  };
+  await publishReviewGate(api, HEAD, RUN);
+  assert.equal(writes.at(-1).state, 'success');
+  assert.match(writes.at(-1).description, /^Standard risk:/);
+
+  await publishReviewGate(api, NEW_HEAD, RUN);
+  assert.equal(writes.at(-1).path, `/statuses/${NEW_HEAD}`);
+  assert.equal(writes.at(-1).state, 'failure');
+  assert.match(writes.at(-1).description, /PR #28 has 0\/2/);
+});
+
+test('a new high-risk label blocks a shared head in the same refresh', async () => {
+  const { api, pr, reviews, writes } = fixture();
+  pr.labels = [];
+  reviews.push(makeReview(2));
+  const list = api.list;
+  let snapshots = 0;
+  api.list = (path) => {
+    if (path.startsWith('/pulls?') && ++snapshots === 2) pr.labels = [{ name: 'high-risk' }];
+    return list(path);
+  };
+  await publishReviewGate(api, HEAD, RUN);
+  assert.deepEqual(writes.map(({ state }) => state), ['pending', 'failure']);
+  assert.match(writes.at(-1).description, /PR #28 has 1\/2/);
+});
+
+test('a high-risk set that changes again during the recount does not publish a verdict', async () => {
+  const { api, pr, reviews, writes } = fixture();
+  pr.labels = [];
+  reviews.push(makeReview(2), makeReview(3));
+  const list = api.list;
+  let snapshots = 0;
+  api.list = (path) => {
+    if (path.startsWith('/pulls?')) {
+      if (++snapshots === 2) pr.labels = [{ name: 'high-risk' }];
+      if (snapshots === 3) pr.labels = [];
+    }
+    return list(path);
   };
   await publishReviewGate(api, HEAD, RUN);
   assert.deepEqual(writes.map(({ state }) => state), ['pending']);
@@ -92,6 +130,15 @@ test('fork review run with an empty PR list resolves via repository ID and sourc
     yield { number: 44, head: { repo: { id: 7 }, ref: 'topic', sha: HEAD } };
   } };
   assert.deepEqual(await resolveHeadShas(api, 'workflow_run', event), [HEAD]);
+});
+
+test('review run without a source repository or branch resolves no heads', async () => {
+  const api = { list() { assert.fail('No source to look up'); } };
+  for (const source of [{ head_repository: null, head_branch: 'topic' }, { head_repository: { id: 7 } }]) {
+    const event = { workflow_run: { event: 'pull_request_review', path: '.github/workflows/review-events.yml',
+      ...source } };
+    assert.deepEqual(await resolveHeadShas(api, 'workflow_run', event), []);
+  }
 });
 
 test('an ordinary PR sharing a head cannot clear the block of a high-risk PR', async () => {

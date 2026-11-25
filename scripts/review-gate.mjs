@@ -28,7 +28,7 @@ export async function resolveHeadShas(api, eventName, event) {
   // Fork workflow runs can omit pull_requests. Resolve the source repo and ref
   // via GitHub's API without reading contributor-provided artifacts.
   const repo = run.head_repository;
-  if (!repo || !run.head_branch) throw new Error('Review run has no source repository or branch');
+  if (!repo || !run.head_branch) return [];
   const shas = new Set();
   for await (const pr of api.list('/pulls?state=open&base=main')) {
     if (pr.head.repo?.id === repo.id && pr.head.ref === run.head_branch) shas.add(pr.head.sha);
@@ -71,27 +71,32 @@ export async function publishReviewGate(api, sha, runUrl) {
   if (typeof sha !== 'string' || !SHA.test(sha)) throw new Error('Expected a valid head SHA');
   // Commit statuses are shared by every PR at this head. Re-read the whole
   // group under the SHA-level workflow lock, regardless of which PR triggered it.
-  const { numbers, risky } = await pullRequestsAtHead(api, sha);
-  if (!numbers.length) return;
+  let snapshot = await pullRequestsAtHead(api, sha);
   const post = (state, description) => api.post(`/statuses/${sha}`, {
     state, context: CONTEXT, description, target_url: runUrl,
   });
-  if (risky.length) await post('pending', 'Counting approvals for high-risk PRs at this head');
-  let blocked;
-  for (const pr of risky) {
-    const count = await validApprovals(api, pr);
-    if (count < 2) {
-      blocked = `High risk: PR #${pr.number} has ${count}/2 valid approvals for current revision`;
-      break;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const { numbers, risky } = snapshot;
+    if (!numbers.length) return;
+    if (risky.length) await post('pending', 'Counting approvals for high-risk PRs at this head');
+    let blocked;
+    for (const pr of risky) {
+      const count = await validApprovals(api, pr);
+      if (count < 2) {
+        blocked = `High risk: PR #${pr.number} has ${count}/2 valid approvals for current revision`;
+        break;
+      }
     }
+    snapshot = await pullRequestsAtHead(api, sha);
+    if (!snapshot.numbers.length) return;
+    if (risky.map(pr => pr.number).join() !== snapshot.risky.map(pr => pr.number).join()) continue;
+    const description = blocked ?? (risky.length
+      ? 'All high-risk PRs at this head have two valid approvals'
+      : 'Standard risk: GitHub enforces the normal approval requirement');
+    await post(blocked ? 'failure' : 'success', description);
+    console.log(`${sha}: ${description}`);
+    return;
   }
-  const current = await pullRequestsAtHead(api, sha);
-  if (!current.numbers.length || risky.map(pr => pr.number).join() !== current.risky.map(pr => pr.number).join()) return;
-  const description = blocked ?? (risky.length
-    ? 'All high-risk PRs at this head have two valid approvals'
-    : 'Standard risk: GitHub enforces the normal approval requirement');
-  await post(blocked ? 'failure' : 'success', description);
-  console.log(`${sha}: ${description}`);
 }
 
 function githubApi(repo, token) {

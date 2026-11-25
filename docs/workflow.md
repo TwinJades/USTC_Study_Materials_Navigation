@@ -57,6 +57,8 @@
 
 GitHub 按提交共享检查结果。同一 head SHA 有多条指向 `main` 的开放 PR 时，所有带 `high-risk` 标签的 PR 各自满足两票才会亮绿灯；验收时用一条普通 PR 与一条高风险 PR 共用 head，确认普通 PR 的刷新不会覆盖高风险的一票阻断。若两条 PR 不应一起等待，让其中一条使用不同的提交。
 
+重算过程中，同一提交上的高风险 PR 名单如有变化，会按新名单再算一次；重算期间若名单再变，不发布本次计票结论，等待下一次刷新。
+
 验收通过后，在 `Protect Main` 的必需检查保留 `PR checks`，加上 `Review gate`（来源选 GitHub Actions），原生批准数保持 **1**。最后在测试 PR 合并框确认高风险一票被挡、两票通过后才放行。若状态未刷新，可手动重算；不要用合并来跳过未完成的检查。
 
 个人账号仓库的批准按写权限计数。请将写权限授予承担审核职责的维护者。配置术语见 [GitHub Rulesets 文档](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)。
