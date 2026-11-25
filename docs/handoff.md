@@ -20,7 +20,7 @@
 | 来源页、浏览器目录、每课分区、Agent JSON、来源文档 | `scripts/build.mjs`；不要手改 `dist/`、`data/with-resources/`、`data/without-resources/`、`data/agent/`、`data/generated-files.json` 或 `docs/sources-and-search.md` |
 | 官方课程、课程分类和学科关系 | `data/courses.json`、`data/course-metadata.json`、`data/tags.json`；官方采集入口 `scripts/collect-courses.mjs` |
 | 资料索引、来源、核查记录 | `data/resources.json`、`data/sources.json`、`data/research-log.jsonl`；校验在 `scripts/lib/data.mjs` 和 `scripts/validate.mjs` |
-| 外链健康检查 | `scripts/monitor.mjs`、`scripts/lib/link-health.mjs`、`scripts/lib/link-coverage.mjs`、`site/assets/health-evidence.mjs`；结果 `data/monitoring.json` |
+| 外链健康检查 | `scripts/monitor.mjs`、`scripts/lib/link-health.mjs`、`scripts/lib/link-coverage.mjs`、`site/assets/health-evidence.mjs`；快照在 `monitoring-data:data/monitoring.json`，本地用 `npm run monitor -- --load-published` 获取 |
 
 没有前端框架或第三方运行依赖。浏览器读 `dist/data/catalog.json`，不直接读原始数据，也不在搜索时请求第三方站点。所有页面用相对路径，改版后仍须支持部署到子路径。GitHub Actions 配置在 `.github/workflows/`，有配置不代表已上线。
 
