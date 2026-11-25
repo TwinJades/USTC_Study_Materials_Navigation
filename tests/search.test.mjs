@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { ANNOUNCEMENTS } from '../site/assets/announcements.mjs';
 import { buildCatalog, renderSourcesHtml } from '../scripts/build.mjs';
 
 import {
@@ -968,4 +969,58 @@ test('来源页预留统计槽位在无数据时隐藏、有数据时独立展�
     filledHtml,
     /<div class="stat-pill" data-stat-item="site_total_views">\s*<dt>网站累计浏览次数<\/dt>\s*<dd data-stat-value="site_total_views">5,678<\/dd>/,
   );
+});
+
+test('公告栏入口图标、配置数据与衍生项目边界', async () => {
+  const indexHtml = await readFile(new URL('../site/index.html', import.meta.url), 'utf8');
+  const courseHtml = await readFile(new URL('../site/course.html', import.meta.url), 'utf8');
+  const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+  const projectTemplate = await readFile(
+    new URL('../.github/ISSUE_TEMPLATE/suggest-project.yml', import.meta.url),
+    'utf8',
+  );
+  const emptyCatalog = buildCatalog({
+    courses: [{ code: 'CS1001', name: '示例课程' }],
+    courseMetadata: { CS1001: { kind: 'common', tags: [] } },
+    tags: [],
+    resources: [],
+    sources: [],
+    monitoring: null,
+  });
+  const sourcesHtml = renderSourcesHtml({
+    coverage: [],
+    sources: [],
+    generalLogs: [],
+    courseLogs: [],
+    unmappedLogs: [],
+    blocked: [],
+    incomplete: [],
+    health: {},
+    checkedAt: null,
+    withResources: 0,
+    withoutResources: 1,
+    resources: 0,
+    courseCount: 1,
+    sourceCount: 0,
+    usedSourceCount: 0,
+    logCount: 0,
+    catalog: emptyCatalog,
+  });
+
+  const togglePattern =
+    /<button type="button" class="icon-circle-btn announcement-toggle" aria-label="公告栏" title="公告栏" aria-haspopup="dialog" aria-expanded="false" aria-controls="announcements" hidden>[\s\S]*?<rect x="2\.75" y="6\.25" width="14\.5" height="10\.75" rx="2"><\/rect>/;
+  assert.match(indexHtml, togglePattern);
+  assert.match(courseHtml, togglePattern);
+  assert.match(sourcesHtml, togglePattern);
+
+  assert.equal(ANNOUNCEMENTS.news.length >= 2, true);
+  assert.match(ANNOUNCEMENTS.news[0].title, /公告栏/);
+  assert.match(ANNOUNCEMENTS.news.map((item) => item.summary).join('\n'), /2,782/);
+  assert.equal(new Set(ANNOUNCEMENTS.news.map((item) => item.id)).size, ANNOUNCEMENTS.news.length);
+  assert.match(ANNOUNCEMENTS.submitProjectUrl, /template=suggest-project\.yml$/);
+  assert.equal(ANNOUNCEMENTS.projects.some((p) => p.name === 'USTC Question Bank' && p.author === 'DDNdles'), true);
+  assert.doesNotMatch(readme, /## 基于本仓库做的项目/);
+  assert.match(projectTemplate, /^name:\s*推荐衍生项目/m);
+  assert.match(projectTemplate, /title:\s*'\[衍生项目\] '/);
+  assert.match(projectTemplate, /id:\s*project-url/);
 });

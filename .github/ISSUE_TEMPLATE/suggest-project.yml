@@ -1,0 +1,39 @@
+name: 推荐衍生项目
+description: 推荐基于也西书架数据或索引开发的公开衍生项目、工具或题库。
+title: '[衍生项目] '
+body:
+  - type: input
+    id: project-name
+    attributes:
+      label: 项目名称
+      placeholder: 例如 USTC Question Bank
+    validations:
+      required: true
+  - type: input
+    id: project-url
+    attributes:
+      label: 项目公开链接
+      description: 请填公开、稳定的仓库或项目主页链接。
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: author
+    attributes:
+      label: 作者或维护者署名
+      description: 希望在公告栏「衍生项目」中展示的作者名或 GitHub 用户名。
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: 项目简介
+      description: 请简要说明项目用途、数据或交互形态，以及和也西书架的关系。
+    validations:
+      required: true
+  - type: input
+    id: notice-url
+    attributes:
+      label: 出处或致谢说明链接（可选）
+      description: 若项目有单独的 NOTICE、致谢或授权说明页面，可填在此处。
+      placeholder: https://...

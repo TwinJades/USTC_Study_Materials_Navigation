@@ -49,10 +49,6 @@
 
 知道值得收录的公开资料页、目录或资料库？请填[推荐资料来源表单](https://github.com/TwinJades/USTC_Study_Materials_Navigation/issues/new?template=suggest-source.yml)，不需要改代码。熟悉 Git 的读者也可提 Pull Request。我们核对后再收录，可以按你的意愿公开致谢。
 
-## 基于本仓库做的项目
-
-- [USTC Question Bank（DDNdles）](https://github.com/DDNdles/USTC-Question-Bank)：参考也西书架等索引整理的中科大本科课程结构化题库，按课程与知识点组织题目和解析，提供 JSONL 数据。各批题目的出处见该项目的 [NOTICE](https://github.com/DDNdles/USTC-Question-Bank/blob/main/NOTICE.md)。
-
 ## 文档
 
 - [贡献指南](CONTRIBUTING.md)涵盖提交 Issue、从 fork 发 PR 和本地验证。

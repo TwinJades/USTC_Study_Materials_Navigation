@@ -1169,3 +1169,192 @@ test('首页目录加载失败时显示恢复提示', {
   await cdp.waitFor(`document.querySelector('#load-error')?.textContent.includes('请刷新页面')`);
   assert.equal(await cdp.evaluate(`document.querySelector('#load-error').checkVisibility()`), true);
 });
+
+test(
+  '公告栏：悬吊挂牌入口、未读提醒、横屏双栏宽板与竖屏居中适配',
+  {
+    skip: BROWSER_PATH
+      ? false
+      : '未找到 Chrome/Edge 可执行文件；设置 CHROME_PATH 或 EDGE_PATH 后运行。',
+    timeout: 90000,
+  },
+  async (t) => {
+    const { origin, cdp } = await openBrowserEnv(t);
+
+    // 1. 首次访问应点亮未读红点且无临时预览切换条；打开公告栏后清除并写入 localStorage。
+    await cdp.send('Page.navigate', { url: `${origin}/?q=${encodeURIComponent('数学')}` });
+    await cdp.waitFor(
+      `document.readyState === 'complete' && !document.querySelector('.announcement-toggle').hidden && document.querySelectorAll('#course-list li').length === 2`,
+    );
+    const initialState = await cdp.evaluate(`(() => {
+      const btn = document.querySelector('.announcement-toggle');
+      const r = btn.getBoundingClientRect();
+      const sr = btn.querySelector('svg').getBoundingClientRect();
+      return {
+        unread: btn.dataset.unread ?? null,
+        width: r.width,
+        height: r.height,
+        svgWidth: sr.width,
+        svgHeight: sr.height,
+        seen: localStorage.getItem('ustc-course-nav.announcements.seen'),
+        hasPreviewBar: Boolean(document.querySelector('.announcement-preview-bar')),
+        hasPreviewStrip: Boolean(document.querySelector('.announcement-preview-strip')),
+      };
+    })()`);
+    assert.equal(initialState.unread, 'true');
+    assert.equal(initialState.hasPreviewBar, false, '正式版不应渲染底部预览条');
+    assert.equal(initialState.hasPreviewStrip, false, '正式版不应渲染面板预览条');
+    assert.equal(Math.abs(initialState.width - initialState.height) <= 1, true, '公告入口按钮应为正圆');
+    assert.equal(initialState.svgWidth >= 14 && initialState.svgHeight >= 14, true);
+    assert.equal(initialState.seen, null);
+
+    await cdp.evaluate(`document.querySelector('.announcement-toggle').click()`);
+    await cdp.waitFor(
+      `document.querySelector('.announcement-toggle').getAttribute('aria-expanded') === 'true'`,
+    );
+    const afterOpen = await cdp.evaluate(`(() => {
+      const btn = document.querySelector('.announcement-toggle');
+      const hiddenPanelRect = document.querySelector('#announcement-projects').getBoundingClientRect();
+      return {
+        unread: btn.dataset.unread ?? null,
+        seen: localStorage.getItem('ustc-course-nav.announcements.seen'),
+        newsText: document.querySelector('#announcement-news').textContent,
+        hiddenPanelHeight: hiddenPanelRect.height,
+        search: location.search,
+        courseCount: document.querySelectorAll('#course-list li').length,
+      };
+    })()`);
+    assert.equal(afterOpen.unread, null, '打开公告栏后未读红点应消除');
+    assert.ok(afterOpen.seen, '应写入已读版本号到 localStorage');
+    assert.match(afterOpen.newsText, /公告栏上线/);
+    assert.equal(afterOpen.hiddenPanelHeight, 0, '非活动 tabpanel 不应占高度');
+    assert.equal(afterOpen.courseCount, 2, '打开公告栏不得影响当前搜索结果');
+
+    // 2. 鼠标点击切页不应留下 :focus-visible 蓝框，键盘方向键可正常切换。
+    const projTabBox = await cdp.evaluate(`(() => {
+      const r = document.querySelector('#announcement-projects-tab').getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    })()`);
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mousePressed', button: 'left', clickCount: 1, x: projTabBox.x, y: projTabBox.y });
+    await cdp.send('Input.dispatchMouseEvent', { type: 'mouseReleased', button: 'left', clickCount: 1, x: projTabBox.x, y: projTabBox.y });
+    await cdp.waitFor(`document.querySelector('#announcement-projects-tab').getAttribute('aria-selected') === 'true'`);
+    assert.equal(
+      await cdp.evaluate(`document.querySelector('#announcement-projects-tab').matches(':focus-visible')`),
+      false,
+      '鼠标点击 tab 不应出现残留焦点蓝框',
+    );
+    const projectText = await cdp.evaluate(`document.querySelector('#announcement-projects').textContent`);
+    assert.match(projectText, /USTC Question Bank/);
+    assert.match(projectText, /DDNdles/);
+
+    // 键盘 ArrowLeft / ArrowRight 切换回近期更新再切回衍生项目。
+    await cdp.evaluate(`document.querySelector('#announcement-projects-tab').focus()`);
+    await cdp.send('Input.dispatchKeyEvent', {
+      type: 'keyDown',
+      key: 'ArrowLeft',
+      code: 'ArrowLeft',
+      windowsVirtualKeyCode: 37,
+      nativeVirtualKeyCode: 37,
+    });
+    await cdp.send('Input.dispatchKeyEvent', {
+      type: 'keyUp',
+      key: 'ArrowLeft',
+      code: 'ArrowLeft',
+      windowsVirtualKeyCode: 37,
+      nativeVirtualKeyCode: 37,
+    });
+    await cdp.waitFor(`document.querySelector('#announcement-news-tab').getAttribute('aria-selected') === 'true'`);
+
+    // 3. 点击关闭按钮退出。
+    await cdp.evaluate(`document.querySelector('#announcements [data-close]').click()`);
+    await cdp.waitFor(`document.querySelector('.announcement-toggle').getAttribute('aria-expanded') === 'false'`);
+
+    // 4. 校验桌面 1280px / 1600px 与手机 390px / 320px 下的比例、方向与键盘导航。
+    const viewports = [
+      { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false },
+      { width: 1600, height: 900, deviceScaleFactor: 1, mobile: false },
+      { width: 390, height: 844, deviceScaleFactor: 2, mobile: true },
+      { width: 320, height: 720, deviceScaleFactor: 2, mobile: true },
+    ];
+
+    for (const viewport of viewports) {
+      await cdp.send('Emulation.setDeviceMetricsOverride', viewport);
+      await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: viewport.mobile });
+      await cdp.send('Page.navigate', { url: `${origin}/` });
+      await cdp.waitFor(`document.readyState === 'complete' && !document.querySelector('.announcement-toggle').hidden`);
+
+      await cdp.evaluate(`document.querySelector('.announcement-toggle').click()`);
+      await cdp.waitFor(`document.querySelector('.announcement-toggle').getAttribute('aria-expanded') === 'true'`);
+      await new Promise((resolve) => setTimeout(resolve, 260));
+
+      const metrics = await cdp.evaluate(`(() => {
+        const panel = document.querySelector('#announcements');
+        const toggle = document.querySelector('.announcement-toggle');
+        const tablist = panel.querySelector('.announcement-tablist');
+        const body = panel.querySelector('.announcement-body');
+        return {
+          scrollWidth: document.documentElement.scrollWidth,
+          innerWidth: window.innerWidth,
+          rect: panel.getBoundingClientRect().toJSON(),
+          toggleRect: toggle.getBoundingClientRect().toJSON(),
+          tablistRect: tablist.getBoundingClientRect().toJSON(),
+          bodyRect: body.getBoundingClientRect().toJSON(),
+          orientation: tablist.getAttribute('aria-orientation'),
+        };
+      })()`);
+
+      assert.equal(metrics.scrollWidth <= metrics.innerWidth, true, `${viewport.width}px 不应横向溢出`);
+      assert.equal(metrics.toggleRect.right <= viewport.width + 1, true);
+      assert.ok(metrics.rect.left >= -1 && metrics.rect.right <= viewport.width + 1, `${viewport.width}px 不应超出左右视口`);
+      assert.ok(metrics.rect.top >= -1 && metrics.rect.bottom <= viewport.height + 1, `${viewport.width}px 不应超出上下视口`);
+      const centerDiff = Math.abs((metrics.rect.left + metrics.rect.right) / 2 - viewport.width / 2);
+      assert.ok(centerDiff <= 12, `${viewport.width}px 下公告板应水平居中`);
+
+      if (!viewport.mobile) {
+        const minW = viewport.width >= 1600 ? 900 : 720;
+        assert.ok(metrics.rect.width >= minW, `桌面 ${viewport.width}px 公告板应按比例放大`);
+        assert.equal(metrics.orientation, 'vertical');
+        assert.ok(metrics.tablistRect.right <= metrics.bodyRect.left + 2, '桌面端导航栏应在正文左侧');
+
+        // 纵向 tablist 支持 ArrowDown 切换。
+        await cdp.evaluate(`document.querySelector('#announcement-news-tab').focus()`);
+        await cdp.send('Input.dispatchKeyEvent', {
+          type: 'keyDown',
+          key: 'ArrowDown',
+          code: 'ArrowDown',
+          windowsVirtualKeyCode: 40,
+          nativeVirtualKeyCode: 40,
+        });
+        await cdp.send('Input.dispatchKeyEvent', {
+          type: 'keyUp',
+          key: 'ArrowDown',
+          code: 'ArrowDown',
+          windowsVirtualKeyCode: 40,
+          nativeVirtualKeyCode: 40,
+        });
+        await cdp.waitFor(`document.querySelector('#announcement-projects-tab').getAttribute('aria-selected') === 'true'`);
+      } else {
+        assert.equal(metrics.orientation, 'horizontal');
+        assert.ok(metrics.tablistRect.bottom <= metrics.bodyRect.top + 2, '手机端导航栏应在正文上方');
+        assert.ok(metrics.rect.height <= Math.ceil(viewport.height * 0.74), '手机端公告板应轻巧收紧高度');
+        assert.ok(metrics.rect.left >= 14 && viewport.width - metrics.rect.right >= 14, '手机端两侧应留呼吸边距');
+      }
+
+      await cdp.send('Input.dispatchKeyEvent', {
+        type: 'keyDown',
+        key: 'Escape',
+        code: 'Escape',
+        windowsVirtualKeyCode: 27,
+        nativeVirtualKeyCode: 27,
+      });
+      await cdp.send('Input.dispatchKeyEvent', {
+        type: 'keyUp',
+        key: 'Escape',
+        code: 'Escape',
+        windowsVirtualKeyCode: 27,
+        nativeVirtualKeyCode: 27,
+      });
+      await cdp.waitFor(`document.querySelector('.announcement-toggle').getAttribute('aria-expanded') === 'false'`);
+    }
+  },
+);
