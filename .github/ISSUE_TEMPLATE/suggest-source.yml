@@ -1,6 +1,7 @@
 name: 推荐资料来源
 description: 推荐中科大本科课程可公开访问的资料页、目录或资料库。
 title: '[资料来源] '
+labels: [source]
 body:
   - type: input
     id: source-url
