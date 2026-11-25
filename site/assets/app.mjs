@@ -515,7 +515,7 @@ function initIndex(catalog) {
           `没有同时满足这些条件的课程：${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}。`,
         );
       } else {
-        setText(noResultsText, '课程目录中没有可显示的课程，可能是构建数据缺失。');
+        setText(noResultsText, '课程目录为空：构建产物中没有课程数据。');
       }
     }
 
@@ -1113,7 +1113,7 @@ main().catch((error) => {
   console.error(error);
   if (document.body.dataset.hero === 'centered') document.body.dataset.hero = 'expanded';
   showLoadError(
-    '无法加载课程目录（data/catalog.json）。请刷新页面；若问题仍然存在，说明构建产物不完整，可先查看来源与检索记录。',
+    '无法加载课程目录（data/catalog.json）。请刷新页面；仍失败则构建产物不完整，可在「来源、检索记录与致谢」页查找资料。',
   );
   const noResults = document.getElementById('no-results');
   if (noResults) noResults.hidden = true;

@@ -722,8 +722,8 @@ export function formatReport(report) {
     const skipped = report.write_skipped;
     const extra = report.mode === 'publish' ? '，也未发送 Issue 通知' : '';
     lines.push(
-      `${report.mode}：未写入 monitoring${extra} —— 本次 ${skipped.links} 条链接均中止于预检，` +
-        `未产生新的最终可用证据；既有 ${skipped.baseline_http_responses} 条有响应证据的检查结果保持不变。`,
+      `${report.mode}：未写入 monitoring${extra}。本次 ${skipped.links} 条链接均在预检阶段中止，` +
+        `没有新的响应证据；既有 ${skipped.baseline_http_responses} 条有响应证据的检查结果保持不变。`,
     );
     if (report.pending_sources.length > 0) {
       lines.push(`待发布通知的来源（本次未发送）：${report.pending_sources.join(', ')}`);
@@ -760,7 +760,7 @@ async function main() {
   } catch (error) {
     console.error(`监控失败：${error.message}`);
     if (error.code === 'conflict') {
-      console.error('monitoring 文件已被并发修改，本次未覆盖；Issue 报告仍可在下次运行重试。');
+      console.error('monitoring.json 在本次运行期间已被修改，未写入；下次运行会重新比对，已发送的 Issue 分块按标记跳过。');
     }
     process.exitCode = 1;
   }

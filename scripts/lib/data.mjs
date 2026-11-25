@@ -1465,7 +1465,7 @@ function validateSourcesList(sources, collector) {
         collector.warn(
           file,
           `${itemPath}.url`,
-          '登记了 GitHub owner/repo，但 url 不在 github.com；请确认对应关系',
+          '登记了 GitHub owner/repo，但 url 不在 github.com，与 github 字段不一致',
         );
       }
     }
@@ -1684,7 +1684,7 @@ function validateResource(
   requireString(resource.title, file, `${itemPath}.title`, '资料标题', collector);
   const authors = requireStringArray(resource.authors, file, `${itemPath}.authors`, '作者', collector);
   if (authors && authors.length === 0) {
-    collector.warn(file, `${itemPath}.authors`, '未登记公开署名；请确认确实无法署名');
+    collector.warn(file, `${itemPath}.authors`, '未登记公开署名');
   }
   if (typeof resource.notes !== 'string') {
     collector.error(file, `${itemPath}.notes`, 'notes 必须是字符串');
@@ -1766,7 +1766,7 @@ function validateResource(
         collector.warn(
           file,
           `${locationPath}.source_id`,
-          `来源“${sourceId}”是索引页；请确认 page_url 直达实际资料而非索引首页`,
+          `来源“${sourceId}”是索引页；page_url 应指向具体资料页`,
         );
       }
     }
