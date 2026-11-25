@@ -1465,7 +1465,7 @@ function validateSourcesList(sources, collector) {
         collector.warn(
           file,
           `${itemPath}.url`,
-          '登记了 GitHub owner/repo，但 url 不在 github.com，与 github 字段不一致',
+          '登记了 GitHub owner/repo，但 url 不在 github.com；需人工核对两者对应（如 GitHub Pages）',
         );
       }
     }
@@ -1766,7 +1766,7 @@ function validateResource(
         collector.warn(
           file,
           `${locationPath}.source_id`,
-          `来源“${sourceId}”是索引页；page_url 应指向具体资料页`,
+          `来源“${sourceId}”是索引页；校验器不检查 page_url，需人工核对它指向具体资料页`,
         );
       }
     }
