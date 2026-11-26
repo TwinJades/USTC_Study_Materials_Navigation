@@ -1,17 +1,27 @@
 # 协作流程
 
-适用于所有人与 Agent 的一切改动。对外提交入口见 [贡献指南](../CONTRIBUTING.md)，数据与构建契约见 [开发与数据契约](development.md)，项目边界与入口见 [项目交接](handoff.md)。
+适用于所有人与 Agent 的一切改动。对外提交入口见 [贡献指南](../CONTRIBUTING.md)，项目规则、数据结构与构建契约见 [开发与数据契约](development.md)。
+
+## 看板与认领
+
+待办统一放在 [GitHub Project「也西书架」](https://github.com/users/TwinJades/projects/1)，分 5 列：`Backlog` → `Ready` → `In Progress` → `In Review` → `Done`。
+
+- **大家同权**：所有人都可以把 `Backlog` 里想做的事、读者推荐的新资料或报错移进 `Ready`，也可以直接挑一条开干。
+- **按人指定的任务开工**：干活的人自己报要做 `Ready` 里的哪条（编号或标题）；没指定时，Agent 不主动推送 `Ready` 列表里的任务。
+- **支持直接提新需求**：看板里还没有对应 Issue 时，直接说要做什么，Agent 新建一条 Issue 并放入 `In Progress`。改错字、修单个坏链、紧急回滚这类小修可直接提 PR 进 `In Review`。
+- **流程杂活由 Agent 办**：人只负责选任务、验收效果和审别人的 PR。同步 `main`、开分支、给 Issue 设 Assignee 并移到 `In Progress`、跑检查、提 PR（正文写 `Closes #编号`）并将对应 **Issue 卡移到 `In Review`**（Draft PR 留在 `In Progress`），以及合并后的清理，均由 Agent 完成；无关联 Issue 的小修 PR 直接挂入 `In Review`。
+- **个人交接放本地**：跨多轮对话的进度记在 `.task-work/` 或 `handoff.local.md`（均已加入 `.gitignore`），分支合并清理时一并删除。
 
 ## 主循环
 
 1. 同步 main。本地 main 只用于同步，不在上面干活。
-2. 从最新 main 开分支干活；可每任务一个 worktree。
+2. 确认任务：认领 `Ready` 中指定的 Issue（设 Assignee 并移入 `In Progress`），或为直接提出的新需求新建 Issue 放入 `In Progress`（小修可免建）；从最新 main 开分支干活，可每任务一个 worktree。
 3. push 前若 main 已前进，把新 main 同步进自己分支；冲突在自己分支上解。
-4. push 分支，开 PR。
+4. push 分支，开 PR（完整解决 Issue 时在正文写 `Closes #编号`）。正式 PR 提完将对应 Issue 卡移入 `In Review`（无关联 Issue 的 PR 直接挂入 `In Review`）；Draft PR 留在 `In Progress`。
 5. 合并前确认 `PR checks` 和其他必需检查通过，审核会话已处理完毕，并按下文核对当前版本的 `Approve`：普通 PR 至少一位非作者维护者，高风险 PR 至少两位。
-6. 在 GitHub 上一次合一个。下一个 PR 先通过 `Update branch` 或在本地同步最新 `main`。fork PR 默认由作者同步，作者主动授权时维护者也可代办。作者失联且冲突复杂时，维护者可将改动整理到新分支并提交 PR，保留原作者署名（`Co-authored-by`），合并后关闭原 PR。
+6. 在 GitHub 上一次合一个（合并后关联 Issue 自动关闭进 `Done`）。下一个 PR 先通过 `Update branch` 或在本地同步最新 `main`。fork PR 默认由作者同步，作者主动授权时维护者也可代办。作者失联且冲突复杂时，维护者可将改动整理到新分支并提交 PR，保留原作者署名（`Co-authored-by`），合并后关闭原 PR。
 7. 合并后 pull main 冒烟测试。这是双保险——main 自动部署 Pages，主闸门必须在合并前。
-8. 清理：只删「已合并且 git status 干净」的分支/worktree；有未提交工作的绝不碰。
+8. 清理：只删「已合并且 git status 干净」的分支/worktree，并清理 `.task-work/` 里对应的本地交接文件；有未提交工作的绝不碰。
 
 ## 风险与审核
 
@@ -61,4 +71,4 @@ GitHub 按提交共享检查结果。同一 head SHA 有多条指向 `main` 的�
 
 验收通过后，在 `Protect Main` 的必需检查保留 `PR checks`，加上 `Review gate`（来源选 GitHub Actions），原生批准数保持 **1**。最后在测试 PR 合并框确认高风险一票被挡、两票通过后才放行。若状态未刷新，可手动重算；不要用合并来跳过未完成的检查。
 
-个人账号仓库的批准按写权限计数。请将写权限授予承担审核职责的维护者。配置术语见 [GitHub Rulesets 文档](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets)。
+个人账号仓库的批准按写权限计数。请将写权限授予承担审核职责的维护者。配置术语见 [GitHub Rulesets 文档](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rulesets)。

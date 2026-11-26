@@ -53,10 +53,9 @@
 
 - [贡献指南](CONTRIBUTING.md)涵盖提交 Issue、从 fork 发 PR 和本地验证。
 - [更新日志](CHANGELOG.md)：最近新增的资料和功能。
-- [开发与数据契约](docs/development.md)：本地运行、数据结构、采集、校验、监控与发布。
-- [协作流程](docs/workflow.md)：人与 Agent 的分支、PR、审核与合并规则。
+- [开发与数据契约](docs/development.md)：项目范围、改版约束、数据结构、采集、校验、监控与发布。
+- [协作流程](docs/workflow.md)：人与 Agent 的看板认领、分支、PR、审核与合并流程。
 - [来源、检索记录与致谢](docs/sources-and-search.md)：资料来自哪里、如何核对，以及对原作者和整理者的致谢。
-- [项目交接](docs/handoff.md)：供接手项目的开发者或 Agent 使用。
 
 ## 许可
 

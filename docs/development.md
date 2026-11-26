@@ -2,8 +2,15 @@
 
 运行环境：Node.js >= 24、ESM，无第三方运行依赖。站点为原生 HTML/CSS/JS，构建产物是纯静态文件。
 
-协作流程（分支、PR、审核、合并与清理）见 [协作流程](workflow.md)。
+协作流程（看板认领、分支、PR、审核、合并与清理）见 [协作流程](workflow.md)。
 跨轮次的待办记在 [GitHub Project「也西书架」](https://github.com/users/TwinJades/projects/1)。
+
+## 项目范围与边界
+
+- 定位为中国科大本科课程资料导航，固定覆盖 2025 秋、2026 春、2026 夏和 2026 秋官方本科开课。课程按官方代码合并；36 个学科属于检索标签（非官方分类）。暂未收录资料的课程保留在目录中，文案应标为「暂未收录」。
+- 项目在 [GitHub 公开仓库](https://github.com/TwinJades/USTC_Study_Materials_Navigation) 的 `main` 分支维护，由 GitHub Actions 部署到[正式站点](https://twinjades.github.io/USTC_Study_Materials_Navigation/)（`.github/workflows/` 存在配置仅表示已定义）。
+- 索引只登记原站入口，只做指路，不托管第三方文件、不保存临时签名、不绕登录。「教材与参考书」另须满足权利方公开发布、免费、免登录且有完整文件直链；匹配课程内容的参考书独立于学校指定教材。
+- 浏览器只读取 `dist/data/catalog.json`，页面全用相对路径，以支持部署到子路径。
 
 ## 目录结构
 
@@ -13,6 +20,9 @@ site/                       页面源文件
   course.html               课程详情（course.html?code=…）
   assets/search.mjs         纯搜索/筛选函数（浏览器与 Node 测试共用）
   assets/app.mjs            DOM 渲染与 URL 状态
+  assets/mode.mjs           简洁/详细模式切换与本地状态同步
+  assets/announcements.mjs  首页、课程详情与来源页共用公告栏内容
+  assets/health-evidence.mjs 链接健康证据分类共用逻辑
   assets/style.css          样式（浅色/深色、响应式）
 scripts/
   collect-courses.mjs       采集四个固定学期的官方本科开课
@@ -22,14 +32,28 @@ scripts/
   monitor.mjs               外链与 GitHub 资料库文件变化检查
   lib/data.mjs              数据加载、枚举、验证、分区、采集共用 API
   lib/link-health.mjs       公开 URL 安全检查
+  lib/link-coverage.mjs     监控记录到站点引用网址的覆盖投影
   lib/github.mjs            GitHub 只读树与 Issue/Contents API
 tests/                      隔离 fixture 的边界测试
 data/                       正式索引数据（见下）
+  agent/                    构建生成：Agent 索引与逐课 JSON
 docs/sources-and-search.md  构建生成：来源、检索记录与致谢
 .github/workflows/          PR 校验、Pages 部署与定时维护
 ```
 
-`data/with-resources/`、`data/without-resources/`、`data/generated-files.json`、`docs/sources-and-search.md` 与 `dist/` 由构建生成。构建只更新清单中属于自己的文件，不删除陌生文件；不要手工搬动课程分区文件。
+`data/with-resources/`、`data/without-resources/`、`data/agent/`、`data/generated-files.json`、`docs/sources-and-search.md` 与 `dist/` 由构建生成。构建只更新清单中属于自己的文件，不删除陌生文件；不要手工修改这些生成文件或搬动课程分区文件。
+
+改动入口速查：
+
+| 要改的东西 | 源文件 |
+| --- | --- |
+| 首页搜索与课程详情 | `site/index.html`、`site/course.html`、`site/assets/app.mjs`、`site/assets/style.css`（宽屏双栏卡片、语义色标、长学年换行防溢出） |
+| 搜索排序、过滤、资料分组、链接选取 | `site/assets/search.mjs`；对应 `tests/search.test.mjs` |
+| 简洁／详细模式 | `site/assets/mode.mjs`；`body[data-mode]`、`.mode-detail`、`.mode-compact`；仅在 `course.html` 与 `sources.html` 页头显示分段开关 `[data-mode-toggle]`，首页同步 `localStorage` 不显示无效按钮 |
+| 来源页、浏览器目录、每课分区、Agent JSON、来源文档 | `scripts/build.mjs`（勿手改生成的 `dist/`、`data/with-resources/`、`data/without-resources/`、`data/agent/`、`data/generated-files.json`、`docs/sources-and-search.md`） |
+| 官方课程、课程分类和学科关系 | `data/courses.json`、`data/course-metadata.json`、`data/tags.json`；官方采集入口 `scripts/collect-courses.mjs` |
+| 资料索引、来源、核查记录 | `data/resources.json`、`data/sources.json`、`data/research-log.jsonl`；校验在 `scripts/lib/data.mjs` 和 `scripts/validate.mjs` |
+| 外链健康检查 | `scripts/monitor.mjs`、`scripts/lib/link-health.mjs`、`scripts/lib/link-coverage.mjs`、`site/assets/health-evidence.mjs`；快照在 `monitoring-data:data/monitoring.json`，本地用 `npm run monitor -- --load-published` 获取 |
 
 ## 数据文件
 
@@ -83,6 +107,7 @@ docs/sources-and-search.md  构建生成：来源、检索记录与致谢
 - 本轮登录例外只适用于 USTC 评课社区：`source_id: "icourse-club"`、`access: "login"`，`page_url` 指向匿名可定位的具体 `#review-` 原帖，且附件入口经正常登录核实。`download_url` 和 `download_page` 均为 `null`；不保存登录后才出现的直链、正文、登录凭证或文件副本。按附件名核对的条目，要在核验说明中明确未读文件正文。
 - `locations[].license_note` 与 `attribution` 必须是实际说明字符串（不得为 `null`）：前者写授权/使用限制，后者写公开署名；`coverage.note` 记录核验范围与依据。
 - `locations[].file_snapshot` 为可选的 `{sha256, bytes, checked_at}`，仅对应免登录的 `download_url`。SHA-256 必须是原始文件字节的完整 64 位小写十六进制值，`bytes` 是实际字节数，`checked_at` 是取样日期；不得使用网页、Git blob、提取文本或摘要前缀替代。链接改指另一文件时删除或重新取样。课程详情仅详细模式展示，不用它替代课程归属、内容或授权核验。
+- `locations[].attachment_snapshots` 为可选字段，用于需登录的评课原帖附件取样，同样仅在详细模式展示。
 - 作业、习题与小测可选 `exercise_source`，只写已核实的出处。明确对应、免登录的解答可用 `locations[].role: "solution"`，不另计一条资料；仍须保留不带该角色的主入口。详情页两种模式均显示配套解答，监控照常检查该位置的 URL。
 - `coverage.years` 只写明确公历年份；可选的 `coverage.academic_years` 用 `YYYY-YYYY` 记录学年。只知道学年时保留 `years: []`，不推断公历年份。
 - 同课、同年、同卷别不证明重复。只有完整文件 SHA-256 相同才按来源优先级去重；不同字节的题面、答案与补页可作为配套入口，但不是镜像。
@@ -111,6 +136,12 @@ docs/sources-and-search.md  构建生成：来源、检索记录与致谢
 
 每课的 GitHub、评课社区和公开网页路径，各至少有一条 `reviewed/no_relevant_result/blocked` 终态记录才算完成该轮检索。`candidate/duplicate/tool/stub` 发现项保留但不能单独完成路径；`blocked` 表示真实受阻，不表示没有资料；全部路径受阻的课程另行列出。
 
+历史轮次记录 ID 前缀索引（逐条结论见 `data/research-log.jsonl`）：
+- `feixu-review-`：「我的科大」全站匿名目录复核。
+- `homework-review-`：作业与配套资料复核。
+- `oldindex-`：旧考试索引对账。
+- `ustcgit-`、`ustcguide-`、`ustc-cs4005-huang-`：公开课程仓库、课程资料簿与教师页的定向复核、收录依据。
+
 复核旧索引时按每份原件记录处置和理由，不转载旧合集或二次整理摘录。公开分享目录清点以匿名分页列表中的原始路径为单位；可识别的具体文件使用稳定文件页，不记录临时签名下载地址。目录合集、文件可读性和课程归属分别核验；未确认的文件只进检索日志，不改变课程收录状态。
 
 ## 构建与校验
@@ -138,7 +169,7 @@ npm run monitor -- --publish
 
 ## Agent 与程序读取
 
-仓库和网站均提供 `data/agent/index.json`（课号、课名、收录状态），以及 `data/agent/courses/<文件名>.json`（单门课的正式资料、出处、文件入口及来源名称）。本地网站生成版位于 `dist/data/agent/`。只按课号查询时可跳过首页索引；按课名查时先匹配索引，再读单门课文件。两个入口均包含 `schema_version`。
+仓库和网站均提供 `data/agent/index.json`（课号、课名、收录状态），以及 `data/agent/courses/<文件名>.json`（单门课的正式资料、出处、文件入口及来源名称）。本地网站生成版位于 `dist/data/agent/`。只按课号查询时可跳过首页索引；按课名查时先匹配索引，再读单门课文件。两个入口均包含 `schema_version`。保留既有路径和字段含义；`exercise_source`、`locations[].role`、`locations[].attachment_snapshots` 为可选字段。
 
 文件名为 `encodeURIComponent(code) + '.json'`；例如 `229001.json`、`PHYS1008B%2B.json`。通过 HTTP 读取时，对这个文件名再做一次 URL 路径编码，例如 `PHYS1008B%252B.json`。单课 JSON 中 `locations[].page_url` 是原始出处；`download_url` 只在确实登记时才有值，不能由页面地址推造。`has_resources: false` 表示暂未收录。
 
@@ -163,11 +194,28 @@ npm run monitor -- --publish
 
 首页、课程详情和来源页共用 `site/assets/announcements.mjs` 中的公告栏内容。维护「近期更新」「衍生项目」时编辑这个文件，收录前核对项目的公开链接与说明。公告由读者主动打开，不改变搜索条件或模式。
 
+## 页面与改版约束
+
+- 视觉、布局和交互文案可重做。普通搜索页始终显示课号、课名、收录状态、课程类别、学科标签、资料总数与分类计数及试题年份（有对应数据时）；模式开关 `[data-mode-toggle]` 只在 `course.html` 与 `sources.html` 页头显示（首页只同步 `localStorage`），切换模式只改变课程详情页和来源页的信息量。
+- 保留旧分享链接的含义，包括 `PHYS1008B%2B`、`status=with/without/none`、旧资料类映射到学习资料；旧 `access` 参数忽略不参与筛选。学科组内任一选中即可，组间条件同时满足；两项收录状态都取消勾选时显示恢复指引。
+- 课程详情只显示有内容的资料类别，完全没资料时只显示一个空态。五类正式值是 `exams/homework/study/books/projects`；小测归 `homework`。只确认到学年就显示学年，不折算公历年。纠正标签或归属时保留同一资料 ID；判重依据实际来源、卷头或正文（而非仅靠课程同名或同年份）。
+- 链接文案区分：「原始页面」（来源介绍或原帖）、「文件页面」（某一文件的原站详情或预览页）、「打开文件」（直接访问外部文件 URL，可能在 Edge 中预览，只跳转不伪造保存或代理抓取）、「前往原站」（无法确认直达文件的下载网页）。「我的科大」只保存稳定文件页，进入原站后使用原站下载按钮。
+- 简洁模式保留首个登记的原始出处及最直接入口（直链优先，其次文件页），同一网址只展示一次，入口属于不同来源时分别标明。详细模式补充展示其他不同网址、核验依据与证据范围（不贴「AI 已审核」徽章），并在已登记的公开直链与需登录评课原帖附件取样下显示 SHA-256、实际字节数与取样日期（目录与纯预览页条目不显示）。
+- 出处和配套关系仅在明确核实后展示。题目和已核实对应的解答合计一条，解答在两种模式下均可见（作配套入口，而非镜像或题目入口）。跨多次作业的讲义可独立归「学习资料」。同目录、同课程或同年份本身不足以证明配套关系；教师专用答案、明确限校内发布的文件和来源不明的整书扫描不新增公开文件入口。
+- 保持键盘可操作、筛选状态反馈、窄屏换行和焦点可见。目录可访问、文件可读取、课程归属与授权分项核验；只有收到 404/410 才标记确认失效，与需认证、预检中止、无响应和从未检查严格区分。
+- 旧条目优先复核证据缺失、结论冲突或来源变化的记录，不做全量 LLM 复审。
+
 ## 资料复核
 
 旧考试清单与来源索引只读对账：用卷头、正文、课程主页和文件内容确认课程及同卷关系。已有同卷保留资料 ID，补充稳定的文件级入口或镜像；本地摘录不作为可发布的原始来源。
 
 「我的科大」按匿名公开目录分页遍历，递归发现子目录，以实际路径去重。目录出现文件或文件页返回 HTTP 200，不代表取得文件正文，也不代表课程归属、年份或授权已确认。正式索引只登记稳定的目录页或文件页，不保存会话或存储服务的临时签名。归属不明、文件无法读取及范围外材料，在检索日志注明原因，不进入课程分区。
+
+核验边界与重点回归项：
+
+- 评课原帖的匿名可定位、附件是否需要登录与自动链接健康是三项独立证据；「从未检查」不等于「确认失效」。
+- 同帖同类附件归一条，不把附件行数当新增条数。
+- 重点回归项：`DMA23M`、`DMA23F`、`DMA24F` 归 `229001`；`001548` 复变函数 B 指向具体文件页；线代 B1 2026 春期末 `2026SLAB1Final.pdf` 大小写不能改；Oscar Levin 教材是 `229001` 的补充参考。
 
 ## 本地服务器
 
@@ -197,6 +245,11 @@ GitHub 检查只读登记资料库的确定 `branch`；头未变跳过树，变�
 ## 测试
 
 `npm test` 运行 `node --test`。测试全部使用隔离 fixture 或局部 HTTP 服务，不读写正式数据、不执行来源仓库代码。`tests/data.test.mjs` 覆盖精确镜像合并及覆盖声明冲突；`tests/search.test.mjs` 覆盖年份命中、同年异卷、`PHYS1008B+` 往返、组合筛选与链接状态。
+
+验证要求：
+- 资料或数据契约有改动时，运行 `npm test`、`npm run validate -- --strict-research` 与 `npm run build`（Node.js 24 或以上）。
+- 纯界面改动也要构建实际产物，并用 `npm run serve` 打开 `http://127.0.0.1:4173/` 检查改到的页面。
+- `npm test` 包含文件取样数据校验及课程页浏览器回归（真实切换简洁／详细模式，检查题面和配套解答各自的摘要、日期与大小）；浏览器使用本地 Chrome 或 Edge，可通过 `CHROME_PATH` 或 `EDGE_PATH` 指定路径，验收时须确认浏览器用例实际跑通。
 
 ## 部署路径
 
