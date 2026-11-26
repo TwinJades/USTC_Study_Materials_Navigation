@@ -43,15 +43,15 @@ export class MonitorError extends Error {
   }
 }
 
-const USAGE = `用法: node scripts/monitor.mjs [--dry-run|--write-local|--load-published|--publish] [--repo owner/name]
+const USAGE = `用法：node scripts/monitor.mjs [--dry-run|--write-local|--load-published|--publish] [--repo owner/name]
 
-  --dry-run     真实检查链接与仓库文件，只输出报告（默认）
-  --write-local 真实检查，仅写本地 data/monitoring.json（首次建立基线）
+  --dry-run        真实检查链接与仓库文件，只输出报告（默认）
+  --write-local    真实检查，仅写入本地 data/monitoring.json（首次建立基线）
   --load-published 读取 monitoring-data 的快照供本地校验和构建，不写 GitHub
-  --publish     真实检查，发送 Issue 通知并更新 monitoring-data 分支
-  --repo        指定目标 owner/name（默认取 GITHUB_REPOSITORY 或 git remote origin）
+  --publish        真实检查，发送 Issue 通知并更新 monitoring-data 分支
+  --repo           指定目标 owner/name（默认取 GITHUB_REPOSITORY 或 git remote origin）
 
-  环境变量: GITHUB_TOKEN（publish 必需）, GITHUB_REPOSITORY（可选）`;
+  环境变量：GITHUB_TOKEN（publish 必需）、GITHUB_REPOSITORY（可选）`;
 
 export function parseArgs(argv) {
   const options = { mode: null, repo: null, help: false };
@@ -77,7 +77,7 @@ export function parseArgs(argv) {
     } else if (arg === '--help' || arg === '-h') {
       options.help = true;
     } else {
-      throw new MonitorError(`未知参数: ${arg}`, { code: 'invalid_arguments' });
+      throw new MonitorError(`未知参数：${arg}`, { code: 'invalid_arguments' });
     }
   }
   if (!options.help && !options.mode) options.mode = 'dry-run';
@@ -87,7 +87,7 @@ export function parseArgs(argv) {
 export function parseRepoSlug(value) {
   const text = String(value ?? '').trim();
   const match = text.match(/^([A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)\/([A-Za-z0-9._-]+?)(?:\.git)?$/);
-  if (!match) throw new MonitorError(`无法识别的仓库目标: ${text}`, { code: 'invalid_target' });
+  if (!match) throw new MonitorError(`无法识别的仓库目标：${text}`, { code: 'invalid_target' });
   return { owner: match[1], repo: match[2] };
 }
 
@@ -449,7 +449,7 @@ async function loadPublishedMonitoring(repo) {
 export async function runMonitor(options = {}) {
   const mode = options.mode ?? 'dry-run';
   if (!MONITOR_MODES.includes(mode)) {
-    throw new MonitorError(`未知运行模式: ${mode}`, { code: 'invalid_arguments' });
+    throw new MonitorError(`未知运行模式：${mode}`, { code: 'invalid_arguments' });
   }
 
   const now = options.now ?? (() => new Date());
@@ -633,7 +633,7 @@ export async function runMonitor(options = {}) {
       await saveMonitoring(monitoring);
     } catch (error) {
       throw new MonitorError(
-        `monitoring 已发布，但同步写入 runner 本地文件失败: ${error.message}`,
+        `monitoring 已发布，但同步写入 runner 本地文件失败：${error.message}`,
         { code: 'local_sync_failed', cause: error },
       );
     }
@@ -684,8 +684,7 @@ export function formatReport(report) {
   if (health.preflight > 0) {
     const scope = total > 0 && health.preflight === total ? '全部' : `${health.preflight} 条`;
     lines.push(
-      `环境提示：${scope}链接在 URL/DNS/地址安全预检阶段中止，未为当前目标发出 HTTP 请求；` +
-        '这不代表链接失效或资料缺失。',
+      `环境提示：${scope}链接在安全预检阶段未放行，未向当前目标发出 HTTP 请求；这不代表链接失效或资料缺失。`,
     );
   }
 

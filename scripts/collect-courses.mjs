@@ -43,8 +43,8 @@ if (args.has('--help') || args.has('-h')) {
   console.log(`用法：npm run collect:courses [-- --stdin | --browser]
 
 默认直接请求 https://catalog.ustc.edu.cn 官方 API。
---stdin   从标准输入读取最小化官方响应 {semesters,terms:[{id,rows}]}，不落盘响应
---browser 启动一次性 127.0.0.1 同源桥，打印 URL 与短期 token，仅接受官方 origin POST
+--stdin    从标准输入读取最小化官方响应 {semesters, terms:[{id, rows}]}，不落盘响应
+--browser  启动一次性 127.0.0.1 同源桥，打印 URL 与短期 token，仅接受官方 origin POST
 
 无论哪种模式，失败都不会覆盖现有 data/courses.json。`);
   process.exit(0);

@@ -268,10 +268,10 @@ export function parseArgs(argv) {
   return options;
 }
 
-const USAGE = '用法: node scripts/archive-traffic.mjs [--publish]\n\n' +
+const USAGE = '用法：node scripts/archive-traffic.mjs [--publish]\n\n' +
   '  （默认）  读取 GitHub Traffic，在内存中合并，不推送\n' +
   '  --publish 合并 traffic-history 分支，提交并快进推送（不强制、不改默认分支）\n\n' +
-  '  环境变量: TRAFFIC_TOKEN（优先）或 GITHUB_TOKEN；读取 Traffic 需要该仓库的 push 权限。';
+  '  环境变量：TRAFFIC_TOKEN（优先）或 GITHUB_TOKEN；读取 Traffic 需要该仓库的 push 权限。';
 
 const redact = (text, secrets) => secrets
   .filter((s) => typeof s === 'string' && s.length >= 4)

@@ -1,5 +1,5 @@
 /**
- * 两组独立的“简洁 / 详细”显示模式 + 全站“浅色 / 深色 / 跟随系统”外观主题。
+ * 两组独立的「简洁 / 详细」显示模式 + 全站「浅色 / 深色 / 跟随系统」外观主题。
  *
  * 与页面标记和样式共用的约定：
  * - 显示模式：
@@ -19,9 +19,9 @@ const COMPACT = 'compact';
 const THEMES = ['light', 'dark', 'system'];
 
 const THEME_LABELS = {
-  light: '浅色模式（点击切换深色）',
-  dark: '深色模式（点击切换跟随系统）',
-  system: '跟随系统（点击切换浅色）',
+  light: '浅色（点击切至深色）',
+  dark: '深色（点击切至跟随系统）',
+  system: '跟随系统（点击切至浅色）',
 };
 
 function modeStorageKey() {
@@ -70,10 +70,10 @@ function applyMode(mode, { notify = false } = {}) {
   else delete document.body.dataset.mode;
 
   const isCourse = document.body?.dataset?.page === 'course';
-  const scope = isCourse ? '课程详情页' : '课程目录与来源页';
+  const scope = isCourse ? '课程详情页' : '目录与来源页';
   const label = detailed
-    ? `当前：详细模式，点击切换简洁模式（${scope}）`
-    : `当前：简洁模式，点击切换详细模式（${scope}）`;
+    ? `详细模式 · 点击切至简洁（${scope}）`
+    : `简洁模式 · 点击切至详细（${scope}）`;
 
   for (const toggle of document.querySelectorAll('[data-mode-toggle]')) {
     toggle.hidden = false;

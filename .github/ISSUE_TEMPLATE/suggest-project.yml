@@ -13,7 +13,7 @@ body:
     id: project-url
     attributes:
       label: 项目公开链接
-      description: 请填公开、稳定的仓库或项目主页链接。
+      description: 请填写公开、稳定的仓库或项目主页链接。
       placeholder: https://...
     validations:
       required: true
@@ -28,12 +28,12 @@ body:
     id: summary
     attributes:
       label: 项目简介
-      description: 请简要说明项目用途、数据或交互形态，以及和也西书架的关系。
+      description: 简述项目用途、数据或交互形态，以及与也西书架的关系。
     validations:
       required: true
   - type: input
     id: notice-url
     attributes:
       label: 出处或致谢说明链接（可选）
-      description: 若项目有单独的 NOTICE、致谢或授权说明页面，可填在此处。
+      description: 若项目有单独的 NOTICE、致谢或授权说明页，可填在此处。
       placeholder: https://...

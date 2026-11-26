@@ -170,7 +170,7 @@ server.on('error', (error) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`本地预览：http://${HOST}:${PORT}/ （服务目录 dist/）`);
+  console.log(`本地预览：http://${HOST}:${PORT}/（服务目录 dist/）`);
   console.log('按 Ctrl+C 停止。');
 });
 

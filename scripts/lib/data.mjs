@@ -93,7 +93,7 @@ export const EXAM_KIND_LABELS = Object.freeze({
   final: '期末',
   quiz: '小测',
   mixed: '期中期末混合',
-  unknown: '类型不明',
+  unknown: '卷别不明',
 });
 
 export const EXAM_FORMS = Object.freeze([
@@ -110,14 +110,14 @@ export const EXAM_FORM_LABELS = Object.freeze({
 });
 
 /**
- * 资料位置类型：目录、具体文件页、普通页面。旧数据缺省视为 page。
+ * 资料位置类型：目录、具体文件页、原始页面。旧数据缺省视为 page。
  * 目录或页面不得被当成可下载文件；只有 download_url 才代表直接下载入口。
  */
 export const LOCATION_PAGE_KINDS = Object.freeze(['directory', 'file', 'page']);
 export const PAGE_KIND_LABELS = Object.freeze({
   directory: '资料目录',
   file: '文件页面',
-  page: '普通页面',
+  page: '原始页面',
 });
 
 export function normalizePageKind(value) {
@@ -189,7 +189,7 @@ export const RESEARCH_OUTCOME_LABELS = Object.freeze({
 });
 
 /**
- * 只有这些终态能支撑“该路径已完成首轮检索”。
+ * 只有这些终态能支撑「该路径已完成首轮检索」。
  * candidate/duplicate/tool/stub 仍保留在日志与统计中，但不能单独算完成。
  */
 export const RESEARCH_TERMINAL_OUTCOMES = Object.freeze([
@@ -347,7 +347,7 @@ function checkExactKeys(value, allowed, file, pathText, collector) {
   const allowedSet = new Set(allowed);
   for (const key of Object.keys(value)) {
     if (!allowedSet.has(key)) {
-      collector.error(file, pathText, `不允许的字段“${key}”`);
+      collector.error(file, pathText, `不允许的字段「${key}」`);
     }
   }
 }
@@ -388,7 +388,7 @@ function requireStringArray(value, file, pathText, label, collector, { allowEmpt
       collector.error(file, itemPath, `${label}的元素不能包含首尾空白`);
     }
     if (seen.has(value[i])) {
-      collector.error(file, itemPath, `${label}存在重复值“${value[i]}”`);
+      collector.error(file, itemPath, `${label}存在重复值「${value[i]}」`);
     }
     seen.add(value[i]);
   }
@@ -686,7 +686,7 @@ export function describeLesson(lesson) {
 }
 
 /**
- * 只保留 education.cn === “本科”。本研贯通（graduateAndPostgraduate=true）仍保留。
+ * 只保留 education.cn === 「本科」。本研贯通（graduateAndPostgraduate=true）仍保留。
  */
 export function filterUndergraduateLessons(lessons) {
   const records = [];
@@ -730,7 +730,7 @@ function basisNote(semester, description) {
   const category = description.category ?? '未标注';
   const gradation = description.gradation ?? '未标注';
   const gap = description.graduateAndPostgraduate ? '；本研贯通' : '';
-  return `依据${semester.label ?? semester.code}（${semester.code}）官方本科开课记录：课程类别“${category}”，课程层次“${gradation}”${gap}。`;
+  return `依据${semester.label ?? semester.code}（${semester.code}）官方本科开课记录：课程类别「${category}」，课程层次「${gradation}」${gap}。`;
 }
 
 function uniqueInOrder(values) {
@@ -1284,7 +1284,7 @@ function validateCourses(courses, collector) {
       collector.error(file, `${itemPath}.code`, '课程代码不能包含控制字符');
     }
     if (byCode.has(code)) {
-      collector.error(file, `${itemPath}.code`, `课程代码重复：“${code}”`);
+      collector.error(file, `${itemPath}.code`, `课程代码重复：「${code}」`);
       continue;
     }
     if (previousCode !== null && code < previousCode) {
@@ -1316,27 +1316,27 @@ function validateTags(tags, collector) {
     const label = requireString(item.label, file, `${itemPath}.label`, '标签名称', collector);
     if (!id || !label) continue;
     if (id === 'other' || label === 'other' || id === '其他' || label === '其他') {
-      collector.error(file, `${itemPath}`, '禁止“其他/other”标签');
+      collector.error(file, `${itemPath}`, '禁止「其他/other」标签');
       continue;
     }
     const canonical = TAG_BY_ID.get(id);
     if (!canonical) {
-      collector.error(file, `${itemPath}.id`, `未知标签 ID：“${id}”`);
+      collector.error(file, `${itemPath}.id`, `未知标签 ID：「${id}」`);
       continue;
     }
     if (label !== canonical.label) {
       collector.error(
         file,
         `${itemPath}.label`,
-        `标签名称与固定枚举不一致：应为“${canonical.label}”`,
+        `标签名称与固定枚举不一致：应为「${canonical.label}」`,
       );
     }
     if (declared.has(id)) {
-      collector.error(file, `${itemPath}.id`, `标签 ID 重复：“${id}”`);
+      collector.error(file, `${itemPath}.id`, `标签 ID 重复：「${id}」`);
       continue;
     }
     if (labels.has(label)) {
-      collector.error(file, `${itemPath}.label`, `标签名称重复：“${label}”`);
+      collector.error(file, `${itemPath}.label`, `标签名称重复：「${label}」`);
     }
     declared.set(id, item);
     labels.set(label, id);
@@ -1354,7 +1354,7 @@ function validateMetadata(metadata, courseByCode, tagState, collector) {
   for (const [code, value] of Object.entries(metadata)) {
     const itemPath = `["${code}"]`;
     if (!courseByCode.has(code)) {
-      collector.error(file, itemPath, `悬空课程代码：“${code}”不在 courses.json 中`);
+      collector.error(file, itemPath, `悬空课程代码：「${code}」不在 courses.json 中`);
     }
     if (!isPlainObject(value)) {
       collector.error(file, itemPath, '元数据必须是对象');
@@ -1362,7 +1362,7 @@ function validateMetadata(metadata, courseByCode, tagState, collector) {
     }
     checkExactKeys(value, ['kind', 'tags', 'basis_url', 'basis_note'], file, itemPath, collector);
     if (!COURSE_KIND_SET.has(value.kind)) {
-      collector.error(file, `${itemPath}.kind`, `未知类别：“${String(value.kind)}”`);
+      collector.error(file, `${itemPath}.kind`, `未知类别：「${String(value.kind)}」`);
     }
     const tagIds = requireStringArray(value.tags, file, `${itemPath}.tags`, '学科标签', collector, {
       allowEmpty: false,
@@ -1371,16 +1371,16 @@ function validateMetadata(metadata, courseByCode, tagState, collector) {
       for (let index = 0; index < tagIds.length; index += 1) {
         const tagId = tagIds[index];
         if (tagId === 'other' || tagId === '其他') {
-          collector.error(file, `${itemPath}.tags[${index}]`, '禁止“其他”标签');
+          collector.error(file, `${itemPath}.tags[${index}]`, '禁止「其他」标签');
           continue;
         }
         if (!TAG_BY_ID.has(tagId)) {
-          collector.error(file, `${itemPath}.tags[${index}]`, `未知标签：“${tagId}”`);
+          collector.error(file, `${itemPath}.tags[${index}]`, `未知标签：「${tagId}」`);
         } else if (!tagState.declared.has(tagId)) {
           collector.error(
             file,
             `${itemPath}.tags[${index}]`,
-            `标签“${tagId}”未在 data/tags.json 登记`,
+            `标签「${tagId}」未在 data/tags.json 登记`,
           );
         }
         usedTags.add(tagId);
@@ -1443,7 +1443,7 @@ function validateSourcesList(sources, collector) {
     requirePublicUrl(item.url, file, `${itemPath}.url`, '来源 URL', collector);
     requireString(item.maintainer, file, `${itemPath}.maintainer`, '维护者', collector);
     if (!SOURCE_KIND_SET.has(item.kind)) {
-      collector.error(file, `${itemPath}.kind`, `未知来源类型：“${String(item.kind)}”`);
+      collector.error(file, `${itemPath}.kind`, `未知来源类型：「${String(item.kind)}」`);
     }
     validateGithubField(item.github, file, `${itemPath}.github`, collector);
     if (typeof item.notes !== 'string') {
@@ -1454,7 +1454,7 @@ function validateSourcesList(sources, collector) {
         collector.error(file, `${itemPath}.id`, '来源 ID 只能包含字母、数字、点、下划线、连字符');
       }
       if (byId.has(id)) {
-        collector.error(file, `${itemPath}.id`, `来源 ID 重复：“${id}”`);
+        collector.error(file, `${itemPath}.id`, `来源 ID 重复：「${id}」`);
       } else {
         byId.set(id, item);
       }
@@ -1532,12 +1532,12 @@ function validateCoverage(coverage, resourceType, file, pathText, collector) {
     value === null || value === true || value === false;
   if (resourceType === 'exams') {
     if (!EXAM_KIND_SET.has(coverage.exam_kind)) {
-      collector.error(file, `${pathText}.exam_kind`, `未知试题类型：“${String(coverage.exam_kind)}”`);
+      collector.error(file, `${pathText}.exam_kind`, `未知试题类型：「${String(coverage.exam_kind)}」`);
     } else if (coverage.exam_kind === 'quiz') {
       collector.error(file, `${pathText}.exam_kind`, '小测归入 homework，不能登记为 exams');
     }
     if (!EXAM_FORM_SET.has(coverage.exam_form)) {
-      collector.error(file, `${pathText}.exam_form`, `未知试题形式：“${String(coverage.exam_form)}”`);
+      collector.error(file, `${pathText}.exam_form`, `未知试题形式：「${String(coverage.exam_form)}」`);
     }
     if (!validSolutions(coverage.has_solutions)) {
       collector.error(file, `${pathText}.has_solutions`, 'has_solutions 必须是 true/false/null');
@@ -1549,7 +1549,7 @@ function validateCoverage(coverage, resourceType, file, pathText, collector) {
         coverage.exam_form !== undefined &&
         !EXAM_FORM_SET.has(coverage.exam_form)
       ) {
-        collector.error(file, `${pathText}.exam_form`, `未知试题形式：“${String(coverage.exam_form)}”`);
+        collector.error(file, `${pathText}.exam_form`, `未知试题形式：「${String(coverage.exam_form)}」`);
       }
       if (!validSolutions(coverage.has_solutions)) {
         collector.error(file, `${pathText}.has_solutions`, 'has_solutions 必须是 true/false/null');
@@ -1672,14 +1672,14 @@ function validateResource(
         collector.error(
           file,
           `${itemPath}.course_codes[${index}]`,
-          `悬空课程代码：“${courseCodes[index]}”不在 courses.json 中`,
+          `悬空课程代码：「${courseCodes[index]}」不在 courses.json 中`,
         );
       }
     }
   }
 
   if (!RESOURCE_TYPE_SET.has(resource.type)) {
-    collector.error(file, `${itemPath}.type`, `未知资料类型：“${String(resource.type)}”`);
+    collector.error(file, `${itemPath}.type`, `未知资料类型：「${String(resource.type)}」`);
   }
   requireString(resource.title, file, `${itemPath}.title`, '资料标题', collector);
   const authors = requireStringArray(resource.authors, file, `${itemPath}.authors`, '作者', collector);
@@ -1742,7 +1742,7 @@ function validateResource(
       collector.error(
         file,
         `${locationPath}.page_kind`,
-        `未知位置类型：“${String(location.page_kind)}”；只能是 directory/file/page`,
+        `未知位置类型：「${String(location.page_kind)}」；只能是 directory/file/page`,
       );
     }
     const sourceId = requireString(
@@ -1755,18 +1755,18 @@ function validateResource(
     if (sourceId) {
       const source = sourcesById.get(sourceId);
       if (!source) {
-        collector.error(file, `${locationPath}.source_id`, `悬空来源：“${sourceId}”`);
+        collector.error(file, `${locationPath}.source_id`, `悬空来源：「${sourceId}」`);
       } else if (source.kind === 'tool' || source.kind === 'stub') {
         collector.error(
           file,
           `${locationPath}.source_id`,
-          `来源“${sourceId}”是工具或空壳，不能作为正式资料位置`,
+          `来源「${sourceId}」是工具或空壳，不能作为正式资料位置`,
         );
       } else if (source.kind === 'index') {
         collector.warn(
           file,
           `${locationPath}.source_id`,
-          `来源“${sourceId}”是索引页；请确认 page_url 直达实际资料而非索引首页`,
+          `来源「${sourceId}」是索引页；请确认 page_url 直达实际资料而非索引首页`,
         );
       }
     }
@@ -1824,7 +1824,7 @@ function validateResource(
       }
     }
     if (!ACCESS_SET.has(location.access)) {
-      collector.error(file, `${locationPath}.access`, `未知访问级别：“${String(location.access)}”`);
+      collector.error(file, `${locationPath}.access`, `未知访问级别：「${String(location.access)}」`);
     }
     requireString(location.license_note, file, `${locationPath}.license_note`, '许可说明', collector);
     const attribution = requireString(
@@ -1877,7 +1877,7 @@ function validateResourcesList(resources, collector, context) {
     validateResource(item, itemPath, collector, context);
     if (isPlainObject(item) && typeof item.id === 'string') {
       if (seen.has(item.id)) {
-        collector.error(file, `${itemPath}.id`, `资料 ID 重复：“${item.id}”`);
+        collector.error(file, `${itemPath}.id`, `资料 ID 重复：「${item.id}」`);
       }
       seen.add(item.id);
     }
@@ -1911,7 +1911,7 @@ function validateResearchLog(records, collector, { courseByCode, sourcesById }) 
         collector.error(file, `${itemPath}.id`, '记录 ID 只能包含字母、数字、点、下划线、连字符、冒号');
       }
       if (seen.has(id)) {
-        collector.error(file, `${itemPath}.id`, `记录 ID 重复：“${id}”`);
+        collector.error(file, `${itemPath}.id`, `记录 ID 重复：「${id}」`);
       }
       seen.add(id);
     }
@@ -1919,13 +1919,13 @@ function validateResearchLog(records, collector, { courseByCode, sourcesById }) 
       collector.error(file, `${itemPath}.date`, 'date 必须是有效日期 YYYY-MM-DD');
     }
     if (!RESEARCH_SCOPE_SET.has(item.scope)) {
-      collector.error(file, `${itemPath}.scope`, `未知 scope：“${String(item.scope)}”`);
+      collector.error(file, `${itemPath}.scope`, `未知 scope：「${String(item.scope)}」`);
     }
     if (!RESEARCH_CHANNEL_SET.has(item.channel)) {
-      collector.error(file, `${itemPath}.channel`, `未知 channel：“${String(item.channel)}”`);
+      collector.error(file, `${itemPath}.channel`, `未知 channel：「${String(item.channel)}」`);
     }
     if (!RESEARCH_OUTCOME_SET.has(item.outcome)) {
-      collector.error(file, `${itemPath}.outcome`, `未知 outcome：“${String(item.outcome)}”`);
+      collector.error(file, `${itemPath}.outcome`, `未知 outcome：「${String(item.outcome)}」`);
     }
     const courseCodes = requireStringArray(
       item.course_codes,
@@ -1940,7 +1940,7 @@ function validateResearchLog(records, collector, { courseByCode, sourcesById }) 
           collector.error(
             file,
             `${itemPath}.course_codes[${codeIndex}]`,
-            `悬空课程代码：“${courseCodes[codeIndex]}”`,
+            `悬空课程代码：「${courseCodes[codeIndex]}」`,
           );
         }
       }
@@ -1958,7 +1958,7 @@ function validateResearchLog(records, collector, { courseByCode, sourcesById }) 
           collector.error(
             file,
             `${itemPath}.source_ids[${sourceIndex}]`,
-            `悬空来源：“${sourceIds[sourceIndex]}”`,
+            `悬空来源：「${sourceIds[sourceIndex]}」`,
           );
         }
       }
@@ -1984,7 +1984,7 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
     if (options.requireMonitoring) {
       collector.error(file, '', '缺少 monitoring.json（尚无真实链接检查结果）');
     } else {
-      collector.warn(file, '', '尚未生成 monitoring.json；站点应显示“未检查”，不得显示全绿');
+      collector.warn(file, '', '尚未生成 monitoring.json；站点应显示「从未检查」，不得显示全绿');
     }
     return;
   }
@@ -2026,12 +2026,12 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
       requirePublicUrl(link.url, file, `${linkPath}.url`, '链接 URL', collector);
       if (typeof link.url === 'string') {
         if (urls.has(link.url)) {
-          collector.error(file, `${linkPath}.url`, `链接重复：“${link.url}”`);
+          collector.error(file, `${linkPath}.url`, `链接重复：「${link.url}」`);
         }
         urls.add(link.url);
       }
       if (!LINK_STATUS_SET.has(link.status)) {
-        collector.error(file, `${linkPath}.status`, `未知状态：“${String(link.status)}”`);
+        collector.error(file, `${linkPath}.status`, `未知状态：「${String(link.status)}」`);
       }
       if (
         link.http_status !== null &&
@@ -2058,9 +2058,9 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
       if (sourcesById) {
         const source = sourcesById.get(sourceId);
         if (!source) {
-          collector.error(file, basePath, `悬空来源：“${sourceId}”`);
+          collector.error(file, basePath, `悬空来源：「${sourceId}」`);
         } else if (source.github === null) {
-          collector.warn(file, basePath, `来源“${sourceId}”未登记 GitHub，却有文件基线`);
+          collector.warn(file, basePath, `来源「${sourceId}」未登记 GitHub，却有文件基线`);
         }
       }
       if (!isPlainObject(baseline)) {
@@ -2090,7 +2090,7 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
         const entryFile = requireString(entry.path, file, `${entryPath}.path`, '文件路径', collector);
         if (entryFile) {
           if (filePaths.has(entryFile)) {
-            collector.error(file, `${entryPath}.path`, `文件路径重复：“${entryFile}”`);
+            collector.error(file, `${entryPath}.path`, `文件路径重复：「${entryFile}」`);
           }
           filePaths.add(entryFile);
         }
@@ -2098,7 +2098,7 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
           collector.error(file, `${entryPath}.sha`, 'sha 必须是 40 或 64 位十六进制');
         }
         if (!GIT_OBJECT_TYPES.has(entry.type)) {
-          collector.error(file, `${entryPath}.type`, `未知 Git 对象类型：“${String(entry.type)}”`);
+          collector.error(file, `${entryPath}.type`, `未知 Git 对象类型：「${String(entry.type)}」`);
         }
       }
     }

@@ -59,7 +59,7 @@ async function loadCatalog() {
   }
   const data = await response.json();
   if (!data || !Array.isArray(data.courses) || !Array.isArray(data.resource_types)) {
-    throw new Error('课程目录数据结构不正确。');
+    throw new Error('课程目录数据结构有误。');
   }
   return data;
 }
@@ -198,7 +198,7 @@ function initIndex(catalog) {
       ?? catalog.courses.filter((c) => courseResources(c).length > 0).length;
     const resTotal = catalog.counts?.resources
       ?? catalog.courses.reduce((sum, c) => sum + courseResources(c).length, 0);
-    heroPulseText.textContent = `已索引 ${courseTotal.toLocaleString('zh-CN')} 门本科课 · ${withTotal.toLocaleString('zh-CN')} 门含资料 · ${resTotal.toLocaleString('zh-CN')} 条资料`;
+    heroPulseText.textContent = `已索引 ${courseTotal.toLocaleString('zh-CN')} 门本科课 · ${withTotal.toLocaleString('zh-CN')} 门已收录 · ${resTotal.toLocaleString('zh-CN')} 条资料`;
     heroPulse.hidden = false;
   }
 
@@ -491,13 +491,13 @@ function initIndex(catalog) {
 
     let statusText;
     if (filters.status === 'none') {
-      statusText = '两种收录状态都未勾选，因此没有课程可显示。请至少勾选一项。';
+      statusText = '当前筛选下共 0 门课程。';
     } else if (results.length === 0) {
       statusText = active ? '没有符合条件的课程。' : '课程目录为空。';
     } else if (active) {
-      statusText = `筛选出 ${results.length} 门课程，其中 ${withCount} 门已收录资料（全部 ${total} 门）。`;
+      statusText = `筛选出 ${results.length} 门课程，其中 ${withCount} 门已收录（共 ${total} 门）。`;
     } else {
-      statusText = `共 ${total} 门课程：已收录资料 ${withCount} 门，暂未收录 ${total - withCount} 门。`;
+      statusText = `共 ${total} 门课程：已收录 ${withCount} 门，暂未收录 ${total - withCount} 门。`;
     }
     setText(resultStatus, statusText);
 
@@ -507,15 +507,15 @@ function initIndex(catalog) {
       if (filters.status === 'none') {
         setText(
           noResultsText,
-          '两种收录状态都未勾选，当前不显示任何课程。',
+          '未勾选任何收录状态，请至少勾选「已收录资料」或「暂未收录资料」。',
         );
       } else if (active) {
         setText(
           noResultsText,
-          `没有同时满足这些条件的课程：${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}。`,
+          `没有同时满足以下条件的课程：${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}。`,
         );
       } else {
-        setText(noResultsText, '课程目录中没有可显示的课程，可能是构建数据缺失。');
+        setText(noResultsText, '课程目录暂无数据，请检查构建产物。');
       }
     }
 
@@ -542,22 +542,22 @@ function allYears(courses) {
 
 function describeFilters(filters, labels) {
   const parts = [];
-  if (filters.q) parts.push(`关键词“${filters.q}”`);
-  if (filters.kind !== 'all') parts.push(`类别“${labels.kindLabels.get(filters.kind) ?? filters.kind}”`);
+  if (filters.q) parts.push(`关键词「${filters.q}」`);
+  if (filters.kind !== 'all') parts.push(`类别「${labels.kindLabels.get(filters.kind) ?? filters.kind}」`);
   if (filters.tags.length > 0) {
-    parts.push(`学科“${filters.tags.map((tag) => labels.tagLabels.get(tag) ?? tag).join('、')}”`);
+    parts.push(`学科「${filters.tags.map((tag) => labels.tagLabels.get(tag) ?? tag).join('、')}」`);
   }
   if (filters.type !== 'all') {
     const typeLabel = labels.typeLabels.get(filters.type) ?? filters.type;
     parts.push(
       filters.year === 'all'
-        ? `资料类型“${typeLabel}”`
-        : `资料类型“${typeLabel}”，年份“${filters.year === 'unknown' ? '待确认' : `${filters.year} 年`}”`,
+        ? `资料类型「${typeLabel}」`
+        : `资料类型「${typeLabel}」、年份「${filters.year === 'unknown' ? '待确认' : `${filters.year} 年`}」`,
     );
   }
-  if (filters.status === 'with') parts.push('仅已收录资料');
-  if (filters.status === 'without') parts.push('仅暂未收录资料的课程');
-  if (filters.status === 'none') parts.push('收录状态两项均未勾选');
+  if (filters.status === 'with') parts.push('仅已收录');
+  if (filters.status === 'without') parts.push('仅暂未收录');
+  if (filters.status === 'none') parts.push('未勾选收录状态');
   return parts.join('、');
 }
 
@@ -598,7 +598,7 @@ function renderCourseItem(course, labels) {
     const inventory = el('div', 'course-inventory');
     if (hasRes) {
       const typesRow = el('div', 'inventory-types');
-      typesRow.append(el('span', 'inventory-total', `资料 ${summary.total} 份`));
+      typesRow.append(el('span', 'inventory-total', `资料 ${summary.total} 条`));
       for (const entry of summary.types) {
         const chip = el('span', 'inventory-type');
         chip.append(
@@ -642,16 +642,16 @@ function initCoursePage(catalog) {
     if (content) content.hidden = true;
     if (sectionNav) sectionNav.hidden = true;
     if (title) title.textContent = '未找到该课程';
-    if (meta) meta.textContent = code ? `查询的课程代码：${code}` : '链接中缺少课程代码。';
+    if (meta) meta.textContent = code ? `课程代码：${code}` : '链接中缺少课程代码。';
     if (status) {
       status.textContent = '';
       status.hidden = true;
     }
-    document.title = '未找到该课程 · 中科大本科课程资料导航';
+    document.title = '未找到该课程 · 也西书架';
     return;
   }
 
-  document.title = `${course.code} ${course.name} · 中科大本科课程资料导航`;
+  document.title = `${course.code} ${course.name} · 也西书架`;
   if (title) {
     title.replaceChildren(
       el('span', 'course-title-code', course.code),
@@ -701,16 +701,16 @@ function initCoursePage(catalog) {
 
   if (status) {
     if (groups.length === 0) {
-      // 完全无资料时只展示一个空态，不再逐个类别重复“暂无”。
+      // 完全无资料时只展示一个空态，不再逐个类别重复「暂无」。
       status.textContent = '';
       status.hidden = true;
     } else {
       status.hidden = false;
       const summary = courseSummary(course, labels.type);
       const yearText = summary.examYears.map((year) => `${year} 年`).join('、');
-      const parts = [`已收录 ${summary.total} 份已确认资料。`];
+      const parts = [`共收录 ${summary.total} 条资料。`];
       if (yearText) parts.push(`试题年份：${yearText}。`);
-      if (summary.hasUnknownExamYear) parts.push('另有未按公历年确认的试题（可能仅登记学年）。');
+      if (summary.hasUnknownExamYear) parts.push('另有未确认公历年的试题（可能仅登记学年）。');
       status.textContent = parts.join('');
     }
   }
@@ -767,7 +767,7 @@ function renderTypeSection(group, labels) {
   section.id = `section-${group.type}`;
   const heading = el('h2', 'resource-type-heading');
   heading.append(document.createTextNode(group.label ?? group.type));
-  const count = el('span', 'type-count', `${group.resources.length} 份`);
+  const count = el('span', 'type-count', `${group.resources.length} 条`);
   heading.append(document.createTextNode(' '), count);
   section.append(heading);
 
@@ -780,12 +780,12 @@ function renderTypeSection(group, labels) {
 
 function renderEmptyState() {
   const section = el('section', 'empty-state');
-  section.append(el('h2', null, '暂未收录该课程的资料'));
+  section.append(el('h2', null, '暂未收录该课程资料'));
   section.append(
     el(
       'p',
       null,
-      '该课程在已收录学期范围（2025 秋至 2026 秋）的本科开课目录中，但尚未找到可核验归属的资料。可以返回课程目录检索其他课程；收录范围与检索记录见页脚链接。',
+      '该课程在 2025 秋—2026 秋本科开课目录中，目前尚未收录可核验资料。',
     ),
   );
   return section;
@@ -854,7 +854,7 @@ function renderResource(resource, labels) {
   if (coverage) detail.append(coverage);
 
   const notes = resourceNotes(resource);
-  if (notes.coverage) detail.append(el('p', 'resource-notes', `覆盖与核验说明：${notes.coverage}`));
+  if (notes.coverage) detail.append(el('p', 'resource-notes', `核验说明：${notes.coverage}`));
   if (notes.extra) detail.append(el('p', 'resource-notes', `补充说明：${notes.extra}`));
 
   const evidence = safeExternalUrl(resource.coverage?.evidence_url);
@@ -862,8 +862,8 @@ function renderResource(resource, labels) {
     const p = el('p', 'resource-notes');
     p.append(document.createTextNode('核验依据：'));
     const key = canonicalUrlKey(evidence);
-    if (key && plan.keys.has(key)) p.append(document.createTextNode('同上，已在来源链接中列出。'));
-    else p.append(externalLink(evidence, '打开核验依据页面'));
+    if (key && plan.keys.has(key)) p.append(document.createTextNode('同上方来源链接。'));
+    else p.append(externalLink(evidence, '查看核验依据'));
     detail.append(p);
   }
 
@@ -876,7 +876,7 @@ function renderResource(resource, labels) {
     .filter(Boolean);
 
   if (plan.details.length === 0 && detailSolutions.length === 0) {
-    detail.append(el('p', 'empty-type', '该资料尚未登记可用的原始入口。'));
+    detail.append(el('p', 'empty-type', '暂未登记可用入口。'));
   } else {
     const list = el('ul', 'locations');
     list.setAttribute('role', 'list');
@@ -897,7 +897,7 @@ function renderResource(resource, labels) {
 function renderCompactLinks(plan, labels, { exerciseTitle = '', solutionLinks = [] } = {}) {
   const line = el('div', 'location-links compact-links mode-compact');
   if (!plan.compact && solutionLinks.length === 0) {
-    line.append(el('span', 'source-note', '尚未登记可用的原始入口。'));
+    line.append(el('span', 'source-note', '暂未登记可用入口。'));
     return line;
   }
   if (plan.compact) {
@@ -996,15 +996,15 @@ function renderLocation({ location, entries }, labels, index) {
       links.append(pair);
     }
   } else {
-    links.append(el('span', 'source-note', '该位置没有可用入口，或链接与上方重复。'));
+    links.append(el('span', 'source-note', '无额外可用入口，或链接与上方重复。'));
   }
   wrapper.append(links);
 
   const metaParts = [`来源：${sourceNames(labels.sourceNames, location.source_id)}`];
   if (location.role === 'solution') metaParts.unshift('配套解答');
-  if (index > 0) metaParts.unshift('镜像或备用入口');
-  metaParts.push(`访问要求：${labels.access.get(location.access) ?? location.access ?? '不明'}`);
-  if (location.license_note) metaParts.push(`许可说明：${location.license_note}`);
+  if (index > 0) metaParts.unshift('备用入口');
+  metaParts.push(`访问：${labels.access.get(location.access) ?? location.access ?? '不明'}`);
+  if (location.license_note) metaParts.push(`许可：${location.license_note}`);
   if (location.attribution) metaParts.push(`署名：${location.attribution}`);
   wrapper.append(el('p', 'location-meta', metaParts.join('；')));
   if (location.file_snapshot) {
@@ -1052,15 +1052,15 @@ function externalLink(url, text) {
 }
 
 const HEALTH_REASON_TEXT = {
-  private_host: '目标解析到非公开地址，安全检查未放行',
+  private_host: '非公开地址，预检未放行',
   dns_error: 'DNS 解析失败',
-  timeout: '连接或响应超时',
-  error_page: '返回错误页面',
+  timeout: '请求超时',
+  error_page: '返回错误页',
   rate_limited: '站点限流',
-  server_error: '站点返回服务端错误',
+  server_error: '服务端错误',
 };
 
-/** 自动检查仅说明链接响应，不能证明文件内容或课程归属。 */
+/** 自动检查仅反映网络响应，不代表内容、课程或授权已确认。 */
 function renderHealth(entry, labels) {
   const health = linkHealth(labels.links, entry.url);
   const evidence = classifyHealth(health);
@@ -1077,17 +1077,17 @@ function renderHealth(entry, labels) {
   symbol.setAttribute('aria-hidden', 'true');
   const label =
     evidence === 'preflight' && health.http_status
-      ? '后续目标预检中止'
+      ? '后续跳转预检未放行'
       : HEALTH_EVIDENCE_LABELS[evidence];
-  node.append(symbol, document.createTextNode(`自动检查：${label}`));
+  node.append(symbol, document.createTextNode(`外链检查：${label}`));
 
   const checkedAt = health.checked_at;
-  if (checkedAt) node.append(document.createTextNode(`，检查于 ${formatDate(checkedAt)}`));
-  if (health.http_status) node.append(document.createTextNode(`，HTTP ${health.http_status}`));
+  if (checkedAt) node.append(document.createTextNode(` · ${formatDate(checkedAt)}`));
+  if (health.http_status) node.append(document.createTextNode(` · HTTP ${health.http_status}`));
   const reason = HEALTH_REASON_TEXT[health.reason];
-  if (reason) node.append(document.createTextNode(`；${reason}`));
+  if (reason) node.append(document.createTextNode(`（${reason}）`));
   if (isStale(checkedAt, HEALTH_NOW)) {
-    node.append(document.createTextNode(' '), el('span', 'health-stale', '结果已超过 7 天'));
+    node.append(document.createTextNode(' '), el('span', 'health-stale', '超过 7 天'));
   }
   return node;
 }
@@ -1113,7 +1113,7 @@ main().catch((error) => {
   console.error(error);
   if (document.body.dataset.hero === 'centered') document.body.dataset.hero = 'expanded';
   showLoadError(
-    '无法加载课程目录（data/catalog.json）。请刷新页面；若问题仍然存在，说明构建产物不完整，可先查看来源与检索记录。',
+    '无法加载课程目录（data/catalog.json），请刷新页面；若问题持续，可先查看来源与致谢。',
   );
   const noResults = document.getElementById('no-results');
   if (noResults) noResults.hidden = true;

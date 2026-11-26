@@ -71,13 +71,13 @@ console.log(
     .join('，') || '无'}）`,
 );
 if (monitoring.present) {
-  // 统计分母是站点引用的网址；未监控、预检拦截与有响应必须分开表述。
+  // 统计分母是站点引用的网址；未监控、预检未放行与已响应必须分开表述。
   const health = summarizeLinkCoverage(dataset);
   console.log(`外链：${healthScopeText(health)}`);
   console.log(`  证据：${healthCountsText(health)}`);
   for (const note of healthEvidenceNotes(health)) console.log(`  ${note}`);
 } else {
-  console.log('外链：尚未生成 monitoring.json；所有链接在站点上显示“从未检查”。');
+  console.log('外链：尚未生成 monitoring.json；所有链接在站点上显示「从未检查」。');
 }
 
 if (!coverage.complete) {

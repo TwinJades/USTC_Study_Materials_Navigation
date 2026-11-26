@@ -1,21 +1,19 @@
 # 来源、检索记录与致谢
 
-> 本文件由 `npm run build` 从 `data/sources.json`、`data/research-log.jsonl`、`data/resources.json` 生成，请勿手工编辑。
+> 本文件由 `npm run build` 自动生成，请勿手工编辑。
 
 ## 概览
 
-- 课程：1184 门（已收录资料 405 门，暂未收录 779 门）。
-- 资料：2782 条（按资料类型与试题年份的覆盖见下一节）。
-- 来源：179 个登记来源，其中 169 个被正式资料引用。
+- 课程：1184 门（已收录 405 门，暂未收录 779 门）。
+- 资料：2782 条（分类与年份覆盖见下节）。
+- 来源：179 个已登记来源，其中 169 个被正式资料引用。
 - 检索记录：6753 条，覆盖 1184 门课程。
-- 查缺记录：0 门课程尚未记录全部 GitHub / 评课社区 / 公开网页三条检索路径；未记录不等于没有资料，只表示本文件未覆盖。
-- 外链检查：2026-11-23T18:04:59.848Z；统计分母是站点引用的 3172 个网址，监控文件覆盖其中 3123 个。
-- 检查结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 49。
-- 从未检查的网址没有监控记录，与“已检查但无法确认”不同。
+- 查缺进度：0 门课程尚未录齐 GitHub / 评课社区 / 公开网页三条检索路径（未录齐不代表没有资料）。
+- 外链检查：尚未运行，所有链接在站点上显示「从未检查」。
 
 ## 课程 × 资料类型 × 试题年份覆盖
 
-只列出已有已确认资料的课程；未列出的课程属于“暂未收录”，清单见 `data/without-resources/`。一个资料条目可能被多门课程共用，但其归属须有课程代码证据。资料分为五类：试题与解析、作业/习题与小测、学习资料、教材与参考书、大作业与考核作品；小测归入作业类并保留原卷/回忆版等标记。只记录到学年的资料显示为“2025—2026 学年”一类学年区间，不折算成公历年。教材与参考书只列权利方公开、免登录、免费且直达完整 PDF 的全文。
+仅列出已收录资料的课程；暂未收录清单见 `data/without-resources/`。仅确认到学年的资料显示「YYYY—YYYY 学年」，不折算为公历年；「教材与参考书」仅收权利方公开、免登录、免费且直达完整 PDF 的全文。
 
 ### 001046 数值分析
 
@@ -145,15 +143,15 @@
 专业课 · 数学
 
 - **试题与解析**
-  - 2025 年（类型不明、原题、解答情况不明）：数理方程(A)2025春真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%28A%292025%E6%98%A5%E7%9C%9F%E9%A2%98.pdf（文件页）
-  - 2025 年（类型不明、原题、含解答）：数理方程(A)2025春真题参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%28A%292025%E6%98%A5%E7%9C%9F%E9%A2%98%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2025 年（卷别不明、原题、解答情况不明）：数理方程(A)2025春真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%28A%292025%E6%98%A5%E7%9C%9F%E9%A2%98.pdf（文件页）
+  - 2025 年（卷别不明、原题、含解答）：数理方程(A)2025春真题参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%28A%292025%E6%98%A5%E7%9C%9F%E9%A2%98%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2021 年（期末、形式不明、解答情况不明）：数理方程A 2021 期末试卷 —— USTC 评课社区 https://icourse.club/course/2963/#review-49683
   - 2020 年（期末、形式不明、解答情况不明）：2020数理方程A期末试卷及答案 —— USTC 评课社区 https://icourse.club/course/2963/#review-49683
-  - 2020 年（类型不明、原题、无解答）：数理方程A 2020 春(毕业班)考试试卷 —— USTC 评课社区 https://icourse.club/course/2963/#review-49683
+  - 2020 年（卷别不明、原题、无解答）：数理方程A 2020 春(毕业班)考试试卷 —— USTC 评课社区 https://icourse.club/course/2963/#review-49683
   - 2001—2002 学年、2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2013—2014 学年、2014—2015 学年、2015—2016 学年、2016—2017 学年、2018—2019 学年、2019—2020 学年（期末、原题、含解答）：数理方程历年真题1 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%981.pdf（文件页）
   - 2001—2002 学年、2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2013—2014 学年、2014—2015 学年、2015—2016 学年、2016—2017 学年、2018—2019 学年、2019—2020 学年（期末、原题、含解答）：数理方程历年真题2 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%982.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数理方程真题(改版) —— USTC 评课社区 https://icourse.club/course/2980/#review-85815
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数理方程A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/2966/#review-46873
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数理方程真题(改版) —— USTC 评课社区 https://icourse.club/course/2980/#review-85815
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数理方程A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/2966/#review-46873
   - 2014—2015 学年、2019—2020 学年（期末、原题、含解答）：数理方程A历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BA%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
 - **学习资料**
   - 第一节课课件 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/2972/#review-22209
@@ -184,8 +182,8 @@
   - 2022—2023 学年（期末、回忆版、无解答）：2022-2023学年第一学期复变函数(B)期末试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/2022-2023%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%28B%29%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.jpg（文件页）
   - 2003—2004 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2009—2010 学年、2017—2018 学年、2019—2020 学年、2020—2021 学年、2021—2022 学年、2022—2023 学年、2023—2024 学年、2024—2025 学年（期末、原题、解答情况不明）：复变函数历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
   - 年份待确认（期末、原题、无解答）：复变函数历年真题集（2026版，A/B 期末题） —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/complexexams.pdf（资料目录）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：复变函数B 上古密卷 —— USTC 评课社区 https://icourse.club/course/1670/#review-18832
-  - 年份待确认（类型不明、形式不明、解答情况不明）：复变函数B 往年真题 —— USTC 评课社区 https://icourse.club/course/21917/#review-87356
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：复变函数B 上古密卷 —— USTC 评课社区 https://icourse.club/course/1670/#review-18832
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：复变函数B 往年真题 —— USTC 评课社区 https://icourse.club/course/21917/#review-87356
 - **作业、习题与小测**
   - 《复变函数》部分课后习题手写参考答案(含第 3 章复积分习题) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21917/#review-87356
   - 复变函数B 习题解答（第 1—7 章） —— USTC 复变函数B 习题解答；核验于 2026-11-19 https://fubianb.brealid.cn/2022/chapter1/（资料目录）
@@ -207,15 +205,15 @@
   - 2017 年（期末、原题、含解答）：数理方程B 2017 期末试题（含参考答案） —— USTC-Resource/USTC-Course https://raw.githubusercontent.com/USTC-Resource/USTC-Course/master/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/exams/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BB2017%E7%AD%94%E6%A1%88.pdf
   - 2001—2002 学年、2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2013—2014 学年、2014—2015 学年、2015—2016 学年、2016—2017 学年、2018—2019 学年、2019—2020 学年（期末、原题、含解答）：数理方程历年真题1 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%981.pdf（文件页）
   - 2001—2002 学年、2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2013—2014 学年、2014—2015 学年、2015—2016 学年、2016—2017 学年、2018—2019 学年、2019—2020 学年（期末、原题、含解答）：数理方程历年真题2 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%982.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数理方程真题汇总 —— USTC 评课社区 https://icourse.club/course/17985/#review-83962
-  - 年份待确认（类型不明、形式不明、含解答）：数理方程B 2022–2023 学年手写试题解答 —— USTC 评课社区 https://icourse.club/course/2995/#review-92842
-  - 年份待确认（类型不明、形式不明、含解答）：数理方程B 2023–2024 学年手写试题解答 —— USTC 评课社区 https://icourse.club/course/2995/#review-92842
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数理方程B 答案（2013-2020） —— USTC 评课社区 https://icourse.club/course/2992/#review-93741
-  - 年份待确认（类型不明、原题、解答情况不明）：数理方程B 试卷 —— Kobe972/ustc_course_plus https://raw.githubusercontent.com/Kobe972/ustc_course_plus/main/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E6%B1%87%E6%80%BB.pdf
-  - 年份待确认（类型不明、形式不明、含解答）：数理方程B 手写试题解答(达朗贝尔公式与冲量法、分离变量) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
-  - 年份待确认（类型不明、形式不明、含解答）：数理方程B 手写试题解答(球谐勒让德与柱坐标贝塞尔边值问题) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
-  - 年份待确认（类型不明、形式不明、含解答）：数理方程B 手写试题解答(热传导、波动方程与贝塞尔展开等) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
-  - 年份待确认（类型不明、原题、解答情况不明）：数理方程B历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BB%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数理方程真题汇总 —— USTC 评课社区 https://icourse.club/course/17985/#review-83962
+  - 年份待确认（卷别不明、形式不明、含解答）：数理方程B 2022–2023 学年手写试题解答 —— USTC 评课社区 https://icourse.club/course/2995/#review-92842
+  - 年份待确认（卷别不明、形式不明、含解答）：数理方程B 2023–2024 学年手写试题解答 —— USTC 评课社区 https://icourse.club/course/2995/#review-92842
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数理方程B 答案（2013-2020） —— USTC 评课社区 https://icourse.club/course/2992/#review-93741
+  - 年份待确认（卷别不明、原题、解答情况不明）：数理方程B 试卷 —— Kobe972/ustc_course_plus https://raw.githubusercontent.com/Kobe972/ustc_course_plus/main/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B%20%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E6%B1%87%E6%80%BB.pdf
+  - 年份待确认（卷别不明、形式不明、含解答）：数理方程B 手写试题解答(达朗贝尔公式与冲量法、分离变量) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
+  - 年份待确认（卷别不明、形式不明、含解答）：数理方程B 手写试题解答(球谐勒让德与柱坐标贝塞尔边值问题) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
+  - 年份待确认（卷别不明、形式不明、含解答）：数理方程B 手写试题解答(热传导、波动方程与贝塞尔展开等) —— USTC 评课社区 https://icourse.club/course/12389/#review-92852
+  - 年份待确认（卷别不明、原题、解答情况不明）：数理方程B历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8B/%E6%95%B0%E7%90%86%E6%96%B9%E7%A8%8BB%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
 - **作业、习题与小测**
   - 课后习题解析 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/24052/#review-83947
   - 数理方程作业题目解析 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/14347/#review-14424
@@ -466,7 +464,7 @@
 专业课 · 化学 · 物理
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：量子化学 往年考卷 —— USTC 评课社区 https://icourse.club/course/6675/#review-46209
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：量子化学 往年考卷 —— USTC 评课社区 https://icourse.club/course/6675/#review-46209
 - **学习资料**
   - 量子化学 章节讲义（绪论、分子对称性与点群、群的表示理论、多原子分子电子结构、计算量子化学初步） —— 李震宇（Prof. Zhenyu Li）教学页 q2chemistry.net/teaching；核验于 2026-11-18 https://q2chemistry.net/teaching.html
   - 量子化学必会知识点 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/6675/#review-46209
@@ -612,9 +610,9 @@
 专业课 · 通信 · 统计
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：26春统计信号_回忆版_2 —— USTC 评课社区 https://icourse.club/course/26601/#review-102740
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：26春统计信号_回忆版_2 —— USTC 评课社区 https://icourse.club/course/26601/#review-102740
   - 2021—2022 学年（期末、回忆版、解答情况不明）：统计信号分析与处理 2021—2022学年（公历年份未确认） 期末（回忆版） —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/main/3SP%20Statistical%20Signal%20Analysis%20and%20Processing/22%E6%98%A5%E6%9C%9F%E6%9C%AB.pdf
-  - 年份待确认（类型不明、回忆版、无解答）：统计信号分析与处理 手写回忆版试题(1 页,卷面年份未注) —— USTC 评课社区 https://icourse.club/course/25093/#review-93759
+  - 年份待确认（卷别不明、回忆版、无解答）：统计信号分析与处理 手写回忆版试题(1 页,卷面年份未注) —— USTC 评课社区 https://icourse.club/course/25093/#review-93759
 - **作业、习题与小测**
   - 统计信号分析与处理 作业答案与教材习题解析合集 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/25093/#review-94481
   - 统计信号分析与处理作业答案 —— ly382965/USTC_learning_materials（6系课程资料）；核验于 2026-11-18 https://github.com/ly382965/USTC_learning_materials/blob/main/3SP%20Statistical%20Signal%20Analysis%20and%20Processing/%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88.pdf
@@ -643,7 +641,7 @@
 专业课 · 电子 · 通信
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：信号与系统B 往年题合集 —— USTC 评课社区 https://icourse.club/course/21212/#review-105239
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：信号与系统B 往年题合集 —— USTC 评课社区 https://icourse.club/course/21212/#review-105239
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：信号与系统B：试题与解析（9 个附件） —— USTC 评课社区 https://icourse.club/course/21214/#review-95214
 - **作业、习题与小测**
   - 信号与系统B 期末练习题目 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21214/#review-95214
@@ -721,7 +719,7 @@
 专业课 · 地球科学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：矿床学考试（回忆版本） —— USTC 评课社区 https://icourse.club/course/24066/#review-95221
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：矿床学考试（回忆版本） —— USTC 评课社区 https://icourse.club/course/24066/#review-95221
 
 ### 007314 科学计算与程序设计
 
@@ -772,7 +770,7 @@
 专业课 · 生命科学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：分子生物学回忆卷 —— USTC 评课社区 https://icourse.club/course/21223/#review-93086
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：分子生物学回忆卷 —— USTC 评课社区 https://icourse.club/course/21223/#review-93086
 - **学习资料**
   - 分子生物学提纲 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/13247/#review-103642
 
@@ -832,7 +830,7 @@
 专业课 · 机械与仪器
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：非机类制图 2011—2012 学年考试卷 —— USTC 评课社区 https://icourse.club/course/3624/#review-327
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：非机类制图 2011—2012 学年考试卷 —— USTC 评课社区 https://icourse.club/course/3624/#review-327
 - **作业、习题与小测**
   - 机械制图 第三次作业（CAD 文件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/3624/#review-327
 - **学习资料**
@@ -888,11 +886,11 @@
 
 - **试题与解析**
   - 2025 年（期末、形式不明、含解答）：现代控制理论 2025 期末（答案） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/2025%E5%B9%B4%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%88%B6%E7%AD%94%E6%A1%88/2025%E3%80%8A%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98.pdf
-  - 2025 年（类型不明、形式不明、含解答）：现代控制理论 2025 试卷（答案） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/2025%E5%B9%B4%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%88%B6%E7%AD%94%E6%A1%88/2025%E7%AD%94%E6%A1%88%E5%86%8C%E9%9D%9E%E5%AE%98%E6%96%B9%E7%AD%94%E6%A1%88.pdf
-  - 2007—2008 学年（类型不明、形式不明、解答情况不明）：现代控制理论 2007—2008学年（公历年份未确认） 试卷 —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/%E8%AF%95%E9%A2%98%281%29.pdf
-  - 2007—2008 学年（类型不明、形式不明、含解答）：现代控制理论 2007—2008学年（公历年份未确认） 试卷（答案） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/%E8%AF%95%E9%A2%98%E7%AD%94%E6%A1%88%281%29.pdf
-  - 2014—2015 学年（类型不明、形式不明、含解答）：现代控制理论 2014—2015学年（公历年份未确认） 试卷（答案） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA14-15%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf
-  - 2022—2023 学年（类型不明、回忆版、含解答）：现代控制理论 2022—2023学年（公历年份未确认） 试卷（回忆版） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/22-23%281%29.pdf
+  - 2025 年（卷别不明、形式不明、含解答）：现代控制理论 2025 试卷（答案） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/2025%E5%B9%B4%E8%80%83%E8%AF%95%E8%AF%95%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%88%B6%E7%AD%94%E6%A1%88/2025%E7%AD%94%E6%A1%88%E5%86%8C%E9%9D%9E%E5%AE%98%E6%96%B9%E7%AD%94%E6%A1%88.pdf
+  - 2007—2008 学年（卷别不明、形式不明、解答情况不明）：现代控制理论 2007—2008学年（公历年份未确认） 试卷 —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/%E8%AF%95%E9%A2%98%281%29.pdf
+  - 2007—2008 学年（卷别不明、形式不明、含解答）：现代控制理论 2007—2008学年（公历年份未确认） 试卷（答案） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/%E8%AF%95%E9%A2%98%E7%AD%94%E6%A1%88%281%29.pdf
+  - 2014—2015 学年（卷别不明、形式不明、含解答）：现代控制理论 2014—2015学年（公历年份未确认） 试卷（答案） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA14-15%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf
+  - 2022—2023 学年（卷别不明、回忆版、含解答）：现代控制理论 2022—2023学年（公历年份未确认） 试卷（回忆版） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E8%AF%95%E5%8D%B7/22-23%281%29.pdf
   - 2025—2026 学年（期末、原题、解答情况不明）：现代控制理论 2025—2026学年（公历年份未确认） 期末（原卷） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%9A%84%E8%AF%95%E5%8D%B7/2025-2026%E5%AD%A6%E5%B9%B42023%E7%BA%A7%E5%9F%BA%E4%BA%8E%E8%AF%84%E8%AF%BE%E7%A4%BE%E5%8C%BA%E5%9B%BE%E7%89%87%E6%95%B4%E7%90%86%E7%9A%84%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE/2023%E7%BA%A72026%E5%B9%B41%E6%9C%88%E8%80%83%E8%AF%95%E9%A2%98%E7%9B%AE.pdf
 - **作业、习题与小测**
   - 现代控制理论作业题答案 —— EpiHio/USTC_Automation（自动化专业课程资料）；核验于 2026-11-18 https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/%E4%BD%9C%E4%B8%9A%E9%A2%98%E7%AD%94%E6%A1%88/%E7%AC%AC%E4%B8%80%E7%AB%A0%26%E7%AC%AC%E4%BA%8C%E7%AB%A0%281%29.pdf（文件页）
@@ -910,9 +908,9 @@
 专业课 · 机械与仪器 · 自动化
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：传感器试卷 —— USTC 评课社区 https://icourse.club/course/424/#review-94943
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：传感器试卷 —— USTC 评课社区 https://icourse.club/course/424/#review-94943
   - 年份待确认（期末、形式不明、解答情况不明）：传感器原理与技术 2021—2022 学年期末试卷 —— USTC 评课社区 https://icourse.club/course/425/#review-40077
-  - 年份待确认（类型不明、形式不明、解答情况不明）：传感器原理与技术 考题回忆版 —— USTC 评课社区 https://icourse.club/course/425/#review-93157
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：传感器原理与技术 考题回忆版 —— USTC 评课社区 https://icourse.club/course/425/#review-93157
 - **作业、习题与小测**
   - 传感器原理与技术 思考题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/26263/#review-102913
   - 传感器原理与技术 自测题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/425/#review-93157
@@ -1030,7 +1028,7 @@
   - 2018 年（期末、形式不明、含解答）：图论 2018 秋期末试题与答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E5%9B%BE%E8%AE%BA/2018%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E5%9B%BE%E8%AE%BA%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf（文件页）
   - 年份待确认（期末、形式不明、解答情况不明）：图论 历年试题合订 —— USTC 评课社区 https://icourse.club/course/20656/#review-100874
   - 年份待确认（期末、形式不明、解答情况不明）：图论 期末回忆版 —— USTC 评课社区 https://icourse.club/course/1458/#review-11055
-  - 年份待确认（类型不明、回忆版、无解答）：图论:手写整理试题(7 道大题) —— USTC 评课社区 https://icourse.club/course/1457/#review-16934
+  - 年份待确认（卷别不明、回忆版、无解答）：图论:手写整理试题(7 道大题) —— USTC 评课社区 https://icourse.club/course/1457/#review-16934
 - **作业、习题与小测**
   - 图论 习题 1 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/1458/#review-87263
   - 图论导引 习题解答 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20656/#review-55209
@@ -1056,14 +1054,14 @@
 
 - **试题与解析**
   - 2023 年（期末、原题、解答情况不明）：2023代数结构期末试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/2023%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf（文件页）
-  - 2023 年（类型不明、形式不明、解答情况不明）：代数结构 2023 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2023.pdf
+  - 2023 年（卷别不明、形式不明、解答情况不明）：代数结构 2023 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2023.pdf
   - 2018 年、2019 年、2023 年（期中期末混合、原题、解答情况不明）：代数结构往年卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84%E5%BE%80%E5%B9%B4%E5%8D%B7.pdf（文件页）
-  - 2022 年（类型不明、原题、解答情况不明）：代数结构 2022 年春季学期考试试卷 —— USTC 评课社区 https://icourse.club/uploads/images/42474de035d8c2a7b4572265c5c9ae46aaad517b.png（文件页）
-  - 2022 年（类型不明、形式不明、解答情况不明）：代数结构 2022 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2022.pdf
-  - 2019 年（类型不明、原题、无解答）：代数结构 2019 试卷（徐宏力班） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2019.pdf
+  - 2022 年（卷别不明、原题、解答情况不明）：代数结构 2022 年春季学期考试试卷 —— USTC 评课社区 https://icourse.club/uploads/images/42474de035d8c2a7b4572265c5c9ae46aaad517b.png（文件页）
+  - 2022 年（卷别不明、形式不明、解答情况不明）：代数结构 2022 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2022.pdf
+  - 2019 年（卷别不明、原题、无解答）：代数结构 2019 试卷（徐宏力班） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AlgebraicStructure2019.pdf
   - 2018 年（期末、原题、无解答）：代数结构 2018 春期末试题（Lyncien 整理） —— USTC-Resource/USTC-Course、USTC-CS-Course-Resource/USTC-CS-Resources、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/exams/2018%E5%B9%B4%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf
   - 2020—2021 学年（期末、原题、解答情况不明）：代数结构 2020—2021 学年第二学期期末试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/2021%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：代数结构 考试回忆 —— USTC 评课社区 https://icourse.club/course/12381/#review-11059
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：代数结构 考试回忆 —— USTC 评课社区 https://icourse.club/course/12381/#review-11059
   - 年份待确认（期末、形式不明、解答情况不明）：代数结构 历年期末试卷合集 —— USTC 评课社区 https://icourse.club/course/26264/#review-102329
 - **作业、习题与小测**
   - 年份待确认（小测、原题、解答情况不明）：2020代数结构小测 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84/2020%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84%E5%B0%8F%E6%B5%8B.pdf（文件页）
@@ -1082,8 +1080,8 @@
 专业课 · 人工智能 · 计算机
 
 - **试题与解析**
-  - 2023 年（类型不明、形式不明、解答情况不明）：人工智能基础 2023 春试卷（吉建民班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ArtificialIntelligence%202023%20Spring.pdf
-  - 2021 年（类型不明、形式不明、解答情况不明）：人工智能基础 2021 春试卷（吉建民班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ArtificialIntelligence%202021%20Spring.pdf
+  - 2023 年（卷别不明、形式不明、解答情况不明）：人工智能基础 2023 春试卷（吉建民班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ArtificialIntelligence%202023%20Spring.pdf
+  - 2021 年（卷别不明、形式不明、解答情况不明）：人工智能基础 2021 春试卷（吉建民班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ArtificialIntelligence%202021%20Spring.pdf
   - 2021 年（期末、原题、含解答）：人工智能基础 2021 期末试题及参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/2021%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf（文件页）
   - 年份待确认（期末、原题、无解答）：人工智能基础 2020 春期末试题（011119，A 卷） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、USTC-CS-Course-Resource/USTC-CS-Resources、feixu 学习资料分享站（AList） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ArtificialIntelligence%202020%20Spring.pdf
   - 年份待确认（期末、原题、含解答）：人工智能基础 2020 期末试题参考答案（sxl，非官方） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/2020%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88sxl%EF%BC%88%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%AF%B9%EF%BC%89.pdf（文件页）
@@ -1103,7 +1101,7 @@
   - 2019 年（期中、原题、含解答）：计算机网络 2019 期中（华蓓班，含自做答案） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/CN2019M.pdf
   - 2018 年（期末、原题、无解答）：计算机网络 2018 秋期末试题 —— USTC-Resource/USTC-Course、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exams/2018%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf
   - 2018 年（期中期末混合、形式不明、解答情况不明）：计算机网络期末试卷合集（2016—2017、2018 秋、2020—2021） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB%E5%90%88%E9%9B%86.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算机网络 小测题 —— USTC 评课社区 https://icourse.club/course/6260/#review-10812
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算机网络 小测题 —— USTC 评课社区 https://icourse.club/course/6260/#review-10812
 - **作业、习题与小测**
   - 《计算机网络：自顶向下方法（第 7 版）》课后习题参考答案（食铁兽） —— 食铁兽（JackeyLea）技术博客；核验于 2026-11-19 https://feater.top/book/compute-network-top-down-mothed-answer/
   - 《计算机网络：自顶向下方法》课后题、实验与编程作业答案 —— jzplp/Computer-Network-A-Top-Down-Approach-Answer；核验于 2026-11-19 https://github.com/jzplp/Computer-Network-A-Top-Down-Approach-Answer（资料目录）
@@ -1138,7 +1136,7 @@
 - **试题与解析**
   - 2017 年（期末、原题、解答情况不明）：计算机组成原理 2017 期末试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/2017%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.pdf（文件页）
   - 2017 年（期末、回忆版、解答情况不明）：计算机组成原理 2017 试卷（2016-2017 学年第二学期，回忆版） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、USTC-Resource/USTC-Course https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/COD2017.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算机组成原理：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/13327/#review-105394
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算机组成原理：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/13327/#review-105394
 - **作业、习题与小测**
   - 计算机组成原理课本习题答案 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E8%AF%BE%E6%9C%AC%E7%AD%94%E6%A1%88.pdf（文件页）
 - **学习资料**
@@ -1167,27 +1165,27 @@
   - 2023 年（期中、原题、含解答）：算法基础 2023 春期中（陈雪班，含民间答案） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2023%E5%B9%B4%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98%EF%BC%88%E9%99%88%E9%9B%AA%E7%8F%AD%EF%BC%89.pdf（文件页）
   - 2023 年（期末、形式不明、解答情况不明）：算法基础 2023 期末（陈雪、邵帅班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Algo2023Final.pdf
   - 2023 年（期中、形式不明、解答情况不明）：算法基础 2023 期中（陈雪、邵帅班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Algo2023Mid.pdf
-  - 2023 年（类型不明、形式不明、解答情况不明）：算法基础 2023 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2023.md
+  - 2023 年（卷别不明、形式不明、解答情况不明）：算法基础 2023 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2023.md
   - 2022 年（期末、原题、解答情况不明）：算法基础 2022 春期末（陈雪班） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2022%E5%B9%B4%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98%EF%BC%88%E9%99%88%E9%9B%AA%E7%8F%AD%EF%BC%89.pdf（文件页）
   - 2022 年（期中、原题、解答情况不明）：算法基础 2022 春期中（陈雪班） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2022%E5%B9%B4%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98%EF%BC%88%E9%99%88%E9%9B%AA%E7%8F%AD%EF%BC%89.pdf（文件页）
   - 2021 年（期末、原题、含解答）：算法基础 2021 秋补考卷（含答案） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2021%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E8%A1%A5%E8%80%83%E5%8D%B7%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%EF%BC%88%E7%AD%94%E6%A1%88%EF%BC%89.pdf（文件页）
   - 2021 年（期末、原题、解答情况不明）：算法基础 2021 秋期末 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2021%20%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95.pdf（文件页）
   - 2021 年（期中、形式不明、解答情况不明）：算法基础 2021 秋期中（徐云班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202021%20Autumn%20Mid.pdf
-  - 2021 年（类型不明、形式不明、解答情况不明）：算法基础 2021 秋试卷（徐云班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202021%20Autumn.pdf
+  - 2021 年（卷别不明、形式不明、解答情况不明）：算法基础 2021 秋试卷（徐云班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202021%20Autumn.pdf
   - 2020 年（期末、原题、含解答）：算法基础 2020 期末答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/20%E6%9C%9F%E6%9C%AB%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2020 年（期末、原题、解答情况不明）：算法基础 2020 秋期末 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2020%20%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95.pdf（文件页）
-  - 2019 年（类型不明、形式不明、解答情况不明）：算法基础 2019 秋试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202019%20Autumn.pdf
+  - 2019 年（卷别不明、形式不明、解答情况不明）：算法基础 2019 秋试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202019%20Autumn.pdf
   - 2018 年（期末、原题、解答情况不明）：算法基础 2018 秋期末试题 —— USTC-Resource/USTC-Course、guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/exams/2018%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98-%E5%BE%90%E4%BA%91.pdf
   - 2018 年（期中、原题、解答情况不明）：算法基础 2018 秋期中试题 —— USTC-Resource/USTC-Course、guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/exams/2018%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98-%E5%BE%90%E4%BA%91.pdf
   - 2018 年（期中期末混合、形式不明、解答情况不明）：算法基础：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/5261/#review-12066
-  - 2017 年（类型不明、形式不明、解答情况不明）：算法基础 2017 秋试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202017%20Autumn.pdf
+  - 2017 年（卷别不明、形式不明、解答情况不明）：算法基础 2017 秋试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms%202017%20Autumn.pdf
   - 2009 年（期末、原题、含解答）：算法基础 2009 秋期末试题及答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/2009%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.doc（文件页）
-  - 2009 年（类型不明、形式不明、解答情况不明）：算法基础 2009 试卷（顾乃杰班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2009A.doc
-  - 2009 年（类型不明、形式不明、解答情况不明）：算法基础 2009 试题（第二份） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2009Q.doc
+  - 2009 年（卷别不明、形式不明、解答情况不明）：算法基础 2009 试卷（顾乃杰班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2009A.doc
+  - 2009 年（卷别不明、形式不明、解答情况不明）：算法基础 2009 试题（第二份） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/FundamentalAlgorithms2009Q.doc
   - 年份待确认（期末、形式不明、含解答）：算法基础 2025 秋期末试卷部分答案（4 图） —— USTC 评课社区 https://icourse.club/uploads/files/1d8162c7faf4dd95053bae00185fe3e890666068.jpg
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：算法基础：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21469/#review-102413
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：算法基础：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/22469/#review-63516
-  - 年份待确认（类型不明、形式不明、解答情况不明）：算法基础：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/5260/#review-43916
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：算法基础：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/5260/#review-43916
   - 年份待确认（期末、形式不明、解答情况不明）：算法基础期末样卷 —— USTC 评课社区 https://icourse.club/course/18315/#review-62320
 - **学习资料**
   - 算法基础 笔记与课件（USTC-Course） —— USTC-Resource/USTC-Course；核验于 2026-11-19 https://github.com/USTC-Resource/USTC-Course/tree/master/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/notes（资料目录）
@@ -1208,9 +1206,9 @@
 - **试题与解析**
   - 2024 年（期末、形式不明、解答情况不明）：数据库系统及应用 2024final —— USTC 评课社区 https://icourse.club/course/22470/#review-84641
   - 2021 年（期中、原题、含解答）：数据库系统及应用:2020-2021 学年第二学期期中测验试题与答案 —— USTC 评课社区 https://icourse.club/course/14365/#review-34602
-  - 2020 年（类型不明、形式不明、解答情况不明）：数据库系统及应用 2020 春试卷（金培权班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Database%202020%20Spring.pdf
+  - 2020 年（卷别不明、形式不明、解答情况不明）：数据库系统及应用 2020 春试卷（金培权班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Database%202020%20Spring.pdf
   - 2020 年（期末、原题、解答情况不明）：数据库系统与应用 2020 期末考试 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%BA%94%E7%94%A82020%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95.pdf（文件页）
-  - 2019 年（类型不明、形式不明、解答情况不明）：数据库系统及应用 2019 春试卷（金培权班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Database%202019%20Spring.pdf
+  - 2019 年（卷别不明、形式不明、解答情况不明）：数据库系统及应用 2019 春试卷（金培权班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/Database%202019%20Spring.pdf
   - 2019 年（期末、原题、解答情况不明）：数据库系统与应用 2019 期末考试 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%BA%94%E7%94%A82019%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95.pdf（文件页）
 - **作业、习题与小测**
   - 数据库练习题_1 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/14365/#review-34602
@@ -1257,15 +1255,15 @@
 专业课 · 计算机
 
 - **试题与解析**
-  - 2026 年（类型不明、回忆版、解答情况不明）：操作系统原理与设计 2026 春回忆版（李永坤、王志强班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2026Spring.pdf
-  - 2026 年（类型不明、回忆版、解答情况不明）：操作系统原理与设计 2026 春回忆版（李永坤班，第二份） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2026SpringLYK.pdf
-  - 2021 年（类型不明、回忆版、解答情况不明）：操作系统原理与设计 2021 考试要点（陈香兰班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2021.pdf
+  - 2026 年（卷别不明、回忆版、解答情况不明）：操作系统原理与设计 2026 春回忆版（李永坤、王志强班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2026Spring.pdf
+  - 2026 年（卷别不明、回忆版、解答情况不明）：操作系统原理与设计 2026 春回忆版（李永坤班，第二份） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2026SpringLYK.pdf
+  - 2021 年（卷别不明、回忆版、解答情况不明）：操作系统原理与设计 2021 考试要点（陈香兰班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2021.pdf
   - 2021 年（期末、原题、解答情况不明）：操作系统原理与设计 2021 期末试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/2021%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.pdf（文件页）
-  - 2020 年（类型不明、形式不明、解答情况不明）：操作系统 2020 试卷回忆版 —— USTC 评课社区 https://icourse.club/course/13766/#review-23009
+  - 2020 年（卷别不明、形式不明、解答情况不明）：操作系统 2020 试卷回忆版 —— USTC 评课社区 https://icourse.club/course/13766/#review-23009
   - 2018 年（期末、原题、无解答）：操作系统原理与设计 2018 春期末试题 —— USTC-Resource/USTC-Course、guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/exams/2018%E5%B9%B4%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf
   - 2018 年（期末、原题、含解答）：操作系统原理与设计 2018 春期末试题参考答案 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OS2018Solution.pdf
   - 2018 年（期末、回忆版、无解答）：操作系统原理与设计 2018 期末试卷回忆（secon） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/2018%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.md（文件页）
-  - 年份待确认（类型不明、回忆版、无解答）：操作系统原理与设计 2017 试卷（回忆版） —— USTC-Resource/USTC-Course、guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/exams/2017%E5%B9%B4%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1%E8%AF%95%E5%8D%B7%EF%BC%88%E5%9B%9E%E5%BF%86%E7%89%88%EF%BC%89.pdf
+  - 年份待确认（卷别不明、回忆版、无解答）：操作系统原理与设计 2017 试卷（回忆版） —— USTC-Resource/USTC-Course、guch8017/USTC_CS_EXAM（跨课试卷索引）、feixu 学习资料分享站（AList） https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/exams/2017%E5%B9%B4%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1%E8%AF%95%E5%8D%B7%EF%BC%88%E5%9B%9E%E5%BF%86%E7%89%88%EF%BC%89.pdf
 - **作业、习题与小测**
   - 操作系统原理与设计 作业（USTC-Course） —— USTC-Resource/USTC-Course；核验于 2026-11-18 https://raw.githubusercontent.com/USTC-Resource/USTC-Course/d091d4d43df88d6744e4c914825afa8f5019d95f/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86%E4%B8%8E%E8%AE%BE%E8%AE%A1/homeworks/4/hw4_sol.pdf（文件页）
 - **学习资料**
@@ -1366,12 +1364,12 @@
 专业课 · 计算机
 
 - **试题与解析**
-  - 2025 年（类型不明、回忆版、解答情况不明）：操作系统(H) 2025 春回忆版（邢凯班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OSH2025.md
+  - 2025 年（卷别不明、回忆版、解答情况不明）：操作系统(H) 2025 春回忆版（邢凯班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OSH2025.md
   - 2022 年（期末、模拟练习、无解答）：操作系统(H) 2022 期末样卷 —— Wloner0809/ustc-course-resource https://github.com/Wloner0809/ustc-course-resource/blob/main/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FH/exam/2022%E6%9C%9F%E6%9C%AB.pdf
   - 2021 年（期末、回忆版、无解答）：操作系统(H) 2021 期末试题（回忆） —— Wloner0809/ustc-course-resource https://github.com/Wloner0809/ustc-course-resource/blob/main/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FH/exam/2021%E6%9C%9F%E6%9C%AB.pdf
-  - 2021 年（类型不明、形式不明、解答情况不明）：操作系统(H) 2021 试卷（邢凯班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OSH2021.pdf
+  - 2021 年（卷别不明、形式不明、解答情况不明）：操作系统(H) 2021 试卷（邢凯班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OSH2021.pdf
   - 2018 年（期末、回忆版、无解答）：操作系统(H) 2018 期末试题（回忆） —— Wloner0809/ustc-course-resource https://github.com/Wloner0809/ustc-course-resource/blob/main/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FH/exam/2018%E6%9C%9F%E6%9C%AB.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：操作系统(H) 往年试卷合集 —— USTC 评课社区 https://icourse.club/course/2681/#review-87446
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：操作系统(H) 往年试卷合集 —— USTC 评课社区 https://icourse.club/course/2681/#review-87446
 - **学习资料**
   - 操作系统(H) 笔记（USTC-CS-Resources） —— USTC-CS-Course-Resource/USTC-CS-Resources；核验于 2026-11-18 https://github.com/USTC-CS-Course-Resource/USTC-CS-Resources/tree/master/CS/OS
   - 操作系统(H) 复习笔记（Wloner0809） —— Wloner0809/ustc-course-resource；核验于 2026-11-18 https://github.com/Wloner0809/ustc-course-resource/blob/main/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FH/review_note/OSH_review.md
@@ -1386,7 +1384,7 @@
 专业课 · 热能
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：试卷 —— USTC 评课社区 https://icourse.club/course/22471/#review-80636
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：试卷 —— USTC 评课社区 https://icourse.club/course/22471/#review-80636
 
 ### 013X08 张量初步
 
@@ -1540,7 +1538,7 @@
 专业课 · 统计
 
 - **试题与解析**
-  - 2026 年（类型不明、形式不明、解答情况不明）：随机过程B 2026 春试卷 —— USTC 评课社区 https://icourse.club/course/6780/#review-103397
+  - 2026 年（卷别不明、形式不明、解答情况不明）：随机过程B 2026 春试卷 —— USTC 评课社区 https://icourse.club/course/6780/#review-103397
   - 2024 年（期末、形式不明、解答情况不明）：随机过程B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/6780/#review-103522
   - 2022 年（期末、原题、解答情况不明）：随机过程B 2021-2022学年第二学期期末试卷 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E7%9B%B8%E5%85%B3%E7%AD%94%E6%A1%88/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8BB2021-2022%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E8%AF%95%E5%8D%B7.pdf
   - 2021 年（期末、原题、无解答）：随机过程B 2020-2021学年第二学期期末试卷 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E7%9B%B8%E5%85%B3%E7%AD%94%E6%A1%88/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8BB2020-2021%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E8%AF%95%E5%8D%B7.pdf
@@ -1556,11 +1554,11 @@
   - 2016 年（期末、原题、解答情况不明）：随机过程B 2015-2016学年第二学期补考试卷 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E7%9B%B8%E5%85%B3%E7%AD%94%E6%A1%88/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8BB2015-2016%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E8%A1%A5%E8%80%83%E8%AF%95%E5%8D%B7.pdf
   - 2013 年（期末、形式不明、解答情况不明）：随机过程 2013-01-22 试卷 —— USTC 评课社区 https://icourse.club/course/18997/#review-29106
   - 年份待确认（期末、形式不明、解答情况不明）：随机过程 期末试卷（RPFinal） —— USTC 评课社区 https://icourse.club/course/18997/#review-29295
-  - 年份待确认（类型不明、形式不明、解答情况不明）：随机过程 往年真题 —— USTC 评课社区 https://icourse.club/course/6780/#review-91494
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：随机过程 往年真题 —— USTC 评课社区 https://icourse.club/course/6780/#review-91494
   - 2021—2022 学年（期末、原题、解答情况不明）：随机过程B 2021-2022学年秋季学期期末试卷 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8B/%E7%9B%B8%E5%85%B3%E7%AD%94%E6%A1%88/%E9%9A%8F%E6%9C%BA%E8%BF%87%E7%A8%8BB2021-2022%E5%B9%B4%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E8%AF%95%E5%8D%B7.pdf
   - 年份待确认（期末、形式不明、解答情况不明）：随机过程B 期末试卷(年份未核实) —— USTC 评课社区 https://icourse.club/course/6777/#review-87547
-  - 年份待确认（类型不明、形式不明、解答情况不明）：随机过程B 试卷 —— USTC 评课社区 https://icourse.club/course/6780/#review-47393
-  - 年份待确认（类型不明、形式不明、解答情况不明）：随机过程B：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/18997/#review-94940
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：随机过程B 试卷 —— USTC 评课社区 https://icourse.club/course/6780/#review-47393
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：随机过程B：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/18997/#review-94940
 - **作业、习题与小测**
   - 复习题答案（带批注纠错版） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18041/#review-85847
   - 复习题答案与解析 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/6780/#review-46886
@@ -1654,7 +1652,7 @@
 
 - **试题与解析**
   - 2021 年（期中、原题、无解答）：有机化学(A1) 2021—2022 学年第一学期期中考试试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E5%85%B6%E4%BB%96/%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6A1/2021-2022%E6%9C%89%E6%9C%BA%E5%8C%96%E5%AD%A6(AI)%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E8%AF%95%E5%8D%B7.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：有机化学(A1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/3482/#review-101489
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：有机化学(A1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/3482/#review-101489
 - **作业、习题与小测**
   - 有机化学(A1) 第二次小测（答案） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/3482/#review-101489
   - 有机化学(A1) 小测 1 试卷与答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/26009/#review-99678
@@ -1697,7 +1695,7 @@
 
 - **试题与解析**
   - 2022 年（期中、形式不明、解答情况不明）：2022秋有机化学B期中试卷及答案 —— USTC 评课社区 https://icourse.club/course/20670/#review-57564
-  - 2021 年（类型不明、形式不明、解答情况不明）：有机化学B：试题与解析（5 个附件） —— USTC 评课社区 https://icourse.club/course/20670/#review-40468
+  - 2021 年（卷别不明、形式不明、解答情况不明）：有机化学B：试题与解析（5 个附件） —— USTC 评课社区 https://icourse.club/course/20670/#review-40468
 - **作业、习题与小测**
   - 有机化学习题 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/3503/#review-40885
   - 有机化学B：作业与习题（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20670/#review-57564
@@ -1709,7 +1707,7 @@
 专业课 · 化学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：物理有机化学：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/4309/#review-99682
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：物理有机化学：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/4309/#review-99682
 - **作业、习题与小测**
   - 物理有机教程书后习题摘编 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4309/#review-99682
 - **学习资料**
@@ -1729,8 +1727,8 @@
 专业课 · 化学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：化工原理 试卷答案与订正 —— USTC 评课社区 https://icourse.club/course/1140/#review-100007
-  - 年份待确认（类型不明、形式不明、解答情况不明）：化工原理 往年试卷（商业试卷店扫描） —— USTC 评课社区 https://icourse.club/course/1140/#review-40975
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：化工原理 试卷答案与订正 —— USTC 评课社区 https://icourse.club/course/1140/#review-100007
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：化工原理 往年试卷（商业试卷店扫描） —— USTC 评课社区 https://icourse.club/course/1140/#review-40975
 - **学习资料**
   - 化工原理 复习 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/1140/#review-100007
   - 化工原理：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/1140/#review-100638
@@ -1756,7 +1754,7 @@
 
 - **试题与解析**
   - 2024 年（期末、形式不明、解答情况不明）：化学原理A 2024 秋期末试卷 —— USTC 评课社区 https://icourse.club/course/24619/#review-98725
-  - 年份待确认（类型不明、形式不明、解答情况不明）：化学原理 真题 —— USTC 评课社区 https://icourse.club/course/12859/#review-76508
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：化学原理 真题 —— USTC 评课社区 https://icourse.club/course/12859/#review-76508
 - **作业、习题与小测**
   - 化学原理 习题答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/19010/#review-96756
 - **学习资料**
@@ -1839,7 +1837,7 @@
 专业课 · 化学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：分析化学真题 —— USTC 评课社区 https://icourse.club/course/909/#review-87364
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：分析化学真题 —— USTC 评课社区 https://icourse.club/course/909/#review-87364
 - **作业、习题与小测**
   - 2025 年：分析化学I 2025春 作业：章节 MATLAB/Python 代码与滴定曲线图 —— gold3fluoride/2025spr.ustc.019175.05.wxz（分析化学I 2025春作业）；核验于 2026-11-18 https://github.com/gold3fluoride/2025spr.ustc.019175.05.wxz/blob/main/trial0329_0.m（文件页）
 - **学习资料**
@@ -2025,9 +2023,9 @@
 专业课 · 物理
 
 - **试题与解析**
-  - 2025 年（类型不明、形式不明、解答情况不明）：量子力学C 2025 试卷（题面） —— USTC 评课社区 https://icourse.club/course/12615/#review-91716
-  - 2016 年、2020 年（类型不明、形式不明、解答情况不明）：量子力学C：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/12615/#review-23280
-  - 年份待确认（类型不明、形式不明、解答情况不明）：量子力学C 考题合集（压缩包） —— USTC 评课社区 https://icourse.club/course/12615/#review-48398
+  - 2025 年（卷别不明、形式不明、解答情况不明）：量子力学C 2025 试卷（题面） —— USTC 评课社区 https://icourse.club/course/12615/#review-91716
+  - 2016 年、2020 年（卷别不明、形式不明、解答情况不明）：量子力学C：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/12615/#review-23280
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：量子力学C 考题合集（压缩包） —— USTC 评课社区 https://icourse.club/course/12615/#review-48398
 - **学习资料**
   - 量子力学C 期末复习 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/12615/#review-91716
   - 量子力学C：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21885/#review-97291
@@ -2053,7 +2051,7 @@
   - 2026 年（期末、回忆版、解答情况不明）：量子力学 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaQMAFinalSMJ.pdf
   - 2026 年（期末、回忆版、解答情况不明）：量子力学 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaQMAFinalYXC.pdf
   - 2025 年（期末、形式不明、解答情况不明）：量子力学 2024 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaQMAFinalSMJ.pdf
-  - 2025 年（类型不明、形式不明、解答情况不明）：量子力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/24102/#review-92596
+  - 2025 年（卷别不明、形式不明、解答情况不明）：量子力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/24102/#review-92596
   - 2024 年（期末、形式不明、解答情况不明）：量子力学 2023 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23FaQMAFinalSMJ.pdf
   - 2024 年（期末、原题、解答情况不明）：量子力学 2024 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaQMAFinalYHX.pdf
   - 2024 年（期中、原题、解答情况不明）：量子力学 2024 期中 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaQMAMidYHX.pdf
@@ -2135,8 +2133,8 @@
   - 2026 年（期末、原题、含解答）：专业选修 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaTSFinal.pdf
   - 2024 年（期末、回忆版、解答情况不明）：专业选修 2023 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23FaTSFinal.pdf
   - 2023 年（期末、回忆版、解答情况不明）：专业选修 2022 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/22FaTSFinal.pdf
-  - 年份待确认（类型不明、回忆版、无解答）：时间和空间 试题回忆版(1 页) —— USTC 评课社区 https://icourse.club/course/25790/#review-100214
-  - 年份待确认（类型不明、回忆版、无解答）：时间和空间 手写回忆版试题(1 页) —— USTC 评课社区 https://icourse.club/course/21851/#review-75875
+  - 年份待确认（卷别不明、回忆版、无解答）：时间和空间 试题回忆版(1 页) —— USTC 评课社区 https://icourse.club/course/25790/#review-100214
+  - 年份待确认（卷别不明、回忆版、无解答）：时间和空间 手写回忆版试题(1 页) —— USTC 评课社区 https://icourse.club/course/21851/#review-75875
 - **学习资料**
   - 时间和空间 课程笔记（修改版） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20688/#review-38383
 
@@ -2157,7 +2155,7 @@
   - 2024 年（期中、原题、解答情况不明）：理论力学 2024 期中 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/24FaTMAMidPHJ.pdf
   - 2023 年（期末、形式不明、解答情况不明）：理论力学 2023 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23SpTMAFinalCLM.pdf
   - 2022 年（期末、形式不明、含解答）：理论力学 2022 春期末考试参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A62022%E6%98%A5%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2022 年（类型不明、形式不明、含解答）：理论力学A 试卷与参考答案(2022 年) —— USTC 评课社区 https://icourse.club/course/19015/#review-42365
+  - 2022 年（卷别不明、形式不明、含解答）：理论力学A 试卷与参考答案(2022 年) —— USTC 评课社区 https://icourse.club/course/19015/#review-42365
   - 2021 年（期末、原题、解答情况不明）：理论力学 2020 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/20FaTMAFinalZJJ.pdf
   - 2021 年（期末、形式不明、解答情况不明）：理论力学 2021 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/21FaTMAFinalLY.pdf
   - 2021 年（期中、原题、解答情况不明）：理论力学 2021 期中 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/21FaTMAMidYYF1.pdf
@@ -2177,11 +2175,11 @@
   - 2018 年（期末、原题、解答情况不明）：理论力学 2018 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/18FaTMAFinalPHJ.pdf
   - 2018 年（期中、原题、含解答）：理论力学A 2018 秋期中（潘海俊，含答案） —— USTC 课程资料簿（GitBook） https://easylink.cc/pwnqyu
   - 2016 年（期末、形式不明、含解答）：理论力学 2016 秋期末考试及参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A62016%E7%A7%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%8F%8A%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 年份待确认（类型不明、原题、无解答）：理论力学A 2019—2020学年第一学期考试试卷(A卷,原卷) —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
-  - 年份待确认（类型不明、形式不明、解答情况不明）：理论力学A 考卷照片（2022 秋） —— USTC 评课社区 https://icourse.club/uploads/images/82706a20a51ba3a16006b4affefcd8b0e0066c53.jpg
-  - 年份待确认（类型不明、原题、无解答）：理论力学A 考试试卷(6题原卷,年份及卷别正文未标) —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
+  - 年份待确认（卷别不明、原题、无解答）：理论力学A 2019—2020学年第一学期考试试卷(A卷,原卷) —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：理论力学A 考卷照片（2022 秋） —— USTC 评课社区 https://icourse.club/uploads/images/82706a20a51ba3a16006b4affefcd8b0e0066c53.jpg
+  - 年份待确认（卷别不明、原题、无解答）：理论力学A 考试试卷(6题原卷,年份及卷别正文未标) —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
   - 年份待确认（期末、形式不明、含解答）：理论力学A 期末考试参考答案与评分标准 —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
-  - 年份待确认（类型不明、形式不明、解答情况不明）：理论力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：理论力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/4526/#review-40430
 - **作业、习题与小测**
   - 理论力学期中练习题 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E6%9C%9F%E4%B8%AD%E7%BB%83%E4%B9%A0%E9%A2%98.pdf（文件页）
   - 理论力学学习指导与习题解析 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4526/#review-40430
@@ -2207,16 +2205,16 @@
 - **试题与解析**
   - 2019 年（期末、回忆版、解答情况不明）：线性电子线路 2019 期末（回忆版） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/19%E6%98%A5%281%29.pdf
   - 2019 年（期末、回忆版、解答情况不明）：线性电子线路 2019 期末（回忆版）（2） —— Mr-Philo/USTC_EEIS_Courses（6系本科资料）、li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList） https://github.com/Mr-Philo/USTC_EEIS_Courses/blob/main/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF2019%E6%98%A5.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：往年试题 —— USTC 评课社区 https://icourse.club/course/14404/#review-32918
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：往年试题 —— USTC 评课社区 https://icourse.club/course/14404/#review-32918
   - 年份待确认（期末、模拟练习、解答情况不明）：线性电子线路 年份未标 期末（样卷/模拟） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E8%AF%95%E5%8D%B7%E6%A0%B7%E5%8D%B73%281%29.pdf
   - 年份待确认（期末、模拟练习、解答情况不明）：线性电子线路 年份未标 期末（样卷/模拟）（2） —— Mr-Philo/USTC_EEIS_Courses（6系本科资料）、li-qi-lin/USTC-Course-Materials-Sharing https://github.com/Mr-Philo/USTC_EEIS_Courses/blob/main/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF%E6%A0%B7%E5%8D%B7.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：线性电子线路 年份未标 试卷 —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E5%BE%80%E5%B9%B4%E8%AF%95%E5%8D%B7%20%EF%BC%8814%2B16%EF%BC%89%281%29.pdf
-  - 年份待确认（类型不明、形式不明、含解答）：线性电子线路 年份未标 试卷（2） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E7%BA%BF%E7%94%B5%281%29.pdf
-  - 年份待确认（类型不明、模拟练习、解答情况不明）：线性电子线路 年份未标 试卷（样卷/模拟） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E8%AF%95%E5%8D%B7%E6%A0%B7%E5%8D%B71%281%29.pdf
-  - 年份待确认（类型不明、模拟练习、解答情况不明）：线性电子线路 年份未标 试卷（样卷/模拟）（2） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E8%AF%95%E5%8D%B7%E6%A0%B7%E5%8D%B72%281%29.pdf
-  - 年份待确认（类型不明、原题、含解答）：线性电子线路 年份未标 试卷（原卷） —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E7%BA%BF%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98%EF%BC%88%E5%B9%B4%E4%BB%BD%E4%B8%8D%E8%AF%A6%EF%BC%89.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：线性电子线路：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/5501/#review-89537
-  - 年份待确认（类型不明、原题、解答情况不明）：线性电子线路往年卷合集（2014 秋起，12 页） —— ly382965/USTC_learning_materials（6系课程资料）、feixu 学习资料分享站（AList） https://github.com/ly382965/USTC_learning_materials/blob/main/2FA%20Linear%20Electronic%20Circuits/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%9C%9F%E9%A2%98%E9%9B%86.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：线性电子线路 年份未标 试卷 —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E5%BE%80%E5%B9%B4%E8%AF%95%E5%8D%B7%20%EF%BC%8814%2B16%EF%BC%89%281%29.pdf
+  - 年份待确认（卷别不明、形式不明、含解答）：线性电子线路 年份未标 试卷（2） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E7%BA%BF%E7%94%B5%281%29.pdf
+  - 年份待确认（卷别不明、模拟练习、解答情况不明）：线性电子线路 年份未标 试卷（样卷/模拟） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E8%AF%95%E5%8D%B7%E6%A0%B7%E5%8D%B71%281%29.pdf
+  - 年份待确认（卷别不明、模拟练习、解答情况不明）：线性电子线路 年份未标 试卷（样卷/模拟）（2） —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/2A%E7%A7%8B%20%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E8%AF%95%E5%8D%B7/%E8%AF%95%E5%8D%B7%E6%A0%B7%E5%8D%B72%281%29.pdf
+  - 年份待确认（卷别不明、原题、含解答）：线性电子线路 年份未标 试卷（原卷） —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/%E7%BA%BF%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98%EF%BC%88%E5%B9%B4%E4%BB%BD%E4%B8%8D%E8%AF%A6%EF%BC%89.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：线性电子线路：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/5501/#review-89537
+  - 年份待确认（卷别不明、原题、解答情况不明）：线性电子线路往年卷合集（2014 秋起，12 页） —— ly382965/USTC_learning_materials（6系课程资料）、feixu 学习资料分享站（AList） https://github.com/ly382965/USTC_learning_materials/blob/main/2FA%20Linear%20Electronic%20Circuits/%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%9C%9F%E9%A2%98%E9%9B%86.pdf
 - **作业、习题与小测**
   - 线性电子线路：作业与习题（5 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/5501/#review-89537
   - 线性电子线路章节练习与小结 —— li-qi-lin/USTC-Course-Materials-Sharing；核验于 2026-11-18 https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E7%BA%BF%E6%80%A7%E7%94%B5%E5%AD%90%E7%BA%BF%E8%B7%AF/exercise%281%29.pdf（文件页）
@@ -2300,7 +2298,7 @@
 专业课 · 网络安全 · 计算机
 
 - **试题与解析**
-  - 2018 年、2019 年、2020 年（类型不明、形式不明、解答情况不明）：密码学导论：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/2117/#review-27100
+  - 2018 年、2019 年、2020 年（卷别不明、形式不明、解答情况不明）：密码学导论：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/2117/#review-27100
 
 ### 210008 计算机安全
 
@@ -2321,7 +2319,7 @@
 - **试题与解析**
   - 2026 年（期末、回忆版、解答情况不明）：网络安全协议 2026 春期末（薛开平班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/NetworkSecurityProtocols2026F.md
   - 2024 年（期末、形式不明、解答情况不明）：2024NSP期末考试 —— USTC 评课社区 https://icourse.club/course/24112/#review-83715
-  - 2024 年（类型不明、形式不明、解答情况不明）：网络安全协议 2024回忆版试卷答案 —— USTC 评课社区 https://icourse.club/course/24112/#review-83710
+  - 2024 年（卷别不明、形式不明、解答情况不明）：网络安全协议 2024回忆版试卷答案 —— USTC 评课社区 https://icourse.club/course/24112/#review-83710
 - **学习资料**
   - 网络安全协议 课程复习笔记(第 1—9 章,29 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/5816/#review-24182
   - NSP期末复习 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/24112/#review-83971
@@ -2342,17 +2340,17 @@
 
 - **试题与解析**
   - 2024 年（期末、形式不明、解答情况不明）：电路基本理论 2024 夏期末试卷 —— USTC 评课社区 https://icourse.club/course/4984/#review-87153
-  - 2017—2018 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2017–2018 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/14067/#review-52447
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电路基本理论 2017–2018 学年试卷答案 —— USTC 评课社区 https://icourse.club/course/14067/#review-52447
+  - 2017—2018 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2017–2018 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/14067/#review-52447
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电路基本理论 2017–2018 学年试卷答案 —— USTC 评课社区 https://icourse.club/course/14067/#review-52447
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：电路基本理论 2018-2025 历年试卷合集 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA/2018-2025%E7%94%B5%E8%B7%AF%E5%9F%BA%E6%9C%AC%E7%90%86%E8%AE%BA%E5%8E%86%E5%B9%B4%E8%AF%95%E5%8D%B7.pdf（文件页）
-  - 2018—2019 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2018–2019 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
-  - 2019—2020 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2019–2020 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
-  - 2020—2021 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2020–2021 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
-  - 2021—2022 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2021–2022 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
-  - 2022—2023 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2022–2023 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
-  - 2023—2024 学年（类型不明、形式不明、解答情况不明）：电路基本理论 2023–2024 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4987/#review-95863
-  - 年份待确认（类型不明、原题、解答情况不明）：电路基本理论 往年试卷与答案合集(2015–2025,ZIP 22 个成员) —— USTC 评课社区 https://icourse.club/course/4987/#review-103704
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电路基本理论：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/4989/#review-18859
+  - 2018—2019 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2018–2019 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
+  - 2019—2020 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2019–2020 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
+  - 2020—2021 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2020–2021 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
+  - 2021—2022 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2021–2022 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
+  - 2022—2023 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2022–2023 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4989/#review-71301
+  - 2023—2024 学年（卷别不明、形式不明、解答情况不明）：电路基本理论 2023–2024 学年考试试卷 —— USTC 评课社区 https://icourse.club/course/4987/#review-95863
+  - 年份待确认（卷别不明、原题、解答情况不明）：电路基本理论 往年试卷与答案合集(2015–2025,ZIP 22 个成员) —— USTC 评课社区 https://icourse.club/course/4987/#review-103704
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电路基本理论：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/4989/#review-18859
 - **作业、习题与小测**
   - 电路理论基础（第四版）习题解答 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4984/#review-87143
 - **学习资料**
@@ -2367,9 +2365,9 @@
 
 - **试题与解析**
   - 2016 年（期末、形式不明、解答情况不明）：数电2016年期末考试 —— USTC 评课社区 https://icourse.club/course/2787/#review-26869
-  - 年份待确认（类型不明、形式不明、解答情况不明）：2015-2016第1学期数字逻辑电路考试题 —— USTC 评课社区 https://icourse.club/course/2791/#review-17628
-  - 年份待确认（类型不明、原题、含解答）：数字逻辑电路 2015-2016 第一学期 A 卷答案 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/%E6%95%B0%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/2015-2016%E7%9C%9F%E9%A2%98A%E7%AD%94%E6%A1%88.pdf
-  - 2015—2016 学年（类型不明、原题、无解答）：数字逻辑电路 2015-2016 第一学期 A 卷与答案 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/%E6%95%B0%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/2015-2016%E7%9C%9F%E9%A2%98A.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：2015-2016第1学期数字逻辑电路考试题 —— USTC 评课社区 https://icourse.club/course/2791/#review-17628
+  - 年份待确认（卷别不明、原题、含解答）：数字逻辑电路 2015-2016 第一学期 A 卷答案 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/%E6%95%B0%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/2015-2016%E7%9C%9F%E9%A2%98A%E7%AD%94%E6%A1%88.pdf
+  - 2015—2016 学年（卷别不明、原题、无解答）：数字逻辑电路 2015-2016 第一学期 A 卷与答案 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF/%E6%95%B0%E7%94%B5%E7%9C%9F%E9%A2%98/%E7%9C%9F%E9%A2%98/2015-2016%E7%9C%9F%E9%A2%98A.pdf
   - 2015—2016 学年（期末、原题、无解答）：数字逻辑电路 2015-2016 试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF2015-2016.pdf（文件页）
   - 2016—2017 学年（期末、原题、无解答）：数字逻辑电路 2016-2017 期末 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalLogic2016-2017F.pdf
   - 2017—2018 学年（期末、原题、无解答）：数字逻辑电路 2017-2018 期末 —— guch8017/USTC_CS_EXAM（跨课试卷索引）、li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalLogic2017-2018F.pdf
@@ -2379,7 +2377,7 @@
   - 2020—2021 学年（期末、原题、含解答）：数字逻辑电路 2020-2021 期末答案 —— guch8017/USTC_CS_EXAM（跨课试卷索引）、li-qi-lin/USTC-Course-Materials-Sharing https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalLogic2020-2021FAns.pdf
   - 2021—2022 学年（期末、原题、无解答）：数字逻辑电路 2021-2022 期末 —— guch8017/USTC_CS_EXAM（跨课试卷索引）、li-qi-lin/USTC-Course-Materials-Sharing https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalLogic2021-2022F.pdf
   - 2022—2023 学年（期末、原题、无解答）：数字逻辑电路 2022-2023 期末 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalLogic2022-2023F.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数字逻辑电路：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/2787/#review-58317
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数字逻辑电路：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/2787/#review-58317
   - 年份待确认（期末、模拟练习、解答情况不明）：数字逻辑电路模拟卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E6%A8%A1%E6%8B%9F%E5%8D%B7.pdf（文件页）
   - 年份待确认（期中期末混合、回忆版、解答情况不明）：数字逻辑电路真题回忆 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E7%9C%9F%E9%A2%98%E5%9B%9E%E5%BF%86.pdf（文件页）
 - **作业、习题与小测**
@@ -2402,7 +2400,7 @@
 专业课 · 计算机 · 通信
 
 - **试题与解析**
-  - 2020 年（类型不明、形式不明、解答情况不明）：计算机网络 2020 年补考试卷 —— USTC 评课社区 https://icourse.club/course/6263/#review-42603
+  - 2020 年（卷别不明、形式不明、解答情况不明）：计算机网络 2020 年补考试卷 —— USTC 评课社区 https://icourse.club/course/6263/#review-42603
   - 2020 年（期末、形式不明、解答情况不明）：计算机网络 2020 秋期末试卷 —— USTC 评课社区 https://icourse.club/course/18387/#review-29470
 - **学习资料**
   - 计算机网络 2021 总复习课件 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/6267/#review-40523
@@ -2427,17 +2425,17 @@
 专业课 · 计算机
 
 - **试题与解析**
-  - 2026 年（类型不明、回忆版、无解答）：数据结构及其算法 2026 春题型回忆（袁平波班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DataStructure2026F.md
+  - 2026 年（卷别不明、回忆版、无解答）：数据结构及其算法 2026 春题型回忆（袁平波班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DataStructure2026F.md
   - 2018 年（期末、原题、无解答）：数据结构及其算法 2018-2019 第一学期真题与参考答案 —— li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList）、USTC 评课社区 https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95/%E8%AF%95%E5%8D%B7%E5%8F%8A%E4%B9%A0%E9%A2%98/18-19.pdf
-  - 2017 年、2018 年（类型不明、原题、无解答）：数据结构及其算法 四学年试卷合集（USTC_CS_EXAM） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、USTC 评课社区 https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DataStructureMulti.pdf
+  - 2017 年、2018 年（卷别不明、原题、无解答）：数据结构及其算法 四学年试卷合集（USTC_CS_EXAM） —— guch8017/USTC_CS_EXAM（跨课试卷索引）、USTC 评课社区 https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DataStructureMulti.pdf
   - 2017 年（期末、原题、无解答）：数据结构及其算法 2017-2018 第一学期真题与参考答案 —— li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList）、USTC 评课社区 https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95/%E8%AF%95%E5%8D%B7%E5%8F%8A%E4%B9%A0%E9%A2%98/17-18.pdf
   - 2008—2009 学年、2009—2010 学年、2017—2018 学年、2018—2019 学年（期末、形式不明、含解答）：《数据结构及其算法》四学年期末题答案汇编 —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/master/2FA%20Data%20Structure%20and%20Algorithm/%E5%BE%80%E5%B9%B4%E9%A2%98%E5%8F%8A%E9%83%A8%E5%88%86%E7%AD%94%E6%A1%88/%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95%E3%80%8B%E5%BE%80%E5%B9%B4%E9%A2%98%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 年份待确认（类型不明、模拟练习、无解答）：数据结构复习模拟试卷(二) —— USTC 评课社区 https://icourse.club/course/2948/#review-26684
-  - 年份待确认（类型不明、模拟练习、无解答）：数据结构复习模拟试卷(一) —— USTC 评课社区 https://icourse.club/course/2948/#review-26684
+  - 年份待确认（卷别不明、模拟练习、无解答）：数据结构复习模拟试卷(二) —— USTC 评课社区 https://icourse.club/course/2948/#review-26684
+  - 年份待确认（卷别不明、模拟练习、无解答）：数据结构复习模拟试卷(一) —— USTC 评课社区 https://icourse.club/course/2948/#review-26684
   - 2017—2018 学年（期末、原题、含解答）：数据结构及其算法 2017-2018 第一学期真题参考答案 —— feixu 学习资料分享站（AList）、ly382965/USTC_learning_materials（6系课程资料） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%952017-2018%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2018—2019 学年（期末、原题、含解答）：数据结构及其算法 2018-2019 第一学期真题参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%952018-2019%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 年份待确认（期中期末混合、形式不明、含解答）：数据结构及其算法历年真题与参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数据结构早期期末试卷 —— USTC 评课社区 https://icourse.club/course/2948/#review-54895
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数据结构早期期末试卷 —— USTC 评课社区 https://icourse.club/course/2948/#review-54895
 - **作业、习题与小测**
   - 数据结构第一、二章作业 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/24633/#review-91272
   - 2022 年、2023 年、2024 年：数据结构及其算法 往年题与习题（USTC_learning_materials） —— ly382965/USTC_learning_materials（6系课程资料）；核验于 2026-11-18 https://github.com/ly382965/USTC_learning_materials/tree/main/2FA%20Data%20Structure%20and%20Algorithm
@@ -2498,7 +2496,7 @@
 
 - **试题与解析**
   - 年份待确认（期末、形式不明、解答情况不明）：非线性电子线路 2024—2025 学年期末试卷（回忆版） —— USTC 评课社区 https://icourse.club/course/18391/#review-88474
-  - 年份待确认（类型不明、形式不明、解答情况不明）：非线性电子线路 试卷答案 —— USTC 评课社区 https://icourse.club/course/6811/#review-17032
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：非线性电子线路 试卷答案 —— USTC 评课社区 https://icourse.club/course/6811/#review-17032
 - **学习资料**
   - 非线性电子线路 重点与易错总结 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/6811/#review-88453
   - 2024 年：非线性电子线路 资料（USTC_learning_materials，排除教材扫描） —— ly382965/USTC_learning_materials（6系课程资料）；核验于 2026-11-18 https://github.com/ly382965/USTC_learning_materials/tree/main/3FA%20Nonlinear%20Electronic%20Circuits
@@ -2509,7 +2507,7 @@
 专业课 · 电子
 
 - **试题与解析**
-  - 2020 年（类型不明、形式不明、解答情况不明）：电子系统设计2020试卷 —— USTC 评课社区 https://icourse.club/course/4842/#review-73233
+  - 2020 年（卷别不明、形式不明、解答情况不明）：电子系统设计2020试卷 —— USTC 评课社区 https://icourse.club/course/4842/#review-73233
   - 年份待确认（期末、形式不明、解答情况不明）：电子系统设计期末试卷(年份未核实) —— USTC 评课社区 https://icourse.club/course/25899/#review-97710
 - **作业、习题与小测**
   - 电子系统设计 思考题2025(V1.0) —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25899/#review-97710
@@ -2528,7 +2526,7 @@
 专业课 · 计算机
 
 - **试题与解析**
-  - 年份待确认（类型不明、原题、无解答）：数据结构与数据库 数据结构/数据库部分试卷 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95/%E8%AF%95%E5%8D%B7%E5%8F%8A%E4%B9%A0%E9%A2%98/test.pdf
+  - 年份待确认（卷别不明、原题、无解答）：数据结构与数据库 数据结构/数据库部分试卷 —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/blob/master/3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%8A%E5%85%B6%E7%AE%97%E6%B3%95/%E8%AF%95%E5%8D%B7%E5%8F%8A%E4%B9%A0%E9%A2%98/test.pdf
 - **学习资料**
   - 2016 年：数据结构与数据库 课程网站（index.knit） —— USTC 教师个人主页（staff/faculty）；核验于 2026-11-18 http://home.ustc.edu.cn/~lx20160727/
 
@@ -2548,9 +2546,9 @@
 专业课 · 电子
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电子线路：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/22050/#review-54440
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电子线路：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/4856/#review-96687
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电子线路往年题 —— USTC 评课社区 https://icourse.club/course/4853/#review-84996
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电子线路：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/22050/#review-54440
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电子线路：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/4856/#review-96687
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电子线路往年题 —— USTC 评课社区 https://icourse.club/course/4853/#review-84996
 - **学习资料**
   - 电子线路 习题课6.3 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4853/#review-84996
   - 电子线路：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/4853/#review-83788
@@ -2666,7 +2664,7 @@
 通修课 · 人工智能 · 数学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：人工智能数学原理与算法B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/26225/#review-98231
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：人工智能数学原理与算法B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/26225/#review-98231
 - **作业、习题与小测**
   - 2026—2027 学年：人工智能数学原理与算法B：CNN 与 GNN 综合实验（2026 秋 05 班） —— AI1001B.05 2026 秋综合实验；核验于 2026-11-23 https://git.ustc.edu.cn/ai1001b.05.2026fa/CNN（资料目录）
   - 2026—2027 学年：人工智能数学原理与算法B：Python 与决策树实验（2026 秋） —— AI1001B 2026 秋实验材料（钟志诚）；核验于 2026-11-23 https://git.ustc.edu.cn/zengyoucheng/ustc-ai-math-experiments-26fall-b（资料目录）
@@ -2679,7 +2677,7 @@
 专业课 · 人工智能
 
 - **试题与解析**
-  - 2024 年（类型不明、回忆版、解答情况不明）：人工智能导论 2024 秋回忆版（王子磊等） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AIIntroduction2024F.pdf
+  - 2024 年（卷别不明、回忆版、解答情况不明）：人工智能导论 2024 秋回忆版（王子磊等） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AIIntroduction2024F.pdf
 - **学习资料**
   - 2022 年、2023 年、2024 年：人工智能导论 课件（USTC-Course-Materials） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档）；核验于 2026-11-18 https://github.com/duxiaoyang-creator/USTC-Course-Materials/tree/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA
   - 人工智能导论A：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25963/#review-104676
@@ -2689,7 +2687,7 @@
 专业课 · 人工智能
 
 - **试题与解析**
-  - 2024 年（类型不明、回忆版、解答情况不明）：人工智能导论 2024 秋回忆版（王子磊等） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AIIntroduction2024F.pdf
+  - 2024 年（卷别不明、回忆版、解答情况不明）：人工智能导论 2024 秋回忆版（王子磊等） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/AIIntroduction2024F.pdf
 - **学习资料**
   - 2022 年、2023 年、2024 年：人工智能导论 课件（USTC-Course-Materials） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档）；核验于 2026-11-18 https://github.com/duxiaoyang-creator/USTC-Course-Materials/tree/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA
 
@@ -2843,7 +2841,7 @@
 专业课 · 化学 · 物理
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：回忆版试卷 —— USTC 评课社区 https://icourse.club/course/26643/#review-101843
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：回忆版试卷 —— USTC 评课社区 https://icourse.club/course/26643/#review-101843
 - **学习资料**
   - 分子光谱学 笔记与作业 —— dasWalpurgis/USTC（化学系、化学物理系课程资料）；核验于 2026-11-18 https://github.com/dasWalpurgis/USTC/tree/main/%E5%88%86%E5%AD%90%E5%85%89%E8%B0%B1%E5%AD%A6
   - 分子光谱学基础 课程笔记(第 1–4 章,45 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/26643/#review-102411
@@ -2896,20 +2894,20 @@
 
 - **试题与解析**
   - 2021 年、2023 年、2024 年、2025 年、2026 年（期中期末混合、形式不明、解答情况不明）：计算机程序设计／计算机程序设计(L) 考试与复习合集 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/tree/main/%E5%A4%A7%E4%B8%80%E4%B8%8A/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1
-  - 2023 年（类型不明、模拟练习、解答情况不明）：计算机程序设计 2023 秋考试说明与复习测试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%80%83%E8%AF%95%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%A4%8D%E4%B9%A0%E7%94%A8%E6%B5%8B%E8%AF%95%E9%A2%982023%E7%A7%8B.pdf（文件页）
+  - 2023 年（卷别不明、模拟练习、解答情况不明）：计算机程序设计 2023 秋考试说明与复习测试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%80%83%E8%AF%95%E8%AF%B4%E6%98%8E%E4%B8%8E%E5%A4%8D%E4%B9%A0%E7%94%A8%E6%B5%8B%E8%AF%95%E9%A2%982023%E7%A7%8B.pdf（文件页）
   - 2021 年（期末、原题、含解答）：计算机程序设计 2021 春补考（含答案） —— feixu 学习资料分享站（AList）、USTC 评课社区 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12021%E6%98%A5%E5%AD%A3%E8%A1%A5%E8%80%83.pdf（文件页）
   - 2021 年（期末、原题、含解答）：计算机程序设计 2021 秋期末 A 卷（含答案） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12021%E7%A7%8B%E5%AD%A3%E6%9C%9F%E6%9C%AB%E8%80%83A%E5%8D%B7.pdf（文件页）
   - 2021 年（期末、原题、含解答）：计算机程序设计 2021 秋期末 B 卷（含两版答案） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12021%E7%A7%8B%E5%AD%A3%E6%9C%9F%E6%9C%AB%E8%80%83B%E5%8D%B7.pdf（文件页）
   - 2021 年（期中、模拟练习、解答情况不明）：计算机程序设计 2021 秋期中样卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12021%E7%A7%8B%E5%AD%A3%E6%9C%9F%E4%B8%AD%E6%A0%B7%E5%8D%B7.pdf（文件页）
-  - 2021 年（类型不明、形式不明、解答情况不明）：计算机程序设计 2021 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2021.pdf
+  - 2021 年（卷别不明、形式不明、解答情况不明）：计算机程序设计 2021 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2021.pdf
   - 2020 年（期末、原题、解答情况不明）：程序设计Ⅰ 2020 秋期末 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%85%A0%202020%E7%A7%8B%E5%AD%A3%E6%9C%9F%E6%9C%AB%E8%80%83.pdf（文件页）
   - 2020 年（期末、原题、含解答）：计算机程序设计 2020 秋期末（含答案） —— feixu 学习资料分享站（AList）、USTC 评课社区 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12020%E7%A7%8B%E5%AD%A3%E6%9C%9F%E6%9C%AB%E8%80%83.pdf（文件页）
-  - 2020 年（类型不明、形式不明、解答情况不明）：计算机程序设计 2020 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2020.pdf
+  - 2020 年（卷别不明、形式不明、解答情况不明）：计算机程序设计 2020 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2020.pdf
   - 2019 年（期中、原题、解答情况不明）：程序设计Ⅰ 2019 秋期中 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E2%85%A0%202019%E7%A7%8B%E5%AD%A3%E6%9C%9F%E4%B8%AD%E8%80%83.pdf（文件页）
   - 2018 年（期末、原题、含解答）：计算机程序设计 2018 秋期末（含选择题答案） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12018%E7%A7%8B%E5%AD%A3%E6%9C%9F%E6%9C%AB%E8%80%83.pdf（文件页）
-  - 2018 年（类型不明、形式不明、解答情况不明）：计算机程序设计 2018 试卷（README：ALL 班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2018.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算机程序设计：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/25853/#review-101251
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算机程序设计试题集及答案 —— USTC 评课社区 https://icourse.club/course/26056/#review-98576
+  - 2018 年（卷别不明、形式不明、解答情况不明）：计算机程序设计 2018 试卷（README：ALL 班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2018.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算机程序设计：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/25853/#review-101251
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算机程序设计试题集及答案 —— USTC 评课社区 https://icourse.club/course/26056/#review-98576
 - **作业、习题与小测**
   - 程序设计基础与实验 期中练习与答案 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E9%AA%8C%E6%9C%9F%E4%B8%AD%E7%BB%83%E4%B9%A0.doc（文件页）
   - 2021 年（小测、原题、含解答）：计算机程序设计 2021 秋小测及答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A12021%E7%A7%8B%E5%AD%A3%E5%B0%8F%E6%B5%8B%E5%8F%8A%E7%AD%94%E6%A1%88.pdf（文件页）
@@ -2930,9 +2928,9 @@
 
 - **试题与解析**
   - 2021 年、2023 年、2024 年、2025 年、2026 年（期中期末混合、形式不明、解答情况不明）：计算机程序设计／计算机程序设计(L) 考试与复习合集 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/tree/main/%E5%A4%A7%E4%B8%80%E4%B8%8A/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1
-  - 2025 年（类型不明、原题、解答情况不明）：计算机程序设计(L) 2025 秋机考二（唐建班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2025LQuiz2.pdf
-  - 2025 年（类型不明、原题、解答情况不明）：计算机程序设计(L) 2025 秋机考一（唐建班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2025LQuiz1.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算机程序设计(L)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/25885/#review-96896
+  - 2025 年（卷别不明、原题、解答情况不明）：计算机程序设计(L) 2025 秋机考二（唐建班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2025LQuiz2.pdf
+  - 2025 年（卷别不明、原题、解答情况不明）：计算机程序设计(L) 2025 秋机考一（唐建班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ProgramDesign2025LQuiz1.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算机程序设计(L)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/25885/#review-96896
 - **学习资料**
   - 计算机程序设计(L) 结构化题库与知识点树（191 题，机读 JSONL） —— DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）；核验于 2026-11-25 https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1003L（资料目录）
   - 计算机程序设计(L)：学习资料（2 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25885/#review-96896
@@ -2989,8 +2987,8 @@
   - 2017 年、2018 年、2020 年（期末、原题、无解答）：数理逻辑(基础) 2017/2018/2020 期末合集 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/MathematicalLogic2017T2020.pdf
   - 2020 年（期中、形式不明、解答情况不明）：数理逻辑(基础) 2020 期中 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/MathematicalLogic2020Mid.pdf
   - 2018 年（期末、回忆版、无解答）：数理逻辑 2018 春期末试题（回忆版） —— USTC-Resource/USTC-Course https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/exams/%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A4%A7%E5%AD%A62018%E6%98%A5%E5%AD%A3%E5%AD%A6%E6%9C%9F%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E6%9C%9F%E6%9C%AB%E8%AF%95%E9%A2%98.pdf
-  - 2017 年（类型不明、回忆版、无解答）：数理逻辑 2017 试卷（回忆版） —— USTC-Resource/USTC-Course https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/exams/2017%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E8%AF%95%E5%8D%B7%E5%9B%9E%E5%BF%86.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数理逻辑基础 真题合集（压缩包） —— USTC 评课社区 https://icourse.club/course/24186/#review-104000
+  - 2017 年（卷别不明、回忆版、无解答）：数理逻辑 2017 试卷（回忆版） —— USTC-Resource/USTC-Course https://github.com/USTC-Resource/USTC-Course/blob/master/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91/exams/2017%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E8%AF%95%E5%8D%B7%E5%9B%9E%E5%BF%86.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数理逻辑基础 真题合集（压缩包） —— USTC 评课社区 https://icourse.club/course/24186/#review-104000
   - 年份待确认（期中期末混合、形式不明、无解答）：数理逻辑历年试卷合订(2017–2026,9 套汇总) —— USTC 评课社区 https://icourse.club/course/22510/#review-104342
 - **作业、习题与小测**
   - 数理逻辑基础 习题课与作业答案（ustc_course_plus） —— Kobe972/ustc_course_plus；核验于 2026-11-18 https://github.com/Kobe972/ustc_course_plus/blob/main/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80/%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/2.24%E4%BD%9C%E4%B8%9A%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
@@ -3009,7 +3007,7 @@
 专业课 · 计算机
 
 - **试题与解析**
-  - 2026 年（类型不明、回忆版、解答情况不明）：系统程序设计基础 2026 春回忆版（马建辉、王志强班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/SystemProgramming2026F.md
+  - 2026 年（卷别不明、回忆版、解答情况不明）：系统程序设计基础 2026 春回忆版（马建辉、王志强班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/SystemProgramming2026F.md
   - 年份待确认（期末、形式不明、解答情况不明）：期末机考 —— USTC 评课社区 https://icourse.club/course/26652/#review-103053
 - **学习资料**
   - 系统程序设计基础大抄 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E7%B3%BB%E7%BB%9F%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80%E5%A4%A7%E6%8A%84.pdf（文件页）
@@ -3073,8 +3071,8 @@
 专业课 · 计算机 · 人工智能
 
 - **试题与解析**
-  - 2026 年（类型不明、回忆版、解答情况不明）：数字图像处理与分析 2026 春回忆版（万寿红班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalImageProcessingAnalysis2026S.pdf
-  - 2026 年（类型不明、形式不明、解答情况不明）：数字图像处理与分析 2026 试卷（README：数字图像分析，本科/硕士标注冲突） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalImageAnalysis2026F.md
+  - 2026 年（卷别不明、回忆版、解答情况不明）：数字图像处理与分析 2026 春回忆版（万寿红班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalImageProcessingAnalysis2026S.pdf
+  - 2026 年（卷别不明、形式不明、解答情况不明）：数字图像处理与分析 2026 试卷（README：数字图像分析，本科/硕士标注冲突） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalImageAnalysis2026F.md
 - **学习资料**
   - 数字图像处理与分析 课程思维导图(第1–10章) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20047/#review-46127
 
@@ -3114,11 +3112,11 @@
 专业课 · 数学 · 管理 · 计算机
 
 - **试题与解析**
-  - 2026 年（类型不明、回忆版、解答情况不明）：运筹学基础 2026 春回忆版（顾乃杰、黄章进班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OperationsResearch2026S.md
-  - 2025 年（类型不明、回忆版、解答情况不明）：运筹学基础 2025 春回忆版（顾乃杰、黄章进班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OperationsResearch2025S.md
+  - 2026 年（卷别不明、回忆版、解答情况不明）：运筹学基础 2026 春回忆版（顾乃杰、黄章进班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OperationsResearch2026S.md
+  - 2025 年（卷别不明、回忆版、解答情况不明）：运筹学基础 2025 春回忆版（顾乃杰、黄章进班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/OperationsResearch2025S.md
   - 2025 年（期末、原题、解答情况不明）：运筹学基础2025期末（3页图片） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%802025%E6%9C%9F%E6%9C%AB-1.jpg（文件页）
   - 2020 年（期末、回忆版、无解答）：运筹学基础 2020 春期末试卷（回忆） —— USTC-CS-Course-Resource/USTC-CS-Resources https://github.com/USTC-CS-Course-Resource/USTC-CS-Resources/blob/master/CS/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/2020%E6%98%A5%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80%E8%AF%95%E5%8D%B7.pdf
-  - 年份待确认（类型不明、回忆版、无解答）：运筹学基础 考试回忆卷(8 题,年份未核实) —— USTC 评课社区 https://icourse.club/course/13533/#review-23943
+  - 年份待确认（卷别不明、回忆版、无解答）：运筹学基础 考试回忆卷(8 题,年份未核实) —— USTC 评课社区 https://icourse.club/course/13533/#review-23943
 - **作业、习题与小测**
   - 运筹学基础 作业与实验（ustc_course_plus） —— Kobe972/ustc_course_plus；核验于 2026-11-18 https://github.com/Kobe972/ustc_course_plus/blob/main/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/HW-answers%E6%9C%80%E6%96%B0%E7%89%88.pdf（文件页）
 - **学习资料**
@@ -3129,9 +3127,9 @@
 专业课 · 计算机 · 电子
 
 - **试题与解析**
-  - 2020 年（类型不明、形式不明、解答情况不明）：计算机体系结构 2020 春试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture%202020%20Spring.pdf
-  - 2019 年（类型不明、形式不明、解答情况不明）：计算机体系结构 2019 试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture2019.pdf
-  - 2016 年（类型不明、形式不明、解答情况不明）：计算机体系结构 2016 试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture2016.pdf
+  - 2020 年（卷别不明、形式不明、解答情况不明）：计算机体系结构 2020 春试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture%202020%20Spring.pdf
+  - 2019 年（卷别不明、形式不明、解答情况不明）：计算机体系结构 2019 试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture2019.pdf
+  - 2016 年（卷别不明、形式不明、解答情况不明）：计算机体系结构 2016 试卷（周学海班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ComputerArchitecture2016.pdf
 - **作业、习题与小测**
   - 2023 年：体系结构 2023 春 作业、答案、实验报告与课件 —— JackieZ1412/USTC-ComputerArchitecture-2023Spring；核验于 2026-11-19 https://github.com/JackieZ1412/USTC-ComputerArchitecture-2023Spring（资料目录）
   - 体系结构 作业与答案（HW1—HW6） —— Oyyko/USTC-Computer-Architecture；核验于 2026-11-19 https://github.com/Oyyko/USTC-Computer-Architecture（资料目录）
@@ -3147,10 +3145,10 @@
 
 - **试题与解析**
   - 2026 年（期末、回忆版、解答情况不明）：并行计算A 2026 春期末回忆版（孙经纬班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelComputing2026F.md
-  - 2020 年（类型不明、形式不明、解答情况不明）：并行计算 2020 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2020.pdf
-  - 2019 年（类型不明、形式不明、解答情况不明）：并行计算 2019 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2019.pdf
-  - 2018 年（类型不明、形式不明、解答情况不明）：并行计算 2018 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2018.pdf
-  - 2016 年（类型不明、形式不明、解答情况不明）：并行计算 2016 试卷（徐云班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2016.pdf
+  - 2020 年（卷别不明、形式不明、解答情况不明）：并行计算 2020 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2020.pdf
+  - 2019 年（卷别不明、形式不明、解答情况不明）：并行计算 2019 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2019.pdf
+  - 2018 年（卷别不明、形式不明、解答情况不明）：并行计算 2018 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2018.pdf
+  - 2016 年（卷别不明、形式不明、解答情况不明）：并行计算 2016 试卷（徐云班） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/ParallelCompute2016.pdf
 
 ### CS4027 人工智能安全
 
@@ -3239,11 +3237,11 @@
 专业课 · 计算机 · 电子
 
 - **试题与解析**
-  - 2024 年（类型不明、形式不明、解答情况不明）：计算机原理与嵌入式系统 2024 试卷 —— USTC 评课社区 https://icourse.club/course/25202/#review-94948
+  - 2024 年（卷别不明、形式不明、解答情况不明）：计算机原理与嵌入式系统 2024 试卷 —— USTC 评课社区 https://icourse.club/course/25202/#review-94948
   - 2020 年（期末、原题、解答情况不明）：计算机原理与嵌入式系统 2019—2020 学年第 2 学期考试试卷(A 卷,卷面名微机原理与嵌入式系统) —— USTC 评课社区 https://icourse.club/course/25202/#review-92780
   - 2020 年（期末、原题、解答情况不明）：计算机原理与嵌入式系统 2019—2020 学年第二学期期末试卷（A 卷，卷面旧名微机原理与嵌入式系统） —— EpiHio/USTC_Automation（自动化专业课程资料）、feixu 学习资料分享站（AList） https://github.com/EpiHio/USTC_Automation/blob/main/2B%E6%98%A5%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E8%AF%95%E5%8D%B7/2020%E6%98%A5%E5%BE%AE%E5%B5%8C%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.pdf
   - 2023—2024 学年（期末、原题、解答情况不明）：计算机原理与嵌入式系统 2023—2024 学年第二学期期末试卷 —— EpiHio/USTC_Automation（自动化专业课程资料）、feixu 学习资料分享站（AList） https://github.com/EpiHio/USTC_Automation/blob/main/2B%E6%98%A5%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E8%AF%95%E5%8D%B7/23%E8%AE%A1%E5%B5%8C%E6%9C%9F%E6%9C%AB.pdf
-  - 2023—2024 学年（类型不明、模拟练习、无解答）：计算机原理与嵌入式系统 2023—2024学年（公历年份未确认） 试卷（样卷/模拟） —— EpiHio/USTC_Automation（自动化专业课程资料）、feixu 学习资料分享站（AList） https://github.com/EpiHio/USTC_Automation/blob/main/2B%E6%98%A5%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E8%AF%95%E5%8D%B7/%E8%AE%A1%E5%B5%8C-%E5%8D%8A%E5%BC%80%E5%8D%B7-%E9%A2%98%E5%9E%8B%E7%A4%BA%E6%84%8F%E5%8D%B7%281%29.pdf
+  - 2023—2024 学年（卷别不明、模拟练习、无解答）：计算机原理与嵌入式系统 2023—2024学年（公历年份未确认） 试卷（样卷/模拟） —— EpiHio/USTC_Automation（自动化专业课程资料）、feixu 学习资料分享站（AList） https://github.com/EpiHio/USTC_Automation/blob/main/2B%E6%98%A5%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E8%AF%95%E5%8D%B7/%E8%AE%A1%E5%B5%8C-%E5%8D%8A%E5%BC%80%E5%8D%B7-%E9%A2%98%E5%9E%8B%E7%A4%BA%E6%84%8F%E5%8D%B7%281%29.pdf
 - **作业、习题与小测**
   - 计嵌第八章题目解析 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25202/#review-94948
   - 2025 年：计算机原理与嵌入式系统 · 2025 版作业参考答案（含解析） —— EpiHio/USTC_Automation（自动化专业课程资料）；核验于 2026-11-19 https://github.com/EpiHio/USTC_Automation/blob/main/2B%E6%98%A5%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/%E8%AE%A1%E5%B5%8C%E4%BD%9C%E4%B8%9A%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
@@ -3276,12 +3274,12 @@
   - 2018 年（期末、形式不明、解答情况不明）：计算机网络B 2018 期末 —— EpiHio/USTC_Automation（自动化专业课程资料）、duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/2018%E7%A7%8B%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB.pdf
   - 2018 年（期末、形式不明、解答情况不明）：计算机网络B 2018 期末（2） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2018%20%E5%B9%B4%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95.pdf
   - 2016—2017 学年（期末、原题、解答情况不明）：计算机网络B 2016—2017学年（公历年份未确认） 期末（原卷） —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2017%E8%AE%A1%E7%BD%91%E6%9C%9F%E6%9C%AB.pdf
-  - 2016—2017 学年（类型不明、原题、解答情况不明）：计算机网络B 2016—2017学年（公历年份未确认） 试卷（原卷） —— EpiHio/USTC_Automation（自动化专业课程资料）、duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/%E4%BF%A1%E9%99%A2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%281%29.pdf
+  - 2016—2017 学年（卷别不明、原题、解答情况不明）：计算机网络B 2016—2017学年（公历年份未确认） 试卷（原卷） —— EpiHio/USTC_Automation（自动化专业课程资料）、duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/%E4%BF%A1%E9%99%A2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%281%29.pdf
   - 2019—2020 学年（期末、原题、解答情况不明）：计算机网络B 2019—2020学年（公历年份未确认） 期末（原卷） —— EpiHio/USTC_Automation（自动化专业课程资料）、ly382965/USTC_learning_materials（6系课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/20%E8%A1%A5%E8%80%83%E8%AF%95%E5%8D%B7.pdf
   - 2020—2021 学年（期末、回忆版、解答情况不明）：计算机网络B 2020—2021学年（公历年份未确认） 期末（回忆版） —— EpiHio/USTC_Automation（自动化专业课程资料）、ly382965/USTC_learning_materials（6系课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/20%E6%9C%9F%E6%9C%AB.pdf
-  - 2022—2023 学年（类型不明、形式不明、含解答）：计算机网络B 2022—2023学年（公历年份未确认） 试卷（答案） —— EpiHio/USTC_Automation（自动化专业课程资料）、duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/%E4%BF%A1%E9%99%A2%E8%AE%A1%E7%BD%91%E7%AD%94%E6%A1%88%281%29.pdf
+  - 2022—2023 学年（卷别不明、形式不明、含解答）：计算机网络B 2022—2023学年（公历年份未确认） 试卷（答案） —— EpiHio/USTC_Automation（自动化专业课程资料）、duxiaoyang-creator/USTC-Course-Materials（本科课程存档） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/%E4%BF%A1%E9%99%A2%E8%AE%A1%E7%BD%91%E7%AD%94%E6%A1%88%281%29.pdf
   - 年份待确认（期中、形式不明、解答情况不明）：计算机网络B 年份未标 期中 —— EpiHio/USTC_Automation（自动化专业课程资料） https://github.com/EpiHio/USTC_Automation/blob/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%95%E5%8D%B7/24%E6%9C%9F%E4%B8%AD.pdf
-  - 年份待确认（类型不明、原题、解答情况不明）：计算机网络B 年份未标 试卷（原卷） —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/main/3FA%20Computer%20Network/%E8%AE%A1%E7%BD%91%E8%AF%95%E5%8D%B7%E5%90%88%E9%9B%86%20%E9%BA%BB%E6%B2%BB%E6%98%8A.pdf
+  - 年份待确认（卷别不明、原题、解答情况不明）：计算机网络B 年份未标 试卷（原卷） —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/main/3FA%20Computer%20Network/%E8%AE%A1%E7%BD%91%E8%AF%95%E5%8D%B7%E5%90%88%E9%9B%86%20%E9%BA%BB%E6%B2%BB%E6%98%8A.pdf
 - **作业、习题与小测**
   - 计算机网络课本答案 —— EpiHio/USTC_Automation（自动化专业课程资料）；核验于 2026-11-18 https://github.com/EpiHio/USTC_Automation/tree/main/3A%E7%A7%8B%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CB/%E8%AF%BE%E6%9C%AC%E7%AD%94%E6%A1%88
   - 信息学院计算机网络参考答案 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档）；核验于 2026-11-18 https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BF%A1%E9%99%A2%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf
@@ -3319,7 +3317,7 @@
   - 2021—2022 学年（期末、形式不明、解答情况不明）：信号与系统A 2021—2022学年（公历年份未确认） 期末 —— ly382965/USTC_learning_materials（6系课程资料）、li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList） https://github.com/ly382965/USTC_learning_materials/blob/main/2SP%20Signals%20and%20Systems%20A/%E6%9C%9F%E6%9C%AB/2021-2022%E6%9C%9F%E6%9C%AB.pdf
   - 2021—2022 学年（期中、原题、解答情况不明）：信号与系统A 2021—2022学年（公历年份未确认） 期中（原卷） —— ly382965/USTC_learning_materials（6系课程资料）、li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList） https://github.com/ly382965/USTC_learning_materials/blob/main/2SP%20Signals%20and%20Systems%20A/%E6%9C%9F%E4%B8%AD/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F2021-2022%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E6%9C%9F%E4%B8%AD%E8%AF%95%E5%8D%B7.pdf
   - 2022—2023 学年（期中、形式不明、含解答）：信号与系统A 2022—2023学年（公历年份未确认） 期中（答案） —— ly382965/USTC_learning_materials（6系课程资料）、li-qi-lin/USTC-Course-Materials-Sharing、feixu 学习资料分享站（AList） https://github.com/ly382965/USTC_learning_materials/blob/main/2SP%20Signals%20and%20Systems%20A/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F2022-2023%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E6%9C%9F%E4%B8%AD%E8%AF%95%E5%8D%B7%E5%92%8C%E7%AD%94%E6%A1%88.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：信号与系统A 年份未标 试卷 —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/main/2SP%20Signals%20and%20Systems%20A/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AF%95%E5%8D%B7.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：信号与系统A 年份未标 试卷 —— ly382965/USTC_learning_materials（6系课程资料） https://github.com/ly382965/USTC_learning_materials/blob/main/2SP%20Signals%20and%20Systems%20A/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AF%95%E5%8D%B7.pdf
   - 2015—2016 学年（期中、形式不明、含解答）：信号与系统A 期中考试参考答案（多年份汇编，陈镜舟） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/%E6%9C%9F%E4%B8%AD/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E7%AD%94%E6%A1%88.md（文件页）
   - 年份待确认（期末、形式不明、解答情况不明）：信号与系统A 往年期末试卷合集（8 页） —— Mr-Philo/USTC_EEIS_Courses（6系本科资料）、feixu 学习资料分享站（AList） https://github.com/Mr-Philo/USTC_EEIS_Courses/blob/main/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%8E%86%E5%B9%B4%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.pdf
 - **作业、习题与小测**
@@ -3348,7 +3346,7 @@
 专业课 · 电子 · 通信
 
 - **试题与解析**
-  - 2020 年、2021 年、2023 年（类型不明、形式不明、解答情况不明）：数字信号处理A：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/25882/#review-99351
+  - 2020 年、2021 年、2023 年（卷别不明、形式不明、解答情况不明）：数字信号处理A：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/25882/#review-99351
 - **学习资料**
   - 数字信号处理A：学习资料（7 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25882/#review-99351
 
@@ -3369,7 +3367,7 @@
 
 - **试题与解析**
   - 2025 年（期末、回忆版、解答情况不明）：数字电路 2025 期末（回忆版） —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DigitalCircuit2025F.md
-  - 年份待确认（类型不明、原题、解答情况不明）：数字电路(数字逻辑电路)历年考试试卷合集(6 份成员) —— USTC 评课社区 https://icourse.club/course/21880/#review-90524
+  - 年份待确认（卷别不明、原题、解答情况不明）：数字电路(数字逻辑电路)历年考试试卷合集(6 份成员) —— USTC 评课社区 https://icourse.club/course/21880/#review-90524
 - **作业、习题与小测**
   - 数字电路 习题课重点题目与小测解答 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21880/#review-100969
 - **学习资料**
@@ -3388,7 +3386,7 @@
 专业课 · 电子 · 通信
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：微波技术基础 样卷 —— USTC 评课社区 https://icourse.club/course/24519/#review-102926
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：微波技术基础 样卷 —— USTC 评课社区 https://icourse.club/course/24519/#review-102926
 - **作业、习题与小测**
   - 微波技术基础作业（2022） —— ly382965/USTC_learning_materials（6系课程资料）；核验于 2026-11-18 https://github.com/ly382965/USTC_learning_materials/blob/main/3SP%20Fundamentals%20of%20Microwave%20Technology/homework2022.pdf
 - **学习资料**
@@ -3415,8 +3413,8 @@
 专业课 · 自动化 · 计算机
 
 - **试题与解析**
-  - 2023—2024 学年（类型不明、原题、解答情况不明）：计算机控制基础 2023—2024 学年第一学期 A 卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%8023%E7%A7%8BA%E5%8D%B7.pdf（文件页）
-  - 2024—2025 学年（类型不明、原题、解答情况不明）：计算机控制基础 2024—2025 学年第一学期 A 卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%8024%E7%A7%8BA%E5%8D%B7.pdf（文件页）
+  - 2023—2024 学年（卷别不明、原题、解答情况不明）：计算机控制基础 2023—2024 学年第一学期 A 卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%8023%E7%A7%8BA%E5%8D%B7.pdf（文件页）
+  - 2024—2025 学年（卷别不明、原题、解答情况不明）：计算机控制基础 2024—2025 学年第一学期 A 卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%8024%E7%A7%8BA%E5%8D%B7.pdf（文件页）
 - **作业、习题与小测**
   - 计算机控制基础 作业讲解与答案（第 1—6 次） —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8E%A7%E5%88%B6%E5%9F%BA%E7%A1%80/%E4%BD%9C%E4%B8%9A%E8%AE%B2%E8%A7%A3%E8%B5%84%E6%96%99/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A%E8%AE%B2%E8%A7%A3.pdf（文件页）
 - **学习资料**
@@ -3454,8 +3452,8 @@
 专业课 · 人工智能 · 计算机
 
 - **试题与解析**
-  - 2025 年（类型不明、形式不明、解答情况不明）：数字图像处理A 2025 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DIP-A2025S.md
-  - 年份待确认（类型不明、形式不明、解答情况不明）：样卷 —— USTC 评课社区 https://icourse.club/course/25210/#review-94287
+  - 2025 年（卷别不明、形式不明、解答情况不明）：数字图像处理A 2025 试卷 —— guch8017/USTC_CS_EXAM（跨课试卷索引） https://github.com/guch8017/USTC_CS_EXAM/blob/master/Exams/DIP-A2025S.md
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：样卷 —— USTC 评课社区 https://icourse.club/course/25210/#review-94287
 - **作业、习题与小测**
   - 数字图像处理A作业1-7与习题答案 —— ly382965/USTC_learning_materials（6系课程资料）；核验于 2026-11-18 https://github.com/ly382965/USTC_learning_materials/tree/main/3SP%20Digital%20Image%20Processing%20A
   - 祖传习题答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/25210/#review-94287
@@ -3541,7 +3539,7 @@
 通修课 · 外语
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：英语交流II 课内口语考试材料 —— USTC 评课社区 https://icourse.club/course/21299/#review-68990
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：英语交流II 课内口语考试材料 —— USTC 评课社区 https://icourse.club/course/21299/#review-68990
 
 ### FL1005 英语读写I
 
@@ -3664,7 +3662,7 @@
 专业课 · 地球科学 · 力学
 
 - **试题与解析**
-  - 2022 年（类型不明、形式不明、解答情况不明）：流体力学 A 卷（2022-12-12 回忆版） —— USTC 评课社区 https://icourse.club/course/12858/#review-58482
+  - 2022 年（卷别不明、形式不明、解答情况不明）：流体力学 A 卷（2022-12-12 回忆版） —— USTC 评课社区 https://icourse.club/course/12858/#review-58482
 
 ### GEOP3008 磁流体力学
 
@@ -3751,7 +3749,7 @@
 通识课 · 天文 · 历史
 
 - **试题与解析**
-  - 年份待确认（类型不明、回忆版、无解答）：天文学史 考试试题回忆版 —— USTC 评课社区 https://icourse.club/course/24780/#review-88593
+  - 年份待确认（卷别不明、回忆版、无解答）：天文学史 考试试题回忆版 —— USTC 评课社区 https://icourse.club/course/24780/#review-88593
 
 ### HS1528 日本社会文化解读(双语课程)
 
@@ -3944,7 +3942,7 @@
 
 - **试题与解析**
   - 年份待确认（期末、形式不明、解答情况不明）：马克思主义基本原理 某年期末试题 —— USTC 评课社区 https://icourse.club/course/6863/#review-75527
-  - 年份待确认（类型不明、回忆版、无解答）：马克思主义基本原理 试题回忆版(辨析题与论述题) —— USTC 评课社区 https://icourse.club/course/6867/#review-38919
+  - 年份待确认（卷别不明、回忆版、无解答）：马克思主义基本原理 试题回忆版(辨析题与论述题) —— USTC 评课社区 https://icourse.club/course/6867/#review-38919
 - **作业、习题与小测**
   - 2023年新版马原复习题库答案 —— duxiaoyang-creator/USTC-Course-Materials（本科课程存档）；核验于 2026-11-18 https://github.com/duxiaoyang-creator/USTC-Course-Materials/blob/main/%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E9%A9%AC%E5%8E%9F%E5%B0%8F%E6%96%87%E6%A1%A3/2023%E5%B9%B4%E6%96%B0%E7%89%88%E9%A9%AC%E5%8E%9F%E5%A4%8D%E4%B9%A0%E9%A2%98%E5%BA%93%E7%AD%94%E6%A1%88.pdf
   - 马克思主义基本原理 分章辨析与简答题库(含解答) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/6863/#review-75527
@@ -3973,11 +3971,11 @@
 通修课 · 思政
 
 - **试题与解析**
-  - 2025 年（类型不明、形式不明、解答情况不明）：2025德法无纸化考试题库 —— USTC 评课社区 https://icourse.club/course/20930/#review-100348
+  - 2025 年（卷别不明、形式不明、解答情况不明）：2025德法无纸化考试题库 —— USTC 评课社区 https://icourse.club/course/20930/#review-100348
   - 2023 年（期末、回忆版、无解答）：思想道德与法治 2023年期末参考回忆版 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%94%BF%E6%B2%BB%E7%B1%BB/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB/%E3%80%8A%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB%E3%80%8B2022%E7%A7%8B%E6%9C%9F%E6%9C%AB.doc（文件页）
-  - 2021 年（类型不明、形式不明、解答情况不明）：2021秋季学期《思想道德与法治》课机考试题库 —— USTC 评课社区 https://icourse.club/course/20933/#review-42671
-  - 年份待确认（类型不明、形式不明、解答情况不明）：思想道德与法治：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/20930/#review-98354
-  - 年份待确认（类型不明、形式不明、解答情况不明）：思想道德与法治：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/20934/#review-96384
+  - 2021 年（卷别不明、形式不明、解答情况不明）：2021秋季学期《思想道德与法治》课机考试题库 —— USTC 评课社区 https://icourse.club/course/20933/#review-42671
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：思想道德与法治：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/20930/#review-98354
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：思想道德与法治：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/20934/#review-96384
   - 年份待确认（期末、形式不明、解答情况不明）：思想道德与法治2024-2025期末试题 —— USTC 评课社区 https://icourse.club/course/20934/#review-88521
 - **作业、习题与小测**
   - 思想道德与法治 2021秋机考题库 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E6%94%BF%E6%B2%BB%E7%B1%BB/%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB/%E3%80%8A%E6%80%9D%E6%83%B3%E9%81%93%E5%BE%B7%E4%B8%8E%E6%B3%95%E6%B2%BB%E3%80%8B2021%E7%A7%8B%E6%9C%BA%E8%80%83%E9%A2%98%E5%BA%93.xlsx（文件页）
@@ -4080,9 +4078,9 @@
   - 2018 年（期末、形式不明、解答情况不明）：2018数学分析(A2)期末 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E7%9C%9F%E9%A2%98/2018%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E6%9C%9F%E6%9C%AB.pdf（文件页）
   - 2018 年（期末、形式不明、含解答）：数学分析A2 2018 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2018MAA2finalsol.pdf
   - 2016 年（期末、形式不明、解答情况不明）：2016数学分析(A2)期末 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E7%9C%9F%E9%A2%98/2016%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E6%9C%9F%E6%9C%AB.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(A2)：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/12392/#review-23487
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(A2)：试题与解析（4 个附件） —— USTC 评课社区 https://icourse.club/course/12392/#review-23487
   - 年份待确认（期末、形式不明、解答情况不明）：MAA2 finalsol —— USTC 评课社区 https://icourse.club/course/2828/#review-104139
-  - 年份待确认（类型不明、形式不明、解答情况不明）：Reference answer for MAII —— USTC 评课社区 https://icourse.club/course/12392/#review-50171
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：Reference answer for MAII —— USTC 评课社区 https://icourse.club/course/12392/#review-50171
 - **作业、习题与小测**
   - 2021 年（小测、形式不明、解答情况不明）：2021数学分析(A2)小测1 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E7%9C%9F%E9%A2%98/2021%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E5%B0%8F%E6%B5%8B1.pdf（文件页）
   - 2021 年（小测、形式不明、解答情况不明）：2021数学分析(A2)小测2 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E7%9C%9F%E9%A2%98/2021%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28A2%29%E5%B0%8F%E6%B5%8B2.pdf（文件页）
@@ -4190,7 +4188,7 @@
   - 2025 年（期末、原题、含解答）：2024秋数学分析(B1)期末考试试卷(A卷)含解答与点评 —— USTC 评课社区 https://icourse.club/course/13486/#review-91217
   - 2025 年（期末、形式不明、解答情况不明）：2025数学分析B1期末考试参考答案 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2025%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2025 年（期中、形式不明、解答情况不明）：2025数学分析B1期中考试参考答案 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2025%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2025 年（类型不明、模拟练习、解答情况不明）：数分B真题集2025版 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%88%86B%E7%9C%9F%E9%A2%98%E9%9B%862025%E7%89%88.pdf（文件页）
+  - 2025 年（卷别不明、模拟练习、解答情况不明）：数分B真题集2025版 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%88%86B%E7%9C%9F%E9%A2%98%E9%9B%862025%E7%89%88.pdf（文件页）
   - 2025 年（期中、原题、含解答）：数学分析(B1):2025 秋期中考试参考答案 —— USTC 评课社区 https://icourse.club/course/19512/#review-100047
   - 2024 年（期末、形式不明、解答情况不明）：2024数学分析B1期末考试参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2024%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2024 年（期中、形式不明、解答情况不明）：2024数学分析B1期中考试参考答案 —— feixu 学习资料分享站（AList）、USTC 数学课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/2024%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90B1%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
@@ -4225,15 +4223,15 @@
   - 2018—2019 学年（期末、形式不明、含解答）：数学分析(B1) 2018秋 期末试卷和答案 —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
   - 2019—2020 学年（期末、形式不明、含解答）：数学分析(B1) 2019秋 期末试卷和答案 —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
   - 2019—2020 学年（期中、形式不明、含解答）：数学分析(B1) 2019秋 期中试卷和答案 —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B1) 考试试卷(扫描件,年份未核实) —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
-  - 年份待确认（类型不明、形式不明、含解答）：数学分析(B1) 历年测试与真题手写解答汇编 —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B1) 考试试卷(扫描件,年份未核实) —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
+  - 年份待确认（卷别不明、形式不明、含解答）：数学分析(B1) 历年测试与真题手写解答汇编 —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
   - 年份待确认（期末、形式不明、解答情况不明）：数学分析(B1) 期末试卷(扫描件,年份未核实) —— USTC 评课社区 https://icourse.club/course/2840/#review-29420
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：数学分析(B1) 期中期末试卷扫描合集(ZIP,27 个成员) —— USTC 评课社区 https://icourse.club/course/12452/#review-81327
   - 年份待确认（期中、形式不明、解答情况不明）：数学分析(B1) 期中试卷(扫描件,年份未核实) —— USTC 评课社区 https://icourse.club/course/13486/#review-69910
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B1) 往年真题 —— USTC 评课社区 https://icourse.club/course/26560/#review-99720
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B1) 往年真题 —— USTC 评课社区 https://icourse.club/course/26560/#review-99720
   - 年份待确认（期中、形式不明、无解答）：数学分析(B1):2023-2024 学年期中考试试题 —— USTC 评课社区 https://icourse.club/course/21918/#review-80973
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B1)历年真题压轴题及答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E5%8E%8B%E8%BD%B4%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B1)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B1)历年真题压轴题及答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E5%8E%8B%E8%BD%B4%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B1)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
   - 年份待确认（期末、形式不明、解答情况不明）：数学分析B1 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/MAB1exams.zip
 - **作业、习题与小测**
   - 《数学分析讲义（第一、二册）》习题解析（李清臣整理） —— 李清臣：《数学分析讲义（第一、二册）》习题解析；核验于 2026-11-25 https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf
@@ -4287,10 +4285,10 @@
   - 年份待确认（期中期末混合、原题、无解答）：数学分析(B) 历年考试真题(2022 版) —— USTC 评课社区 https://icourse.club/course/19516/#review-77292
   - 年份待确认（期中期末混合、原题、无解答）：数学分析(B)历年考试真题(2025 I 版,含B2部分) —— USTC 评课社区 https://icourse.club/course/25661/#review-95007
   - 2003—2004 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2011—2012 学年、2012—2013 学年、2013—2014 学年、2015—2016 学年、2016—2017 学年、2017—2018 学年、2018—2019 学年、2019—2020 学年、2020—2021 学年（期中期末混合、原题、解答情况不明）：数学分析(B)历年真题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B2) 历年考试真题汇编 —— USTC 评课社区 https://icourse.club/course/2854/#review-21739
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B2) 历年考试真题汇编 —— USTC 评课社区 https://icourse.club/course/2854/#review-21739
   - 年份待确认（期中、形式不明、解答情况不明）：数学分析(B2) 期中答案 —— USTC 评课社区 https://icourse.club/course/20161/#review-102432
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B2) 期中期末试卷合集 —— USTC 评课社区 https://icourse.club/course/13222/#review-86578
-  - 年份待确认（类型不明、形式不明、解答情况不明）：数学分析(B2)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B2) 期中期末试卷合集 —— USTC 评课社区 https://icourse.club/course/13222/#review-86578
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：数学分析(B2)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E7%9C%9F%E9%A2%98%E7%AD%94%E6%A1%88/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90%28B2%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
 - **作业、习题与小测**
   - 《数学分析讲义（第一、二册）》习题解析（李清臣整理） —— 李清臣：《数学分析讲义（第一、二册）》习题解析；核验于 2026-11-25 https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf
   - 数学分析(B2) 2018–2019 春季练习 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/13222/#review-70644
@@ -4314,7 +4312,7 @@
 通修课 · 数学
 
 - **试题与解析**
-  - 2025 年（类型不明、原题、含解答）：数学分析(B3) 2025 A 卷评分标准与解答(第 7—10 页) —— USTC 评课社区 https://icourse.club/course/14210/#review-87955
+  - 2025 年（卷别不明、原题、含解答）：数学分析(B3) 2025 A 卷评分标准与解答(第 7—10 页) —— USTC 评课社区 https://icourse.club/course/14210/#review-87955
   - 2025 年（期末、原题、解答情况不明）：数学分析B3 2024 期末 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2024MAB3final.pdf
   - 2025 年（期中、原题、解答情况不明）：数学分析B3 2025 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025MAB3mid.pdf
   - 2024 年（期中、原题、解答情况不明）：数学分析B3 2024 期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2024MAB3mid.pdf
@@ -4364,13 +4362,13 @@
   - 2016—2017 学年（期中、原题、含解答）：2016-2017第二学期线性代数(B1)期中参考答案 —— feixu 学习资料分享站（AList）、fandahao17/USTC-CS-Courses-Resource（历史课程资料） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98/2016-2017%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B1%29%E6%9C%9F%E4%B8%AD%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2016—2017 学年（期中、原题、无解答）：2016-2017第一学期线性代数B1期中考试试卷 —— fandahao17/USTC-CS-Courses-Resource（历史课程资料） https://raw.githubusercontent.com/fandahao17/USTC-CS-Courses-Resource/master/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0B1/2016%E2%80%942017%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E3%80%8A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0B1%E3%80%8B%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E8%AF%95%E5%8D%B7.pdf（文件页）
   - 2016—2017 学年（期末、原题、无解答）：2016-2017第一学期线性代数B1期终考试试卷 —— fandahao17/USTC-CS-Courses-Resource（历史课程资料） https://raw.githubusercontent.com/fandahao17/USTC-CS-Courses-Resource/master/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0B1/2016%E2%80%942017%E5%AD%A6%E5%B9%B4%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%E3%80%8A%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0B1%E3%80%8B%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E8%AF%95%E5%8D%B7%E5%8F%8A%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：往年真题 —— USTC 评课社区 https://icourse.club/course/5470/#review-81575
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：往年真题 —— USTC 评课社区 https://icourse.club/course/5470/#review-81575
   - 年份待确认（期中期末混合、原题、无解答）：线性代数(B) 历年真题（B1/B2/A 合集） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：线性代数(B1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/5484/#review-18340
-  - 年份待确认（类型不明、形式不明、解答情况不明）：线性代数(B1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/24268/#review-84581
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：线性代数(B1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/5484/#review-18340
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：线性代数(B1)：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/24268/#review-84581
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：线性代数(B1)：试题与解析（7 个附件） —— USTC 评课社区 https://icourse.club/course/5480/#review-13641
-  - 年份待确认（类型不明、原题、含解答）：线性代数(B1)历年真题及参考解答（2024版） —— feixu 学习资料分享站（AList）、USTC 评课社区 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E5%8F%8A%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：线性代数(B1)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 年份待确认（卷别不明、原题、含解答）：线性代数(B1)历年真题及参考解答（2024版） —— feixu 学习资料分享站（AList）、USTC 评课社区 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98%E5%8F%8A%E5%8F%82%E8%80%83%E8%A7%A3%E7%AD%94.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：线性代数(B1)历年真题sxl答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%28B1%29%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98sxl%E7%AD%94%E6%A1%88.pdf（文件页）
 - **学习资料**
   - 《线性代数B1》定理整理（未校对版本） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/5492/#review-31976
   - 《线性代数B1》讲义 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/5481/#review-85352
@@ -4427,69 +4425,69 @@
 
 - **试题与解析**
   - 2024 年（期末、形式不明、解答情况不明）：24春计算方法期末回忆版 —— USTC 评课社区 https://icourse.club/course/24269/#review-85502
-  - 2023 年（类型不明、形式不明、无解答）：计算方法 2023 春季学期试卷 —— USTC 评课社区 https://icourse.club/course/21350/#review-76125
+  - 2023 年（卷别不明、形式不明、无解答）：计算方法 2023 春季学期试卷 —— USTC 评课社区 https://icourse.club/course/21350/#review-76125
   - 2023 年（期末、形式不明、解答情况不明）：计算方法 2023春期末 —— USTC 评课社区 https://icourse.club/course/21350/#review-67755
-  - 2022 年（类型不明、形式不明、解答情况不明）：2022春（李治平） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E6%98%A5%EF%BC%88%E6%9D%8E%E6%B2%BB%E5%B9%B3%EF%BC%89.pdf（文件页）
-  - 2022 年（类型不明、形式不明、解答情况不明）：2022春（李治平整理） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E6%98%A5%EF%BC%88%E6%9D%8E%E6%B2%BB%E5%B9%B3%E6%95%B4%E7%90%86%EF%BC%89.pdf（文件页）
-  - 2022 年（类型不明、形式不明、解答情况不明）：2022秋 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E7%A7%8B.pdf（文件页）
-  - 2022 年（类型不明、形式不明、含解答）：2022秋答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E7%A7%8B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2022 年（卷别不明、形式不明、解答情况不明）：2022春（李治平） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E6%98%A5%EF%BC%88%E6%9D%8E%E6%B2%BB%E5%B9%B3%EF%BC%89.pdf（文件页）
+  - 2022 年（卷别不明、形式不明、解答情况不明）：2022春（李治平整理） —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E6%98%A5%EF%BC%88%E6%9D%8E%E6%B2%BB%E5%B9%B3%E6%95%B4%E7%90%86%EF%BC%89.pdf（文件页）
+  - 2022 年（卷别不明、形式不明、解答情况不明）：2022秋 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E7%A7%8B.pdf（文件页）
+  - 2022 年（卷别不明、形式不明、含解答）：2022秋答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2022%E7%A7%8B%E7%AD%94%E6%A1%88.pdf（文件页）
   - 2017 年（期末、形式不明、解答情况不明）：计算方法 2017 期末试卷 —— USTC 评课社区 https://icourse.club/course/21350/#review-76125
-  - 2017 年（类型不明、原题、解答情况不明）：计算方法 2017 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E8%AF%95%E5%8D%B7%E5%8F%8A%E7%AD%94%E6%A1%882017-4.pdf
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%281%29.jpg（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%281%29.JPG（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%282%29.jpg（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%282%29.JPG（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%283%29.jpg（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%283%29.JPG（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%284%29.jpg（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%284%29.JPG（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%285%29.JPG（文件页）
-  - 2013 年（类型不明、形式不明、解答情况不明）：2013春 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%285%29.jpg（文件页）
-  - 2007—2008 学年（类型不明、形式不明、解答情况不明）：2007-2008第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2007-2008%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
-  - 2009—2010 学年（类型不明、形式不明、解答情况不明）：2009-2010第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
-  - 2009—2010 学年（类型不明、形式不明、解答情况不明）：2009-2010第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
-  - 2009—2010 学年（类型不明、形式不明、解答情况不明）：2009-2010第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
-  - 2009—2010 学年（类型不明、形式不明、解答情况不明）：2009-2010第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.pdf（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
-  - 2010—2011 学年（类型不明、形式不明、解答情况不明）：2010-2011第二学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%281%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%282%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%283%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%284%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%285%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.pdf（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (7) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%287%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第二学期 (8) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%288%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (7) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%287%29.JPG（文件页）
-  - 2011—2012 学年（类型不明、形式不明、解答情况不明）：2011-2012第一学期 (8) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%288%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
-  - 2014—2015 学年（类型不明、形式不明、解答情况不明）：2014-2015第一学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
-  - 2016—2017 学年（类型不明、形式不明、解答情况不明）：2016-2017第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2016-2017%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.doc（文件页）
-  - 2016—2017 学年（类型不明、形式不明、解答情况不明）：2016-2017第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2016-2017%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：计算方法 往年真题 —— USTC 评课社区 https://icourse.club/course/20952/#review-94108
-  - 年份待确认（类型不明、原题、解答情况不明）：计算方法(B) 2014-2015 学年第一学期考试试卷 —— USTC 评课社区 https://icourse.club/course/21350/#review-76125
+  - 2017 年（卷别不明、原题、解答情况不明）：计算方法 2017 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E8%AF%95%E5%8D%B7%E5%8F%8A%E7%AD%94%E6%A1%882017-4.pdf
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%281%29.jpg（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%281%29.JPG（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%282%29.jpg（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%282%29.JPG（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%283%29.jpg（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%283%29.JPG（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%284%29.jpg（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%284%29.JPG（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E6%98%A5/2013%E6%98%A5%20%285%29.JPG（文件页）
+  - 2013 年（卷别不明、形式不明、解答情况不明）：2013春 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2013%E7%A7%8B/2013%E6%98%A5%20%285%29.jpg（文件页）
+  - 2007—2008 学年（卷别不明、形式不明、解答情况不明）：2007-2008第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2007-2008%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
+  - 2009—2010 学年（卷别不明、形式不明、解答情况不明）：2009-2010第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
+  - 2009—2010 学年（卷别不明、形式不明、解答情况不明）：2009-2010第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
+  - 2009—2010 学年（卷别不明、形式不明、解答情况不明）：2009-2010第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
+  - 2009—2010 学年（卷别不明、形式不明、解答情况不明）：2009-2010第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2009-2010%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.pdf（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
+  - 2010—2011 学年（卷别不明、形式不明、解答情况不明）：2010-2011第二学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2010-2011%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%281%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%282%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%283%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%284%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012/2011-2012%20%285%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.pdf（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (7) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%287%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第二学期 (8) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F%20%288%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (7) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%287%29.JPG（文件页）
+  - 2011—2012 学年（卷别不明、形式不明、解答情况不明）：2011-2012第一学期 (8) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2011-2012%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%288%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (1) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%281%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (2) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%282%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (3) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%283%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (4) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%284%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (5) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%285%29.JPG（文件页）
+  - 2014—2015 学年（卷别不明、形式不明、解答情况不明）：2014-2015第一学期 (6) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F/2014-2015%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%20%286%29.JPG（文件页）
+  - 2016—2017 学年（卷别不明、形式不明、解答情况不明）：2016-2017第二学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2016-2017%E7%AC%AC%E4%BA%8C%E5%AD%A6%E6%9C%9F.doc（文件页）
+  - 2016—2017 学年（卷别不明、形式不明、解答情况不明）：2016-2017第一学期 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/2016-2017%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：计算方法 往年真题 —— USTC 评课社区 https://icourse.club/course/20952/#review-94108
+  - 年份待确认（卷别不明、原题、解答情况不明）：计算方法(B) 2014-2015 学年第一学期考试试卷 —— USTC 评课社区 https://icourse.club/course/21350/#review-76125
 - **作业、习题与小测**
   - 计算方法：作业与习题（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20952/#review-94108
   - 计算方法：作业与习题（3 个附件） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21350/#review-76125
@@ -4555,7 +4553,7 @@
 专业课 · 数学
 
 - **试题与解析**
-  - 2024 年（类型不明、回忆版、解答情况不明）：复变函数(化学):2024 年试题(整理版) —— USTC 评课社区 https://icourse.club/course/23932/#review-88181
+  - 2024 年（卷别不明、回忆版、解答情况不明）：复变函数(化学):2024 年试题(整理版) —— USTC 评课社区 https://icourse.club/course/23932/#review-88181
 
 ### MATH2502 微分方程概论
 
@@ -4841,8 +4839,8 @@
 
 - **试题与解析**
   - 2025 年（期末、形式不明、解答情况不明）：2025 秋运筹学期末试卷 —— USTC 评课社区 https://icourse.club/course/23685/#review-99460
-  - 年份待确认（类型不明、原题、解答情况不明）：运筹学 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%BF%90%E7%AD%B9%E5%AD%A6/exam/exam.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：运筹学 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%BF%90%E7%AD%B9%E5%AD%A6/exam/exam.md
+  - 年份待确认（卷别不明、原题、解答情况不明）：运筹学 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%BF%90%E7%AD%B9%E5%AD%A6/exam/exam.pdf
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：运筹学 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%BF%90%E7%AD%B9%E5%AD%A6/exam/exam.md
 - **作业、习题与小测**
   - 运筹学 期中小测 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/23685/#review-72634
   - 运筹学 运筹学（homework） —— guidongnan/ustc_ds_undergraduate_course；核验于 2026-11-18 https://github.com/guidongnan/ustc_ds_undergraduate_course/blob/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E8%BF%90%E7%AD%B9%E5%AD%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%E4%B9%A0%E9%A2%98%E8%A7%A3%E7%AD%94.pdf（文件页）
@@ -4933,7 +4931,7 @@
 专业课 · 力学 · 材料
 
 - **试题与解析**
-  - 2017 年、2019 年（类型不明、形式不明、解答情况不明）：材料力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/22076/#review-83592
+  - 2017 年、2019 年（卷别不明、形式不明、解答情况不明）：材料力学A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/22076/#review-83592
 
 ### ME2012 工程计算方法
 
@@ -4954,7 +4952,7 @@
 专业课 · 材料
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：工程材料试卷 —— USTC 评课社区 https://icourse.club/course/25801/#review-101081
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：工程材料试卷 —— USTC 评课社区 https://icourse.club/course/25801/#review-101081
 
 ### ME2501 材料力学B
 
@@ -5018,7 +5016,7 @@
 专业课 · 核科学
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：反应堆物理：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/18700/#review-83993
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：反应堆物理：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/18700/#review-83993
 - **学习资料**
   - 反应堆物理复习笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/18700/#review-83993
 
@@ -5046,7 +5044,7 @@
   - 2020 年（期中、回忆版、解答情况不明）：2020秋向守平班力学A期中试题回忆版 —— feixu 学习资料分享站（AList）、USTC 物理课程往年试卷 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2020%E7%A7%8B%E5%90%91%E5%AE%88%E5%B9%B3%E7%8F%AD%E5%8A%9B%E5%AD%A6A%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98%E5%9B%9E%E5%BF%86%E7%89%88.pdf（文件页）
   - 2016 年、2017 年、2018 年、2020 年（期中期末混合、形式不明、解答情况不明）：力学A：试题与解析（7 个附件） —— USTC 评课社区 https://icourse.club/course/19589/#review-43609
   - 2024—2025 学年（期末、形式不明、解答情况不明）：2024-2025秋季学期 力学A(AH AL)期末参考答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2024-2025%E7%A7%8B%E5%AD%A3%E5%AD%A6%E6%9C%9F%20%E5%8A%9B%E5%AD%A6A%28AH%20AL%29%E6%9C%9F%E6%9C%AB%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：力学历年考题 —— USTC 评课社区 https://icourse.club/course/19967/#review-27995
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：力学历年考题 —— USTC 评课社区 https://icourse.club/course/19967/#review-27995
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：力学A：上古密卷合集 —— USTC 课程资料簿（GitBook） https://easylink.cc/bp2ybz
 - **学习资料**
   - 力学A 复习大抄(手写公式与例题整理,2 页) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/19588/#review-90767
@@ -5070,18 +5068,18 @@
 通修课 · 力学 · 物理
 
 - **试题与解析**
-  - 2025 年（类型不明、原题、含解答）：2025力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2025%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2024 年（类型不明、形式不明、解答情况不明）：2024力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2024%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2024 年（类型不明、原题、解答情况不明）：2024力学B试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2024%E5%8A%9B%E5%AD%A6B%E8%AF%95%E9%A2%98.pdf（文件页）
+  - 2025 年（卷别不明、原题、含解答）：2025力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2025%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2024 年（卷别不明、形式不明、解答情况不明）：2024力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2024%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2024 年（卷别不明、原题、解答情况不明）：2024力学B试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2024%E5%8A%9B%E5%AD%A6B%E8%AF%95%E9%A2%98.pdf（文件页）
   - 2024 年（期末、形式不明、解答情况不明）：力学B 期末试卷材料(2024,压缩包) —— USTC 评课社区 https://icourse.club/course/20179/#review-84332
-  - 2022 年（类型不明、原题、解答情况不明）：2022力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2022%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2021 年（类型不明、原题、解答情况不明）：2021力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2021%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2021 年（类型不明、原题、解答情况不明）：2021力学B试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2021%E5%8A%9B%E5%AD%A6B%E8%AF%95%E5%8D%B7.pdf（文件页）
+  - 2022 年（卷别不明、原题、解答情况不明）：2022力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2022%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2021 年（卷别不明、原题、解答情况不明）：2021力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2021%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2021 年（卷别不明、原题、解答情况不明）：2021力学B试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2021%E5%8A%9B%E5%AD%A6B%E8%AF%95%E5%8D%B7.pdf（文件页）
   - 2021 年（期中、形式不明、解答情况不明）：力学B 2021 春期中试卷 —— USTC 评课社区 https://icourse.club/course/20179/#review-49998
-  - 2020 年（类型不明、形式不明、解答情况不明）：2020力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2020%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2020 年（类型不明、原题、解答情况不明）：2020力学B试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2020%E5%8A%9B%E5%AD%A6B%E8%AF%95%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：力学历年考题 —— USTC 评课社区 https://icourse.club/course/19595/#review-45833
-  - 年份待确认（类型不明、形式不明、解答情况不明）：力学B 往年真题 —— USTC 评课社区 https://icourse.club/course/20179/#review-84332
+  - 2020 年（卷别不明、形式不明、解答情况不明）：2020力学B答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2020%E5%8A%9B%E5%AD%A6B%E7%AD%94%E6%A1%88.pdf（文件页）
+  - 2020 年（卷别不明、原题、解答情况不明）：2020力学B试题 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8A%9B%E5%AD%A6/2020%E5%8A%9B%E5%AD%A6B%E8%AF%95%E9%A2%98.pdf（文件页）
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：力学历年考题 —— USTC 评课社区 https://icourse.club/course/19595/#review-45833
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：力学B 往年真题 —— USTC 评课社区 https://icourse.club/course/20179/#review-84332
 - **作业、习题与小测**
   - 力学B 作业（一份） —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/20178/#review-46266
 - **学习资料**
@@ -5114,7 +5112,7 @@
   - 2024 年（期末、回忆版、解答情况不明）：热学 2024 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24SpThermAFinal.pdf
   - 2022 年（期末、原题、解答情况不明）：热学 2022 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/22SpThermAFinal.pdf
   - 2021 年（期中、原题、解答情况不明）：热学(A) 2021 期中试题 —— USTC 评课社区 https://icourse.club/course/20187/#review-36580
-  - 2017 年（类型不明、形式不明、解答情况不明）：2017年热学公共题部分 —— USTC 评课社区 https://icourse.club/course/20182/#review-86729
+  - 2017 年（卷别不明、形式不明、解答情况不明）：2017年热学公共题部分 —— USTC 评课社区 https://icourse.club/course/20182/#review-86729
   - 年份待确认（期末、形式不明、解答情况不明）：热学A：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/20182/#review-33854
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：热学A：早年真题合集 —— USTC 课程资料簿（GitBook） https://easylink.cc/m0klme
 - **作业、习题与小测**
@@ -5137,10 +5135,10 @@
 
 - **试题与解析**
   - 2025 年（期末、形式不明、解答情况不明）：热学 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25SpThermBFinal.pdf
-  - 2021 年（类型不明、形式不明、解答情况不明）：热学B 试卷(2021) —— USTC 评课社区 https://icourse.club/course/20196/#review-34378
+  - 2021 年（卷别不明、形式不明、解答情况不明）：热学B 试卷(2021) —— USTC 评课社区 https://icourse.club/course/20196/#review-34378
   - 2019 年（期中、形式不明、解答情况不明）：2019力热春期中考试参考答案 —— USTC 评课社区 https://icourse.club/course/19599/#review-36830
   - 年份待确认（期末、形式不明、解答情况不明）：热学B 期末试卷及配套材料 —— USTC 评课社区 https://icourse.club/course/20195/#review-50046
-  - 年份待确认（类型不明、形式不明、解答情况不明）：往年真题 —— USTC 评课社区 https://icourse.club/course/20194/#review-85779
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：往年真题 —— USTC 评课社区 https://icourse.club/course/20194/#review-85779
 - **作业、习题与小测**
   - 《热学(第二版)》教材习题解答(v1.0) —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/20194/#review-85779
   - 热学B第二次习题课 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/19598/#review-95127
@@ -5245,10 +5243,10 @@
   - 2022 年（期末、原题、解答情况不明）：2022秋电磁学C期末试卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%94%B5%E7%A3%81%E5%AD%A6/2022%E7%A7%8B%E7%94%B5%E7%A3%81%E5%AD%A6C%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7.pdf（文件页）
   - 2021 年（期末、原题、解答情况不明）：2021秋电磁学C期末试卷(只有公共题) —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%94%B5%E7%A3%81%E5%AD%A6/2021%E7%A7%8B%E7%94%B5%E7%A3%81%E5%AD%A6C%E6%9C%9F%E6%9C%AB%E8%AF%95%E5%8D%B7%28%E5%8F%AA%E6%9C%89%E5%85%AC%E5%85%B1%E9%A2%98%29.pdf（文件页）
   - 2021 年（期中、形式不明、解答情况不明）：2021秋电磁学C期中考试 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E7%94%B5%E7%A3%81%E5%AD%A6/2021%E7%A7%8B%E7%94%B5%E7%A3%81%E5%AD%A6C%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95.pdf（文件页）
-  - 年份待确认（类型不明、原题、解答情况不明）：电磁学 历年期末试卷及部分解答合集(8 份 PDF) —— USTC 评课社区 https://icourse.club/course/21899/#review-54108
+  - 年份待确认（卷别不明、原题、解答情况不明）：电磁学 历年期末试卷及部分解答合集(8 份 PDF) —— USTC 评课社区 https://icourse.club/course/21899/#review-54108
   - 年份待确认（期末、形式不明、解答情况不明）：电磁学C 期末试卷(21 页,年份未核实) —— USTC 评课社区 https://icourse.club/course/23768/#review-75011
   - 年份待确认（期末、形式不明、解答情况不明）：电磁学C 期末试题（回忆版） —— USTC 评课社区 https://icourse.club/course/4975/#review-98313
-  - 年份待确认（类型不明、形式不明、解答情况不明）：电磁学C 试卷合集（压缩包） —— USTC 评课社区 https://icourse.club/course/4977/#review-60784
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：电磁学C 试卷合集（压缩包） —— USTC 评课社区 https://icourse.club/course/4977/#review-60784
 - **作业、习题与小测**
   - 电磁学C 习题答案 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/23768/#review-75011
 - **学习资料**
@@ -5288,13 +5286,13 @@
   - 2026 年（期末、形式不明、解答情况不明）：原子物理 2026 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/26SpAtomAFinal.pdf
   - 2025 年（期末、原题、解答情况不明）：原子物理 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaAtomAFinal.pdf
   - 2025 年（期末、原题、解答情况不明）：原子物理 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25SpAtomAFinal.pdf
-  - 2025 年（类型不明、形式不明、解答情况不明）：原子物理 2025 秋小测答案 —— USTC 评课社区 https://icourse.club/course/24423/#review-99248
+  - 2025 年（卷别不明、形式不明、解答情况不明）：原子物理 2025 秋小测答案 —— USTC 评课社区 https://icourse.club/course/24423/#review-99248
   - 2022 年（期末、形式不明、解答情况不明）：原子物理 2022 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/22SpAtomAFinal.pdf
   - 2018 年（期末、形式不明、解答情况不明）：原子物理 2018 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList） https://ustcphyexam.github.io/USTC/18SpAtomAFinal.pdf
   - 2016 年（期末、形式不明、含解答）：原子物理 2016 期末 —— USTC 物理课程往年试卷、feixu 学习资料分享站（AList）、USTC 课程资料簿（GitBook） https://ustcphyexam.github.io/USTC/16SpAtomAFinal.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：原子物理：上古密卷合集 —— USTC 课程资料簿（GitBook） https://easylink.cc/eqe390
-  - 年份待确认（类型不明、形式不明、解答情况不明）：原子物理A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21408/#review-48342
-  - 年份待确认（类型不明、形式不明、解答情况不明）：原子物理A：试题与解析（7 个附件） —— USTC 评课社区 https://icourse.club/course/21408/#review-84825
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：原子物理：上古密卷合集 —— USTC 课程资料簿（GitBook） https://easylink.cc/eqe390
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：原子物理A：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21408/#review-48342
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：原子物理A：试题与解析（7 个附件） —— USTC 评课社区 https://icourse.club/course/21408/#review-84825
 - **学习资料**
   - 原子物理 笔记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21407/#review-94548
   - 原子物理 简记 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21411/#review-87080
@@ -5309,13 +5307,13 @@
 通修课 · 物理
 
 - **试题与解析**
-  - 2025 年（类型不明、形式不明、解答情况不明）：原子物理B 2025 试卷 —— USTC 评课社区 https://icourse.club/course/21414/#review-95486
+  - 2025 年（卷别不明、形式不明、解答情况不明）：原子物理B 2025 试卷 —— USTC 评课社区 https://icourse.club/course/21414/#review-95486
   - 2018 年（期末、原题、含解答）：原子物理B 2018 期末试题及答案 —— USTC 评课社区 https://icourse.club/course/21021/#review-93895
   - 2017 年（期末、形式不明、含解答）：原子物理（乙）2017 期末考试题及答案 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E5%8E%9F%E5%AD%90%E7%89%A9%E7%90%86/%E5%8E%9F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%B9%99%EF%BC%892017%E6%9C%9F%E6%9C%AB%E8%80%83%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.doc（文件页）
   - 2017 年（期末、原题、含解答）：原子物理B 2017 期末试题及答案(PDF原卷版) —— USTC 评课社区 https://icourse.club/course/21021/#review-93895
   - 2016 年（期末、原题、含解答）：原子物理B 2016 期末试题及答案 —— USTC 评课社区 https://icourse.club/course/21021/#review-93895
   - 年份待确认（期末、形式不明、解答情况不明）：原子物理B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21022/#review-103626
-  - 年份待确认（类型不明、形式不明、解答情况不明）：原子物理B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21021/#review-93895
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：原子物理B：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21021/#review-93895
 - **作业、习题与小测**
   - 原子物理B 教材课后答案 —— USTC 评课社区；核验于 2026-11-19 https://icourse.club/course/21022/#review-103626
   - 原子物理B 课程教材课后习题解答 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/21022/#review-95604
@@ -5389,20 +5387,20 @@
 通修课 · 物理
 
 - **试题与解析**
-  - 2026 年（类型不明、形式不明、解答情况不明）：量子物理试卷(2026) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
+  - 2026 年（卷别不明、形式不明、解答情况不明）：量子物理试卷(2026) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
   - 2025 年（期末、回忆版、无解答）：2025春量子物理期末试卷(回忆版) —— USTC 评课社区 https://icourse.club/course/25422/#review-93645
   - 2025 年（期末、形式不明、解答情况不明）：2025期末 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/2025%E6%9C%9F%E6%9C%AB.pdf（文件页）
   - 2025 年（期末、回忆版、无解答）：量子物理 2025 春期末试卷(回忆整理版) —— USTC 评课社区 https://icourse.club/course/25422/#review-93645
-  - 2025 年（类型不明、形式不明、解答情况不明）：量子物理试卷(2025) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
+  - 2025 年（卷别不明、形式不明、解答情况不明）：量子物理试卷(2025) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
   - 2024 年（期末、形式不明、解答情况不明）：2024期末-1 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/2024%E6%9C%9F%E6%9C%AB-1.jpg（文件页）
   - 2024 年（期末、形式不明、解答情况不明）：2024期末-2 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/2024%E6%9C%9F%E6%9C%AB-2.jpg（文件页）
   - 2024 年（期末、形式不明、解答情况不明）：量子物理 2024 期末试卷 —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
-  - 2023 年（类型不明、形式不明、解答情况不明）：量子物理试卷(2023) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
+  - 2023 年（卷别不明、形式不明、解答情况不明）：量子物理试卷(2023) —— USTC 评课社区 https://icourse.club/course/25424/#review-103115
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：量子物理：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/22658/#review-66056
   - 年份待确认（期中期末混合、形式不明、解答情况不明）：量子物理：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/21423/#review-83640
-  - 年份待确认（类型不明、形式不明、解答情况不明）：量子物理往年试卷(2 页) —— USTC 评课社区 https://icourse.club/course/21420/#review-94405
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：量子物理往年试卷(2 页) —— USTC 评课社区 https://icourse.club/course/21420/#review-94405
   - 年份待确认（期末、模拟练习、解答情况不明）：期末样卷 —— feixu 学习资料分享站（AList） https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/4%20%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%A4%87%E8%80%83/%E8%80%83%E8%AF%95%E7%9B%B8%E5%85%B3/%E6%9C%9F%E6%9C%AB%E6%A0%B7%E5%8D%B7.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：信智学部量子物理试卷（回忆版） —— USTC 评课社区 https://icourse.club/course/22658/#review-63813
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：信智学部量子物理试卷（回忆版） —— USTC 评课社区 https://icourse.club/course/22658/#review-63813
 - **作业、习题与小测**
   - 第二次作业答案 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/4%20%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%A4%87%E8%80%83/%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88.pptx（文件页）
   - 第六次作业答案 —— feixu 学习资料分享站（AList）；核验于 2026-11-18 https://share.feixu.site/%E7%89%A9%E7%90%86%E7%B1%BB/%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%EF%BC%88%E4%BF%A1%E8%AE%A1%EF%BC%89/4%20%E9%87%8F%E5%AD%90%E7%89%A9%E7%90%86%E5%A4%87%E8%80%83/%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88/%E7%AC%AC%E5%85%AD%E6%AC%A1%E4%BD%9C%E4%B8%9A%E7%AD%94%E6%A1%88.pptx（文件页）
@@ -5462,14 +5460,14 @@
 专业课 · 物理
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：量子精密测量 考试三道大题 —— USTC 评课社区 https://icourse.club/uploads/files/174876154dd1731212df2a529978a393ac19698e.jpg
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：量子精密测量 考试三道大题 —— USTC 评课社区 https://icourse.club/uploads/files/174876154dd1731212df2a529978a393ac19698e.jpg
 
 ### PHYS3005 受控热核聚变导论
 
 专业课 · 核科学 · 物理
 
 - **试题与解析**
-  - 2025 年（类型不明、形式不明、解答情况不明）：聚变试卷2025 —— USTC 评课社区 https://icourse.club/course/22661/#review-94525
+  - 2025 年（卷别不明、形式不明、解答情况不明）：聚变试卷2025 —— USTC 评课社区 https://icourse.club/course/22661/#review-94525
 - **作业、习题与小测**
   - 受控热核聚变导论 磁约束(MCF)作业 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/22661/#review-87150
   - 受控热核聚变导论 惯性约束(ICF)作业 —— USTC 评课社区；核验于 2026-11-20 https://icourse.club/course/22661/#review-85043
@@ -5498,33 +5496,33 @@
 
 - **试题与解析**
   - 2026 年（期末、原题、解答情况不明）：概率论与数理统计 2025 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/25FaProbStatFinal.pdf
-  - 2026 年（类型不明、形式不明、解答情况不明）：概统试卷和参考答案2026春 —— USTC 评课社区 https://icourse.club/course/21052/#review-105456
+  - 2026 年（卷别不明、形式不明、解答情况不明）：概统试卷和参考答案2026春 —— USTC 评课社区 https://icourse.club/course/21052/#review-105456
   - 2025 年（期末、原题、含解答）：概率论与数理统计 2024 秋期末（2025 年 1 月） —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24FaProbStatFinal.pdf（资料目录）
   - 2024 年（期末、原题、含解答）：概率论与数理统计 2023 秋期末（2024 年 1 月） —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23FaProbStatFinal.pdf（资料目录）
   - 2024 年（期末、原题、解答情况不明）：概率论与数理统计 2024 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/24SpProbStatFinal.pdf
-  - 2024 年（类型不明、形式不明、解答情况不明）：概统试卷和参考答案202401 —— USTC 评课社区 https://icourse.club/course/3855/#review-79302
+  - 2024 年（卷别不明、形式不明、解答情况不明）：概统试卷和参考答案202401 —— USTC 评课社区 https://icourse.club/course/3855/#review-79302
   - 2023 年（期末、原题、解答情况不明）：概率论与数理统计 2023 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/23SpProbStatFinal.pdf
   - 2023 年（期末、原题、含解答）：概率论与数理统计2022-2023第一学期试题及答案 —— feixu 学习资料分享站（AList）、USTC 物理课程往年试卷 https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A12022-2023%E7%AC%AC%E4%B8%80%E5%AD%A6%E6%9C%9F%E8%AF%95%E9%A2%98%E5%8F%8A%E7%AD%94%E6%A1%88.pdf（文件页）
-  - 2023 年（类型不明、形式不明、解答情况不明）：概统2023秋试卷及答案 —— USTC 评课社区 https://icourse.club/course/21048/#review-79734
-  - 2023 年（类型不明、形式不明、解答情况不明）：概统试卷和参考答案2023 —— USTC 评课社区 https://icourse.club/course/21831/#review-96744
+  - 2023 年（卷别不明、形式不明、解答情况不明）：概统2023秋试卷及答案 —— USTC 评课社区 https://icourse.club/course/21048/#review-79734
+  - 2023 年（卷别不明、形式不明、解答情况不明）：概统试卷和参考答案2023 —— USTC 评课社区 https://icourse.club/course/21831/#review-96744
   - 2022 年（期末、原题、解答情况不明）：概率论与数理统计 2022 期末 —— USTC 物理课程往年试卷 https://ustcphyexam.github.io/USTC/22SpProbStatFinal.pdf
-  - 2020 年（类型不明、形式不明、解答情况不明）：概率论与数理统计 2020 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882020.pdf
-  - 2019 年（类型不明、形式不明、解答情况不明）：概率论与数理统计 2019 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882019.pdf
-  - 2018 年（类型不明、形式不明、解答情况不明）：概率论与数理统计 2018 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882018.pdf
+  - 2020 年（卷别不明、形式不明、解答情况不明）：概率论与数理统计 2020 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882020.pdf
+  - 2019 年（卷别不明、形式不明、解答情况不明）：概率论与数理统计 2019 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882019.pdf
+  - 2018 年（卷别不明、形式不明、解答情况不明）：概率论与数理统计 2018 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%BB%9F%E8%AF%95%E5%8D%B7%E5%92%8C%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%882018.pdf
   - 2024—2025 学年（期中、原题、无解答）：概率论与数理统计 2025 春期中 —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/2025Sprobstatmid.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计 大题备考 —— USTC 评课社区 https://icourse.club/course/3855/#review-98594
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计 大题备考 —— USTC 评课社区 https://icourse.club/course/3855/#review-98594
   - 年份待确认（期末、原题、含解答）：概率论与数理统计 期末合集（2003—2022，含解答） —— USTC 数学课程往年试卷 https://ustcmathexam.github.io/USTC/probstatexams.pdf（文件页）
   - 年份待确认（期中、原题、解答情况不明）：概率论与数理统计 试卷 —— guidongnan/ustc_ds_undergraduate_course https://raw.githubusercontent.com/guidongnan/ustc_ds_undergraduate_course/main/%E8%AF%95%E5%8D%B7%E5%8F%8A%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%9C%9F%E4%B8%AD%E8%80%83%E8%AF%95%E7%AD%94%E6%A1%88.pdf
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计 往年真题 —— USTC 评课社区 https://icourse.club/course/3859/#review-91500
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21830/#review-85049
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3854/#review-88202
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/23792/#review-79892
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3860/#review-56400
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3860/#review-57241
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计 往年真题 —— USTC 评课社区 https://icourse.club/course/3859/#review-91500
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（2 个附件） —— USTC 评课社区 https://icourse.club/course/21830/#review-85049
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3854/#review-88202
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/23792/#review-79892
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3860/#review-56400
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概率论与数理统计：试题与解析（3 个附件） —— USTC 评课社区 https://icourse.club/course/3860/#review-57241
   - 2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2009—2010 学年、2010—2011 学年、2011—2012 学年、2013—2014 学年、2015—2016 学年、2016—2017 学年、2017—2018 学年、2018—2019 学年、2019—2020 学年、2020—2021 学年、2021—2022 学年（期中期末混合、原题、解答情况不明）：概率论与数理统计历年真题（2022 版，含手写页） —— li-qi-lin/USTC-Course-Materials-Sharing https://github.com/li-qi-lin/USTC-Course-Materials-Sharing/tree/master/3-%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1（资料目录）
   - 2002—2003 学年、2003—2004 学年、2004—2005 学年、2005—2006 学年、2006—2007 学年、2007—2008 学年、2008—2009 学年、2009—2010 学年、2010—2011 学年、2011—2012 学年、2013—2014 学年、2015—2016 学年、2016—2017 学年、2017—2018 学年、2018—2019 学年、2019—2020 学年、2020—2021 学年、2021—2022 学年（期中期末混合、原题、解答情况不明）：概率论与数理统计历年真题（2022 版） —— feixu 学习资料分享站（AList）、guch8017/USTC_CS_EXAM（跨课试卷索引） https://share.feixu.site/%E6%95%B0%E5%AD%A6%E7%B1%BB/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%8E%86%E5%B9%B4%E7%9C%9F%E9%A2%98.pdf（文件页）
-  - 年份待确认（类型不明、形式不明、解答情况不明）：概统往年题2003-2021 —— USTC 评课社区 https://icourse.club/course/3847/#review-43506
-  - 年份待确认（类型不明、形式不明、解答情况不明）：近十年概统往年题合集 —— USTC 评课社区 https://icourse.club/course/21053/#review-103976
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：概统往年题2003-2021 —— USTC 评课社区 https://icourse.club/course/3847/#review-43506
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：近十年概统往年题合集 —— USTC 评课社区 https://icourse.club/course/21053/#review-103976
 - **作业、习题与小测**
   - 《概率论与数理统计》（缪柏其、张伟平）参考答案（GitHub 仓库） —— Stardust-math/Reference-Answer；核验于 2026-11-19 https://github.com/Stardust-math/Reference-Answer
   - 概率论与数理统计 概率论与数理统计（homework） —— Wloner0809/ustc-course-resource；核验于 2026-11-18 https://github.com/Wloner0809/ustc-course-resource/blob/main/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/HW%20answer.pdf（文件页）
@@ -5567,7 +5565,7 @@
 专业课 · 人工智能 · 统计
 
 - **试题与解析**
-  - 年份待确认（类型不明、形式不明、解答情况不明）：机器学习方法：试题与解析（5 个附件） —— USTC 评课社区 https://icourse.club/course/22067/#review-99219
+  - 年份待确认（卷别不明、形式不明、解答情况不明）：机器学习方法：试题与解析（5 个附件） —— USTC 评课社区 https://icourse.club/course/22067/#review-99219
 
 ### STAT3002 实用统计软件
 
@@ -5600,7 +5598,7 @@
 
 ## 来源清单与声明
 
-第三方资料的具体授权以各来源与文件页面的声明为准，不因根目录的 MIT/CC 声明自动覆盖试卷、课件或教材。本站只链接原始来源，不转载文件；部分评课社区附件需登录后下载。
+第三方资料具体授权以原站与文件页面为准。本站只提供原站导航，不托管第三方文件；部分评课社区附件需登录原帖下载。
 
 ### Oscar Levin · Discrete Mathematics: An Open Introduction
 
@@ -7150,7 +7148,7 @@
 
 ## 检索记录
 
-记录的是实际打开或检查过的页面、目录与文件，不是机械拼接的查询 URL。受阻不等于没有资料。
+记录实际打开或核查过的页面、目录与文件；受阻不代表没有资料。
 
 ### 通用来源检索
 
@@ -51140,9 +51138,4 @@
 
 ## 外链健康检查
 
-- 最近一次检查：2026-11-23T18:04:59.848Z
-- 统计范围：统计分母是站点引用的 3172 个网址，监控文件覆盖其中 3123 个。
-- 结果：实际收到过 HTTP 响应的条目 3076（已收到 HTTP 响应 3053、需登录或认证 23、确认 404/410 0）；预检中止，未发出请求 0；已发出请求但无响应 47；从未检查 49。
-- 从未检查的网址没有监控记录，与“已检查但无法确认”不同。
-- 判定口径：只有确认的 404/410 计为“无法找到”。需登录/认证说明服务器有响应但要求身份验证；目录列表页、软错误页、超时与预检拦截都不证明文件可下载或不存在。重定向中前一跳已收到响应、最终目标被预检拦截的条目归入预检中止，但仍计入“实际收到过 HTTP 响应”的条目。
-- 匿名检查只代表当次网络访问结果，不代表资料内容、课程归属、年份或授权已确认；失败不会自动删除资料或改变“是否收录”的分区。
+- 尚未执行检查，站点外链均显示「从未检查」。

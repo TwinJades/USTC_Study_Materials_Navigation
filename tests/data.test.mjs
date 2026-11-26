@@ -763,13 +763,13 @@ test('未知枚举、重复 ID、悬空引用和空白必需值均失败', () =>
     const data = validData();
     data.tags.push({ id: 'other', label: '其他' });
     const result = validateRepository(data);
-    assert.match(messages(result), /禁止“其他\/other”标签/);
+    assert.match(messages(result), /禁止「其他\/other」标签/);
   }
   {
     const data = validData();
     data.courseMetadata['001001'].tags = ['other'];
     const result = validateRepository(data);
-    assert.match(messages(result), /禁止“其他”标签/);
+    assert.match(messages(result), /禁止「其他」标签/);
   }
   {
     const data = validData();
@@ -1196,7 +1196,7 @@ test('文件快照拒绝短摘要、非法字节数、非法日期与多余字�
     ['字节数为 0', makeSnapshot({ bytes: 0 }), /文件字节数必须是正整数/],
     ['字节数非整数', makeSnapshot({ bytes: 12.5 }), /文件字节数必须是正整数/],
     ['日期格式错误', makeSnapshot({ checked_at: '2026/11/19' }), /取样日期/],
-    ['多余字段', makeSnapshot({ etag: 'W/"abc"' }), /不允许的字段“etag”/],
+    ['多余字段', makeSnapshot({ etag: 'W/"abc"' }), /不允许的字段「etag」/],
   ];
   for (const [label, snapshot, pattern] of cases) {
     assert.match(messages(validateRepository(examWithSnapshot(snapshot))), pattern, label);
@@ -1446,7 +1446,7 @@ test('枚举 labels 完整且有序', () => {
   assert.equal(RESOURCE_TYPE_LABELS.books, '教材与参考书');
   assert.equal(RESOURCE_TYPE_LABELS.projects, '大作业与考核作品');
   assert.equal(ACCESS_LABELS.login, '需登录');
-  assert.equal(EXAM_KIND_LABELS.unknown, '类型不明');
+  assert.equal(EXAM_KIND_LABELS.unknown, '卷别不明');
   assert.equal(EXAM_FORM_LABELS.recollection, '回忆版');
   assert.equal(LINK_STATUS_LABELS.unchecked, '未检查');
   assert.equal(MONITORING_SCHEMA_VERSION, 1);
