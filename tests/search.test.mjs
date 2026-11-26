@@ -387,7 +387,7 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   assert.match(html, /<button type="button" id="tag-toggle" class="tag-drawer-toggle" aria-expanded="false" aria-controls="tag-drawer">/);
   assert.match(html, /<div id="tag-drawer" class="tag-drawer mode-detail" data-open="false" hidden>/);
   assert.match(html, /<div id="tag-options" class="tag-options" role="group" aria-labelledby="tag-group-label"><\/div>/);
-  assert.match(html, /项目检索标签，非官方分类/);
+  assert.match(html, /本站整理的学科标签，支持多选/);
   assert.match(html, /name="status" value="with" checked/);
   assert.match(html, /name="status" value="without" checked/);
   assert.doesNotMatch(html, /name="access"|id="access"/);
@@ -400,7 +400,7 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   );
   assert.match(
     html,
-    /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<div class="stat-pill" data-stat-item="repo_views_14d" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<div class="stat-pill" data-stat-item="site_total_views" hidden>[\s\S]*<dt>网站累计浏览次数<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
+    /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<div class="stat-pill" data-stat-item="repo_views_14d" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<div class="stat-pill" data-stat-item="site_total_views" hidden>[\s\S]*<dt>网站累计浏览<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
   );
 });
 
@@ -885,7 +885,7 @@ test('课程详情页结构与模式脚本', async () => {
   );
   assert.match(
     html,
-    /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<dt>网站累计浏览次数<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
+    /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<dt>网站累计浏览<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
   );
 });
 
@@ -931,7 +931,7 @@ test('来源页预留统计槽位在无数据时隐藏、有数据时独立展�
   );
   assert.match(
     emptyHtml,
-    /<div class="stat-pill" data-stat-item="site_total_views" hidden>[\s\S]*<dt>网站累计浏览次数<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
+    /<div class="stat-pill" data-stat-item="site_total_views" hidden>[\s\S]*<dt>网站累计浏览<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
   );
   assert.match(
     emptyHtml,
@@ -967,7 +967,7 @@ test('来源页预留统计槽位在无数据时隐藏、有数据时独立展�
   );
   assert.match(
     filledHtml,
-    /<div class="stat-pill" data-stat-item="site_total_views">\s*<dt>网站累计浏览次数<\/dt>\s*<dd data-stat-value="site_total_views">5,678<\/dd>/,
+    /<div class="stat-pill" data-stat-item="site_total_views">\s*<dt>网站累计浏览<\/dt>\s*<dd data-stat-value="site_total_views">5,678<\/dd>/,
   );
 });
 

@@ -1,17 +1,19 @@
 /**
- * 外链健康覆盖：把 data/monitoring.json 的记录投影到站点实际引用的网址上。
+ * 外链健康覆盖：将 data/monitoring.json 的检查记录投影到站点实际引用的 URL。
  *
- * 构建报告、来源页与离线校验共用这里的口径，避免各自解释 status/reason：
- * - 统计分母是站点引用的网址（资料位置与来源主页），不是监控文件的行数；
- * - 监控文件里未被引用的条目是历史/过期条目，单列而不计入；
- * - 未监控的网址算“从未检查”，未收到 HTTP 响应的检查不能写成“可访问”。
+ * 构建报告、来源页与离线校验共用本模块口径：
+ * - 统计分母为站点引用的 URL（资料入口与来源主页），而非监控文件总行数；
+ * - 监控文件中未被引用的条目记为历史条目，单列而不计入统计；
+ * - 无监控记录的 URL 记为「从未检查」，未收到 HTTP 响应不可判为「可访问」。
  */
 import {
   HEALTH_EVIDENCE_LABELS,
   summarizeHealth,
 } from '../../site/assets/health-evidence.mjs';
 
-/** 只保留可解析的 http(s) 网址，用于与监控记录对齐。 */
+const EVIDENCE_ORDER = ['responded', 'auth', 'missing', 'no_response', 'preflight', 'unchecked'];
+
+/** 只保留可解析的 http / https URL，用于对齐监控记录。 */
 export function normalizedHttpUrl(url) {
   try {
     const parsed = new URL(url);
@@ -21,7 +23,7 @@ export function normalizedHttpUrl(url) {
   }
 }
 
-/** 监控记录按原网址与规范化网址双向索引。 */
+/** 监控记录按原始 URL 与规范化 URL 双向索引。 */
 export function monitoringLinkMap(dataset) {
   const map = new Map();
   for (const link of dataset.monitoring?.links ?? []) {
@@ -33,7 +35,7 @@ export function monitoringLinkMap(dataset) {
   return map;
 }
 
-/** 站点实际引用的网址：资料位置（页面/下载页/直链）与来源主页。 */
+/** 站点实际引用的 URL：资料位置（页面 / 下载页 / 直链）与来源主页。 */
 function siteUrlUniverse(dataset) {
   const urls = new Set();
   for (const resource of dataset.resources) {
@@ -50,8 +52,8 @@ function siteUrlUniverse(dataset) {
 }
 
 /**
- * 覆盖与证据汇总：证据分类计数 + 统计范围（引用/已监控/未监控/历史条目）+ 预检结论。
- * 每个引用网址按它的监控记录（没有记录即 null）归入一类，六类合计等于引用网址数。
+ * 覆盖与证据汇总：证据分类计数 + 统计范围（引用 / 已监控 / 未监控 / 历史条目）+ 预检结论。
+ * 每个引用 URL 按监控记录归入单一类别，六类合计等于引用总数。
  */
 export function summarizeLinkCoverage(dataset) {
   const universe = siteUrlUniverse(dataset);
@@ -79,8 +81,7 @@ export function summarizeLinkCoverage(dataset) {
     unmonitored: universe.size - monitored,
     stale,
     checkedAt: dataset.monitoring?.checked_at ?? null,
-    // 所有已监控网址都停在 DNS/私网地址预检，且没有任何条目收到过 HTTP 响应：
-    // 本次检查确实没有向任何服务器发出请求。
+    // 所有已监控 URL 均停在 DNS / 私网地址预检且无任何 HTTP 响应，说明本次未发出任何外部请求。
     preflightOnly:
       monitored > 0 &&
       summary.preflight === monitored &&
@@ -89,46 +90,41 @@ export function summarizeLinkCoverage(dataset) {
   };
 }
 
-/** 证据分类计数的可读文本；六类互斥，httpResponses 与类别计数有重叠，不相加。 */
+/** 按互斥六类输出计数大于 0 的状态摘要。 */
 export function healthCountsText(health) {
-  const count = (key) => health?.[key] ?? 0;
-  const labels = HEALTH_EVIDENCE_LABELS;
-  return [
-    `实际收到过 HTTP 响应的条目 ${count('httpResponses')}（${labels.responded} ${count('responded')}、${labels.auth} ${count('auth')}、${labels.missing} ${count('missing')}）`,
-    `${labels.preflight} ${count('preflight')}`,
-    `${labels.no_response} ${count('no_response')}`,
-    `${labels.unchecked} ${count('unchecked')}`,
-  ].join('；');
+  const parts = [];
+  for (const key of EVIDENCE_ORDER) {
+    const n = health?.[key] ?? 0;
+    if (n > 0) parts.push(`${HEALTH_EVIDENCE_LABELS[key]} ${n} 条`);
+  }
+  return parts.length > 0 ? parts.join('、') : '暂无记录';
 }
 
-/**
- * 检查范围说明。统计分母是站点实际引用的网址，监控文件只覆盖其中一部分；
- * 具体分类计数（含“从未检查”）由 healthCountsText 给出，这里不重复。
- * 监控文件里未被引用的条目是历史条目，单列且不参与计数。
- */
-export function healthScopeText(health) {
-  const stale =
-    health.stale > 0 ? `；监控文件另有 ${health.stale} 个当前未被引用的历史条目（不计入统计）` : '';
-  return `统计分母是站点引用的 ${health.universe} 个网址，监控文件覆盖其中 ${health.monitored} 个${stale}`;
+/** 检查范围说明；includeStale 仅用于后台校验输出历史条目数。 */
+export function healthScopeText(health, { includeStale = false } = {}) {
+  const base =
+    health.monitored === health.universe
+      ? `全站 ${health.universe} 条外链均有巡检记录`
+      : `全站共 ${health.universe} 条外链，其中 ${health.monitored} 条有巡检记录`;
+  if (includeStale && health.stale > 0) {
+    return `${base}；另有 ${health.stale} 条历史监控记录`;
+  }
+  return base;
 }
 
-/** 环境与判定口径说明：没有响应时不得写成“已检查”。 */
+/** 环境与异常巡检提示。 */
 export function healthEvidenceNotes(health) {
   const notes = [];
   if (health.preflightOnly) {
-    notes.push(
-      '本次检查没有收到任何 HTTP 响应：已检查的网址全部在 DNS/私网地址安全预检阶段被拦截，请求没有发出，因此既不能证明链接可访问，也不能据此判为失效。',
-    );
+    notes.push('本次巡检受运行环境网络限制，未能发出外部请求，结果待下次巡检更新。');
   } else if ((health.httpResponses ?? 0) === 0 && (health.no_response ?? 0) > 0) {
-    notes.push(
-      '本次检查发起过连接尝试，但没有收到 HTTP 响应（超时或连接失败）；这只代表当次网络结果，不能据此判为失效。',
-    );
+    notes.push('本次巡检因连接超时或网络中断未获响应，外链可用性请以直接访问为准。');
   }
-  if (health.unmonitored > 0) {
-    notes.push('从未检查的网址没有监控记录，与“已检查但无法确认”不同。');
+  if (health.unmonitored > 0 && health.monitored > 0) {
+    notes.push(`另有 ${health.unmonitored} 条新增外链待下次定时巡检纳入。`);
   }
   return notes;
 }
 
 export const HEALTH_METHOD_NOTE =
-  '只有确认的 404/410 计为“无法找到”。需登录/认证说明服务器有响应但要求身份验证；目录列表页、软错误页、超时与预检拦截都不证明文件可下载或不存在。重定向中前一跳已收到响应、最终目标被预检拦截的条目归入预检中止，但仍计入“实际收到过 HTTP 响应”的条目。';
+  '定时巡检通过匿名请求记录外链访问状态：收到 HTTP 响应记为「已响应」，需要登录或返回 401/403 记为「需登录或认证」，确认返回 404/410 记为失效。';

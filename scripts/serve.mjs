@@ -42,7 +42,7 @@ function sendText(res, status, message, extraHeaders = {}) {
   res.end(body);
 }
 
-/** 把请求路径转成 dist 内的绝对路径；非法路径返回 null。 */
+/** 将请求路径解析为 dist/ 内的绝对路径；非法或越界路径返回 { error: 400 | 403 }。 */
 function resolveRequestPath(pathname) {
   let decoded;
   try {
@@ -79,7 +79,7 @@ async function handleRequest(req, res) {
 
   const resolved = resolveRequestPath((req.url ?? '/').split('?')[0]);
   if (resolved.error === 400) {
-    sendText(res, 400, '请求地址编码不正确。');
+    sendText(res, 400, '请求路径编码或字符不合法。');
     return;
   }
   if (resolved.error === 403) {
@@ -104,11 +104,11 @@ async function handleRequest(req, res) {
       info = await stat(target);
     }
     if (!info.isFile()) {
-      sendText(res, 404, '没有这个文件。');
+      sendText(res, 404, '未找到请求的文件。');
       return;
     }
   } catch {
-    sendText(res, 404, '没有这个文件。<a href="/">返回课程目录</a>');
+    sendText(res, 404, '未找到请求的文件。<a href="/">返回课程目录</a>');
     return;
   }
 
@@ -122,7 +122,7 @@ async function handleRequest(req, res) {
       return;
     }
   } catch {
-    sendText(res, 404, '没有这个文件。');
+    sendText(res, 404, '未找到请求的文件。');
     return;
   }
 
@@ -162,7 +162,7 @@ const server = createServer((req, res) => {
 
 server.on('error', (error) => {
   if (error.code === 'EADDRINUSE') {
-    console.error(`端口 ${PORT} 已被占用；请先停止占用该端口的进程。`);
+    console.error(`端口 ${PORT} 已被占用，请先停止占用该端口的进程。`);
   } else {
     console.error('本地服务器启动失败：', error);
   }
@@ -170,7 +170,7 @@ server.on('error', (error) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`本地预览：http://${HOST}:${PORT}/ （服务目录 dist/）`);
+  console.log(`本地预览：http://${HOST}:${PORT}/（服务目录 dist/）`);
   console.log('按 Ctrl+C 停止。');
 });
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "中国科学技术大学本科课程资料导航",
+  "description": "也西书架 · 中国科学技术大学本科课程资料导航",
   "engines": {
     "node": ">=24"
   },

@@ -1,27 +1,26 @@
 # 协作流程
 
-适用于所有人与 Agent 的一切改动。对外提交入口见 [贡献指南](../CONTRIBUTING.md)，项目规则、数据结构与构建契约见 [开发与数据契约](development.md)。
+适用于所有人与 Agent 的改动。对外贡献入口见 [参与贡献](../CONTRIBUTING.md)；项目范围、数据与构建契约见 [开发与数据契约](development.md)。
 
 ## 看板与认领
 
-待办统一放在 [GitHub Project「也西书架」](https://github.com/users/TwinJades/projects/1)，分 5 列：`Backlog` → `Ready` → `In Progress` → `In Review` → `Done`。
+待办统一放在 [GitHub Project「也西书架」](https://github.com/users/TwinJades/projects/1)：`Backlog` → `Ready` → `In Progress` → `In Review` → `Done`。
 
-- **大家同权**：所有人都可以把 `Backlog` 里想做的事、读者推荐的新资料或报错移进 `Ready`，也可以直接挑一条开干。
-- **按人指定的任务开工**：干活的人自己报要做 `Ready` 里的哪条（编号或标题）；没指定时，Agent 不主动推送 `Ready` 列表里的任务。
-- **支持直接提新需求**：看板里还没有对应 Issue 时，直接说要做什么，Agent 新建一条 Issue 并放入 `In Progress`。改错字、修单个坏链、紧急回滚这类小修可直接提 PR 进 `In Review`。
-- **流程杂活由 Agent 办**：人只负责选任务、验收效果和审别人的 PR。同步 `main`、开分支、给 Issue 设 Assignee 并移到 `In Progress`、跑检查、提 PR（正文写 `Closes #编号`）并将对应 **Issue 卡移到 `In Review`**（Draft PR 留在 `In Progress`），以及合并后的清理，均由 Agent 完成；无关联 Issue 的小修 PR 直接挂入 `In Review`。
-- **个人交接放本地**：跨多轮对话的进度记在 `.task-work/` 或 `handoff.local.md`（均已加入 `.gitignore`），分支合并清理时一并删除。
+- 协作者都可以把准备开工的任务、读者推荐或问题移到 `Ready`，也可以直接认领。由做事的人指定任务，Agent 不主动派单。
+- 新需求没有对应 Issue 时，Agent 新建并认领。改错字、修单个坏链、紧急回滚等小修可直接提 PR。
+- 有 Issue 时以 Issue 卡为准；没有 Issue 的小修才用 PR 卡跟踪。自动上板的重复 PR 卡不需要单独维护状态。
+- 本地交接笔记放 `.task-work/` 或 `handoff.local.md`，不提交到仓库。
 
 ## 主循环
 
-1. 同步 main。本地 main 只用于同步，不在上面干活。
-2. 确认任务：认领 `Ready` 中指定的 Issue（设 Assignee 并移入 `In Progress`），或为直接提出的新需求新建 Issue 放入 `In Progress`（小修可免建）；从最新 main 开分支干活，可每任务一个 worktree。
-3. push 前若 main 已前进，把新 main 同步进自己分支；冲突在自己分支上解。
-4. push 分支，开 PR（完整解决 Issue 时在正文写 `Closes #编号`）。正式 PR 提完将对应 Issue 卡移入 `In Review`（无关联 Issue 的 PR 直接挂入 `In Review`）；Draft PR 留在 `In Progress`。
-5. 合并前确认 `PR checks` 和其他必需检查通过，审核会话已处理完毕，并按下文核对当前版本的 `Approve`：普通 PR 至少一位非作者维护者，高风险 PR 至少两位。
-6. 在 GitHub 上一次合一个（合并后关联 Issue 自动关闭进 `Done`）。下一个 PR 先通过 `Update branch` 或在本地同步最新 `main`。fork PR 默认由作者同步，作者主动授权时维护者也可代办。作者失联且冲突复杂时，维护者可将改动整理到新分支并提交 PR，保留原作者署名（`Co-authored-by`），合并后关闭原 PR。
-7. 合并后 pull main 冒烟测试。这是双保险——main 自动部署 Pages，主闸门必须在合并前。
-8. 清理：只删「已合并且 git status 干净」的分支/worktree，并清理 `.task-work/` 里对应的本地交接文件；有未提交工作的绝不碰。
+1. **同步 `main`**：本地 `main` 仅用于同步，不直接开发。
+2. **认领并开分支**：给选定或新建的 Issue 设置 Assignee，移入 `In Progress`；从最新 `main` 开任务分支，可使用独立 worktree。
+3. **同步上游变更**：push 前若 `main` 已前进，先把最新 `main` 合入当前分支并就地解决冲突。
+4. **提交 PR**：完整解决 Issue 时正文写 `Closes #编号`，仅相关时普通引用。工作仍未完成时，卡片留在 `In Progress`（可开 Draft PR）；完成并提审后，把 Issue 卡移入 `In Review`，没有 Issue 的小修则移动 PR 卡。
+5. **检查与审核**：确认 `PR checks` 等必需检查全部通过，审核会话均已处理，并按下文「风险与审核」核对当前版本的 `Approve`（普通 PR 至少一位非作者维护者，高风险 PR 至少两位）。
+6. **逐一合并**：一次合一个 PR；下一个 PR 合并前先同步最新 `main`。fork PR 由作者同步或授权维护者代办；作者失联且冲突复杂时，维护者可整理至新分支，保留 `Co-authored-by` 署名，合并后关闭原 PR。合并后确认已关闭的 Issue 或无 Issue 的 PR 卡进入 `Done`。
+7. **合后冒烟**：拉取最新 `main`，核对受影响的功能。
+8. **清理分支**：只清理已合并且 `git status` 干净的分支、worktree 和对应的本地交接笔记。
 
 ## 风险与审核
 
@@ -39,25 +38,23 @@
 
 ## 硬规则
 
-- `main` 只接收 PR 合并。上游管理员按下文启用分支保护，启用前由合并人核对条件。
-- 冲突在 PR 分支上解，不在 main 上解。
-- 复核当前版本。资料变更抽查课程归属、原始出处和访问要求。界面变更按 PR 中的步骤检查实际页面。发现阻断问题时使用 `Request changes`，修复后重新查看变更。
-- 合并后发现回归，可在原 PR 发起 `Revert`，通过回滚 PR 撤销变更。
+- `main` 仅接受 PR 合并，冲突须在任务分支内解决。
+- 复核须核对当前最新提交：资料变更抽查课号归属、原始出处与访问要求；界面变更按验收步骤核对实际页面。发现阻断问题提交 `Request changes`，修复后重新复核。
+- 合后如发现回归，可在原 PR 发起 `Revert` 并经回滚 PR 撤销。
 
 ## CI 闸门
 
-- `PR checks` 在面向 `main` 的 PR 上依次执行严格数据校验、测试和站点构建。CI 使用 GitHub 托管 runner，使用只读仓库权限，构建产物仅用于验证。Pages 发布和每周外链维护仅在上游默认分支运行。
-- fork PR 的工作流运行可能需要维护者先批准。批准前请检查工作流和它会执行的脚本。合并审核通过 GitHub Review 提交。
-- 本地用 Chrome 或 Edge 运行浏览器测试，必要时设置 `CHROME_PATH` 或 `EDGE_PATH`。CI 要求浏览器测试实际运行。
+- `PR checks` 在面向 `main` 的 PR 上依次执行严格数据校验、测试与站点构建，仅授予只读权限；Pages 发布与周监控仅在上游默认分支运行，每日流量归档仅在默认分支运行。
+- fork PR 首次运行工作流前须经维护者检查改动后批准运行。
+- 本地与 CI 均须实际运行 Chrome / Edge 浏览器回归测试并通过 `skipped 0` 闸门（路径配置见 [测试](development.md#测试)）。
 
 ## 上游分支保护
 
-1. 确认 `PR checks` 在引入 CI 之后的另一条 PR 上成功运行。升级合并规则前，确认周维护不再写 `main`，并在 Actions 手动运行一次周维护，核对 Pages 部署成功。
-2. 在上游 `Settings → Rules → Rulesets` 编辑 `Protect Main`，只匹配 `main`，保持 `Active` 和空绕过名单。
-   - `Require a pull request before merging`，要求 **1** 次批准。启用 `Dismiss stale pull request approvals when new commits are pushed` 和 `Require conversation resolution before merging`。
-   - `Require status checks to pass`，选择 `PR checks`（来源选 GitHub Actions），并要求分支在合并前与 `main` 保持同步。
-   - `Restrict deletions` 和 `Block force pushes`。
-3. 在上游 PR 上检查合并状态。没有有效批准、检查失败或有未解决的审核会话时，GitHub 应阻止合并。
+上游 `Settings → Rules → Rulesets` 中的 `Protect Main` 规则仅匹配 `main`（排除 `monitoring-data`、`traffic-history` 等数据分支），保持 `Active` 且绕过名单为空：
+
+- 启用 `Require a pull request before merging`（要求至少 **1** 次批准），开启 `Dismiss stale pull request approvals when new commits are pushed` 与 `Require conversation resolution before merging`。
+- 启用 `Require status checks to pass`，必选 `PR checks`（来源 GitHub Actions），并要求合并前分支与 `main` 同步。
+- 启用 `Restrict deletions` 与 `Block force pushes`。
 
 ### 启用 `Review gate`
 
