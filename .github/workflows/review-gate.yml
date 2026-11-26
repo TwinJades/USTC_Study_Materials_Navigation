@@ -1,0 +1,71 @@
+name: Recalculate review gate
+
+on:
+  pull_request_target:
+    types: [opened, reopened, closed, synchronize, ready_for_review, labeled, unlabeled, edited]
+  workflow_run:
+    workflows: [Review gate events]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      pull_request:
+        description: Pull request number to refresh
+        required: true
+        type: number
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  resolve:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    outputs:
+      shas: ${{ steps.resolve.outputs.shas }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/heads/main
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - id: resolve
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/review-gate.mjs resolve
+
+  publish:
+    needs: resolve
+    if: needs.resolve.outputs.shas != '[]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    permissions:
+      contents: read
+      pull-requests: read
+      statuses: write
+    strategy:
+      fail-fast: false
+      matrix:
+        sha: ${{ fromJSON(needs.resolve.outputs.shas) }}
+    concurrency:
+      group: review-gate-sha-${{ matrix.sha }}
+      cancel-in-progress: false
+    steps:
+      # Never check out the proposing branch or consume its artifacts or caches.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/heads/main
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - env:
+          GITHUB_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ matrix.sha }}
+        run: node scripts/review-gate.mjs publish
