@@ -1,0 +1,15 @@
+[Unit]
+Description=也西书架 vLab 同步：从上游 main 构建并切换 current
+Documentation=https://github.com/TwinJades/USTC_Study_Materials_Navigation
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=YEXI_VLAB_PORT=8080
+WorkingDirectory=%h/.local/share/yexi-bookshelf
+ExecStart=/usr/bin/env bash %h/.local/share/yexi-bookshelf/bin/sync-vlab.sh sync
+TimeoutStartSec=900
+Nice=10
+IOSchedulingClass=idle

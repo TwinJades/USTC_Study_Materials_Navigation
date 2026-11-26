@@ -10,10 +10,13 @@ import { realpath, stat } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { openVisitStats } from './lib/visit-stats.mjs';
 
 const HOST = '127.0.0.1';
-const PORT = 4173;
+const isVlab = process.argv.includes('--vlab');
+const PORT = isVlab ? Number(process.env.YEXI_VLAB_PORT ?? 8080) : 4173;
 const DIST_DIR = path.resolve(fileURLToPath(new URL('../dist', import.meta.url)));
+const visitStats = isVlab ? openVisitStats(process.env.YEXI_STATS_DB) : null;
 
 const MIME_TYPES = new Map([
   ['.html', 'text/html; charset=utf-8'],
@@ -64,6 +67,10 @@ function resolveRequestPath(pathname) {
 }
 
 async function handleRequest(req, res) {
+  if (visitStats && req.url === '/api/visits') {
+    visitStats.record(req, res);
+    return;
+  }
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     sendText(res, 405, '只支持 GET 与 HEAD 请求。', { allow: 'GET, HEAD' });
     return;
@@ -154,9 +161,6 @@ const server = createServer((req, res) => {
       console.error('请求处理失败：', error);
       if (!res.headersSent) sendText(res, 500, '服务器内部错误。');
       else res.destroy();
-    })
-    .finally(() => {
-      console.log(`${req.method} ${req.url} -> ${res.statusCode}`);
     });
 });
 
@@ -170,13 +174,16 @@ server.on('error', (error) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`本地预览：http://${HOST}:${PORT}/ （服务目录 dist/）`);
-  console.log('按 Ctrl+C 停止。');
+  console.log(`${isVlab ? 'vLab' : '本地预览'}：http://${HOST}:${server.address().port}/ （服务目录 dist/）`);
+  if (!isVlab) console.log('按 Ctrl+C 停止。');
 });
 
 for (const signal of ['SIGINT', 'SIGTERM']) {
   process.on(signal, () => {
     console.log('\n正在关闭本地服务器…');
-    server.close(() => process.exit(0));
+    server.close(() => {
+      visitStats?.close();
+      process.exitCode = 0;
+    });
   });
 }

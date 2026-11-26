@@ -202,6 +202,8 @@ GitHub 检查只读登记资料库的确定 `branch`；头未变跳过树，变�
 
 构建只使用相对路径，支持 GitHub 项目子路径；`dist/` 内包含 `.nojekyll`。Pages 由 `actions/upload-pages-artifact@v3` 与 `actions/deploy-pages@v4` 部署，构建、监控与部署权限相互分离。
 
+vLab 内测版独立于 GitHub Pages：Node 24 下以 `YEXI_SELF_HOSTED=1` 构建，`npm run serve:vlab` 运行，`YEXI_STATS_DB` 指向发布目录外的绝对 SQLite 路径。`deploy/vlab` 定时同步 `main` 与 `monitoring-data`，构建或校验失败时保留旧站。
+
 ## 访问统计
 
 两条发布工作流构建前运行 `scripts/collect-traffic.mjs`。仓库统计默认使用工作流的 `GITHUB_TOKEN`；若无权读取 Traffic，设置有限权限的 Actions secret `TRAFFIC_TOKEN`。设置 Actions variable `GOATCOUNTER_SITE`（仅子域名，后台允许公开计数）后，网页上报浏览，Actions 读取公开计数。

@@ -982,13 +982,22 @@ async function main() {
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
   }
-  const counter = process.env.GOATCOUNTER_SITE;
+  const selfHosted = process.env.YEXI_SELF_HOSTED === '1';
+  if (selfHosted && dataset.traffic) {
+    delete dataset.traffic.site_views_yesterday;
+    delete dataset.traffic.site_views_date_utc;
+    delete dataset.traffic.site_total_views;
+  }
+  const counter = selfHosted ? null : process.env.GOATCOUNTER_SITE;
   if (counter && !/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/u.test(counter)) {
     throw new Error('GOATCOUNTER_SITE must be a GoatCounter subdomain, not a URL');
   }
   const addCounter = (html, page) => counter ? html.replace('</head>',
     `  <script async src="https://gc.zgo.at/count.js" data-goatcounter="https://${counter}.goatcounter.com/count" data-goatcounter-settings='${escapeHtml(JSON.stringify({ path: page, referrer: '', title: '中科大本科课程资料导航' }))}' referrerpolicy="no-referrer"></script>\n  </head>`,
   ).replace('</footer>', '<p class="wrap source-note">网站浏览量由 <a href="https://www.goatcounter.com/help/privacy" rel="noreferrer">GoatCounter</a> 统计。</p>\n    </footer>') : html;
+  const addSelfHostedCounter = (html) => html.replace('</head>',
+    '  <script type="module" src="assets/visit-stats.mjs" data-self-hosted-stats></script>\n  </head>',
+  ).replace('</footer>', '<p class="wrap source-note">网站浏览量由本站统计，不保存 IP、搜索词或课程号。</p>\n    </footer>');
 
   const validation = validateRepository(dataset);
   const errors = validation.errors ?? [];
@@ -1097,14 +1106,16 @@ async function main() {
     const target = path.join(DIST_DIR, ...relativePath.split('/'));
     await mkdir(path.dirname(target), { recursive: true });
     const source = path.join(SITE_DIR, ...relativePath.split('/'));
-    if (counter && relativePath.endsWith('.html')) {
+    if ((counter || selfHosted) && relativePath.endsWith('.html')) {
       const page = relativePath === 'index.html' ? '/' : `/${relativePath}`;
-      await writeText(target, addCounter(await readFile(source, 'utf8'), page));
+      const html = await readFile(source, 'utf8');
+      await writeText(target, selfHosted ? addSelfHostedCounter(html) : addCounter(html, page));
     }
     else await copyFile(source, target);
   }
   await writeJson(path.join(DIST_DIR, 'data', 'catalog.json'), catalog);
-  await writeText(path.join(DIST_DIR, 'sources.html'), addCounter(sourcesHtml, '/sources.html'));
+  await writeText(path.join(DIST_DIR, 'sources.html'), selfHosted
+    ? addSelfHostedCounter(sourcesHtml) : addCounter(sourcesHtml, '/sources.html'));
   await writeFile(
     path.join(DIST_DIR, '.nojekyll'),
     '',

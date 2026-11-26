@@ -1,0 +1,11 @@
+[Unit]
+Description=每 5 分钟检查上游 main 是否有新提交
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=yexi-bookshelf-sync.service
+
+[Install]
+WantedBy=timers.target
