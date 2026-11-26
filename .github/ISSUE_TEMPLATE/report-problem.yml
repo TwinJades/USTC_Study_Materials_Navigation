@@ -1,23 +1,23 @@
 name: 报告问题
-description: 反馈网站故障、资料链接失效或课程资料信息有误。
+description: 反馈页面异常、外链失效或课程资料信息有误。
 title: '[问题] '
 body:
   - type: textarea
     id: problem
     attributes:
-      label: 实际情况与预期结果
-      description: 简述遇到的问题，以及你期望看到的结果。
+      label: 问题描述
+      description: 简述遇到的问题（如链接失效、课程归属有误或页面显示异常），以及正确情况应是什么。
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: 如何定位或复现
-      description: 网站故障请提供页面链接和操作步骤。资料问题请填写课号、资料名称或课程详情链接。
+      label: 对应页面或课程
+      description: 页面问题请附链接与操作步骤；资料问题请填写课号、资料名称或课程页链接。
     validations:
       required: true
   - type: textarea
     id: evidence
     attributes:
       label: 补充信息（可选）
-      description: 可附浏览器和设备型号、已脱敏的截图或能佐证更正的原始来源链接。请勿公开个人信息、登录凭据或资料原件。
+      description: 可附浏览器与设备型号、截图或用于核对的原始链接（仓库公开，注意打码个人信息，不要附账号凭据或资料原件）。

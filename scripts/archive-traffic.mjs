@@ -52,7 +52,7 @@ export function parseArchive(text) {
   try {
     data = JSON.parse(text);
   } catch (cause) {
-    throw new ArchiveError('归档文件不是有效 JSON；为避免覆盖历史，本次停止。', { code: 'invalid_archive', cause });
+    throw new ArchiveError('归档文件不是有效 JSON，已中止以保留既有历史。', { code: 'invalid_archive', cause });
   }
   if (!data || typeof data !== 'object' || Array.isArray(data) ||
       Object.keys(data).sort().join(',') !== 'days,schema_version' || data.schema_version !== SCHEMA_VERSION ||
@@ -131,7 +131,7 @@ export async function fetchTrafficViews({ repo, token, fetchImpl = fetch, timeou
   }
   if (!response.ok) {
     const hint = [401, 403, 404].includes(response.status)
-      ? '；GITHUB_TOKEN 没有该仓库的 Traffic 读取权限时，请配置对该仓库有 push 权限的 Actions secret TRAFFIC_TOKEN'
+      ? '；若当前令牌无 Traffic 读取权限，请配置具备仓库 push 权限的 Actions secret TRAFFIC_TOKEN'
       : '';
     throw new ArchiveError(`读取 GitHub Traffic 失败：HTTP ${response.status}${hint}。`,
       { code: 'traffic_unavailable', status: response.status });
@@ -168,7 +168,7 @@ export function readArchive({ cwd = process.cwd(), git = runGit } = {}) {
   const present = git(['ls-tree', '--name-only', parent, '--', ARCHIVE_FILE], { cwd }).trim() !== '';
   const content = present ? git(['show', `${parent}:${ARCHIVE_FILE}`], { cwd }) : null;
   if (content === null || content.trim() === '') {
-    throw bad(`${ARCHIVE_BRANCH} 分支已存在但缺少可用的 ${ARCHIVE_FILE}；为避免重建覆盖，本次停止。`, 'invalid_archive');
+    throw bad(`${ARCHIVE_BRANCH} 分支已存在但缺少可用的 ${ARCHIVE_FILE}，已中止以免覆盖历史。`, 'invalid_archive');
   }
   return { parent, content };
 }
@@ -251,9 +251,9 @@ export function formatReport(r) {
       `（新增 ${r.added}，修订 ${r.updated}，未变 ${r.unchanged}）；归档合计 ${r.total_days} 天。`,
   ];
   if (r.partial > 0) lines.push(`跳过 ${r.partial} 条未结束的 UTC 日（${r.today_utc} 当天仍为部分数据）。`);
-  if (r.mode === 'dry-run') lines.push('dry-run：未推送 traffic-history 分支。');
-  else if (r.reason === 'unchanged') lines.push('publish：归档内容无变化，未提交也未推送。');
-  else if (r.reason === 'no_completed_days') lines.push('publish：本次没有可归档的已结束 UTC 日，未提交。');
+  if (r.mode === 'dry-run') lines.push(`dry-run：仅在内存中合并，未推送至 ${ARCHIVE_BRANCH} 分支。`);
+  else if (r.reason === 'unchanged') lines.push('publish：归档内容无变化，跳过提交。');
+  else if (r.reason === 'no_completed_days') lines.push('publish：无新增已结束 UTC 日，跳过提交。');
   else lines.push(`publish：已快进推送到 ${ARCHIVE_BRANCH}，commit ${r.commit}（文件 ${ARCHIVE_FILE}）。`);
   return lines.join('\n');
 }
@@ -268,10 +268,10 @@ export function parseArgs(argv) {
   return options;
 }
 
-const USAGE = '用法: node scripts/archive-traffic.mjs [--publish]\n\n' +
-  '  （默认）  读取 GitHub Traffic，在内存中合并，不推送\n' +
-  '  --publish 合并 traffic-history 分支，提交并快进推送（不强制、不改默认分支）\n\n' +
-  '  环境变量: TRAFFIC_TOKEN（优先）或 GITHUB_TOKEN；读取 Traffic 需要该仓库的 push 权限。';
+const USAGE = '用法：node scripts/archive-traffic.mjs [--publish]\n\n' +
+  '  （默认）  读取 GitHub Traffic 并在内存中合并（试运行）\n' +
+  '  --publish 合并并快进推送至 traffic-history 分支\n\n' +
+  '  环境变量：TRAFFIC_TOKEN（优先）或 GITHUB_TOKEN（须具备目标仓库 push 权限）';
 
 const redact = (text, secrets) => secrets
   .filter((s) => typeof s === 'string' && s.length >= 4)
@@ -297,7 +297,7 @@ async function main() {
   } catch (error) {
     console.error(`归档失败：${redact(error?.message ?? error, secrets)}`);
     if (error?.code === 'traffic_unavailable' || error?.code === 'missing_token') {
-      console.error('GitHub Traffic 只提供近 14 天，缺少读取权限时不写入任何 0；请确认 TRAFFIC_TOKEN 或工作流 GITHUB_TOKEN 对该仓库有 push 权限。');
+      console.error('请确认 TRAFFIC_TOKEN 或工作流 GITHUB_TOKEN 具备该仓库的 push 权限（GitHub Traffic API 仅保留近 14 天数据）。');
     }
     process.exitCode = 1;
   }
