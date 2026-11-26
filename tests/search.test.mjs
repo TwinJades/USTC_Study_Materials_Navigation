@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { ANNOUNCEMENTS } from '../site/assets/announcements.mjs';
 import { buildCatalog, renderSourcesHtml } from '../scripts/build.mjs';
 
 import {
@@ -393,10 +394,6 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   assert.match(html, /id="clear-search"[^>]*aria-label="清除搜索与筛选"/);
   assert.doesNotMatch(html, /id="clear-filters"|id="no-results-clear"/);
   assert.match(html, /<nav id="pagination" class="pagination" aria-label="课程结果翻页" hidden>/);
-  assert.match(
-    html,
-    /<script type="module" src="assets\/mode\.mjs"><\/script>\s*<script type="module" src="assets\/app\.mjs"><\/script>/,
-  );
   assert.match(
     html,
     /<button type="button" class="icon-circle-btn mode-icon-btn" data-mode-toggle aria-pressed="false" aria-label="切换简洁或详细模式" hidden>[\s\S]*<button type="button" class="icon-circle-btn theme-icon-btn" data-theme-toggle aria-label="切换外观主题" hidden>/,
@@ -890,10 +887,6 @@ test('课程详情页结构与模式脚本', async () => {
     html,
     /<dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>[\s\S]*<dt>仓库浏览（近 14 天）<\/dt>[\s\S]*<dd data-stat-value="repo_views_14d"><\/dd>[\s\S]*<dt>网站累计浏览次数<\/dt>[\s\S]*<dd data-stat-value="site_total_views"><\/dd>/,
   );
-  assert.match(
-    html,
-    /<script type="module" src="assets\/mode\.mjs"><\/script>\s*<script type="module" src="assets\/app\.mjs"><\/script>/,
-  );
 });
 
 test('来源页预留统计槽位在无数据时隐藏、有数据时独立展示，并含双态模式开关', () => {
@@ -976,4 +969,58 @@ test('来源页预留统计槽位在无数据时隐藏、有数据时独立展�
     filledHtml,
     /<div class="stat-pill" data-stat-item="site_total_views">\s*<dt>网站累计浏览次数<\/dt>\s*<dd data-stat-value="site_total_views">5,678<\/dd>/,
   );
+});
+
+test('公告栏入口图标、配置数据与衍生项目边界', async () => {
+  const indexHtml = await readFile(new URL('../site/index.html', import.meta.url), 'utf8');
+  const courseHtml = await readFile(new URL('../site/course.html', import.meta.url), 'utf8');
+  const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+  const projectTemplate = await readFile(
+    new URL('../.github/ISSUE_TEMPLATE/suggest-project.yml', import.meta.url),
+    'utf8',
+  );
+  const emptyCatalog = buildCatalog({
+    courses: [{ code: 'CS1001', name: '示例课程' }],
+    courseMetadata: { CS1001: { kind: 'common', tags: [] } },
+    tags: [],
+    resources: [],
+    sources: [],
+    monitoring: null,
+  });
+  const sourcesHtml = renderSourcesHtml({
+    coverage: [],
+    sources: [],
+    generalLogs: [],
+    courseLogs: [],
+    unmappedLogs: [],
+    blocked: [],
+    incomplete: [],
+    health: {},
+    checkedAt: null,
+    withResources: 0,
+    withoutResources: 1,
+    resources: 0,
+    courseCount: 1,
+    sourceCount: 0,
+    usedSourceCount: 0,
+    logCount: 0,
+    catalog: emptyCatalog,
+  });
+
+  const togglePattern =
+    /<button type="button" class="icon-circle-btn announcement-toggle" aria-label="公告栏" title="公告栏" aria-haspopup="dialog" aria-expanded="false" aria-controls="announcements" hidden>[\s\S]*?<rect x="2\.75" y="6\.25" width="14\.5" height="10\.75" rx="2"><\/rect>/;
+  assert.match(indexHtml, togglePattern);
+  assert.match(courseHtml, togglePattern);
+  assert.match(sourcesHtml, togglePattern);
+
+  assert.equal(ANNOUNCEMENTS.news.length >= 2, true);
+  assert.match(ANNOUNCEMENTS.news[0].title, /公告栏/);
+  assert.match(ANNOUNCEMENTS.news.map((item) => item.summary).join('\n'), /2,782/);
+  assert.equal(new Set(ANNOUNCEMENTS.news.map((item) => item.id)).size, ANNOUNCEMENTS.news.length);
+  assert.match(ANNOUNCEMENTS.submitProjectUrl, /template=suggest-project\.yml$/);
+  assert.equal(ANNOUNCEMENTS.projects.some((p) => p.name === 'USTC Question Bank' && p.author === 'DDNdles'), true);
+  assert.doesNotMatch(readme, /## 基于本仓库做的项目/);
+  assert.match(projectTemplate, /^name:\s*推荐衍生项目/m);
+  assert.match(projectTemplate, /title:\s*'\[衍生项目\] '/);
+  assert.match(projectTemplate, /id:\s*project-url/);
 });

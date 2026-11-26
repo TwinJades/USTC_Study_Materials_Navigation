@@ -56,6 +56,44 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "monitor-issue14-26famechamid",
+      "type": "exams",
+      "title": "力学A 2026 秋期中（刘斌等）",
+      "authors": [],
+      "notes": "卷首为 2026 年秋季力学A期中考试，日期 11 月 17 日，列刘斌、毛文哲、李翔、龚雷、范璐璐；单页题面，无解答。",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [
+          "2026-2027"
+        ],
+        "exam_kind": "midterm",
+        "exam_form": "original",
+        "has_solutions": false,
+        "evidence_url": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaMechAMid.pdf",
+        "note": "卷首为 2026 年秋季力学A期中考试，日期 11 月 17 日，列刘斌、毛文哲、李翔、龚雷、范璐璐；单页题面，无解答。"
+      },
+      "locations": [
+        {
+          "source_id": "ustc-phy-exam",
+          "page_url": "https://ustcphyexam.github.io/JuniorPhy/",
+          "download_page": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaMechAMid.pdf",
+          "download_url": "https://ustcphyexam.github.io/USTC/26FaMechAMid.pdf",
+          "access": "public",
+          "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+          "attribution": "USTC 物理课程往年试卷",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "a56e19f9ba56fdfd509eebadb2ee66db22bf784957db0c6a947a6b3c7d0e2c6a",
+            "bytes": 176046,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "mp-feixu-phys1001a-exams-8ff02d",
       "type": "exams",
       "title": "2025力学A期末答案",

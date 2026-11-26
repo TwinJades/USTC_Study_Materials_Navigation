@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "monitor-issue14-2026maa1mid",
+      "type": "exams",
+      "title": "数学分析A1 2026 秋期中（含答案与评分标准）",
+      "authors": [],
+      "notes": "PDF 前两页为题面，其后是同卷参考答案与评分标准，日期为 2026 年 11 月 21 日。",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [
+          "2026-2027"
+        ],
+        "exam_kind": "midterm",
+        "exam_form": "original",
+        "has_solutions": true,
+        "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAA1mid.pdf",
+        "note": "PDF 前两页为题面，其后是同卷参考答案与评分标准，日期为 2026 年 11 月 21 日。"
+      },
+      "locations": [
+        {
+          "source_id": "ustc-math-exam",
+          "page_url": "https://ustcmathexam.github.io/Services/",
+          "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAA1mid.pdf",
+          "download_url": "https://ustcmathexam.github.io/USTC/2026MAA1mid.pdf",
+          "access": "public",
+          "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+          "attribution": "USTC 数学课程往年试卷",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "2771f56cfaf08384232510990c0121e99105aff1fb094acfa3479f60511efb08",
+            "bytes": 189349,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "mp-uexam-math1001-2024-final-f276e1",
       "type": "exams",
       "title": "数学分析A1 2024 期末",
@@ -581,10 +619,42 @@
         }
       ],
       "verified_at": "2026-11-18"
+    },
+    {
+      "id": "gh-ddndles-qbank-math1001",
+      "type": "study",
+      "title": "数学分析(A1) 结构化题库与知识点树（169 题，机读 JSONL）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 109 题为 AI 生成解答，使用前请核对。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1001/meta.json",
+        "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1001",
+          "download_page": null,
+          "download_url": null,
+          "access": "public",
+          "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+          "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-25"
     }
   ],
   "sources": {
     "ustc-math-exam": "USTC 数学课程往年试卷",
-    "feixu-alist": "feixu 学习资料分享站（AList）"
+    "feixu-alist": "feixu 学习资料分享站（AList）",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

@@ -85,6 +85,44 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "monitor-issue14-2026lab1mid",
+      "type": "exams",
+      "title": "线性代数B1 2026 秋期中（答案与题目）",
+      "authors": [],
+      "notes": "PDF 页首为 2026–2027 学年第一学期期中考试答案，题干随解答列出；未找到独立原卷。原站目录链接文件名有误，使用已实测的文件路径。",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [
+          "2026-2027"
+        ],
+        "exam_kind": "midterm",
+        "exam_form": "unknown",
+        "has_solutions": true,
+        "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026LAB1mid.pdf",
+        "note": "PDF 页首为 2026–2027 学年第一学期期中考试答案，题干随解答列出；未找到独立原卷。原站目录链接文件名有误，使用已实测的文件路径。"
+      },
+      "locations": [
+        {
+          "source_id": "ustc-math-exam",
+          "page_url": "https://ustcmathexam.github.io/Services/",
+          "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026LAB1mid.pdf",
+          "download_url": "https://ustcmathexam.github.io/USTC/2026LAB1mid.pdf",
+          "access": "public",
+          "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+          "attribution": "USTC 数学课程往年试卷",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "0b433833de3dac6dbea9c69a0ea0e0734ef84dafc8062a506fc6c2ec221befb6",
+            "bytes": 112546,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "mp-uexam-math1009-2025-final-ecd559",
       "type": "exams",
       "title": "线性代数B1 2025 期末",
