@@ -257,7 +257,9 @@ test('vlab: 首次访问只返回三个计数，昨日为空但给出 UTC 日标
   assert.ok([yesterdayBefore, yesterdayAfter].includes(stats.stamp), '日标记必须是被统计的 UTC 昨日');
   assert.equal(stats.total, 1);
 
-  const second = assertStats((await postVisit(server.origin)).json());
+  const proxied = await postVisit(server.origin, visitHeaders({ 'transfer-encoding': 'chunked' }));
+  assert.equal(proxied.status, 200, '代理转发的空分块请求应计数');
+  const second = assertStats(proxied.json());
   assert.equal(second.total, 2, '同日重复上报累加');
   assert.equal(second.yesterday, null);
   assert.equal(second.stamp, stats.stamp);
@@ -294,6 +296,7 @@ test('vlab: 跨站、缺版本头、带请求体与 GET 都不计数', async (t)
         body,
       },
     ],
+    ['分块请求带内容', 400, { headers: visitHeaders({ 'transfer-encoding': 'chunked' }), body }],
   ];
   for (const [label, expected, options] of rejected) {
     const response = await request(server.origin, '/api/visits', { method: 'POST', ...options });

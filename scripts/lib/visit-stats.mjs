@@ -14,7 +14,7 @@ export function openVisitStats(filename) {
     SUM(views) AS total FROM daily_visits`);
 
   return {
-    record(req, res) {
+    async record(req, res) {
       res.setHeader('cache-control', 'no-store');
       if (req.method !== 'POST') {
         res.writeHead(405, { allow: 'POST' }).end();
@@ -24,9 +24,17 @@ export function openVisitStats(filename) {
         res.writeHead(403).end();
         return;
       }
-      if (req.headers['transfer-encoding'] || (req.headers['content-length'] ?? '0') !== '0') {
+      if ((req.headers['content-length'] ?? '0') !== '0') {
         res.writeHead(400, { connection: 'close' }).end();
         return;
+      }
+      // 代理可能把空 POST 转成 chunked，按实际字节而不是传输头判断。
+      if (req.headers['transfer-encoding']) {
+        for await (const chunk of req.iterator({ destroyOnReturn: false })) {
+          if (chunk.length === 0) continue;
+          res.writeHead(400, { connection: 'close' }).end();
+          return;
+        }
       }
       const now = new Date();
       const today = now.toISOString().slice(0, 10);

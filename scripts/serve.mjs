@@ -68,7 +68,7 @@ function resolveRequestPath(pathname) {
 
 async function handleRequest(req, res) {
   if (visitStats && req.url === '/api/visits') {
-    visitStats.record(req, res);
+    await visitStats.record(req, res);
     return;
   }
   if (req.method !== 'GET' && req.method !== 'HEAD') {
