@@ -745,7 +745,7 @@ test(
     assert.deepEqual(login.hrefs, ['https://icourse.club/course/123/#review-456']);
     assert.equal(login.downloads, 0);
     assert.deepEqual(login.hashes, ['3'.repeat(64), '4'.repeat(64)]);
-    assert.match(login.text, /原帖附件取样（2 个，需登录原帖获取）/u);
+    assert.match(login.text, /原帖附件（2 个，需登录原帖获取）/u);
     assert.match(login.text, new RegExp(`${SNAPSHOT_DATE}.*1,234 字节`, 'u'));
     assert.match(login.text, new RegExp(`${SNAPSHOT_DATE}.*5,678 字节`, 'u'));
 
@@ -759,9 +759,9 @@ test(
     assert.equal(solutionRow.snapshotVisible, true);
     assert.equal(questionRow.codeText, QUESTION_SHA, '题面摘要必须是完整 64 位 SHA-256');
     assert.equal(solutionRow.codeText, SOLUTION_SHA, '解答摘要必须是完整 64 位 SHA-256');
-    assert.match(questionRow.snapshotText, /直链文件取样/u);
+    assert.match(questionRow.snapshotText, /文件校验/u);
     assert.match(questionRow.snapshotText, new RegExp(`${SNAPSHOT_DATE}.*123,456 字节`, 'u'));
-    assert.match(solutionRow.snapshotText, /直链文件取样/u);
+    assert.match(solutionRow.snapshotText, /文件校验/u);
     assert.match(solutionRow.snapshotText, new RegExp(`${SNAPSHOT_DATE}.*7,890 字节`, 'u'));
     assert.equal(detailed.bodyText.includes(QUESTION_SHA), true);
     assert.equal(detailed.bodyText.includes(SOLUTION_SHA), true);

@@ -112,6 +112,17 @@ function enumItems(values, labels) {
   });
 }
 
+function formatBeijingTime(value) {
+  if (typeof value !== 'string' || !Number.isFinite(Date.parse(value))) {
+    return String(value ?? '');
+  }
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Asia/Shanghai',
+    dateStyle: 'short',
+    timeStyle: 'medium',
+  }).format(new Date(value));
+}
+
 function issueLine(issue) {
   const location = [issue?.file, issue?.path].filter(Boolean).join(' ');
   return `${location ? `${location}: ` : ''}${issue?.message ?? String(issue)}`;
@@ -294,9 +305,7 @@ function buildCatalog(dataset) {
   }
   const collected = rawStats.collected_at;
   stats.collected_at = typeof collected === 'string' && Number.isFinite(Date.parse(collected)) ? collected : null;
-  stats.collected_at_beijing = stats.collected_at ? new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Asia/Shanghai', dateStyle: 'short', timeStyle: 'medium',
-  }).format(new Date(collected)) : null;
+  stats.collected_at_beijing = stats.collected_at ? formatBeijingTime(collected) : null;
 
   return {
     schema_version: 1,
@@ -370,24 +379,28 @@ function resourceLine(resource, names) {
   const isQuiz = resource.type === 'homework' && resource.coverage?.exam_kind === 'quiz';
   if (resource.type === 'exams' || isQuiz) {
     const yearText = resourceYearText(resource) || '年份待确认';
-    const kind = EXAM_KIND_LABELS[resource.coverage?.exam_kind] ?? '卷别不明';
-    const form = EXAM_FORM_LABELS[resource.coverage?.exam_form] ?? '形式不明';
-    const solutions =
-      resource.coverage?.has_solutions === true
-        ? '含解答'
-        : resource.coverage?.has_solutions === false
-          ? '无解答'
-          : '解答情况不明';
-    return `${yearText}（${kind}、${form}、${solutions}）：${resource.title} —— ${sources}${urlText}`;
+    const attrs = [];
+    const examKind = resource.coverage?.exam_kind;
+    if (examKind && examKind !== 'unknown' && EXAM_KIND_LABELS[examKind]) {
+      attrs.push(EXAM_KIND_LABELS[examKind]);
+    }
+    const examForm = resource.coverage?.exam_form;
+    if (examForm && examForm !== 'unknown' && EXAM_FORM_LABELS[examForm]) {
+      attrs.push(EXAM_FORM_LABELS[examForm]);
+    }
+    if (resource.coverage?.has_solutions === true) attrs.push('含解答');
+    else if (resource.coverage?.has_solutions === false) attrs.push('无解答');
+    const detailText = attrs.length > 0 ? `（${attrs.join('、')}）` : '';
+    return `${yearText}${detailText}：${resource.title} —— ${sources}${urlText}`;
   }
-  const verified = resource.verified_at ? `；核验于 ${resource.verified_at}` : '';
+  const verified = resource.verified_at ? `；整理于 ${resource.verified_at}` : '';
   const yearPrefix = resourceYearText(resource);
   const label = yearPrefix ? `${yearPrefix}：${resource.title}` : resource.title;
   if (resource.type === 'books') {
     const direct = (resource.locations ?? []).some(
       (location) => location.access === 'public' && isDirectPdf(location.download_url),
     );
-    const fullText = direct ? '；免登录公开全文 PDF' : '';
+    const fullText = direct ? '；公开 PDF' : '';
     return `${label} —— ${sources}${fullText}${verified}${urlText}`;
   }
   return `${label} —— ${sources}${verified}${urlText}`;
@@ -532,40 +545,38 @@ function renderDocs(report) {
   const lines = [];
   lines.push('# 来源、检索记录与致谢', '');
   lines.push(
-    '> 本文件由 `npm run build` 从 `data/sources.json`、`data/research-log.jsonl`、`data/resources.json` 生成，请勿手工编辑。',
+    '> 本文件由 `npm run build` 生成，勿直接编辑。',
     '',
   );
 
   lines.push('## 概览', '');
-  lines.push(`- 课程：${report.courseCount} 门（已收录资料 ${report.withResources} 门，暂未收录 ${report.withoutResources} 门）。`);
-  lines.push(`- 资料：${report.resources} 条（按资料类型与试题年份的覆盖见下一节）。`);
-  lines.push(`- 来源：${report.sourceCount} 个登记来源，其中 ${report.usedSourceCount} 个被正式资料引用。`);
+  lines.push(`- 课程：${report.courseCount} 门（已收录 ${report.withResources} 门，暂未收录 ${report.withoutResources} 门）。`);
+  lines.push(`- 资料：${report.resources} 条（分类与年份覆盖见下节）。`);
+  lines.push(`- 来源：共 ${report.sourceCount} 个，其中 ${report.usedSourceCount} 个关联正式资料。`);
   lines.push(`- 检索记录：${report.logCount} 条，覆盖 ${report.courseLogs.length} 门课程。`);
-  lines.push(
-    `- 查缺记录：${report.incomplete.length} 门课程尚未记录全部 GitHub / 评课社区 / 公开网页三条检索路径；未记录不等于没有资料，只表示本文件未覆盖。`,
-  );
-  if (report.incomplete.length > 0) {
+  if (report.incomplete.length === 0) {
+    lines.push('- 检索覆盖：所有课程均已记录 GitHub、评课社区与公开网页三条检索路径的结果。');
+  } else {
+    lines.push(`- 待补检索：${report.incomplete.length} 门课程尚缺三路径检索记录。`);
     const sample = report.incomplete.slice(0, 20).join('、');
     lines.push(
-      `  - 未齐全示例：${sample}${report.incomplete.length > 20 ? ` 等 ${report.incomplete.length} 门` : ''}。`,
+      `  - 待补课程：${sample}${report.incomplete.length > 20 ? ` 等 ${report.incomplete.length} 门` : ''}。`,
     );
   }
   if (report.checkedAt) {
-    lines.push(`- 外链检查：${report.checkedAt}；${healthScopeText(report.health)}。`);
-    lines.push(`- 检查结果：${healthCountsText(report.health)}。`);
-    for (const note of healthEvidenceNotes(report.health)) lines.push(`- ${note}`);
+    lines.push(`- 外链巡检：最近检查于 ${report.checkedAt}（详见「外链可用性巡检」）。`);
   } else {
-    lines.push('- 外链检查：尚未运行；所有链接在站点上显示“从未检查”。');
+    lines.push('- 外链巡检：本次离线构建未载入巡检快照。');
   }
   lines.push('');
 
-  lines.push('## 课程 × 资料类型 × 试题年份覆盖', '');
+  lines.push('## 已收录课程与资料清单', '');
   lines.push(
-    '只列出已有已确认资料的课程；未列出的课程属于“暂未收录”，清单见 `data/without-resources/`。一个资料条目可能被多门课程共用，但其归属须有课程代码证据。资料分为五类：试题与解析、作业/习题与小测、学习资料、教材与参考书、大作业与考核作品；小测归入作业类并保留原卷/回忆版等标记。只记录到学年的资料显示为“2025—2026 学年”一类学年区间，不折算成公历年。教材与参考书只列权利方公开、免登录、免费且直达完整 PDF 的全文。',
+    '以下列出已收录资料的课程（暂未收录清单见 `data/without-resources/`）。年份按原件标注，仅明确到学年的记为「YYYY—YYYY 学年」；教材与参考书均链接权利方公开发布的完整 PDF。',
     '',
   );
   if (report.coverage.length === 0) {
-    lines.push('（当前没有任何课程具备已确认资料。）', '');
+    lines.push('（暂未收录课程资料。）', '');
   }
   for (const course of report.coverage) {
     lines.push(`### ${course.code} ${course.name}`, '');
@@ -578,9 +589,9 @@ function renderDocs(report) {
     lines.push('');
   }
 
-  lines.push('## 来源清单与声明', '');
+  lines.push('## 资料来源与致谢', '');
   lines.push(
-    '第三方资料的具体授权以各来源与文件页面的声明为准，不因根目录的 MIT/CC 声明自动覆盖试卷、课件或教材。本站只链接原始来源，不转载文件；部分评课社区附件需登录后下载。',
+    '以下列出本站收录的公开来源，所有资料均跳转至原始页面，版权与授权以原站为准；评课社区部分附件需登录后在原帖获取。',
     '',
   );
   for (const source of report.sources) {
@@ -594,12 +605,12 @@ function renderDocs(report) {
       );
     }
     if (source.notes) lines.push(`- 说明：${md(source.notes)}`);
-    lines.push(`- 被正式资料引用：${source.usage} 处`);
+    lines.push(`- 关联资料入口：${source.usage} 处`);
     lines.push('');
   }
 
   lines.push('## 检索记录', '');
-  lines.push('记录的是实际打开或检查过的页面、目录与文件，不是机械拼接的查询 URL。受阻不等于没有资料。', '');
+  lines.push('记录整理过程中核查过的来源与检索结果，供后续查缺与复核参考。', '');
 
   if (report.generalLogs.length > 0) {
     lines.push('### 通用来源检索', '');
@@ -618,16 +629,16 @@ function renderDocs(report) {
   }
 
   if (report.unmappedLogs.length > 0) {
-    lines.push('### 未映射到当前课程清单的记录', '');
+    lines.push('### 未关联课程的记录', '');
     for (const entry of report.unmappedLogs) {
       lines.push(...logEntryLines(entry));
     }
     lines.push('');
   }
 
-  lines.push('## 受阻、未核验候选与排除项', '');
+  lines.push('## 待复核与未收录记录', '');
   if (report.blocked.length === 0) {
-    lines.push('（当前没有登记受阻或排除项。）');
+    lines.push('（暂无记录。）');
   } else {
     for (const entry of report.blocked) {
       const channel = CHANNEL_LABELS[entry.channel] ?? entry.channel ?? '渠道未记录';
@@ -640,18 +651,15 @@ function renderDocs(report) {
   }
   lines.push('');
 
-  lines.push('## 外链健康检查', '');
+  lines.push('## 外链可用性巡检', '');
   if (report.checkedAt) {
-    lines.push(`- 最近一次检查：${report.checkedAt}`);
-    lines.push(`- 统计范围：${healthScopeText(report.health)}。`);
-    lines.push(`- 结果：${healthCountsText(report.health)}。`);
+    lines.push(`- 最近检查：${report.checkedAt}`);
+    lines.push(`- 巡检范围：${healthScopeText(report.health)}。`);
+    lines.push(`- 巡检结果：${healthCountsText(report.health)}。`);
     for (const note of healthEvidenceNotes(report.health)) lines.push(`- ${note}`);
-    lines.push(`- 判定口径：${HEALTH_METHOD_NOTE}`);
-    lines.push(
-      '- 匿名检查只代表当次网络访问结果，不代表资料内容、课程归属、年份或授权已确认；失败不会自动删除资料或改变“是否收录”的分区。',
-    );
+    lines.push(`- 说明：${HEALTH_METHOD_NOTE}`);
   } else {
-    lines.push('- 尚未执行检查，站点上所有外链均显示“从未检查”，不显示全绿状态。');
+    lines.push('- 本次离线构建未包含巡检快照，定时巡检结果随站点发布更新。');
   }
   lines.push('');
 
@@ -690,7 +698,7 @@ function renderSourcesHtml(report) {
     repo_views_yesterday: '仓库昨日浏览（UTC）',
     repo_views_14d: '仓库浏览（近 14 天）',
     site_views_yesterday: '网站昨日浏览（UTC）',
-    site_total_views: '网站累计浏览次数',
+    site_total_views: '网站累计浏览',
   };
   const hasStats = Object.keys(statLabels).some(key => stats[key] != null) || stats.repo_views_date_utc || stats.site_views_date_utc || stats.collected_at;
 
@@ -701,7 +709,7 @@ function renderSourcesHtml(report) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="color-scheme" content="light dark">
-    <meta name="description" content="课程资料导航的来源、检索记录、受阻项与致谢。">
+    <meta name="description" content="也西书架收录的公开资料来源、检索记录与致谢。">
     <title>来源、检索记录与致谢 · 也西书架</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
     <script>try{var t=localStorage.getItem('ustc-course-nav.theme');document.documentElement.dataset.theme=t==='dark'||t==='system'?t:'light';}catch{document.documentElement.dataset.theme='light';}</script>
@@ -763,12 +771,11 @@ function renderSourcesHtml(report) {
     <main id="main" class="wrap" tabindex="-1">
       <div class="page-top-bar">
         <p class="breadcrumb"><a href="./">← 返回课程目录</a></p>
-        <p class="site-note">只提供原始来源链接；部分评课社区附件需登录后下载。</p>
       </div>
       <header class="page-hero">
         <div class="hero-main">
           <h1>来源、检索记录与致谢</h1>
-          <p class="intro">本页由构建脚本从来源与检索记录生成。资料版权归原作者；具体授权以各来源和文件页面的声明为准。</p>
+          <p class="intro">感谢历届中科大师生与社区维护者公开分享课程资料。本页列出本站收录的全部公开来源，点击即可前往原站。</p>
         </div>
       </header>
 `);
@@ -777,44 +784,36 @@ function renderSourcesHtml(report) {
         <h2 id="overview-heading">概览</h2>
         <div class="overview-cards">
           <div class="stat-card">
-            <span class="stat-label">开课目录总数</span>
+            <span class="stat-label">本科课程</span>
             <strong class="stat-number">${report.courseCount} <small>门</small></strong>
-            <span class="stat-sub">已收录 ${report.withResources} · 暂未收录 ${report.withoutResources}</span>
+            <span class="stat-sub">已收录 ${report.withResources} 门 · 暂未收录 ${report.withoutResources} 门</span>
           </div>
           <div class="stat-card">
-            <span class="stat-label">已确认资料</span>
+            <span class="stat-label">收录资料</span>
             <strong class="stat-number">${report.resources} <small>条</small></strong>
             <span class="stat-sub">覆盖 ${report.coverage.length} 门课程</span>
           </div>
           <div class="stat-card">
-            <span class="stat-label">登记来源</span>
+            <span class="stat-label">资料来源</span>
             <strong class="stat-number">${report.sourceCount} <small>个</small></strong>
-            <span class="stat-sub">正式资料引用 ${report.usedSourceCount} 个</span>
+            <span class="stat-sub">关联正式资料 ${report.usedSourceCount} 个</span>
           </div>
           <div class="stat-card">
-            <span class="stat-label">核查检索记录</span>
+            <span class="stat-label">检索记录</span>
             <strong class="stat-number">${report.logCount} <small>条</small></strong>
-            <span class="stat-sub">已记录 ${report.courseLogs.length} 门课程</span>
+            <span class="stat-sub">覆盖 ${report.courseLogs.length} 门课程</span>
           </div>
         </div>
-        <ul class="overview-list">
-          <li>课程：${report.courseCount} 门（已收录资料 ${report.withResources} 门，暂未收录 ${report.withoutResources} 门）。</li>
-          <li>资料：${report.resources} 条。</li>
-          <li>来源：${report.sourceCount} 个登记来源，其中 ${report.usedSourceCount} 个被正式资料引用。</li>
-          <li>检索记录：${report.logCount} 条，覆盖 ${report.courseLogs.length} 门课程。</li>
-          <li>${report.incomplete.length} 门课程尚未记录全部 GitHub / 评课社区 / 公开网页三条检索路径；未记录不等于没有资料。</li>
-          <li>${report.checkedAt ? `外链最近检查：${escapeHtml(report.checkedAt)}；${escapeHtml(healthScopeText(report.health))}。逐类证据与判定口径见“外链健康检查”。` : '尚未运行外链检查，所有链接显示“从未检查”。'}</li>
-        </ul>
-        <p class="mode-detail mode-banner">详细模式显示逐条覆盖、来源备注、检索范围、受阻与排除项。</p>
+        ${report.incomplete.length > 0 ? `<p class="mode-detail">尚有 ${report.incomplete.length} 门课程待补齐三条检索路径记录。</p>` : ''}
       </section>
 `);
 
-  parts.push('      <section class="sources-section" aria-labelledby="sources-heading">\n        <h2 id="sources-heading">来源清单与声明</h2>\n        <ul class="source-list" role="list">');
+  parts.push('      <section class="sources-section" aria-labelledby="sources-heading">\n        <h2 id="sources-heading">资料来源</h2>\n        <ul class="source-list" role="list">');
   for (const source of report.sources) {
     const meta = [
       `<span>类型：${escapeHtml(SOURCE_KIND_LABELS[source.kind] ?? source.kind ?? '未登记')}</span>`,
       source.maintainer ? `<span>维护者：${escapeHtml(source.maintainer)}</span>` : '',
-      `<span>被资料引用 ${source.usage} 处</span>`,
+      `<span>引用 ${source.usage} 处</span>`,
     ]
       .filter(Boolean)
       .join('');
@@ -824,7 +823,7 @@ function renderSourcesHtml(report) {
     parts.push(`          <li class="source-entry">
             <h3>${escapeHtml(source.name)}</h3>
             <p class="meta-line">${meta}</p>
-            <p class="meta-line">${source.url ? htmlLink(source.url, source.url) : '（未登记地址）'}</p>
+            <p class="meta-line">${source.url ? htmlLink(source.url, source.url) : '（暂无地址）'}</p>
             ${github}
             ${source.notes ? `<p class="source-note mode-detail">${escapeHtml(oneLine(source.notes))}</p>` : ''}
           </li>`);
@@ -832,12 +831,12 @@ function renderSourcesHtml(report) {
   parts.push('        </ul>\n      </section>\n');
 
   parts.push(`      <section class="sources-section" aria-labelledby="coverage-heading">
-        <h2 id="coverage-heading">课程 × 资料类型 × 试题年份覆盖</h2>
-        <p>以下 ${report.coverage.length} 门课程有已确认资料；逐条资料及年份可在详细模式查看。</p>
-        <p class="mode-detail">试题按实际年份保留，学年区间不自动拆成两年，同年不同卷不去重。</p>
+        <h2 id="coverage-heading">已收录课程一览</h2>
+        <p class="mode-compact">共 ${report.coverage.length} 门课程已收录资料，切换至详细模式可展开逐条明细。</p>
+        <p class="mode-detail">试题按原件年份或学年列出，同年不同卷次各自保留。</p>
 `);
   if (report.coverage.length === 0) {
-    parts.push('        <p>当前没有任何课程具备已确认资料。</p>\n');
+    parts.push('        <p>暂未收录课程资料。</p>\n');
   } else {
     parts.push('        <div class="coverage-grid mode-detail">');
     for (const course of report.coverage) {
@@ -858,7 +857,7 @@ function renderSourcesHtml(report) {
 
   parts.push(`      <section class="sources-section mode-detail" aria-labelledby="logs-heading">
         <h2 id="logs-heading">检索记录</h2>
-        <p>记录实际打开或检查过的页面、目录与文件，不是机械拼接的查询 URL。受阻不等于没有资料。</p>
+        <p>整理过程中核查过的公开来源与检索记录，供后续查缺与复核参考。</p>
 `);
   if (report.generalLogs.length > 0) {
     parts.push('        <h3>通用来源检索</h3>\n        <ul class="log-list" role="list">');
@@ -873,15 +872,15 @@ function renderSourcesHtml(report) {
     parts.push('          </ul>\n        </details>');
   }
   if (report.unmappedLogs.length > 0) {
-    parts.push('        <h3>未映射到当前课程清单的记录</h3>\n        <ul class="log-list" role="list">');
+    parts.push('        <h3>未关联课程的记录</h3>\n        <ul class="log-list" role="list">');
     for (const entry of report.unmappedLogs) parts.push(`          ${renderHtmlLogEntry(entry)}`);
     parts.push('        </ul>');
   }
   parts.push('      </section>\n');
 
-  parts.push('      <section class="sources-section mode-detail" aria-labelledby="blocked-heading">\n        <h2 id="blocked-heading">受阻、未核验候选与排除项</h2>');
+  parts.push('      <section class="sources-section mode-detail" aria-labelledby="blocked-heading">\n        <h2 id="blocked-heading">待复核与未收录记录</h2>');
   if (report.blocked.length === 0) {
-    parts.push('        <p>当前没有登记受阻或排除项。</p>');
+    parts.push('        <p>暂无记录。</p>');
   } else {
     parts.push('        <ul class="blocked-list">');
     for (const entry of report.blocked) {
@@ -896,35 +895,26 @@ function renderSourcesHtml(report) {
   }
   parts.push('      </section>\n');
 
-  parts.push(`      <section class="sources-section" aria-labelledby="health-heading">
-        <h2 id="health-heading">外链健康检查</h2>
+  if (report.checkedAt) {
+    const notes = healthEvidenceNotes(report.health);
+    parts.push(`      <section class="sources-section" aria-labelledby="health-heading">
+        <h2 id="health-heading">外链可用性巡检</h2>
         <div class="health-card">
-        ${
-          report.checkedAt
-            ? `<p>最近一次检查：${escapeHtml(report.checkedAt)}。</p>
-        <ul>
-          <li>统计范围：${escapeHtml(healthScopeText(report.health))}。</li>
-          <li>结果：${escapeHtml(healthCountsText(report.health))}。</li>
-          ${healthEvidenceNotes(report.health)
-            .map((note) => `<li>${escapeHtml(note)}</li>`)
-            .join('\n          ')}
-        </ul>`
-            : '<p>尚未执行检查，所有外链显示“从未检查”。</p>'
-        }
-        <p class="mode-detail">判定口径：${escapeHtml(HEALTH_METHOD_NOTE)}</p>
-        <p class="mode-detail">自动检查按固定频率匿名运行，只覆盖已登记的外部网址；逐 URL 的检查日期、状态与原因显示在各课程详情页。</p>
-        <p>匿名检查只代表当次网络访问结果，不代表资料内容、课程归属、年份或授权已确认；失败不会删除资料或改变收录分区。</p>
+          <p>最近巡检（北京时间）：${escapeHtml(formatBeijingTime(report.checkedAt))}，${escapeHtml(healthScopeText(report.health))}。</p>
+          <p>巡检结果：${escapeHtml(healthCountsText(report.health))}。</p>
+          ${notes.map((note) => `<p>${escapeHtml(note)}</p>`).join('\n          ')}
+          <p class="mode-detail">${escapeHtml(HEALTH_METHOD_NOTE)}各条链接的巡检状态可在对应课程详情页的详细模式查看。</p>
         </div>
       </section>
 `);
+  }
 
   parts.push(`    </main>
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <div class="footer-notes">
-          <p>资料版权归原作者所有；本站只提供导航链接，不托管、不转载第三方文件。</p>
-          <p>仓库内同时保留可读版 <code>docs/sources-and-search.md</code>（构建生成）。</p>
-          <p>如果这个页面对你有帮助，希望你到<a href="https://github.com/TwinJades/USTC_Study_Materials_Navigation">我的仓库</a>点一个 Star。这对我非常重要，谢谢！</p>
+          <p>资料均直达原站，版权归原作者所有。</p>
+          <p>如果这个项目对你有帮助，欢迎到<a href="https://github.com/TwinJades/USTC_Study_Materials_Navigation">我的仓库</a>点一颗 Star 支持，谢谢！</p>
         </div>
         <dl id="site-stats" class="site-stats" aria-label="访问统计"${hasStats ? '' : ' hidden'}>
           ${Object.entries(statLabels).map(([key, label]) => {
@@ -938,7 +928,7 @@ function renderSourcesHtml(report) {
           </div>`;
           }).join('\n          ')}
           ${stats.collected_at ? `<div class="stat-pill" data-stat-item="collected_at">
-            <dt>统计取数时间（北京时间）</dt>
+            <dt>统计更新（北京时间）</dt>
             <dd><time datetime="${escapeHtml(stats.collected_at)}" data-stat-value="collected_at">${escapeHtml(stats.collected_at_beijing)}</time></dd>
           </div>` : ''}
         </dl>
@@ -970,7 +960,7 @@ function findBuildRuleErrors(dataset) {
       if (!source) continue;
       if (source.kind === 'tool' || source.kind === 'stub') {
         messages.push(
-          `资料 ${resource.id} 的 location 引用了${SOURCE_KIND_LABELS[source.kind] ?? source.kind}来源“${source.id}”；工具/空壳只能记入检索记录，不能作为正式学习资料。`,
+          `资料 ${resource.id} 的 location 引用了${SOURCE_KIND_LABELS[source.kind] ?? source.kind}来源「${source.id}」；工具 / 占位页只能记入检索记录，不能作为正式资料引用。`,
         );
       }
     }
@@ -987,10 +977,10 @@ async function main() {
   }
   const counter = process.env.GOATCOUNTER_SITE;
   if (counter && !/^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/u.test(counter)) {
-    throw new Error('GOATCOUNTER_SITE must be a GoatCounter subdomain, not a URL');
+    throw new Error('GOATCOUNTER_SITE 必须是 GoatCounter 子域名，不能填写完整 URL');
   }
   const addCounter = (html, page) => counter ? html.replace('</head>',
-    `  <script async src="https://gc.zgo.at/count.js" data-goatcounter="https://${counter}.goatcounter.com/count" data-goatcounter-settings='${escapeHtml(JSON.stringify({ path: page, referrer: '', title: '中科大本科课程资料导航' }))}' referrerpolicy="no-referrer"></script>\n  </head>`,
+    `  <script async src="https://gc.zgo.at/count.js" data-goatcounter="https://${counter}.goatcounter.com/count" data-goatcounter-settings='${escapeHtml(JSON.stringify({ path: page, referrer: '', title: '也西书架 · 中科大本科课程资料导航' }))}' referrerpolicy="no-referrer"></script>\n  </head>`,
   ).replace('</footer>', '<p class="wrap source-note">网站浏览量由 <a href="https://www.goatcounter.com/help/privacy" rel="noreferrer">GoatCounter</a> 统计。</p>\n    </footer>') : html;
 
   const validation = validateRepository(dataset);
@@ -1117,13 +1107,17 @@ async function main() {
   await writeJson(absolute(MANIFEST_RELATIVE), { files: generated });
 
   console.log('构建完成：');
-  console.log(`  课程 ${catalog.counts.courses} 门（有资料 ${catalog.counts.with_resources}，无资料 ${catalog.counts.without_resources}）`);
+  console.log(`  课程 ${catalog.counts.courses} 门（已收录 ${catalog.counts.with_resources}，暂未收录 ${catalog.counts.without_resources}）`);
   console.log(`  资料 ${catalog.counts.resources} 条；实际引用来源 ${catalog.sources.length} 个；标签 ${catalog.tags.length} 个`);
-  console.log(`  检索记录 ${report.logCount} 条；三路径未齐 ${report.incomplete.length} 门`);
+  console.log(`  检索记录 ${report.logCount} 条${report.incomplete.length > 0 ? `；待补检索 ${report.incomplete.length} 门` : '；三条检索路径均已记录'}`);
   console.log(`  分区文件 ${partitions.files.length} 个；站点文件 ${siteFiles.length} 个；dist/data/catalog.json 与 dist/sources.html 已生成`);
-  console.log(`  外链证据：${report.checkedAt ?? '未运行'}；${healthScopeText(report.health)}；${healthCountsText(report.health)}`);
+  if (report.checkedAt) {
+    console.log(`  外链巡检：${report.checkedAt}；${healthScopeText(report.health)}；${healthCountsText(report.health)}`);
+  } else {
+    console.log(`  外链巡检：未载入快照（共 ${report.health.universe} 条外链）`);
+  }
   if (report.health.preflightOnly) {
-    console.log('  本次检查未收到 HTTP 响应：请求全部停在 DNS/私网地址预检，未发出。');
+    console.log('  环境提示：请求均止于 DNS / 私网地址预检，未发出外部请求。');
   }
   console.log(`  清理过期自有产物 ${stale.length} 个`);
 }

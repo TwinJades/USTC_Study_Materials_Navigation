@@ -2710,7 +2710,7 @@
       display: inline;
 
       &::after {
-        content: ":";
+        content: "：";
         margin-inline-start: 2px;
       }
     }
