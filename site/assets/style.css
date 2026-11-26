@@ -1355,13 +1355,14 @@
     block-size: 32px;
     min-block-size: 0;
     padding: 0;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--surface);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: transparent;
     color: var(--text-muted);
 
     &:hover {
       background: var(--surface-muted);
+      border-color: var(--border);
       color: var(--text);
     }
   }
@@ -1619,17 +1620,11 @@
 
       & .announcement-header {
         grid-area: header;
-        padding: 20px 18px 14px;
+        padding: 14px 18px 14px 20px;
         background: var(--surface-subtle);
-        border-inline-end: 1px solid var(--border);
-        align-items: flex-start;
-      }
-
-      & button.announcement-close {
-        position: absolute;
-        inset-block-start: 14px;
-        inset-inline-end: 16px;
-        z-index: 2;
+        border-block-end: 1px solid var(--border);
+        border-inline-end: 0;
+        align-items: center;
       }
 
       & .announcement-tablist {
@@ -1637,7 +1632,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
-        padding: 6px 12px 14px;
+        padding: 14px 12px;
         background: var(--surface-subtle);
         border-inline-end: 1px solid var(--border);
         border-block-end: 0;
@@ -1666,7 +1661,7 @@
       }
 
       & .announcement-tabpanel-inner {
-        padding: 20px 48px 22px 22px;
+        padding: 20px 24px 24px;
       }
 
       & .announcement-footer {
@@ -1674,8 +1669,9 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 14px 18px 18px;
+        padding: 14px 18px 16px;
         border-inline-end: 1px solid var(--border);
+        border-block-start: 1px solid var(--border);
       }
 
       & .announcement-footer-row {
@@ -1687,10 +1683,10 @@
 
     .announcement-panel[open] {
       display: grid;
-      grid-template-columns: 232px minmax(0, 1fr);
-      grid-template-rows: auto auto 1fr;
+      grid-template-columns: 224px minmax(0, 1fr);
+      grid-template-rows: auto 1fr auto;
       grid-template-areas:
-        "header body"
+        "header header"
         "tabs body"
         "footer body";
       align-items: stretch;
