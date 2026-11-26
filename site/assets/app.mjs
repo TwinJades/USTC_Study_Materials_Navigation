@@ -1066,7 +1066,7 @@ const READER_HEALTH_LABELS = {
   unchecked: '尚未检查',
   preflight: '暂未自动检测',
   no_response: '暂时无响应',
-  auth: '需登录访问',
+  auth: '需登录或认证',
   missing: '页面已失效',
   responded: '站点有响应',
 };

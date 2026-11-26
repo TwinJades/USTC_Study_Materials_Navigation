@@ -104,8 +104,8 @@ export function healthCountsText(health) {
 export function healthScopeText(health, { includeStale = false } = {}) {
   const base =
     health.monitored === health.universe
-      ? `共检查 ${health.universe} 条外链`
-      : `全站共 ${health.universe} 条外链，本次检查 ${health.monitored} 条`;
+      ? `全站 ${health.universe} 条外链均有巡检记录`
+      : `全站共 ${health.universe} 条外链，其中 ${health.monitored} 条有巡检记录`;
   if (includeStale && health.stale > 0) {
     return `${base}；另有 ${health.stale} 条历史监控记录`;
   }
@@ -127,4 +127,4 @@ export function healthEvidenceNotes(health) {
 }
 
 export const HEALTH_METHOD_NOTE =
-  '定时巡检通过匿名请求记录外链访问状态：正常返回记为「已响应」，需要登录记为「需登录或认证」，返回 404 / 410 记为失效。';
+  '定时巡检通过匿名请求记录外链访问状态：收到 HTTP 响应记为「已响应」，需要登录或返回 401/403 记为「需登录或认证」，确认返回 404/410 记为失效。';

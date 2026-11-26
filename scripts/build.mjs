@@ -555,7 +555,7 @@ function renderDocs(report) {
   lines.push(`- 来源：共 ${report.sourceCount} 个，其中 ${report.usedSourceCount} 个关联正式资料。`);
   lines.push(`- 检索记录：${report.logCount} 条，覆盖 ${report.courseLogs.length} 门课程。`);
   if (report.incomplete.length === 0) {
-    lines.push('- 检索覆盖：全部课程均已完成 GitHub、评课社区与公开网页首轮检索。');
+    lines.push('- 检索覆盖：所有课程均已记录 GitHub、评课社区与公开网页三条检索路径的结果。');
   } else {
     lines.push(`- 待补检索：${report.incomplete.length} 门课程尚缺三路径检索记录。`);
     const sample = report.incomplete.slice(0, 20).join('、');
@@ -801,7 +801,7 @@ function renderSourcesHtml(report) {
             <span class="stat-sub">覆盖 ${report.courseLogs.length} 门课程</span>
           </div>
         </div>
-        ${report.incomplete.length > 0 ? `<p class="mode-detail">尚有 ${report.incomplete.length} 门课程待补齐首轮检索记录。</p>` : ''}
+        ${report.incomplete.length > 0 ? `<p class="mode-detail">尚有 ${report.incomplete.length} 门课程待补齐三条检索路径记录。</p>` : ''}
       </section>
 `);
 
@@ -1106,7 +1106,7 @@ async function main() {
   console.log('构建完成：');
   console.log(`  课程 ${catalog.counts.courses} 门（已收录 ${catalog.counts.with_resources}，暂未收录 ${catalog.counts.without_resources}）`);
   console.log(`  资料 ${catalog.counts.resources} 条；实际引用来源 ${catalog.sources.length} 个；标签 ${catalog.tags.length} 个`);
-  console.log(`  检索记录 ${report.logCount} 条${report.incomplete.length > 0 ? `；待补检索 ${report.incomplete.length} 门` : '；三路径已全覆盖'}`);
+  console.log(`  检索记录 ${report.logCount} 条${report.incomplete.length > 0 ? `；待补检索 ${report.incomplete.length} 门` : '；三条检索路径均已记录'}`);
   console.log(`  分区文件 ${partitions.files.length} 个；站点文件 ${siteFiles.length} 个；dist/data/catalog.json 与 dist/sources.html 已生成`);
   if (report.checkedAt) {
     console.log(`  外链巡检：${report.checkedAt}；${healthScopeText(report.health)}；${healthCountsText(report.health)}`);
