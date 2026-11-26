@@ -2,13 +2,12 @@
 /**
  * 从官方本科开课确定课程全集。
  *
- * 三种输入，全部只接受 official catalog 数据：
+ * 三种输入，全部只接受官方开课目录（catalog.ustc.edu.cn）数据：
  *   node scripts/collect-courses.mjs              直接请求官方 API
  *   node scripts/collect-courses.mjs --stdin      从标准输入读取最小化官方响应
- *   node scripts/collect-courses.mjs --browser    启动一次性本机同源桥，等待 Edge 页面 POST
+ *   node scripts/collect-courses.mjs --browser    启动一次性本机同源桥，等待浏览器页面 POST
  *
- * 任何学期失败、响应为空、字段缺失、同码冲突时都不覆盖 data/courses.json。
- * 不保存教学班、教师、选课人数或原始响应快照。
+ * 采集或归并出错时保留现有 data/courses.json；仅提取课程归属字段，不保留教学班、教师、人数及原始响应。
  */
 
 import { createServer } from 'node:http';
@@ -43,10 +42,10 @@ if (args.has('--help') || args.has('-h')) {
   console.log(`用法：npm run collect:courses [-- --stdin | --browser]
 
 默认直接请求 https://catalog.ustc.edu.cn 官方 API。
---stdin    从标准输入读取最小化官方响应 {semesters, terms:[{id, rows}]}，不落盘响应
---browser  启动一次性 127.0.0.1 同源桥，打印 URL 与短期 token，仅接受官方 origin POST
+--stdin    从标准输入读取最小化官方响应 {semesters, terms: [{id, rows}]}（仅内存解析）
+--browser  启动一次性 127.0.0.1 同源桥，打印 URL 与短期 token，仅接受来自 catalog.ustc.edu.cn 的 POST 请求
 
-无论哪种模式，失败都不会覆盖现有 data/courses.json。`);
+任一模式出错时均保留现有 data/courses.json。`);
   process.exit(0);
 }
 
@@ -118,12 +117,12 @@ async function collectDirect() {
   console.log('读取官方学期列表…');
   const semesterList = await fetchOfficialJson(`${CATALOG_BASE_URL}/api/teach/semester/list`);
   if (!Array.isArray(semesterList) || semesterList.length === 0) {
-    throw new Error('官方学期列表为空或不是数组；保留现有课程清单');
+    throw new Error('官方学期列表为空或不是数组');
   }
   const { selected, missing } = selectTargetSemesters(semesterList);
   if (missing.length) {
     throw new Error(
-      `官方学期列表缺少目标学期：${missing.map((item) => `${item.id}/${item.code}`).join('、')}；保留现有课程清单`,
+      `官方学期列表缺少目标学期：${missing.map((item) => `${item.id}/${item.code}`).join('、')}`,
     );
   }
 
@@ -134,7 +133,7 @@ async function collectDirect() {
       `${CATALOG_BASE_URL}/api/teach/lesson/list-for-teach/${semester.id}`,
     );
     if (!Array.isArray(lessons) || lessons.length === 0) {
-      throw new Error(`${semester.label} 教学班响应为空；保留现有课程清单`);
+      throw new Error(`${semester.label} 教学班响应为空`);
     }
     terms.push({ ...semester, lessons });
   }
@@ -148,7 +147,7 @@ function readStdinPayload() {
   } catch (error) {
     throw new Error(`读取标准输入失败：${error?.message ?? error}`);
   }
-  if (!text.trim()) throw new Error('标准输入为空；应通过管道传入官方浏览器最小化响应');
+  if (!text.trim()) throw new Error('标准输入为空；请通过管道传入从官方开课页面获取的最小化 JSON 响应');
   try {
     return JSON.parse(text);
   } catch (error) {
@@ -161,7 +160,7 @@ function readStdinPayload() {
  * 本函数不复制教师、教学班等附加信息。
  */
 function normalizeIncomingPayload(payload) {
-  if (!isPlainObject(payload)) throw new Error('输入必须是对象 {semesters,terms}');
+  if (!isPlainObject(payload)) throw new Error('输入必须是对象 {semesters, terms}');
   const semesterMetadata = Array.isArray(payload.semesters) ? payload.semesters : [];
   const terms = Array.isArray(payload.terms) ? payload.terms : [];
   if (terms.length === 0) throw new Error('terms 不能为空');
@@ -172,7 +171,7 @@ function normalizeIncomingPayload(payload) {
     const id = String(term.id ?? '');
     if (!id) throw new Error('terms 缺少 id');
     if (!SEMESTER_TARGETS.some((target) => String(target.id) === id)) {
-      throw new Error(`terms 含非目标学期 id=${id}；只接受 401/421/441/461`);
+      throw new Error(`terms 含非目标学期 id=${id}；仅接受 ${SEMESTER_TARGETS.map((t) => t.id).join(' / ')}`);
     }
     if (rowsById.has(id)) throw new Error(`terms 含重复学期 id=${id}`);
     const rows = term.rows ?? term.lessons;
@@ -357,10 +356,10 @@ async function collectBrowser() {
     throw new Error('无法启动本机桥');
   }
 
-  console.log('已启动一次性本机同源桥（仅绑定 127.0.0.1，仅接受官方 catalog origin）。');
+  console.log('已启动一次性本机同源桥（仅监听 127.0.0.1）。');
   console.log(`POST http://127.0.0.1:${port}/collect?token=${token}`);
   console.log(`允许 Origin：${ALLOWED_ORIGIN}；body ≤ 16 MiB；成功接收一次后立即关闭。`);
-  console.log('在 Edge 的 catalog.ustc.edu.cn 页面执行同源 fetch，POST {semesters,terms} 最小化数据。');
+  console.log('在浏览器打开的 catalog.ustc.edu.cn 页面执行同源 fetch，POST {semesters, terms} 最小化数据。');
 
   const timeout = setTimeout(() => {
     rejectPayload(new Error('等待浏览器数据超时（10 分钟）'));
@@ -399,7 +398,7 @@ function finalize(terms) {
       stats: merged.stats,
     };
     const error = new Error(
-      `官方记录有 ${merged.invalid.length} 条缺少课程代码/名称/教育层次/课程类别/课程层次；未覆盖课程清单`,
+      `官方记录有 ${merged.invalid.length} 条缺少必需字段（课程代码、名称、教育层次、课程类别或课程层次）`,
     );
     error.details = detail;
     throw error;
@@ -412,13 +411,13 @@ function finalize(terms) {
       stats: merged.stats,
     };
     const error = new Error(
-      `同一学期同码存在 ${merged.conflicts.length} 项名称/最终 kind 冲突（${conflictCodes.join('、')}）；未覆盖课程清单`,
+      `同一学期同码存在 ${merged.conflicts.length} 项名称或最终 kind 冲突（${conflictCodes.join('、')}）`,
     );
     error.details = detail;
     throw error;
   }
   if (merged.courses.length === 0) {
-    const error = new Error('合并后的本科课程清单为空；未覆盖课程清单');
+    const error = new Error('合并后的本科课程清单为空');
     error.details = { stats: merged.stats };
     throw error;
   }
@@ -436,7 +435,7 @@ function finalize(terms) {
     conflicts: merged.conflicts,
     metadata_draft: {
       path: path.relative(ROOT, METADATA_DRAFT).split(path.sep).join('/'),
-      note: 'kind 已按官方最新学期记录生成；tags 故意留空，必须逐课按内容研究后填写。',
+      note: 'kind 已按官方最新学期记录生成；tags 留空，须逐课核实内容后填写。',
     },
     tag_definitions: TAG_DEFINITIONS.map(({ id, label, hint }) => ({ id, label, hint })),
   });
@@ -451,7 +450,7 @@ function finalize(terms) {
     `合并完成：${merged.courses.length} 门本科课程；名称变化 ${merged.nameChanges.length}，分类变化 ${merged.classificationChanges.length}，冲突 0，无效 0。`,
   );
   console.log(`已写入 ${paths.courses}`);
-  console.log(`分类草稿：${METADATA_DRAFT}（tags 为空，需研究后填写正式 course-metadata.json）`);
+  console.log(`分类草稿：${METADATA_DRAFT}（tags 为空，需研究后填写正式 data/course-metadata.json）`);
   console.log(`采集报告：${DRAFT_REPORT}`);
 }
 
@@ -471,10 +470,11 @@ try {
   await main();
 } catch (error) {
   console.error(`采集失败：${error?.message ?? error}`);
+  console.error('现有 data/courses.json 保持不变。');
   if (MODE === 'direct') {
     console.error(
       'Node 直连官方 API 若被网关拦截，可改用 `npm run collect:courses -- --stdin`，' +
-        '由 Edge 页面同源读取后把最小化 {semesters,terms} 通过管道传入；现有课程清单保持不变。',
+        '由浏览器页面同源读取后把最小化 {semesters, terms} 通过管道传入。',
     );
   }
   writeFailureReport(error, error?.details ?? {});

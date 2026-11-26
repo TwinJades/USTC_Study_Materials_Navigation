@@ -11,6 +11,8 @@ import {
   summarizeHealth,
 } from '../../site/assets/health-evidence.mjs';
 
+const EVIDENCE_ORDER = ['responded', 'auth', 'missing', 'no_response', 'preflight', 'unchecked'];
+
 /** 只保留可解析的 http / https URL，用于对齐监控记录。 */
 export function normalizedHttpUrl(url) {
   try {
@@ -88,42 +90,41 @@ export function summarizeLinkCoverage(dataset) {
   };
 }
 
-/** 证据分类计数文本；六类互斥，httpResponses 与分类计数存在重叠，不可相加。 */
+/** 按互斥六类输出计数大于 0 的状态摘要。 */
 export function healthCountsText(health) {
-  const count = (key) => health?.[key] ?? 0;
-  const labels = HEALTH_EVIDENCE_LABELS;
-  return [
-    `收到 HTTP 响应 ${count('httpResponses')} 条（${labels.responded} ${count('responded')}、${labels.auth} ${count('auth')}、${labels.missing} ${count('missing')}）`,
-    `${labels.preflight} ${count('preflight')}`,
-    `${labels.no_response} ${count('no_response')}`,
-    `${labels.unchecked} ${count('unchecked')}`,
-  ].join('；');
+  const parts = [];
+  for (const key of EVIDENCE_ORDER) {
+    const n = health?.[key] ?? 0;
+    if (n > 0) parts.push(`${HEALTH_EVIDENCE_LABELS[key]} ${n} 条`);
+  }
+  return parts.length > 0 ? parts.join('、') : '暂无记录';
 }
 
-/** 检查范围说明；分类明细由 healthCountsText 输出。 */
-export function healthScopeText(health) {
-  const stale =
-    health.stale > 0 ? `；监控文件另有 ${health.stale} 个未引用的历史条目（不计入统计）` : '';
-  return `共引用 ${health.universe} 个 URL，已覆盖 ${health.monitored} 个${stale}`;
+/** 检查范围说明；includeStale 仅用于后台校验输出历史条目数。 */
+export function healthScopeText(health, { includeStale = false } = {}) {
+  const base =
+    health.monitored === health.universe
+      ? `共检查 ${health.universe} 条外链`
+      : `全站共 ${health.universe} 条外链，本次检查 ${health.monitored} 条`;
+  if (includeStale && health.stale > 0) {
+    return `${base}；另有 ${health.stale} 条历史监控记录`;
+  }
+  return base;
 }
 
-/** 环境与判定口径说明：无 HTTP 响应时不记作可访问或失效。 */
+/** 环境与异常巡检提示。 */
 export function healthEvidenceNotes(health) {
   const notes = [];
   if (health.preflightOnly) {
-    notes.push(
-      '本次未收到任何 HTTP 响应：已检 URL 均在安全预检阶段未放行，请求未发出，不能据此判定可用或失效。',
-    );
+    notes.push('本次巡检受运行环境网络限制，未能发出外部请求，结果待下次巡检更新。');
   } else if ((health.httpResponses ?? 0) === 0 && (health.no_response ?? 0) > 0) {
-    notes.push(
-      '本次已发起连接但未收到 HTTP 响应（超时或连接失败），仅反映当次网络状态，不代表资源失效。',
-    );
+    notes.push('本次巡检因连接超时或网络中断未获响应，外链可用性请以直接访问为准。');
   }
-  if (health.unmonitored > 0) {
-    notes.push('「从未检查」表示尚无监控记录，不同于「已检查但无法确认」。');
+  if (health.unmonitored > 0 && health.monitored > 0) {
+    notes.push(`另有 ${health.unmonitored} 条新增外链待下次定时巡检纳入。`);
   }
   return notes;
 }
 
 export const HEALTH_METHOD_NOTE =
-  '仅确认 HTTP 404 / 410 计为失效。需登录或认证说明服务器有响应但须验证身份；目录页、软错误页、超时与预检拦截均不证明文件可下载或失效。重定向前跳已响应而终跳预检未放行者，归入「预检未放行」，同时计入收到 HTTP 响应条目。';
+  '定时巡检通过匿名请求记录外链访问状态：正常返回记为「已响应」，需要登录记为「需登录或认证」，返回 404 / 410 记为失效。';

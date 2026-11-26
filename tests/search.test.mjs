@@ -387,7 +387,7 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   assert.match(html, /<button type="button" id="tag-toggle" class="tag-drawer-toggle" aria-expanded="false" aria-controls="tag-drawer">/);
   assert.match(html, /<div id="tag-drawer" class="tag-drawer mode-detail" data-open="false" hidden>/);
   assert.match(html, /<div id="tag-options" class="tag-options" role="group" aria-labelledby="tag-group-label"><\/div>/);
-  assert.match(html, /项目检索标签，非官方分类/);
+  assert.match(html, /本站整理的学科标签，支持多选/);
   assert.match(html, /name="status" value="with" checked/);
   assert.match(html, /name="status" value="without" checked/);
   assert.doesNotMatch(html, /name="access"|id="access"/);

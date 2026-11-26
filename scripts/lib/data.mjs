@@ -78,7 +78,7 @@ export const ACCESS_LABELS = Object.freeze({
   login: '需登录',
   campus: '校园网',
   paid: '付费',
-  unknown: '访问不明',
+  unknown: '待确认',
 });
 
 export const EXAM_KINDS = Object.freeze([
@@ -93,7 +93,7 @@ export const EXAM_KIND_LABELS = Object.freeze({
   final: '期末',
   quiz: '小测',
   mixed: '期中期末混合',
-  unknown: '卷别不明',
+  unknown: '卷别待确认',
 });
 
 export const EXAM_FORMS = Object.freeze([
@@ -106,7 +106,7 @@ export const EXAM_FORM_LABELS = Object.freeze({
   original: '原题',
   recollection: '回忆版',
   practice: '模拟练习',
-  unknown: '形式不明',
+  unknown: '待确认',
 });
 
 /**
@@ -158,7 +158,7 @@ export const SOURCE_KIND_LABELS = Object.freeze({
   website: '网站',
   index: '索引',
   tool: '工具',
-  stub: '空壳',
+  stub: '占位页',
   mirror: '镜像',
 });
 
@@ -181,11 +181,11 @@ export const RESEARCH_OUTCOMES = Object.freeze([
 export const RESEARCH_OUTCOME_LABELS = Object.freeze({
   reviewed: '已查看',
   no_relevant_result: '无相关结果',
-  candidate: '候选未确认',
+  candidate: '待核验',
   duplicate: '重复或镜像',
   tool: '工具',
-  stub: '空壳',
-  blocked: '受阻',
+  stub: '暂无内容',
+  blocked: '访问受限',
 });
 
 /**
@@ -1982,9 +1982,9 @@ function validateMonitoring(monitoring, collector, { sourcesById }, options) {
   const file = 'data/monitoring.json';
   if (monitoring === null) {
     if (options.requireMonitoring) {
-      collector.error(file, '', '缺少 monitoring.json（尚无真实链接检查结果）');
+      collector.error(file, '', '缺少 monitoring.json（未载入外链巡检快照）');
     } else {
-      collector.warn(file, '', '尚未生成 monitoring.json；站点应显示「从未检查」，不得显示全绿');
+      collector.warn(file, '', '尚未生成 monitoring.json，本次离线构建不含外链巡检结果');
     }
     return;
   }

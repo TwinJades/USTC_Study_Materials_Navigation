@@ -1,16 +1,16 @@
 name: 提出改进建议
-description: 建议新功能，或改进现有的检索与浏览体验。
+description: 建议新功能或改进现有的检索与浏览体验。
 title: '[建议] '
 body:
   - type: textarea
     id: use-case
     attributes:
       label: 使用场景与需求
-      description: 描述想完成的任务及当前遇到的阻碍。
+      description: 说说你在找资料时想做什么，目前哪里用着不顺手。
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
       label: 改进设想（可选）
-      description: 如有具体思路，请说明期望的交互或展示效果。
+      description: 如果已经有具体想法，欢迎写下期望的效果或交互方式。

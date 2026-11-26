@@ -104,7 +104,7 @@ function showLoadError(message) {
   errorBox.textContent = message;
   errorBox.hidden = false;
   const status = document.getElementById('result-status');
-  if (status) status.textContent = '课程数据加载失败。';
+  if (status) status.textContent = '加载失败';
 }
 
 /**
@@ -173,7 +173,7 @@ function initIndex(catalog) {
   const typeLabels = resourceTypeLabelMap(catalog.resource_types);
   const tagLabels = labelMap(catalog.tags);
 
-  populateSelect(typeSelect, '全部资料类型', resourceTypeItems(catalog.resource_types));
+  populateSelect(typeSelect, '全部类型', resourceTypeItems(catalog.resource_types));
   buildTagOptions();
 
   let page = 1;
@@ -198,7 +198,7 @@ function initIndex(catalog) {
       ?? catalog.courses.filter((c) => courseResources(c).length > 0).length;
     const resTotal = catalog.counts?.resources
       ?? catalog.courses.reduce((sum, c) => sum + courseResources(c).length, 0);
-    heroPulseText.textContent = `已索引 ${courseTotal.toLocaleString('zh-CN')} 门本科课 · ${withTotal.toLocaleString('zh-CN')} 门已收录 · ${resTotal.toLocaleString('zh-CN')} 条资料`;
+    heroPulseText.textContent = `涵盖 ${courseTotal.toLocaleString('zh-CN')} 门本科课 · ${withTotal.toLocaleString('zh-CN')} 门已收资料 · 共 ${resTotal.toLocaleString('zh-CN')} 条`;
     heroPulse.hidden = false;
   }
 
@@ -491,13 +491,13 @@ function initIndex(catalog) {
 
     let statusText;
     if (filters.status === 'none') {
-      statusText = '当前筛选下共 0 门课程。';
+      statusText = '未显示课程';
     } else if (results.length === 0) {
-      statusText = active ? '没有符合条件的课程。' : '课程目录为空。';
+      statusText = active ? '没有符合条件的课程' : '课程目录为空';
     } else if (active) {
-      statusText = `筛选出 ${results.length} 门课程，其中 ${withCount} 门已收录（共 ${total} 门）。`;
+      statusText = `找到 ${results.length} 门课程，其中 ${withCount} 门已收资料`;
     } else {
-      statusText = `共 ${total} 门课程：已收录 ${withCount} 门，暂未收录 ${total - withCount} 门。`;
+      statusText = `共 ${total} 门课程，${withCount} 门已收资料，${total - withCount} 门暂未收录`;
     }
     setText(resultStatus, statusText);
 
@@ -507,15 +507,15 @@ function initIndex(catalog) {
       if (filters.status === 'none') {
         setText(
           noResultsText,
-          '未勾选任何收录状态，请至少勾选「已收录资料」或「暂未收录资料」。',
+          '请至少勾选「已收录」或「暂未收录」中的一项。',
         );
       } else if (active) {
         setText(
           noResultsText,
-          `没有同时满足以下条件的课程：${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}。`,
+          `没有找到符合条件的课程（${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}），试试放宽条件。`,
         );
       } else {
-        setText(noResultsText, '课程目录暂无数据，请检查构建产物。');
+        setText(noResultsText, '课程目录暂时为空，请稍后刷新重试。');
       }
     }
 
@@ -557,7 +557,7 @@ function describeFilters(filters, labels) {
   }
   if (filters.status === 'with') parts.push('仅已收录');
   if (filters.status === 'without') parts.push('仅暂未收录');
-  if (filters.status === 'none') parts.push('未勾选收录状态');
+  if (filters.status === 'none') parts.push('未勾选资料情况');
   return parts.join('、');
 }
 
@@ -574,7 +574,7 @@ function renderCourseItem(course, labels) {
     el('span', 'course-name', course.name),
   );
   const status = el('span', `badge ${hasRes ? 'with' : 'without'}`);
-  status.textContent = hasRes ? '已收录资料' : '暂未收录资料';
+  status.textContent = hasRes ? '已收录' : '暂未收录';
   top.append(link, status);
   item.append(top);
 
@@ -642,7 +642,7 @@ function initCoursePage(catalog) {
     if (content) content.hidden = true;
     if (sectionNav) sectionNav.hidden = true;
     if (title) title.textContent = '未找到该课程';
-    if (meta) meta.textContent = code ? `课程代码：${code}` : '链接中缺少课程代码。';
+    if (meta) meta.textContent = code ? `课程代码：${code}` : '未指定课程代码';
     if (status) {
       status.textContent = '';
       status.hidden = true;
@@ -708,10 +708,12 @@ function initCoursePage(catalog) {
       status.hidden = false;
       const summary = courseSummary(course, labels.type);
       const yearText = summary.examYears.map((year) => `${year} 年`).join('、');
-      const parts = [`共收录 ${summary.total} 条资料。`];
-      if (yearText) parts.push(`试题年份：${yearText}。`);
-      if (summary.hasUnknownExamYear) parts.push('另有未确认公历年的试题（可能仅登记学年）。');
-      status.textContent = parts.join('');
+      const parts = [`共 ${summary.total} 条资料`];
+      if (yearText) parts.push(`试题年份：${yearText}`);
+      if (summary.hasUnknownExamYear) {
+        parts.push(yearText ? '部分试题年份待确认' : '试题年份待确认');
+      }
+      status.textContent = parts.join(' · ');
     }
   }
 
@@ -780,12 +782,12 @@ function renderTypeSection(group, labels) {
 
 function renderEmptyState() {
   const section = el('section', 'empty-state');
-  section.append(el('h2', null, '暂未收录该课程资料'));
+  section.append(el('h2', null, '暂未收录资料'));
   section.append(
     el(
       'p',
       null,
-      '该课程在 2025 秋—2026 秋本科开课目录中，目前尚未收录可核验资料。',
+      '这门课目前还没有收录到公开资料，欢迎通过 GitHub 仓库推荐来源。',
     ),
   );
   return section;
@@ -845,26 +847,26 @@ function renderResource(resource, labels) {
   const detail = el('div', 'mode-detail resource-detail');
   const authorParts = [];
   if (Array.isArray(resource.authors) && resource.authors.length > 0) {
-    authorParts.push(`作者 / 署名：${resource.authors.join('、')}`);
+    authorParts.push(`署名：${resource.authors.join('、')}`);
   }
-  if (resource.verified_at) authorParts.push(`核验于 ${formatDate(resource.verified_at)}`);
+  if (resource.verified_at) authorParts.push(`整理于 ${formatDate(resource.verified_at)}`);
   if (authorParts.length > 0) detail.append(el('p', 'resource-meta', authorParts.join(' · ')));
 
   const coverage = renderCoverage(resource, type, labels);
   if (coverage) detail.append(coverage);
 
   const notes = resourceNotes(resource);
-  if (notes.coverage) detail.append(el('p', 'resource-notes', `核验说明：${notes.coverage}`));
-  if (notes.extra) detail.append(el('p', 'resource-notes', `补充说明：${notes.extra}`));
+  if (notes.coverage) detail.append(el('p', 'resource-notes', `说明：${notes.coverage}`));
+  if (notes.extra) detail.append(el('p', 'resource-notes', `备注：${notes.extra}`));
 
   const evidence = safeExternalUrl(resource.coverage?.evidence_url);
   if (evidence) {
-    const p = el('p', 'resource-notes');
-    p.append(document.createTextNode('核验依据：'));
     const key = canonicalUrlKey(evidence);
-    if (key && plan.keys.has(key)) p.append(document.createTextNode('同上方来源链接。'));
-    else p.append(externalLink(evidence, '查看核验依据'));
-    detail.append(p);
+    if (!key || !plan.keys.has(key)) {
+      const p = el('p', 'resource-notes');
+      p.append(document.createTextNode('参考出处：'), externalLink(evidence, '查看出处页'));
+      detail.append(p);
+    }
   }
 
   const detailSolutions = solutions
@@ -876,7 +878,7 @@ function renderResource(resource, labels) {
     .filter(Boolean);
 
   if (plan.details.length === 0 && detailSolutions.length === 0) {
-    detail.append(el('p', 'empty-type', '暂未登记可用入口。'));
+    detail.append(el('p', 'empty-type', '暂无可用链接'));
   } else {
     const list = el('ul', 'locations');
     list.setAttribute('role', 'list');
@@ -897,7 +899,7 @@ function renderResource(resource, labels) {
 function renderCompactLinks(plan, labels, { exerciseTitle = '', solutionLinks = [] } = {}) {
   const line = el('div', 'location-links compact-links mode-compact');
   if (!plan.compact && solutionLinks.length === 0) {
-    line.append(el('span', 'source-note', '暂未登记可用入口。'));
+    line.append(el('span', 'source-note', '暂无可用链接'));
     return line;
   }
   if (plan.compact) {
@@ -961,11 +963,11 @@ function renderCoverage(resource, type, labels) {
   if (examLike) {
     rows.push([
       '卷别',
-      coverage.exam_kind ? labels.examKind.get(coverage.exam_kind) ?? coverage.exam_kind : '不明',
+      coverage.exam_kind ? labels.examKind.get(coverage.exam_kind) ?? coverage.exam_kind : '待确认',
     ]);
     rows.push([
       '形式',
-      coverage.exam_form ? labels.examForm.get(coverage.exam_form) ?? coverage.exam_form : '不明',
+      coverage.exam_form ? labels.examForm.get(coverage.exam_form) ?? coverage.exam_form : '待确认',
     ]);
     rows.push([
       '解答',
@@ -973,7 +975,7 @@ function renderCoverage(resource, type, labels) {
         ? '含解答'
         : coverage.has_solutions === false
           ? '无解答'
-          : '解答情况不明',
+          : '待确认',
     ]);
   }
   if (rows.length === 0) return null;
@@ -996,14 +998,14 @@ function renderLocation({ location, entries }, labels, index) {
       links.append(pair);
     }
   } else {
-    links.append(el('span', 'source-note', '无额外可用入口，或链接与上方重复。'));
+    links.append(el('span', 'source-note', '同上方链接'));
   }
   wrapper.append(links);
 
   const metaParts = [`来源：${sourceNames(labels.sourceNames, location.source_id)}`];
   if (location.role === 'solution') metaParts.unshift('配套解答');
   if (index > 0) metaParts.unshift('备用入口');
-  metaParts.push(`访问：${labels.access.get(location.access) ?? location.access ?? '不明'}`);
+  metaParts.push(`访问：${labels.access.get(location.access) ?? location.access ?? '待确认'}`);
   if (location.license_note) metaParts.push(`许可：${location.license_note}`);
   if (location.attribution) metaParts.push(`署名：${location.attribution}`);
   wrapper.append(el('p', 'location-meta', metaParts.join('；')));
@@ -1011,14 +1013,14 @@ function renderLocation({ location, entries }, labels, index) {
     const { sha256, bytes, checked_at } = location.file_snapshot;
     const snapshot = el('p', 'location-meta file-snapshot');
     snapshot.append(
-      `直链文件取样（${formatDate(checked_at)}，${bytes.toLocaleString('zh-CN')} 字节） · SHA-256：`,
+      `文件校验（${formatDate(checked_at)}，${bytes.toLocaleString('zh-CN')} 字节） · SHA-256：`,
       el('code', null, sha256),
     );
     wrapper.append(snapshot);
   }
   if (location.attachment_snapshots?.length) {
     const snapshots = el('div', 'location-meta file-snapshot attachment-snapshots');
-    snapshots.append(el('p', null, `原帖附件取样（${location.attachment_snapshots.length} 个，需登录原帖获取）`));
+    snapshots.append(el('p', null, `原帖附件（${location.attachment_snapshots.length} 个，需登录原帖获取）`));
     const list = el('ul');
     for (const { sha256, bytes, checked_at } of location.attachment_snapshots) {
       const item = el('li');
@@ -1035,7 +1037,7 @@ function renderLocation({ location, entries }, labels, index) {
 }
 
 function sourceNames(map, id) {
-  if (!id) return '未登记来源';
+  if (!id) return '未知来源';
   return map.get(id) ?? id;
 }
 
@@ -1052,15 +1054,24 @@ function externalLink(url, text) {
 }
 
 const HEALTH_REASON_TEXT = {
-  private_host: '非公开地址，预检未放行',
-  dns_error: 'DNS 解析失败',
-  timeout: '请求超时',
-  error_page: '返回错误页',
-  rate_limited: '站点限流',
-  server_error: '服务端错误',
+  private_host: '非公开地址',
+  dns_error: '域名无法解析',
+  timeout: '连接超时',
+  error_page: '原站返回错误页',
+  rate_limited: '原站限制访问',
+  server_error: '原站暂时异常',
 };
 
-/** 自动检查仅反映网络响应，不代表内容、课程或授权已确认。 */
+const READER_HEALTH_LABELS = {
+  unchecked: '尚未检查',
+  preflight: '暂未自动检测',
+  no_response: '暂时无响应',
+  auth: '需登录访问',
+  missing: '页面已失效',
+  responded: '站点有响应',
+};
+
+/** 自动检查仅反映最近一次网络探测结果。 */
 function renderHealth(entry, labels) {
   const health = linkHealth(labels.links, entry.url);
   const evidence = classifyHealth(health);
@@ -1076,10 +1087,12 @@ function renderHealth(entry, labels) {
   const symbol = el('span', 'health-symbol', LINK_STATUS_SYMBOL[status]);
   symbol.setAttribute('aria-hidden', 'true');
   const label =
-    evidence === 'preflight' && health.http_status
-      ? '后续跳转预检未放行'
-      : HEALTH_EVIDENCE_LABELS[evidence];
-  node.append(symbol, document.createTextNode(`外链检查：${label}`));
+    evidence === 'responded' && health.status === 'reachable'
+      ? '访问正常'
+      : evidence === 'preflight' && health.http_status
+        ? '跳转目标暂未自动检测'
+        : READER_HEALTH_LABELS[evidence];
+  node.append(symbol, document.createTextNode(`链接状态：${label}`));
 
   const checkedAt = health.checked_at;
   if (checkedAt) node.append(document.createTextNode(` · ${formatDate(checkedAt)}`));
@@ -1087,7 +1100,7 @@ function renderHealth(entry, labels) {
   const reason = HEALTH_REASON_TEXT[health.reason];
   if (reason) node.append(document.createTextNode(`（${reason}）`));
   if (isStale(checkedAt, HEALTH_NOW)) {
-    node.append(document.createTextNode(' '), el('span', 'health-stale', '超过 7 天'));
+    node.append(document.createTextNode(' '), el('span', 'health-stale', '检查已超 7 天'));
   }
   return node;
 }
@@ -1113,7 +1126,7 @@ main().catch((error) => {
   console.error(error);
   if (document.body.dataset.hero === 'centered') document.body.dataset.hero = 'expanded';
   showLoadError(
-    '无法加载课程目录（data/catalog.json），请刷新页面；若问题持续，可先查看来源与致谢。',
+    '课程目录加载失败，请刷新页面重试；如仍打不开，可先查看来源与致谢。',
   );
   const noResults = document.getElementById('no-results');
   if (noResults) noResults.hidden = true;

@@ -36,7 +36,6 @@ jobs:
 
       - name: Check registered links and GitHub sources
         # 来源级失败会写入逐项状态并继续；基础设施、凭据或通知失败将中止任务。
-        # 仅使用本仓库 GITHUB_TOKEN，不读取第三方凭据或浏览器 Cookie。
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/monitor.mjs --publish

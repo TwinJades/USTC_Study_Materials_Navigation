@@ -1446,7 +1446,7 @@ test('枚举 labels 完整且有序', () => {
   assert.equal(RESOURCE_TYPE_LABELS.books, '教材与参考书');
   assert.equal(RESOURCE_TYPE_LABELS.projects, '大作业与考核作品');
   assert.equal(ACCESS_LABELS.login, '需登录');
-  assert.equal(EXAM_KIND_LABELS.unknown, '卷别不明');
+  assert.equal(EXAM_KIND_LABELS.unknown, '卷别待确认');
   assert.equal(EXAM_FORM_LABELS.recollection, '回忆版');
   assert.equal(LINK_STATUS_LABELS.unchecked, '未检查');
   assert.equal(MONITORING_SCHEMA_VERSION, 1);

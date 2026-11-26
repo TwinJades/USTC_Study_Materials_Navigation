@@ -1,9 +1,7 @@
 name: Archive repository traffic
 
-# GitHub 仅保留近 14 天的 /traffic/views 数据，本工作流每日将已结束 UTC 日的计数
-# 归档至独立孤儿分支 `traffic-history` 下的 `traffic-history.json`。
-# 归档仅含日期、浏览量（count）与独立访客数（uniques），不触碰默认分支、不强制推送、
-# 也不触发 Pages 部署。定时与手动触发均限定在默认分支运行，避免未审核代码写入归档。
+# 每日将 GitHub /traffic/views 中已结束的 UTC 日访问计数（date、count、uniques）
+# 归档至独立孤儿分支 `traffic-history` 的 `traffic-history.json`（仅快进推送）。
 
 on:
   schedule:
@@ -22,18 +20,18 @@ concurrency:
 jobs:
   archive:
     name: Archive completed UTC days
-    # 定时与手动触发均仅在默认分支运行，防止未审代码写归档分支。
+    # 仅允许默认分支运行，避免未审分支写入归档。
     if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      # 仅需推送 traffic-history 分支，不授予 issues、pages、id-token 等额外权限。
+      # 推送 traffic-history 分支所需最小权限。
       contents: write
     steps:
       - name: Checkout workflow code
         uses: actions/checkout@v4
         with:
-          # 保留 checkout 写入 .git/config 的凭据，供脚本静默拉取并快进推送，token 不出现在日志中。
+          # 保留 checkout 凭据供脚本拉取与快进推送（避免在命令行传递 token）。
           persist-credentials: true
           fetch-depth: 1
 
@@ -43,7 +41,7 @@ jobs:
           node-version: '24'
 
       - name: Merge completed days into traffic-history
-        # 优先使用 TRAFFIC_TOKEN，未配置时回退至 GITHUB_TOKEN；均无权限时直接失败，不补写 0。
+        # 优先使用 TRAFFIC_TOKEN，未配置时回退至 GITHUB_TOKEN；均无权限时直接失败退出。
         env:
           TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
           GITHUB_TOKEN: ${{ github.token }}

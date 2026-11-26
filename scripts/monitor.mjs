@@ -43,15 +43,15 @@ export class MonitorError extends Error {
   }
 }
 
-const USAGE = `用法：node scripts/monitor.mjs [--dry-run|--write-local|--load-published|--publish] [--repo owner/name]
+const USAGE = `用法：node scripts/monitor.mjs [--dry-run|--write-local|--load-published|--publish] [--repo owner/repo]
 
-  --dry-run        真实检查链接与仓库文件，只输出报告（默认）
-  --write-local    真实检查，仅写入本地 data/monitoring.json（首次建立基线）
-  --load-published 读取 monitoring-data 的快照供本地校验和构建，不写 GitHub
-  --publish        真实检查，发送 Issue 通知并更新 monitoring-data 分支
-  --repo           指定目标 owner/name（默认取 GITHUB_REPOSITORY 或 git remote origin）
+  --dry-run        只读检查链接与仓库文件并输出报告（默认）
+  --write-local    检查并仅写入本地 data/monitoring.json
+  --load-published 从 monitoring-data 拉取快照写入本地 data/monitoring.json
+  --publish        检查后发送 Issue 通知，更新 monitoring-data 分支并同步本地快照
+  --repo           指定目标 owner/repo（默认取 GITHUB_REPOSITORY 或 git remote origin）
 
-  环境变量：GITHUB_TOKEN（publish 必需）、GITHUB_REPOSITORY（可选）`;
+  环境变量：GITHUB_TOKEN（--publish 必需，其余模式可选）、GITHUB_REPOSITORY（可选）`;
 
 export function parseArgs(argv) {
   const options = { mode: null, repo: null, help: false };
@@ -145,7 +145,7 @@ export function normalizeMonitoring(raw, schemaVersion = 1) {
   }
   if (raw.schema_version !== schemaVersion) {
     throw new MonitorError(
-      `data/monitoring.json schema_version 必须为 ${schemaVersion}，实际为 ${raw.schema_version}`,
+      `data/monitoring.json 的 schema_version 必须为 ${schemaVersion}，实际为 ${raw.schema_version}`,
       { code: 'invalid_monitoring' },
     );
   }
@@ -191,14 +191,14 @@ export function collectMonitorUrls(sources, resources) {
 function validateGithubDescriptor(source) {
   const github = source?.github;
   if (!github || typeof github !== 'object') {
-    throw new MonitorError(`来源 ${source?.id ?? '(无 id)'} 缺少 github 仓库信息`, {
+    throw new MonitorError(`来源 ${source?.id ?? '（无 id）'} 缺少 github 仓库信息`, {
       code: 'invalid_source',
     });
   }
   const { owner, repo, branch } = github;
   if (typeof owner !== 'string' || !owner || typeof repo !== 'string' || !repo ||
       typeof branch !== 'string' || !branch) {
-    throw new MonitorError(`来源 ${source?.id ?? '(无 id)'} 的 github 字段不完整`, {
+    throw new MonitorError(`来源 ${source?.id ?? '（无 id）'} 的 github 字段不完整`, {
       code: 'invalid_source',
     });
   }
@@ -219,7 +219,7 @@ async function checkRepositorySources({ sources, baseline, client, nowIso, targe
       descriptor = validateGithubDescriptor(source);
     } catch (error) {
       results.push({
-        source_id: source?.id ?? '(无 id)',
+        source_id: source?.id ?? '（无 id）',
         name: source?.name ?? '',
         status: 'error',
         error: { code: error.code ?? 'invalid_source', message: error.message },
@@ -278,7 +278,7 @@ async function checkRepositorySources({ sources, baseline, client, nowIso, targe
 
 function formatFileList(title, files, result) {
   if (files.length === 0) return [];
-  const lines = [`#### ${title} (${files.length})`];
+  const lines = [`#### ${title}（${files.length}）`];
   for (const file of files) {
     lines.push(
       `- [\`${file.path}\`](${githubFileUrl(result.owner, result.repo, result.branch, file.path)}) \`${file.sha.slice(0, 12)}\``,
@@ -291,7 +291,7 @@ export function buildSourceReport(result, { nowIso } = {}) {
   const { diff } = result;
   const oldHead = result.previous_head ?? '（首次基线）';
   const lines = [
-    `### ${result.name || result.source_id} (${result.owner}/${result.repo}@${result.branch})`,
+    `### ${result.name || result.source_id}（${result.owner}/${result.repo}@${result.branch}）`,
     '',
     `- 来源 ID：\`${result.source_id}\``,
     `- 旧 head：\`${oldHead}\``,
@@ -396,16 +396,16 @@ function applyBaselineUpdates(baseline, repoResults, { mode, nowIso }) {
 async function readPublishedMonitoring(client, { owner, repo }) {
   const file = await client.getContents(owner, repo, MONITORING_RELATIVE_PATH, { ref: MONITORING_BRANCH });
   if (!file) {
-    throw new MonitorError(`${MONITORING_BRANCH} 缺少 ${MONITORING_RELATIVE_PATH}，已停止。`, {
+    throw new MonitorError(`${MONITORING_BRANCH} 分支缺少 ${MONITORING_RELATIVE_PATH}`, {
       code: 'remote_monitoring_missing',
     });
   }
   if (file.type !== 'file' || (file.encoding !== 'none' &&
       (file.encoding !== 'base64' || typeof file.content !== 'string'))) {
-    throw new MonitorError('无法读取已发布的监控快照，已停止。', { code: 'remote_content_unavailable' });
+    throw new MonitorError('无法读取已发布的监控快照', { code: 'remote_content_unavailable' });
   }
   if (typeof file.sha !== 'string' || !/^[0-9a-f]{40}$/.test(file.sha)) {
-    throw new MonitorError('监控快照缺少有效的 blob SHA，已停止。', { code: 'invalid_response' });
+    throw new MonitorError('监控快照缺少有效的 blob SHA', { code: 'invalid_response' });
   }
   const bytes = file.encoding === 'none'
     ? await client.getBlob(owner, repo, file.sha)
@@ -414,14 +414,14 @@ async function readPublishedMonitoring(client, { owner, repo }) {
   try {
     monitoring = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
   } catch (cause) {
-    throw new MonitorError('已发布的监控快照不是有效 JSON，已停止。', {
+    throw new MonitorError('已发布的监控快照不是有效 JSON', {
       code: 'invalid_remote_monitoring', cause,
     });
   }
   const { validateMonitoringBaseline, formatIssue } = await import('./lib/data.mjs');
   const [error] = validateMonitoringBaseline(monitoring);
   if (error) {
-    throw new MonitorError(`远程监控基线无效，已停止：${formatIssue(error)}`, { code: 'invalid_monitoring' });
+    throw new MonitorError(`已发布的监控快照校验失败：${formatIssue(error)}`, { code: 'invalid_monitoring' });
   }
   return { monitoring, sha: file.sha };
 }
@@ -462,7 +462,7 @@ export async function runMonitor(options = {}) {
     try {
       dataModule = await import('./lib/data.mjs');
     } catch (error) {
-      throw new MonitorError('无法加载 scripts/lib/data.mjs（数据层契约未就绪）', {
+      throw new MonitorError(`无法加载 scripts/lib/data.mjs：${error?.message ?? error}`, {
         code: 'data_module_missing',
         cause: error,
       });
@@ -480,7 +480,7 @@ export async function runMonitor(options = {}) {
     ((value) => dataModule.writeJsonAtomic(dataModule.paths.monitoring, value));
 
   if (!Array.isArray(sources) || !Array.isArray(resources)) {
-    throw new MonitorError('数据层返回的 sources/resources 不是数组', { code: 'invalid_data' });
+    throw new MonitorError('数据层返回的 sources 或 resources 不是数组', { code: 'invalid_data' });
   }
 
   let target = null;
@@ -514,7 +514,7 @@ export async function runMonitor(options = {}) {
   if (mode === 'publish') {
     const { default_branch } = await client.getRepo(target.owner, target.repo);
     if (default_branch === MONITORING_BRANCH) {
-      throw new MonitorError('监控数据分支不能是默认分支，已停止发布。', { code: 'invalid_target' });
+      throw new MonitorError('监控数据分支不能是默认分支', { code: 'invalid_target' });
     }
     const published = await readPublishedMonitoring(client, target);
     baseline = published.monitoring;
@@ -633,7 +633,7 @@ export async function runMonitor(options = {}) {
       await saveMonitoring(monitoring);
     } catch (error) {
       throw new MonitorError(
-        `monitoring 已发布，但同步写入 runner 本地文件失败：${error.message}`,
+        `监控快照已发布，但同步写入本地 ${MONITORING_RELATIVE_PATH} 失败：${error.message}`,
         { code: 'local_sync_failed', cause: error },
       );
     }
@@ -668,7 +668,7 @@ export function formatReport(report) {
   );
   const lines = [];
   lines.push(`时间：${report.checked_at}`);
-  lines.push(`链接：共 ${total}。`);
+  lines.push(`链接：共 ${total} 条。`);
   lines.push(
     `六类证据（互斥）：${HEALTH_EVIDENCE_LABELS.unchecked} ${health.unchecked}；` +
       `${HEALTH_EVIDENCE_LABELS.preflight} ${health.preflight}；` +
@@ -678,13 +678,13 @@ export function formatReport(report) {
       `${HEALTH_EVIDENCE_LABELS.responded} ${health.responded}。`,
   );
   lines.push(
-    `有 HTTP 响应证据 ${health.httpResponses} 条（需认证与确认 404/410 也计入` +
-      `${hopResponses > 0 ? `；另有 ${hopResponses} 条仅重定向前置跳有响应，最终目标未确认` : ''}）。`,
+    `有 HTTP 响应证据 ${health.httpResponses} 条（含需登录或认证与确认 404/410` +
+      `${hopResponses > 0 ? `；另有 ${hopResponses} 条仅重定向前跳有响应，终跳未确认` : ''}）。`,
   );
   if (health.preflight > 0) {
     const scope = total > 0 && health.preflight === total ? '全部' : `${health.preflight} 条`;
     lines.push(
-      `环境提示：${scope}链接在安全预检阶段未放行，未向当前目标发出 HTTP 请求；这不代表链接失效或资料缺失。`,
+      `环境提示：${scope}链接未通过安全预检，未向当前目标发出 HTTP 请求。`,
     );
   }
 
@@ -726,29 +726,28 @@ export function formatReport(report) {
 
   if (report.notifications.posted || report.notifications.skipped) {
     lines.push(
-      `Issue 通知：新发送 ${report.notifications.posted} 条分块，已存在跳过 ${report.notifications.skipped} 条`,
+      `Issue 通知：新增 ${report.notifications.posted} 条分块，跳过已有 ${report.notifications.skipped} 条。`,
     );
   }
   if (report.pending_sources.length > 0 && report.mode !== 'publish') {
-    lines.push(`待发布通知的来源：${report.pending_sources.join(', ')}`);
+    lines.push(`待发布通知的来源：${report.pending_sources.join('、')}`);
   }
   if (report.write_skipped) {
     const skipped = report.write_skipped;
     const extra = report.mode === 'publish' ? '，也未发送 Issue 通知' : '';
     lines.push(
-      `${report.mode}：未写入 monitoring${extra} —— 本次 ${skipped.links} 条链接均中止于预检，` +
-        `未产生新的最终可用证据；既有 ${skipped.baseline_http_responses} 条有响应证据的检查结果保持不变。`,
+      `${report.mode}：未写入 monitoring${extra}（本次 ${skipped.links} 条链接均止于预检）；既有 ${skipped.baseline_http_responses} 条有响应证据的检查结果保持不变。`,
     );
     if (report.pending_sources.length > 0) {
-      lines.push(`待发布通知的来源（本次未发送）：${report.pending_sources.join(', ')}`);
+      lines.push(`待发布通知的来源（本次未发送）：${report.pending_sources.join('、')}`);
     }
   } else if (report.mode === 'dry-run') {
-    lines.push('dry-run：未写入任何文件或 GitHub 对象。');
+    lines.push('dry-run：仅输出报告，未执行写入。');
   } else if (report.mode === 'write-local') {
-    lines.push('write-local：已写入本地 data/monitoring.json，未发送 GitHub 写请求。');
+    lines.push('write-local：已写入本地 data/monitoring.json。');
   } else {
     lines.push(
-      `publish：monitoring 已更新（${report.remote.branch}，commit ${report.remote.commit ?? '未知'}）。`,
+      `publish：已更新 ${report.remote.branch} 分支的 ${MONITORING_RELATIVE_PATH}（commit ${report.remote.commit ?? '未知'}）。`,
     );
   }
   return lines.join('\n');
@@ -778,7 +777,7 @@ async function main() {
   } catch (error) {
     console.error(`监控失败：${error.message}`);
     if (error.code === 'conflict') {
-      console.error('monitoring 文件已被并发修改，本次未覆盖；Issue 报告仍可在下次运行重试。');
+      console.error('data/monitoring.json 已被并发修改，本次保留远端版本；下次运行将自动重试。');
     }
     process.exitCode = 1;
   }

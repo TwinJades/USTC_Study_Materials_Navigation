@@ -2864,7 +2864,7 @@
       display: inline;
 
       &::after {
-        content: ":";
+        content: "：";
         margin-inline-start: 0.1rem;
       }
     }

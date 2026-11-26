@@ -16,18 +16,18 @@ export const ANNOUNCEMENTS = {
       tag: '新功能',
       tagTone: 'feature',
       isLatest: true,
-      title: '公告栏上线，集中查看站内更新与衍生项目',
+      title: '公告栏上线，随时查看站内更新与衍生项目',
       summary:
-        '顶栏新增公告栏入口，集中发布阶段性大更新与社区衍生项目；不会自动弹窗，也不影响当前搜索条件与显示模式。',
+        '点击顶栏图标即可打开，集中查看近期重要更新和同学们基于本站做的衍生项目。',
     },
     {
       id: '2026-11-25-catalog-growth',
       date: '2026-11-25',
       tag: '资料扩充',
       tagTone: 'data',
-      title: '资料规模大幅扩充，接入多来源并与「我的科大」互通',
+      title: '新增大批课程资料，并与「我的科大」互通',
       summary:
-        '全站覆盖 1,184 门本科课程，其中 405 门已收录 2,782 条资料；整合 Amsors 评课数据包，接入「我的科大」分享入口（网页版「功能 → 学习 → 课程资料」底部也可直达本站），并同步 DDNdles 结构化题库至 47 门课程。',
+        '已覆盖 1,184 门本科课，其中 405 门收录 2,782 条资料；整合了 Amsors 评课数据包，接入「我的科大」分享入口（网页版「功能 → 学习 → 课程资料」底部也可直达本站），并同步了 DDNdles 结构化题库的 47 门课程。',
     },
     {
       id: '2026-11-23-v2-ui',
@@ -36,7 +36,7 @@ export const ANNOUNCEMENTS = {
       tagTone: 'ui',
       title: '新版「也西书架」上线，出处与原帖指路更清晰',
       summary:
-        '上线浅色 / 深色外观与简洁 / 详细双模式，补齐需登录的评课原帖入口；详细模式可查看原始出处、收录依据及部分已核验直链的文件大小与 SHA-256。',
+        '支持浅色 / 深色主题与简洁 / 详细双模式，补齐评课社区原帖入口；详细模式下还可查看来源说明、文件大小与 SHA-256 校验值。',
     },
   ],
   changelogUrl: 'https://github.com/TwinJades/USTC_Study_Materials_Navigation/blob/main/CHANGELOG.md',
@@ -49,7 +49,7 @@ export const ANNOUNCEMENTS = {
       author: 'DDNdles',
       tags: ['结构化题库', 'JSONL'],
       summary:
-        '参考也西书架等索引整理的中科大本科课程结构化题库，按课程与知识点组织题目与解析，提供机读 JSONL 数据。',
+        '参考也西书架等索引整理的中科大本科课程结构化题库，按课程与知识点组织题目与解析，提供 JSONL 格式数据。',
       repoUrl: 'https://github.com/DDNdles/USTC-Question-Bank',
       noticeUrl: 'https://github.com/DDNdles/USTC-Question-Bank/blob/main/NOTICE.md',
     },
@@ -217,8 +217,8 @@ function buildProjectsList() {
     const summary = el('p', 'announcement-item-summary', project.summary);
 
     const actions = el('div', 'announcement-project-actions');
-    const repoLink = externalLink(project.repoUrl, '访问项目仓库', 'link-button primary-link');
-    const noticeLink = externalLink(project.noticeUrl, '出处说明（NOTICE）', 'link-button');
+    const repoLink = externalLink(project.repoUrl, '查看项目仓库', 'link-button primary-link');
+    const noticeLink = externalLink(project.noticeUrl, '出处说明', 'link-button');
     if (repoLink) actions.append(repoLink);
     if (noticeLink) actions.append(noticeLink);
 
@@ -246,7 +246,7 @@ function buildPanel() {
   const titleCopy = el('div', 'announcement-title-copy');
   const title = el('h2', 'announcement-title', '公告栏');
   title.id = 'announcement-title';
-  const subtitle = el('p', 'announcement-subtitle', '重要更新与社区衍生项目');
+  const subtitle = el('p', 'announcement-subtitle', '站内动态与社区项目');
   titleCopy.append(title, subtitle);
   titleWrap.append(iconBadge, titleCopy);
 
@@ -305,7 +305,6 @@ function buildPanel() {
 
   const footer = el('footer', 'announcement-footer');
   const footerNews = el('div', 'announcement-footer-row');
-  footerNews.append(el('span', 'announcement-footer-note', '阶段性大更新摘要'));
   const changelogLink = externalLink(
     ANNOUNCEMENTS.changelogUrl,
     '查看完整更新日志',
@@ -316,10 +315,10 @@ function buildPanel() {
 
   const footerProjects = el('div', 'announcement-footer-row');
   footerProjects.hidden = true;
-  footerProjects.append(el('span', 'announcement-footer-note', '欢迎推荐基于也西书架的公开衍生项目'));
+  footerProjects.append(el('span', 'announcement-footer-note', '有基于本站的开源项目？'));
   const submitLink = externalLink(
     ANNOUNCEMENTS.submitProjectUrl,
-    '在 GitHub 推荐衍生项目',
+    '前往 GitHub 提交',
     'announcement-footer-link',
     ' →',
   );
@@ -356,8 +355,8 @@ function initAnnouncements() {
     const hasUnread = Boolean(LATEST_ID) && readSeenId() !== LATEST_ID;
     if (hasUnread) {
       trigger.dataset.unread = 'true';
-      trigger.setAttribute('aria-label', '公告栏（有新更新）');
-      trigger.title = '公告栏（有新更新）';
+      trigger.setAttribute('aria-label', '公告栏（有新动态）');
+      trigger.title = '公告栏（有新动态）';
     } else {
       delete trigger.dataset.unread;
       trigger.setAttribute('aria-label', '公告栏');
