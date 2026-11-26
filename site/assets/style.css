@@ -52,6 +52,9 @@
     --ok-bg-light: #ecfdec;
     --ok-border-light: #bce8c0;
     --ok-dot-light: #107d32;
+    --ok-check-bg-light: #107d32;
+    --ok-check-border-light: #107d32;
+    --ok-check-mark-light: #ffffff;
 
     --bad-light: #c81e32;
     --bad-bg-light: #ffeef0;
@@ -112,6 +115,9 @@
     --ok-bg-dark: #00250a;
     --ok-border-dark: #0e4a1f;
     --ok-dot-dark: #2dd66c;
+    --ok-check-bg-dark: #15803d;
+    --ok-check-border-dark: #22a352;
+    --ok-check-mark-dark: #ffffff;
 
     --bad-dark: #ff6b72;
     --bad-bg-dark: #330a11;
@@ -171,6 +177,9 @@
     --ok-bg: var(--ok-bg-light);
     --ok-border: var(--ok-border-light);
     --ok-dot: var(--ok-dot-light);
+    --ok-check-bg: var(--ok-check-bg-light);
+    --ok-check-border: var(--ok-check-border-light);
+    --ok-check-mark: var(--ok-check-mark-light);
     --bad: var(--bad-light);
     --bad-bg: var(--bad-bg-light);
     --bad-border: var(--bad-border-light);
@@ -242,6 +251,9 @@
     --ok-bg: var(--ok-bg-dark);
     --ok-border: var(--ok-border-dark);
     --ok-dot: var(--ok-dot-dark);
+    --ok-check-bg: var(--ok-check-bg-dark);
+    --ok-check-border: var(--ok-check-border-dark);
+    --ok-check-mark: var(--ok-check-mark-dark);
     --bad: var(--bad-dark);
     --bad-bg: var(--bad-bg-dark);
     --bad-border: var(--bad-border-dark);
@@ -301,6 +313,9 @@
       --ok-bg: var(--ok-bg-dark);
       --ok-border: var(--ok-border-dark);
       --ok-dot: var(--ok-dot-dark);
+      --ok-check-bg: var(--ok-check-bg-dark);
+      --ok-check-border: var(--ok-check-border-dark);
+      --ok-check-mark: var(--ok-check-mark-dark);
       --bad: var(--bad-dark);
       --bad-bg: var(--bad-bg-dark);
       --bad-border: var(--bad-border-dark);
@@ -904,6 +919,11 @@
     }
   }
 
+  .query-block {
+    display: grid;
+    gap: 8px;
+  }
+
   .query-row {
     display: flex;
     flex-wrap: nowrap;
@@ -984,7 +1004,7 @@
 
   .search-input-wrap input[type="search"] {
     inline-size: 100%;
-    padding: 10px 68px 10px 38px;
+    padding: 10px 42px 10px 38px;
     min-block-size: 44px;
     font-size: 14px;
     background: var(--surface);
@@ -1001,7 +1021,7 @@
 
   .search-clear {
     position: absolute;
-    inset-inline-end: 36px;
+    inset-inline-end: 8px;
     inset-block: 0;
     margin-block: auto;
     display: inline-flex;
@@ -1046,27 +1066,40 @@
     pointer-events: auto;
   }
 
-  .search-kbd {
-    position: absolute;
-    inset-inline-end: 10px;
-    padding: 4px 7px;
-    border-radius: 5px;
-    border: 1px solid var(--border);
-    background: var(--bg);
+  .search-shortcut-hint {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
     color: var(--text-muted);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1;
-    pointer-events: none;
+    user-select: none;
+
+    & kbd {
+      display: inline-block;
+      margin: 0 2px;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      line-height: 1.3;
+    }
+  }
+
+  body[data-page="index"][data-hero="centered"] .search-shortcut-hint {
+    text-align: center;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .search-shortcut-hint {
+      display: none;
+    }
   }
 
   @media (max-width: 36rem) {
-    .search-kbd {
-      display: none;
-    }
-
     .search-input-wrap input[type="search"] {
-      padding: 10px 44px 10px 36px;
+      padding: 10px 42px 10px 36px;
     }
 
     .search-clear {
@@ -1818,11 +1851,40 @@
       cursor: pointer;
       user-select: none;
 
-      & input {
+      & input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        display: inline-grid;
+        place-items: center;
+        position: relative;
         inline-size: 14px;
         block-size: 14px;
         margin: 0;
+        border: 1.5px solid var(--border-strong);
+        border-radius: 3.5px;
+        background: var(--surface);
         flex-shrink: 0;
+        cursor: pointer;
+        transition: background-color 0.12s ease, border-color 0.12s ease;
+
+        &::after {
+          content: "";
+          display: none;
+          inline-size: 4.5px;
+          block-size: 8px;
+          border-inline-end: 1.8px solid var(--accent-text);
+          border-block-end: 1.8px solid var(--accent-text);
+          transform: translateY(-1px) rotate(45deg);
+        }
+
+        &:checked {
+          background: var(--accent);
+          border-color: var(--accent);
+
+          &::after {
+            display: block;
+          }
+        }
       }
 
       &:has(input[value="with"]:checked) {
@@ -1830,6 +1892,16 @@
         border-color: var(--ok-border);
         color: var(--ok);
         font-weight: 600;
+
+        & input[value="with"]:checked {
+          background: var(--ok-check-bg);
+          border-color: var(--ok-check-border);
+
+          &::after {
+            border-inline-end-color: var(--ok-check-mark);
+            border-block-end-color: var(--ok-check-mark);
+          }
+        }
       }
 
       &:has(input[value="without"]:checked) {
@@ -2312,6 +2384,10 @@
       margin-inline: auto;
       color: var(--text-secondary);
     }
+
+    & p + button {
+      margin-block-start: 6px;
+    }
   }
 
   .load-error {
@@ -2541,7 +2617,7 @@
 
   .resource-list {
     list-style: none;
-    margin: 0;
+    margin: 0 0 -1px;
     padding: 0;
   }
 
@@ -2552,10 +2628,6 @@
     padding: 8px 20px;
     background: var(--bg);
     border-block-end: 1px solid var(--border);
-  }
-
-  .year-divider:not(:first-child) {
-    border-block-start: 1px solid var(--border);
   }
 
   .year-divider-label {
@@ -2583,8 +2655,8 @@
     }
   }
 
-  .resource-list > li[data-resource-item] + li[data-resource-item] > .resource {
-    border-block-start: 1px solid var(--border);
+  .resource-list > li[data-resource-item] > .resource {
+    border-block-end: 1px solid var(--border);
   }
 
   .resource-head {
@@ -3110,6 +3182,14 @@
     .badge.with::before,
     .badge.without::before {
       background: Highlight;
+    }
+
+    .check-pills .option input[type="checkbox"] {
+      appearance: auto;
+
+      &::after {
+        content: none;
+      }
     }
 
     .segmented-options .option:has(input:checked),

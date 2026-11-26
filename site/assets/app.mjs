@@ -21,6 +21,7 @@ import {
   normalizeResourceType,
   paginate,
   parseFilters,
+  pickQuickCourses,
   resourceAcademicYears,
   RESOURCE_TYPE_IDS,
   resourceFacts,
@@ -31,12 +32,95 @@ import {
   safeExternalUrl,
   schemaFromCatalog,
   serializeFilters,
+  STATUS_FILTER_IDS,
   STATUS_IDS,
 } from './search.mjs';
 import { classifyHealth, HEALTH_EVIDENCE_LABELS } from './health-evidence.mjs';
 
 const HEALTH_NOW = Date.now();
+const STORAGE_KEY_INDEX_STATUS = 'ustc-course-nav.index.status';
+const DEFAULT_INDEX_STATUS = 'with';
+const STORAGE_KEY_COURSE_ONLY_SOLUTION = 'ustc-course-nav.course.only-solution';
+const STORAGE_KEY_COURSE_ONLY_OPEN = 'ustc-course-nav.course.only-open';
+const STORAGE_KEY_COURSE_VISITS = 'ustc-course-nav.course.visits';
+const MAX_STORED_VISITS = 200;
+
 const state = { schema: null };
+
+function readIndexStatus() {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY_INDEX_STATUS);
+    return STATUS_FILTER_IDS.includes(stored) ? stored : DEFAULT_INDEX_STATUS;
+  } catch {
+    return DEFAULT_INDEX_STATUS;
+  }
+}
+
+function saveIndexStatus(status) {
+  if (!STATUS_FILTER_IDS.includes(status)) return;
+  try {
+    localStorage.setItem(STORAGE_KEY_INDEX_STATUS, status);
+  } catch {
+    // 存储不可用时仅在当前页生效。
+  }
+}
+
+function readBoolPref(key, fallback) {
+  try {
+    const stored = localStorage.getItem(key);
+    if (stored === 'true') return true;
+    if (stored === 'false') return false;
+    return fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveBoolPref(key, value) {
+  try {
+    localStorage.setItem(key, value ? 'true' : 'false');
+  } catch {
+    // 存储不可用时仅在当前页生效。
+  }
+}
+
+function readCourseVisits() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_COURSE_VISITS);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+    const visits = {};
+    for (const [code, count] of Object.entries(parsed)) {
+      if (typeof code === 'string' && code && Number.isSafeInteger(count) && count > 0) {
+        visits[code] = count;
+      }
+    }
+    return visits;
+  } catch {
+    return {};
+  }
+}
+
+function recordCourseVisit(code) {
+  if (typeof code !== 'string' || !code) return;
+  try {
+    const navType = performance.getEntriesByType?.('navigation')?.[0]?.type;
+    if (navType === 'reload' || navType === 'back_forward') return;
+  } catch {
+    // 不支持 Navigation Timing 时按正常访问计数。
+  }
+  try {
+    const visits = readCourseVisits();
+    visits[code] = (visits[code] ?? 0) + 1;
+    const entries = Object.entries(visits)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, MAX_STORED_VISITS);
+    localStorage.setItem(STORAGE_KEY_COURSE_VISITS, JSON.stringify(Object.fromEntries(entries)));
+  } catch {
+    // 存储不可用时静默跳过。
+  }
+}
 
 function el(tagName, className, text) {
   const node = document.createElement(tagName);
@@ -157,6 +241,7 @@ function initIndex(catalog) {
   const resultStatus = document.getElementById('result-status');
   const noResults = document.getElementById('no-results');
   const noResultsText = document.getElementById('no-results-text');
+  const showWithoutBtn = document.getElementById('show-without-courses');
   const clearSearchButton = document.getElementById('clear-search');
   const searchWrap = qInput?.closest('.search-input-wrap') ?? null;
   const pageHero = document.querySelector('.page-hero');
@@ -174,24 +259,41 @@ function initIndex(catalog) {
   const typeLabels = resourceTypeLabelMap(catalog.resource_types);
   const tagLabels = labelMap(catalog.tags);
 
+  function resolveIndexFilters(params) {
+    const filters = parseFilters(params, schema);
+    const hasExplicitStatus = STATUS_FILTER_IDS.includes(params.get('status'));
+    if (!hasExplicitStatus) {
+      filters.status = readIndexStatus();
+    }
+    return { filters, hasExplicitStatus };
+  }
+
   populateSelect(typeSelect, '全部类型', resourceTypeItems(catalog.resource_types));
   buildTagOptions();
 
   let page = 1;
   const initialParams = new URLSearchParams(location.search);
-  const initial = parseFilters(initialParams, schema);
+  const { filters: initial, hasExplicitStatus: hasInitialExplicitStatus } =
+    resolveIndexFilters(initialParams);
   let currentFilters = initial;
   applyControls(initial);
   updateYearOptions();
   yearSelect.value = initial.year;
   if (initialParams.has('access')) {
+    const savedStatus = readIndexStatus();
     const url = new URL(location.href);
-    url.search = serializeFilters(initial).toString();
+    url.search = serializeFilters(initial, undefined, {
+      defaultStatus:
+        !hasInitialExplicitStatus && savedStatus === DEFAULT_INDEX_STATUS
+          ? DEFAULT_INDEX_STATUS
+          : '',
+    }).toString();
     history.replaceState(null, '', url);
   }
-  const hasInitialFilters = serializeFilters(initial).toString() !== '';
+  const hasInitialUrlFilters =
+    hasInitialExplicitStatus || serializeFilters({ ...initial, status: 'all' }).toString() !== '';
   const isInitiallyDetailed = document.body.dataset.mode === 'detailed';
-  document.body.dataset.hero = !hasInitialFilters && !isInitiallyDetailed ? 'centered' : 'expanded';
+  document.body.dataset.hero = !hasInitialUrlFilters && !isInitiallyDetailed ? 'centered' : 'expanded';
 
   if (heroPulse && heroPulseText) {
     const courseTotal = catalog.counts?.courses ?? catalog.courses.length;
@@ -203,15 +305,13 @@ function initIndex(catalog) {
     heroPulse.hidden = false;
   }
 
-  if (heroQuickLinks) {
-    const popular = catalog.courses
-      .filter((c) => courseResources(c).length > 0)
-      .sort((a, b) => courseResources(b).length - courseResources(a).length || (a.code < b.code ? -1 : a.code > b.code ? 1 : 0))
-      .slice(0, 6);
-    if (popular.length > 0) {
+  function renderHeroQuickLinks() {
+    if (!heroQuickLinks) return;
+    const quickCourses = pickQuickCourses(catalog.courses, readCourseVisits(), 6);
+    if (quickCourses.length > 0) {
       const quickFrag = document.createDocumentFragment();
-      quickFrag.append(el('span', 'hero-quick-label', '常用直达：'));
-      for (const course of popular) {
+      quickFrag.append(el('span', 'hero-quick-label', '课程直达：'));
+      for (const course of quickCourses) {
         const chip = el('a', 'hero-quick-chip');
         chip.href = courseHref(course.code);
         chip.append(
@@ -223,9 +323,12 @@ function initIndex(catalog) {
       heroQuickLinks.replaceChildren(quickFrag);
       heroQuickLinks.hidden = false;
     } else {
+      heroQuickLinks.replaceChildren();
       heroQuickLinks.hidden = true;
     }
   }
+
+  renderHeroQuickLinks();
 
   document.addEventListener('keydown', (event) => {
     if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
@@ -323,6 +426,7 @@ function initIndex(catalog) {
       setTagDrawerOpen(false);
       updateTagCount();
       updateYearOptions();
+      saveIndexStatus(DEFAULT_INDEX_STATUS);
       page = 1;
       const filters = readFilters();
       render(filters, { sync: true });
@@ -338,6 +442,9 @@ function initIndex(catalog) {
     updateTagCount();
     page = 1;
     const filters = readFilters();
+    if (event.target?.name === 'status') {
+      saveIndexStatus(filters.status);
+    }
     render(filters, { sync: true });
   });
 
@@ -358,14 +465,48 @@ function initIndex(catalog) {
     });
   }
 
+  if (showWithoutBtn) {
+    showWithoutBtn.addEventListener('click', () => {
+      const withoutInput = form.querySelector('input[name="status"][value="without"]');
+      if (withoutInput) withoutInput.checked = true;
+      page = 1;
+      const filters = readFilters();
+      saveIndexStatus(filters.status);
+      render(filters, { sync: true });
+      if (resultsHeading) resultsHeading.focus();
+    });
+  }
+
   window.addEventListener('popstate', () => {
     page = 1;
-    const filters = parseFilters(new URLSearchParams(location.search), schema);
-    if (serializeFilters(filters).toString() !== '') expandHero({ animate: false });
+    const { filters, hasExplicitStatus } = resolveIndexFilters(new URLSearchParams(location.search));
+    if (hasExplicitStatus || serializeFilters({ ...filters, status: 'all' }).toString() !== '') {
+      expandHero({ animate: false });
+    }
     applyControls(filters);
     updateYearOptions();
     yearSelect.value = filters.year;
     render(filters, { sync: false });
+  });
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) renderHeroQuickLinks();
+  });
+
+  window.addEventListener('storage', (event) => {
+    if (event.key === null || event.key === STORAGE_KEY_COURSE_VISITS) {
+      renderHeroQuickLinks();
+    }
+    if (event.key === null || event.key === STORAGE_KEY_INDEX_STATUS) {
+      const params = new URLSearchParams(location.search);
+      if (!STATUS_FILTER_IDS.includes(params.get('status'))) {
+        const nextFilters = { ...(currentFilters ?? initial), status: readIndexStatus() };
+        page = 1;
+        applyControls(nextFilters);
+        yearSelect.value = nextFilters.year;
+        render(nextFilters, { sync: false });
+      }
+    }
   });
 
   if (prevPage) prevPage.addEventListener('click', () => changePage(-1));
@@ -522,31 +663,57 @@ function initIndex(catalog) {
     }
 
     const total = catalog.courses.length;
+    const allWithTotal = catalog.courses.filter((course) => courseResources(course).length > 0).length;
     const withCount = results.filter((course) => courseResources(course).length > 0).length;
-    const active = serializeFilters(filters).toString() !== '';
+    const hiddenWithoutMatches =
+      filters.status === 'with'
+        ? filterCourses(catalog.courses, { ...filters, status: 'without' }).length
+        : 0;
+    const hasOtherFilters = Boolean(
+      filters.q || filters.kind !== 'all' || filters.tags.length > 0 || filters.type !== 'all',
+    );
+    const active = hasOtherFilters || filters.status !== readIndexStatus();
     syncSearchWrapState(active);
 
     let statusText;
     if (filters.status === 'none') {
       statusText = '未显示课程';
     } else if (results.length === 0) {
-      statusText = active ? '没有符合条件的课程' : '课程目录为空';
-    } else if (active) {
+      if (total === 0) statusText = '课程目录为空';
+      else if (hiddenWithoutMatches > 0) statusText = '没有符合条件的已收录课程';
+      else statusText = '没有符合条件的课程';
+    } else if (!hasOtherFilters && filters.status === 'with') {
+      statusText = `已显示 ${results.length} 门已收录课程，另有 ${total - withCount} 门暂未收录`;
+    } else if (filters.status === 'with') {
+      statusText = hiddenWithoutMatches > 0
+        ? `找到 ${results.length} 门已收录课程（另有 ${hiddenWithoutMatches} 门匹配课程暂未收录）`
+        : `找到 ${results.length} 门已收录课程`;
+    } else if (filters.status === 'without') {
+      statusText = `找到 ${results.length} 门暂未收录课程`;
+    } else if (hasOtherFilters) {
       statusText = `找到 ${results.length} 门课程，其中 ${withCount} 门已收资料`;
     } else {
-      statusText = `共 ${total} 门课程，${withCount} 门已收资料，${total - withCount} 门暂未收录`;
+      statusText = `共 ${total} 门课程，${allWithTotal} 门已收资料，${total - allWithTotal} 门暂未收录`;
     }
     setText(resultStatus, statusText);
 
     const empty = results.length === 0;
     noResults.hidden = !empty;
+    if (showWithoutBtn) {
+      showWithoutBtn.hidden = !(empty && hiddenWithoutMatches > 0);
+    }
     if (empty) {
       if (filters.status === 'none') {
         setText(
           noResultsText,
           '请至少勾选「已收录」或「暂未收录」中的一项。',
         );
-      } else if (active) {
+      } else if (hiddenWithoutMatches > 0) {
+        setText(
+          noResultsText,
+          `有匹配课程尚未收录资料（共 ${hiddenWithoutMatches} 门），当前筛选仅显示已收录课程。`,
+        );
+      } else if (hasOtherFilters || filters.status !== 'all') {
         setText(
           noResultsText,
           `没有找到符合条件的课程（${describeFilters(filters, { kindLabels, tagLabels, typeLabels })}），试试放宽条件。`,
@@ -557,7 +724,10 @@ function initIndex(catalog) {
     }
 
     if (sync) {
-      const params = serializeFilters(filters);
+      const savedStatus = readIndexStatus();
+      const params = serializeFilters(filters, undefined, {
+        defaultStatus: savedStatus === DEFAULT_INDEX_STATUS ? DEFAULT_INDEX_STATUS : '',
+      });
       const url = new URL(location.href);
       url.search = params.toString();
       if (push) history.pushState(null, '', url);
@@ -693,6 +863,7 @@ function initCoursePage(catalog) {
   }
 
   document.title = `${course.code} ${course.name} · 也西书架`;
+  recordCourseVisit(course.code);
   if (title) {
     title.replaceChildren(
       el('span', 'course-title-code', course.code),
@@ -740,23 +911,30 @@ function initCoursePage(catalog) {
   const groups = groupResourcesByType(resources, labels.type).filter(
     (group) => group.resources.length > 0,
   );
+  const summary = groups.length > 0 ? courseSummary(course, labels.type) : null;
+  const examYearParts = [];
+  if (summary) {
+    const yearText = summary.examYears.map((year) => `${year} 年`).join('、');
+    if (yearText) examYearParts.push(`试题年份：${yearText}`);
+    if (summary.hasUnknownExamYear) {
+      examYearParts.push(yearText ? '部分试题年份待确认' : '试题年份待确认');
+    }
+  }
 
-  if (status) {
-    if (groups.length === 0) {
+  function updateCourseStatus(visibleTotal) {
+    if (!status) return;
+    if (!summary) {
       // 完全无资料时只展示一个空态，不再逐个类别重复「暂无」。
       status.textContent = '';
       status.hidden = true;
-    } else {
-      status.hidden = false;
-      const summary = courseSummary(course, labels.type);
-      const yearText = summary.examYears.map((year) => `${year} 年`).join('、');
-      const parts = [`共 ${summary.total} 条资料`];
-      if (yearText) parts.push(`试题年份：${yearText}`);
-      if (summary.hasUnknownExamYear) {
-        parts.push(yearText ? '部分试题年份待确认' : '试题年份待确认');
-      }
-      status.textContent = parts.join(' · ');
+      return;
     }
+    status.hidden = false;
+    const isFiltered = filterState.onlySolution || filterState.onlyOpen;
+    const lead = isFiltered
+      ? `当前显示 ${visibleTotal} / 共 ${summary.total} 条资料`
+      : `共 ${summary.total} 条资料`;
+    status.textContent = [lead, ...examYearParts].join(' · ');
   }
 
   const showSectionNav = groups.length > 1;
@@ -766,6 +944,7 @@ function initCoursePage(catalog) {
       for (const group of groups) {
         const anchor = el('a', 'section-nav-link');
         anchor.href = `#section-${group.type}`;
+        anchor.dataset.sectionType = group.type;
         anchor.append(
           document.createTextNode(group.label ?? group.type),
           document.createTextNode(' '),
@@ -789,11 +968,16 @@ function initCoursePage(catalog) {
   const hasClosed = resources.some((resource) => !isOpenResource(resource));
   const showSolFilter = hasSol && hasNoSol;
   const showOpenFilter = hasOpen && hasClosed;
-  const filterState = { onlySolution: false, onlyOpen: false };
+  const filterState = {
+    onlySolution: showSolFilter ? readBoolPref(STORAGE_KEY_COURSE_ONLY_SOLUTION, true) : false,
+    onlyOpen: showOpenFilter ? readBoolPref(STORAGE_KEY_COURSE_ONLY_OPEN, false) : false,
+  };
 
   function syncQuickFilters() {
     if (!sections) return;
     let totalVisible = 0;
+    let visibleSectionsCount = 0;
+    const visibleByType = new Map();
     for (const sec of sections.querySelectorAll('.resource-type')) {
       let visibleInSec = 0;
       const items = [...sec.querySelectorAll('[data-resource-item]')];
@@ -809,37 +993,62 @@ function initCoursePage(catalog) {
       }
       for (const divider of sec.querySelectorAll('.year-divider')) {
         const bucket = divider.dataset.yearGroup;
-        const anyInBucket = items.some((item) => item.dataset.yearBucket === bucket && !item.hidden);
-        divider.hidden = !anyInBucket;
+        const countInBucket = items.filter(
+          (item) => item.dataset.yearBucket === bucket && !item.hidden,
+        ).length;
+        divider.hidden = countInBucket === 0;
+        const dividerCount = divider.querySelector('.year-divider-count');
+        if (dividerCount) dividerCount.textContent = `${countInBucket} 条`;
       }
+      const typeCount = sec.querySelector('.type-count');
+      if (typeCount) typeCount.textContent = `${visibleInSec} 条`;
       sec.hidden = visibleInSec === 0;
+      if (visibleInSec > 0) visibleSectionsCount += 1;
+      if (sec.dataset.type) visibleByType.set(sec.dataset.type, visibleInSec);
     }
+    if (sectionNav && showSectionNav) {
+      for (const anchor of sectionNav.querySelectorAll('.section-nav-link')) {
+        const type = anchor.dataset.sectionType;
+        const count = type ? (visibleByType.get(type) ?? 0) : 0;
+        anchor.hidden = count === 0;
+        const navCount = anchor.querySelector('.section-nav-count');
+        if (navCount) navCount.textContent = String(count);
+      }
+      sectionNav.hidden = visibleSectionsCount === 0;
+    }
+    updateCourseStatus(totalVisible);
     const filterEmpty = document.getElementById('course-filter-empty');
     if (filterEmpty) {
       filterEmpty.hidden = totalVisible > 0 || groups.length === 0;
     }
   }
 
+  let solBtn = null;
+  let openBtn = null;
   if (quickFilters) {
     quickFilters.replaceChildren();
     if (showSolFilter || showOpenFilter) {
       if (showSolFilter) {
-        const solBtn = el('button', 'quick-filter-pill', '仅看含解答');
+        solBtn = el('button', 'quick-filter-pill', '仅看含解答');
         solBtn.type = 'button';
-        solBtn.setAttribute('aria-pressed', 'false');
+        solBtn.dataset.filterKind = 'only-solution';
+        solBtn.setAttribute('aria-pressed', String(filterState.onlySolution));
         solBtn.addEventListener('click', () => {
           filterState.onlySolution = !filterState.onlySolution;
+          saveBoolPref(STORAGE_KEY_COURSE_ONLY_SOLUTION, filterState.onlySolution);
           solBtn.setAttribute('aria-pressed', String(filterState.onlySolution));
           syncQuickFilters();
         });
         quickFilters.append(solBtn);
       }
       if (showOpenFilter) {
-        const openBtn = el('button', 'quick-filter-pill', '仅看免登录');
+        openBtn = el('button', 'quick-filter-pill', '仅看免登录');
         openBtn.type = 'button';
-        openBtn.setAttribute('aria-pressed', 'false');
+        openBtn.dataset.filterKind = 'only-open';
+        openBtn.setAttribute('aria-pressed', String(filterState.onlyOpen));
         openBtn.addEventListener('click', () => {
           filterState.onlyOpen = !filterState.onlyOpen;
+          saveBoolPref(STORAGE_KEY_COURSE_ONLY_OPEN, filterState.onlyOpen);
           openBtn.setAttribute('aria-pressed', String(filterState.onlyOpen));
           syncQuickFilters();
         });
@@ -855,8 +1064,30 @@ function initCoursePage(catalog) {
     toolbar.hidden = !(showSectionNav || showSolFilter || showOpenFilter);
   }
 
+  window.addEventListener('storage', (event) => {
+    let changed = false;
+    if ((event.key === null || event.key === STORAGE_KEY_COURSE_ONLY_SOLUTION) && showSolFilter) {
+      const next = readBoolPref(STORAGE_KEY_COURSE_ONLY_SOLUTION, true);
+      if (next !== filterState.onlySolution) {
+        filterState.onlySolution = next;
+        if (solBtn) solBtn.setAttribute('aria-pressed', String(next));
+        changed = true;
+      }
+    }
+    if ((event.key === null || event.key === STORAGE_KEY_COURSE_ONLY_OPEN) && showOpenFilter) {
+      const next = readBoolPref(STORAGE_KEY_COURSE_ONLY_OPEN, false);
+      if (next !== filterState.onlyOpen) {
+        filterState.onlyOpen = next;
+        if (openBtn) openBtn.setAttribute('aria-pressed', String(next));
+        changed = true;
+      }
+    }
+    if (changed) syncQuickFilters();
+  });
+
   if (!sections) return;
   if (groups.length === 0) {
+    updateCourseStatus(0);
     sections.replaceChildren(renderEmptyState());
     return;
   }
@@ -871,6 +1102,8 @@ function initCoursePage(catalog) {
   resetQuick.addEventListener('click', () => {
     filterState.onlySolution = false;
     filterState.onlyOpen = false;
+    if (showSolFilter) saveBoolPref(STORAGE_KEY_COURSE_ONLY_SOLUTION, false);
+    if (showOpenFilter) saveBoolPref(STORAGE_KEY_COURSE_ONLY_OPEN, false);
     for (const btn of quickFilters?.querySelectorAll('button') ?? []) {
       btn.setAttribute('aria-pressed', 'false');
     }
@@ -879,8 +1112,9 @@ function initCoursePage(catalog) {
   emptyFilter.append(resetQuick);
   fragment.append(emptyFilter);
   sections.replaceChildren(fragment);
+  syncQuickFilters();
   const target = document.getElementById(window.location.hash.slice(1));
-  if (target && sections.contains(target)) target.scrollIntoView();
+  if (target && sections.contains(target) && !target.hidden) target.scrollIntoView();
 }
 
 function findCourse(courses, code) {
@@ -900,6 +1134,7 @@ function spanSep() {
 function renderTypeSection(group, labels) {
   const section = el('section', 'resource-type');
   section.id = `section-${group.type}`;
+  section.dataset.type = group.type;
   const heading = el('h2', 'resource-type-heading');
   heading.append(document.createTextNode(group.label ?? group.type));
   const count = el('span', 'type-count', `${group.resources.length} 条`);
