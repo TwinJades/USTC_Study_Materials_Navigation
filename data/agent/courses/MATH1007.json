@@ -1084,6 +1084,43 @@
       "verified_at": "2026-11-18"
     },
     {
+      "id": "issue-29-math-analysis-b1-b2-exercise-solutions",
+      "type": "homework",
+      "title": "《数学分析讲义（第一、二册）》习题解析（李清臣整理）",
+      "authors": [
+        "李清臣（wanzhao-ysy）"
+      ],
+      "notes": "独立整理的教材习题详解，覆盖前两册第 1–13 章；不是课程组官方答案。",
+      "exercise_source": "程艺、陈卿、李平《数学分析讲义》（第一版，第一、二册）",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+        "note": "核对 Release PDF 封面、目录与正文。潘永亮班 B1 课程内容页列第一册为教材；侯新民班 B2 公开作业章节和编号与第二册对应。A1 公开参考页另列常庚哲《数学分析教程》，未据教材通名挂数分 A 系列。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-wanzhao-math-analysis-solutions",
+          "page_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions",
+          "download_page": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+          "download_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf",
+          "access": "public",
+          "license_note": "项目声明采用 GFDL 1.3；原教材权利不变，此处仅链接原发布页。",
+          "attribution": "程艺、陈卿、李平（原教材）；李清臣（习题解析整理）",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "8d83c83e6a7a949992b4f9bb03c1078a299b10cf334570d41eb655ff691b08a6",
+            "bytes": 4765145,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "intake-login-MATH1007-353e1d242715b30b",
       "type": "homework",
       "title": "数学分析(B2) 2018–2019 春季练习",
@@ -1521,6 +1558,7 @@
     "ustc-math-exam": "USTC 数学课程往年试卷",
     "icourse-club": "USTC 评课社区",
     "feixu-alist": "feixu 学习资料分享站（AList）",
+    "gh-wanzhao-math-analysis-solutions": "李清臣：《数学分析讲义（第一、二册）》习题解析",
     "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "monitor-issue14-26faopticsamidwp",
+      "type": "exams",
+      "title": "光学A 2026 秋期中（王沛）",
+      "authors": [],
+      "notes": "逐页核对扫描件：卷首为 2026 年秋季学期光学 A 期中试卷，4 页全为题面；王沛见原站目录。目录链接文件名有误，使用已实测的文件路径。",
+      "coverage": {
+        "years": [
+          2026
+        ],
+        "academic_years": [
+          "2026-2027"
+        ],
+        "exam_kind": "midterm",
+        "exam_form": "original",
+        "has_solutions": false,
+        "evidence_url": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaOpticsAMidWP.pdf",
+        "note": "逐页核对扫描件：卷首为 2026 年秋季学期光学 A 期中试卷，4 页全为题面；王沛见原站目录。目录链接文件名有误，使用已实测的文件路径。"
+      },
+      "locations": [
+        {
+          "source_id": "ustc-phy-exam",
+          "page_url": "https://ustcphyexam.github.io/JuniorPhy/",
+          "download_page": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaOpticsAMidWP.pdf",
+          "download_url": "https://ustcphyexam.github.io/USTC/26FaOpticsAMidWP.pdf",
+          "access": "public",
+          "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+          "attribution": "USTC 物理课程往年试卷",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "5009b8c9551202346789e84c4005dcc80c62da11393f5f2014b7b238c1bdf692",
+            "bytes": 1423120,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "mp-uexam-phys1003a-2025-final-3ed3f8",
       "type": "exams",
       "title": "光学 2025 期末",

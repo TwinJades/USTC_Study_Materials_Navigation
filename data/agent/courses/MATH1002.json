@@ -1245,6 +1245,37 @@
       "verified_at": "2026-11-20"
     },
     {
+      "id": "gh-ddndles-qbank-math1002",
+      "type": "study",
+      "title": "数学分析(A2) 结构化题库与知识点树（299 题，机读 JSONL）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 238 题为 AI 生成解答，使用前请核对。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1002/meta.json",
+        "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1002",
+          "download_page": null,
+          "download_url": null,
+          "access": "public",
+          "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+          "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "intake-login-MATH1002-0a89e987c5ed73bf",
       "type": "study",
       "title": "数学分析(A2)：学习资料（5 个附件）",
@@ -1277,6 +1308,7 @@
   "sources": {
     "ustc-math-exam": "USTC 数学课程往年试卷",
     "feixu-alist": "feixu 学习资料分享站（AList）",
-    "icourse-club": "USTC 评课社区"
+    "icourse-club": "USTC 评课社区",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）"
   }
 }

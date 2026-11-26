@@ -9,6 +9,44 @@
   "has_resources": true,
   "resources": [
     {
+      "id": "issue-16-cs1002a-2025-fall-midterm-recollection",
+      "type": "exams",
+      "title": "计算系统概论A 2025 秋期中（学生回忆版）",
+      "authors": [
+        "tree127"
+      ],
+      "notes": "10 页学生回忆整理，不是原卷；部分题目数值未还原。",
+      "coverage": {
+        "years": [
+          2025
+        ],
+        "academic_years": [],
+        "exam_kind": "midterm",
+        "exam_form": "recollection",
+        "has_solutions": false,
+        "evidence_url": "https://github.com/tree127/ustc-ics-midterm-2025/blob/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+        "note": "README 明列课号 CS1002A；PDF 首页为 Introduction to Computing Systems / Midterm Exam (Recalled Version) / Fall Semester, 2025。全文为题面，未附参考解答。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-tree127-ics-midterm-2025",
+          "page_url": "https://github.com/tree127/ustc-ics-midterm-2025",
+          "download_page": "https://github.com/tree127/ustc-ics-midterm-2025/blob/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+          "download_url": "https://raw.githubusercontent.com/tree127/ustc-ics-midterm-2025/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+          "access": "public",
+          "license_note": "只链接公开投稿；README 声明原卷版权归原作者和开课单位。",
+          "attribution": "tree127（学生回忆整理并投稿）",
+          "page_kind": null,
+          "file_snapshot": {
+            "sha256": "b97a90b888ef2eb80d06a445cb55794ac5c150d8974527c1654141616bb24ee2",
+            "bytes": 104217,
+            "checked_at": "2026-11-25"
+          }
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "computing-exam-guch-cs1002a-ics2023mid-pdf",
       "type": "exams",
       "title": "计算系统概论A(ICS) 2023 期中（安虹班）",
@@ -308,6 +346,37 @@
       "verified_at": "2026-11-19"
     },
     {
+      "id": "gh-ddndles-qbank-cs1002a",
+      "type": "study",
+      "title": "计算系统概论A 结构化题库与知识点树（232 题，机读 JSONL）",
+      "authors": [
+        "DDNdles"
+      ],
+      "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 156 题为 AI 生成解答，使用前请核对。",
+      "coverage": {
+        "years": [],
+        "academic_years": [],
+        "exam_kind": null,
+        "exam_form": null,
+        "has_solutions": null,
+        "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/CS1002A/meta.json",
+        "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+      },
+      "locations": [
+        {
+          "source_id": "gh-ddndles-ustc-question-bank",
+          "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1002A",
+          "download_page": null,
+          "download_url": null,
+          "access": "public",
+          "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+          "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+          "page_kind": "directory"
+        }
+      ],
+      "verified_at": "2026-11-25"
+    },
+    {
       "id": "intake-login-CS1002A-921d3551e00725f4",
       "type": "study",
       "title": "计算系统概论A：学习资料（2 个附件）",
@@ -495,12 +564,14 @@
     }
   ],
   "sources": {
+    "gh-tree127-ics-midterm-2025": "tree127：计算系统概论 A 2025 秋期中回忆版",
     "eng-github-guch8017": "guch8017/USTC_CS_EXAM（跨课试卷索引）",
     "icourse-club": "USTC 评课社区",
     "gh-erkamuzuncayir-ics-solutions": "erkamuzuncayir/solutions-of-introduction-to-computing-systems（ICS 教材习题解答）",
     "gh-hehaha68-ics-2020": "hehaha68/USTC_2020Fall_Introduction-to-Computing-System（2020秋计算机系统概论(H)）",
     "git-ustc-flurry-ics": "git.ustc.edu.cn W L / ics（ICS 课后题答案）",
     "gh-hwp-lab-ustc-courses-data": "hwp-lab/USTC-Courses-Data（计算机学院课程资料）",
+    "gh-ddndles-ustc-question-bank": "DDNdles/USTC-Question-Bank（中科大本科课程结构化题库）",
     "gh-wanglulu-ics-labs": "Wanglulu114514/ICS-Additional-Labs（ICS 附加实验）",
     "gh-zzx6869-ics-2021": "zzx6869/ics_experiment_2021（2021 ICS 实验）",
     "gh-kz25t-2022ics": "KZ25T/2022ics（2022秋计算系统概论A课程资料）"

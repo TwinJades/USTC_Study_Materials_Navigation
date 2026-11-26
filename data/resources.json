@@ -101413,5 +101413,1353 @@
       }
     ],
     "verified_at": "2026-11-23"
+  },
+  {
+    "id": "issue-16-cs1002a-2025-fall-midterm-recollection",
+    "course_codes": ["CS1002A"],
+    "type": "exams",
+    "title": "计算系统概论A 2025 秋期中（学生回忆版）",
+    "authors": ["tree127"],
+    "notes": "10 页学生回忆整理，不是原卷；部分题目数值未还原。",
+    "coverage": {
+      "years": [2025],
+      "exam_kind": "midterm",
+      "exam_form": "recollection",
+      "has_solutions": false,
+      "evidence_url": "https://github.com/tree127/ustc-ics-midterm-2025/blob/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+      "note": "README 明列课号 CS1002A；PDF 首页为 Introduction to Computing Systems / Midterm Exam (Recalled Version) / Fall Semester, 2025。全文为题面，未附参考解答。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-tree127-ics-midterm-2025",
+        "page_url": "https://github.com/tree127/ustc-ics-midterm-2025",
+        "download_page": "https://github.com/tree127/ustc-ics-midterm-2025/blob/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+        "download_url": "https://raw.githubusercontent.com/tree127/ustc-ics-midterm-2025/main/ICS-2025%E7%A7%8B%E6%9C%9F%E4%B8%AD%E8%AF%95%E9%A2%98.pdf",
+        "access": "public",
+        "license_note": "只链接公开投稿；README 声明原卷版权归原作者和开课单位。",
+        "attribution": "tree127（学生回忆整理并投稿）",
+        "file_snapshot": { "sha256": "b97a90b888ef2eb80d06a445cb55794ac5c150d8974527c1654141616bb24ee2", "bytes": 104217, "checked_at": "2026-11-25" }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "issue-29-math-analysis-b1-b2-exercise-solutions",
+    "course_codes": ["MATH1006", "MATH1007"],
+    "type": "homework",
+    "title": "《数学分析讲义（第一、二册）》习题解析（李清臣整理）",
+    "authors": ["李清臣（wanzhao-ysy）"],
+    "notes": "独立整理的教材习题详解，覆盖前两册第 1–13 章；不是课程组官方答案。",
+    "exercise_source": "程艺、陈卿、李平《数学分析讲义》（第一版，第一、二册）",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+      "note": "核对 Release PDF 封面、目录与正文。潘永亮班 B1 课程内容页列第一册为教材；侯新民班 B2 公开作业章节和编号与第二册对应。A1 公开参考页另列常庚哲《数学分析教程》，未据教材通名挂数分 A 系列。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-wanzhao-math-analysis-solutions",
+        "page_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions",
+        "download_page": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/tag/v3.0.3",
+        "download_url": "https://github.com/wanzhao-ysy/ustc-math-analysis-solutions/releases/download/v3.0.3/ustc-math-analysis-solutions_v3.0.3_release.pdf",
+        "access": "public",
+        "license_note": "项目声明采用 GFDL 1.3；原教材权利不变，此处仅链接原发布页。",
+        "attribution": "程艺、陈卿、李平（原教材）；李清臣（习题解析整理）",
+        "file_snapshot": { "sha256": "8d83c83e6a7a949992b4f9bb03c1078a299b10cf334570d41eb655ff691b08a6", "bytes": 4765145, "checked_at": "2026-11-25" }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "monitor-issue14-2026lab1mid",
+    "course_codes": [
+      "MATH1009"
+    ],
+    "type": "exams",
+    "title": "线性代数B1 2026 秋期中（答案与题目）",
+    "authors": [],
+    "notes": "PDF 页首为 2026–2027 学年第一学期期中考试答案，题干随解答列出；未找到独立原卷。原站目录链接文件名有误，使用已实测的文件路径。",
+    "coverage": {
+      "years": [
+        2026
+      ],
+      "academic_years": [
+        "2026-2027"
+      ],
+      "exam_kind": "midterm",
+      "exam_form": "unknown",
+      "has_solutions": true,
+      "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026LAB1mid.pdf",
+      "note": "PDF 页首为 2026–2027 学年第一学期期中考试答案，题干随解答列出；未找到独立原卷。原站目录链接文件名有误，使用已实测的文件路径。"
+    },
+    "locations": [
+      {
+        "source_id": "ustc-math-exam",
+        "page_url": "https://ustcmathexam.github.io/Services/",
+        "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026LAB1mid.pdf",
+        "download_url": "https://ustcmathexam.github.io/USTC/2026LAB1mid.pdf",
+        "access": "public",
+        "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+        "attribution": "USTC 数学课程往年试卷",
+        "file_snapshot": {
+          "sha256": "0b433833de3dac6dbea9c69a0ea0e0734ef84dafc8062a506fc6c2ec221befb6",
+          "bytes": 112546,
+          "checked_at": "2026-11-25"
+        }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "monitor-issue14-2026maa1mid",
+    "course_codes": [
+      "MATH1001"
+    ],
+    "type": "exams",
+    "title": "数学分析A1 2026 秋期中（含答案与评分标准）",
+    "authors": [],
+    "notes": "PDF 前两页为题面，其后是同卷参考答案与评分标准，日期为 2026 年 11 月 21 日。",
+    "coverage": {
+      "years": [
+        2026
+      ],
+      "academic_years": [
+        "2026-2027"
+      ],
+      "exam_kind": "midterm",
+      "exam_form": "original",
+      "has_solutions": true,
+      "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAA1mid.pdf",
+      "note": "PDF 前两页为题面，其后是同卷参考答案与评分标准，日期为 2026 年 11 月 21 日。"
+    },
+    "locations": [
+      {
+        "source_id": "ustc-math-exam",
+        "page_url": "https://ustcmathexam.github.io/Services/",
+        "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAA1mid.pdf",
+        "download_url": "https://ustcmathexam.github.io/USTC/2026MAA1mid.pdf",
+        "access": "public",
+        "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+        "attribution": "USTC 数学课程往年试卷",
+        "file_snapshot": {
+          "sha256": "2771f56cfaf08384232510990c0121e99105aff1fb094acfa3479f60511efb08",
+          "bytes": 189349,
+          "checked_at": "2026-11-25"
+        }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "monitor-issue14-2026mab1mid",
+    "course_codes": [
+      "MATH1006"
+    ],
+    "type": "exams",
+    "title": "数学分析B1 2026 秋期中（参考答案与题目）",
+    "authors": [],
+    "notes": "PDF 页首为 2026–2027 学年第一学期数学分析B1 期中参考答案，题干随解答列出；未找到独立原卷。",
+    "coverage": {
+      "years": [
+        2026
+      ],
+      "academic_years": [
+        "2026-2027"
+      ],
+      "exam_kind": "midterm",
+      "exam_form": "unknown",
+      "has_solutions": true,
+      "evidence_url": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAB1mid.pdf",
+      "note": "PDF 页首为 2026–2027 学年第一学期数学分析B1 期中参考答案，题干随解答列出；未找到独立原卷。"
+    },
+    "locations": [
+      {
+        "source_id": "ustc-math-exam",
+        "page_url": "https://ustcmathexam.github.io/Services/",
+        "download_page": "https://github.com/ustcmathexam/ustcmathexam.github.io/blob/master/USTC/2026MAB1mid.pdf",
+        "download_url": "https://ustcmathexam.github.io/USTC/2026MAB1mid.pdf",
+        "access": "public",
+        "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+        "attribution": "USTC 数学课程往年试卷",
+        "file_snapshot": {
+          "sha256": "268e749e7b398d9cac38373ada56ae085476707a40e55b1b276e006300a70cb0",
+          "bytes": 99611,
+          "checked_at": "2026-11-25"
+        }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "monitor-issue14-26famechamid",
+    "course_codes": [
+      "PHYS1001A"
+    ],
+    "type": "exams",
+    "title": "力学A 2026 秋期中（刘斌等）",
+    "authors": [],
+    "notes": "卷首为 2026 年秋季力学A期中考试，日期 11 月 17 日，列刘斌、毛文哲、李翔、龚雷、范璐璐；单页题面，无解答。",
+    "coverage": {
+      "years": [
+        2026
+      ],
+      "academic_years": [
+        "2026-2027"
+      ],
+      "exam_kind": "midterm",
+      "exam_form": "original",
+      "has_solutions": false,
+      "evidence_url": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaMechAMid.pdf",
+      "note": "卷首为 2026 年秋季力学A期中考试，日期 11 月 17 日，列刘斌、毛文哲、李翔、龚雷、范璐璐；单页题面，无解答。"
+    },
+    "locations": [
+      {
+        "source_id": "ustc-phy-exam",
+        "page_url": "https://ustcphyexam.github.io/JuniorPhy/",
+        "download_page": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaMechAMid.pdf",
+        "download_url": "https://ustcphyexam.github.io/USTC/26FaMechAMid.pdf",
+        "access": "public",
+        "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+        "attribution": "USTC 物理课程往年试卷",
+        "file_snapshot": {
+          "sha256": "a56e19f9ba56fdfd509eebadb2ee66db22bf784957db0c6a947a6b3c7d0e2c6a",
+          "bytes": 176046,
+          "checked_at": "2026-11-25"
+        }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "monitor-issue14-26faopticsamidwp",
+    "course_codes": [
+      "PHYS1003A"
+    ],
+    "type": "exams",
+    "title": "光学A 2026 秋期中（王沛）",
+    "authors": [],
+    "notes": "逐页核对扫描件：卷首为 2026 年秋季学期光学 A 期中试卷，4 页全为题面；王沛见原站目录。目录链接文件名有误，使用已实测的文件路径。",
+    "coverage": {
+      "years": [
+        2026
+      ],
+      "academic_years": [
+        "2026-2027"
+      ],
+      "exam_kind": "midterm",
+      "exam_form": "original",
+      "has_solutions": false,
+      "evidence_url": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaOpticsAMidWP.pdf",
+      "note": "逐页核对扫描件：卷首为 2026 年秋季学期光学 A 期中试卷，4 页全为题面；王沛见原站目录。目录链接文件名有误，使用已实测的文件路径。"
+    },
+    "locations": [
+      {
+        "source_id": "ustc-phy-exam",
+        "page_url": "https://ustcphyexam.github.io/JuniorPhy/",
+        "download_page": "https://github.com/ustcphyexam/ustcphyexam.github.io/blob/main/USTC/26FaOpticsAMidWP.pdf",
+        "download_url": "https://ustcphyexam.github.io/USTC/26FaOpticsAMidWP.pdf",
+        "access": "public",
+        "license_note": "只链接公开资料，原试题与解答的权利不因网站或仓库许可而转移。",
+        "attribution": "USTC 物理课程往年试卷",
+        "file_snapshot": {
+          "sha256": "5009b8c9551202346789e84c4005dcc80c62da11393f5f2014b7b238c1bdf692",
+          "bytes": 1423120,
+          "checked_at": "2026-11-25"
+        }
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1001",
+    "course_codes": [
+      "MATH1001"
+    ],
+    "type": "study",
+    "title": "数学分析(A1) 结构化题库与知识点树（169 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 109 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1001/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1001",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1002",
+    "course_codes": [
+      "MATH1002"
+    ],
+    "type": "study",
+    "title": "数学分析(A2) 结构化题库与知识点树（299 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 238 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1002/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1002",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1001b",
+    "course_codes": [
+      "PHYS1001B"
+    ],
+    "type": "study",
+    "title": "力学B 结构化题库与知识点树（379 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 206 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1001B/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001B",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1002b",
+    "course_codes": [
+      "PHYS1002B"
+    ],
+    "type": "study",
+    "title": "热学B 结构化题库与知识点树（277 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 101 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1002B/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1002B",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1004",
+    "course_codes": [
+      "MATH1004"
+    ],
+    "type": "study",
+    "title": "线性代数(A1) 结构化题库与知识点树（171 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 35 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1004/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1004",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1005",
+    "course_codes": [
+      "MATH1005"
+    ],
+    "type": "study",
+    "title": "线性代数(A2) 结构化题库与知识点树（166 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 48 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1005/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1005",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1010",
+    "course_codes": [
+      "MATH1010"
+    ],
+    "type": "study",
+    "title": "线性代数(B2) 结构化题库与知识点树（131 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 70 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1010/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1010",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1004h",
+    "course_codes": [
+      "PHYS1004H"
+    ],
+    "type": "study",
+    "title": "电磁学(H) 结构化题库与知识点树（131 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 89 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1004H/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004H",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1004c",
+    "course_codes": [
+      "PHYS1004C"
+    ],
+    "type": "study",
+    "title": "电磁学C 结构化题库与知识点树（151 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 69 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1004C/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004C",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1004b",
+    "course_codes": [
+      "PHYS1004B"
+    ],
+    "type": "study",
+    "title": "电磁学B 结构化题库与知识点树（151 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 55 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1004B/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1004B",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1001h",
+    "course_codes": [
+      "PHYS1001H"
+    ],
+    "type": "study",
+    "title": "力学(H) 结构化题库与知识点树（78 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 25 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1001H/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1001H",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019161",
+    "course_codes": [
+      "019161"
+    ],
+    "type": "study",
+    "title": "化学原理A 结构化题库与知识点树（132 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 40 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019161/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019161",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019163",
+    "course_codes": [
+      "019163"
+    ],
+    "type": "study",
+    "title": "化学原理B 结构化题库与知识点树（86 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 37 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019163/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019163",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019165",
+    "course_codes": [
+      "019165"
+    ],
+    "type": "study",
+    "title": "普通化学 结构化题库与知识点树（328 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 1 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019165/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019165",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019166",
+    "course_codes": [
+      "019166"
+    ],
+    "type": "study",
+    "title": "无机化学I 结构化题库与知识点树（252 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 34 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019166/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019166",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-cs1003l",
+    "course_codes": [
+      "CS1003L"
+    ],
+    "type": "study",
+    "title": "计算机程序设计(L) 结构化题库与知识点树（191 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 2 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/CS1003L/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1003L",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-cs1002a",
+    "course_codes": [
+      "CS1002A"
+    ],
+    "type": "study",
+    "title": "计算系统概论A 结构化题库与知识点树（232 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 156 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/CS1002A/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/CS1002A",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-marx1012",
+    "course_codes": [
+      "MARX1012"
+    ],
+    "type": "study",
+    "title": "思想道德与法治 结构化题库与知识点树（1,227 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 23 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MARX1012/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1012",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-229001",
+    "course_codes": [
+      "229001"
+    ],
+    "type": "study",
+    "title": "离散数学 结构化题库与知识点树（431 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 176 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/229001/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/229001",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1003",
+    "course_codes": [
+      "MATH1003"
+    ],
+    "type": "study",
+    "title": "数学分析(A3) 结构化题库与知识点树（247 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 108 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1003/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1003",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-math1008",
+    "course_codes": [
+      "MATH1008"
+    ],
+    "type": "study",
+    "title": "数学分析(B3) 结构化题库与知识点树（270 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 168 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MATH1008/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MATH1008",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1005a",
+    "course_codes": [
+      "PHYS1005A"
+    ],
+    "type": "study",
+    "title": "原子物理A 结构化题库与知识点树（165 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 20 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1005A/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1005A",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1005b",
+    "course_codes": [
+      "PHYS1005B"
+    ],
+    "type": "study",
+    "title": "原子物理B 结构化题库与知识点树（156 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 71 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1005B/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1005B",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1003b",
+    "course_codes": [
+      "PHYS1003B"
+    ],
+    "type": "study",
+    "title": "光学B 结构化题库与知识点树（147 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 45 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1003B/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1003B",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-marx1011",
+    "course_codes": [
+      "MARX1011"
+    ],
+    "type": "study",
+    "title": "马克思主义基本原理 结构化题库与知识点树（511 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 72 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MARX1011/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1011",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-marx1010",
+    "course_codes": [
+      "MARX1010"
+    ],
+    "type": "study",
+    "title": "中国近现代史纲要 结构化题库与知识点树（1,106 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 31 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MARX1010/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1010",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-marx1013",
+    "course_codes": [
+      "MARX1013"
+    ],
+    "type": "study",
+    "title": "毛泽东思想和中国特色社会主义理论体系概论 结构化题库与知识点树（681 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 45 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MARX1013/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1013",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-marx1014",
+    "course_codes": [
+      "MARX1014"
+    ],
+    "type": "study",
+    "title": "习近平新时代中国特色社会主义思想概论 结构化题库与知识点树（285 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 73 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/MARX1014/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/MARX1014",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-009501",
+    "course_codes": [
+      "009501"
+    ],
+    "type": "study",
+    "title": "机械制图及CAD基础 结构化题库与知识点树（236 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 142 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/009501/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。仓库目录名为工程制图；NOTICE 对应 009501，未据简称扩挂 009171。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/009501",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-phys1010",
+    "course_codes": [
+      "PHYS1010"
+    ],
+    "type": "study",
+    "title": "量子物理 结构化题库与知识点树（716 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 302 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/PHYS1010/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/PHYS1010",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019011",
+    "course_codes": [
+      "019011"
+    ],
+    "type": "study",
+    "title": "有机化学(A1) 结构化题库与知识点树（1,559 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 833 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019011/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019011",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019012",
+    "course_codes": [
+      "019012"
+    ],
+    "type": "study",
+    "title": "有机化学(A2) 结构化题库与知识点树（99 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 48 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019012/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019012",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
+  },
+  {
+    "id": "gh-ddndles-qbank-019047",
+    "course_codes": [
+      "019047"
+    ],
+    "type": "study",
+    "title": "有机化学B 结构化题库与知识点树（193 题，机读 JSONL）",
+    "authors": [
+      "DDNdles"
+    ],
+    "notes": "按课号登记整门课题库，不是原卷 PDF 或在线刷题页。题目和解析标注来源；其中 62 题为 AI 生成解答，使用前请核对。",
+    "coverage": {
+      "years": [],
+      "exam_kind": null,
+      "exam_form": null,
+      "has_solutions": null,
+      "evidence_url": "https://github.com/DDNdles/USTC-Question-Bank/blob/1a11953afe65e3cb0718aa0d69535dce41a9607e/courses/019047/meta.json",
+      "note": "在 v0.18.0 的 manifest 和 Git 树核对课号、题量与题目、知识点、元数据文件；来源与内容许可见仓库 NOTICE。"
+    },
+    "locations": [
+      {
+        "source_id": "gh-ddndles-ustc-question-bank",
+        "page_url": "https://github.com/DDNdles/USTC-Question-Bank/tree/main/courses/019047",
+        "download_page": null,
+        "download_url": null,
+        "access": "public",
+        "license_note": "第三方试题、教材习题与引用解答不适用仓库的 MIT 许可，见 NOTICE.md。",
+        "attribution": "DDNdles（整理与结构化；各题出处见上游 NOTICE.md）",
+        "page_kind": "directory"
+      }
+    ],
+    "verified_at": "2026-11-25"
   }
 ]
