@@ -164,6 +164,7 @@ function initIndex(catalog) {
   const heroPulse = document.getElementById('hero-pulse');
   const heroPulseText = document.getElementById('hero-pulse-text');
   const heroBrowseAll = document.getElementById('hero-browse-all');
+  const heroQuickLinks = document.getElementById('hero-quick-links');
   const resultsSection = document.querySelector('.results');
   const siteFooter = document.querySelector('.site-footer');
   const resultsHeading = document.getElementById('results-heading');
@@ -201,6 +202,42 @@ function initIndex(catalog) {
     heroPulseText.textContent = `已索引 ${courseTotal.toLocaleString('zh-CN')} 门本科课 · ${withTotal.toLocaleString('zh-CN')} 门含资料 · ${resTotal.toLocaleString('zh-CN')} 条资料`;
     heroPulse.hidden = false;
   }
+
+  if (heroQuickLinks) {
+    const popular = catalog.courses
+      .filter((c) => courseResources(c).length > 0)
+      .sort((a, b) => courseResources(b).length - courseResources(a).length || (a.code < b.code ? -1 : a.code > b.code ? 1 : 0))
+      .slice(0, 6);
+    if (popular.length > 0) {
+      const quickFrag = document.createDocumentFragment();
+      quickFrag.append(el('span', 'hero-quick-label', '常用直达：'));
+      for (const course of popular) {
+        const chip = el('a', 'hero-quick-chip');
+        chip.href = courseHref(course.code);
+        chip.append(
+          el('span', 'hero-quick-code', course.code),
+          el('span', null, course.name),
+        );
+        quickFrag.append(chip);
+      }
+      heroQuickLinks.replaceChildren(quickFrag);
+      heroQuickLinks.hidden = false;
+    } else {
+      heroQuickLinks.hidden = true;
+    }
+  }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    const active = document.activeElement;
+    if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT' || active.isContentEditable)) {
+      return;
+    }
+    if (document.querySelector('dialog[open]')) return;
+    event.preventDefault();
+    expandHero();
+    qInput.focus();
+  });
 
   render(initial, { sync: false });
 
@@ -629,7 +666,9 @@ function initCoursePage(catalog) {
   const title = document.getElementById('course-title');
   const meta = document.getElementById('course-meta');
   const status = document.getElementById('course-status');
+  const toolbar = document.getElementById('course-toolbar');
   const sectionNav = document.getElementById('section-nav');
+  const quickFilters = document.getElementById('course-quick-filters');
   const content = document.getElementById('course-content');
   const sections = document.getElementById('resource-sections');
   const notFound = document.getElementById('not-found');
@@ -640,7 +679,9 @@ function initCoursePage(catalog) {
   if (!course) {
     if (notFound) notFound.hidden = false;
     if (content) content.hidden = true;
+    if (toolbar) toolbar.hidden = true;
     if (sectionNav) sectionNav.hidden = true;
+    if (quickFilters) quickFilters.hidden = true;
     if (title) title.textContent = '未找到该课程';
     if (meta) meta.textContent = code ? `查询的课程代码：${code}` : '链接中缺少课程代码。';
     if (status) {
@@ -677,16 +718,17 @@ function initCoursePage(catalog) {
 
   if (meta) {
     meta.replaceChildren();
-    meta.append(el('span', 'meta-pill code-pill', course.code));
+    let hasMeta = false;
     const kindText = labels.kind.get(course.kind);
     if (kindText) {
       const kindPill = el('span', 'meta-pill kind-pill', kindText);
       if (course.kind) kindPill.dataset.kind = course.kind;
-      meta.append(spanSep(), kindPill);
+      meta.append(kindPill);
+      hasMeta = true;
     }
     const tags = (course.tags ?? []).map((tag) => labels.tag.get(tag) ?? tag).filter(Boolean);
     if (tags.length > 0) {
-      meta.append(spanSep());
+      if (hasMeta) meta.append(spanSep());
       tags.forEach((tag, idx) => {
         if (idx > 0) meta.append(document.createTextNode(' '));
         meta.append(el('span', 'meta-pill tag-pill', tag));
@@ -715,8 +757,9 @@ function initCoursePage(catalog) {
     }
   }
 
+  const showSectionNav = groups.length > 1;
   if (sectionNav) {
-    if (groups.length > 1) {
+    if (showSectionNav) {
       const navFrag = document.createDocumentFragment();
       for (const group of groups) {
         const anchor = el('a', 'section-nav-link');
@@ -736,6 +779,80 @@ function initCoursePage(catalog) {
     }
   }
 
+  const isOpenResource = (resource) =>
+    (resource?.locations ?? []).some((location) => location?.access === 'public');
+  const hasSol = resources.some((resource) => resource?.coverage?.has_solutions === true);
+  const hasNoSol = resources.some((resource) => resource?.coverage?.has_solutions !== true);
+  const hasOpen = resources.some(isOpenResource);
+  const hasClosed = resources.some((resource) => !isOpenResource(resource));
+  const showSolFilter = hasSol && hasNoSol;
+  const showOpenFilter = hasOpen && hasClosed;
+  const filterState = { onlySolution: false, onlyOpen: false };
+
+  function syncQuickFilters() {
+    if (!sections) return;
+    let totalVisible = 0;
+    for (const sec of sections.querySelectorAll('.resource-type')) {
+      let visibleInSec = 0;
+      const items = [...sec.querySelectorAll('[data-resource-item]')];
+      for (const item of items) {
+        const solOk = !filterState.onlySolution || item.dataset.hasSolution === 'true';
+        const openOk = !filterState.onlyOpen || item.dataset.isOpen === 'true';
+        const show = solOk && openOk;
+        item.hidden = !show;
+        if (show) {
+          visibleInSec += 1;
+          totalVisible += 1;
+        }
+      }
+      for (const divider of sec.querySelectorAll('.year-divider')) {
+        const bucket = divider.dataset.yearGroup;
+        const anyInBucket = items.some((item) => item.dataset.yearBucket === bucket && !item.hidden);
+        divider.hidden = !anyInBucket;
+      }
+      sec.hidden = visibleInSec === 0;
+    }
+    const filterEmpty = document.getElementById('course-filter-empty');
+    if (filterEmpty) {
+      filterEmpty.hidden = totalVisible > 0 || groups.length === 0;
+    }
+  }
+
+  if (quickFilters) {
+    quickFilters.replaceChildren();
+    if (showSolFilter || showOpenFilter) {
+      if (showSolFilter) {
+        const solBtn = el('button', 'quick-filter-pill', '仅看含解答');
+        solBtn.type = 'button';
+        solBtn.setAttribute('aria-pressed', 'false');
+        solBtn.addEventListener('click', () => {
+          filterState.onlySolution = !filterState.onlySolution;
+          solBtn.setAttribute('aria-pressed', String(filterState.onlySolution));
+          syncQuickFilters();
+        });
+        quickFilters.append(solBtn);
+      }
+      if (showOpenFilter) {
+        const openBtn = el('button', 'quick-filter-pill', '仅看免登录');
+        openBtn.type = 'button';
+        openBtn.setAttribute('aria-pressed', 'false');
+        openBtn.addEventListener('click', () => {
+          filterState.onlyOpen = !filterState.onlyOpen;
+          openBtn.setAttribute('aria-pressed', String(filterState.onlyOpen));
+          syncQuickFilters();
+        });
+        quickFilters.append(openBtn);
+      }
+      quickFilters.hidden = false;
+    } else {
+      quickFilters.hidden = true;
+    }
+  }
+
+  if (toolbar) {
+    toolbar.hidden = !(showSectionNav || showSolFilter || showOpenFilter);
+  }
+
   if (!sections) return;
   if (groups.length === 0) {
     sections.replaceChildren(renderEmptyState());
@@ -743,6 +860,22 @@ function initCoursePage(catalog) {
   }
   const fragment = document.createDocumentFragment();
   for (const group of groups) fragment.append(renderTypeSection(group, labels));
+  const emptyFilter = el('section', 'empty-state');
+  emptyFilter.id = 'course-filter-empty';
+  emptyFilter.hidden = true;
+  emptyFilter.append(el('p', null, '没有同时满足当前快捷过滤条件的资料。'));
+  const resetQuick = el('button', 'secondary', '显示全部资料');
+  resetQuick.type = 'button';
+  resetQuick.addEventListener('click', () => {
+    filterState.onlySolution = false;
+    filterState.onlyOpen = false;
+    for (const btn of quickFilters?.querySelectorAll('button') ?? []) {
+      btn.setAttribute('aria-pressed', 'false');
+    }
+    syncQuickFilters();
+  });
+  emptyFilter.append(resetQuick);
+  fragment.append(emptyFilter);
   sections.replaceChildren(fragment);
   const target = document.getElementById(window.location.hash.slice(1));
   if (target && sections.contains(target)) target.scrollIntoView();
@@ -773,7 +906,37 @@ function renderTypeSection(group, labels) {
 
   const list = el('ul', 'resource-list');
   list.setAttribute('role', 'list');
-  for (const resource of group.resources) list.append(renderResource(resource, labels));
+  const yearBucketOf = (resource) => {
+    const years = resourceYears(resource);
+    return years.length > 0 ? String(years[0]) : 'unknown';
+  };
+  const useYearDividers =
+    group.type === 'exams' && new Set(group.resources.map(yearBucketOf)).size >= 2;
+  const bucketCounts = new Map();
+  if (useYearDividers) {
+    for (const resource of group.resources) {
+      const bucket = yearBucketOf(resource);
+      bucketCounts.set(bucket, (bucketCounts.get(bucket) ?? 0) + 1);
+    }
+  }
+  let currentBucket = null;
+  for (const resource of group.resources) {
+    const bucket = yearBucketOf(resource);
+    if (useYearDividers && bucket !== currentBucket) {
+      currentBucket = bucket;
+      const divider = el('li', 'year-divider');
+      divider.setAttribute('role', 'presentation');
+      divider.dataset.yearGroup = bucket;
+      divider.append(
+        el('span', 'year-divider-label', bucket === 'unknown' ? '年份待确认' : bucket),
+        el('span', 'year-divider-count', `${bucketCounts.get(bucket)} 份`),
+      );
+      list.append(divider);
+    }
+    const item = renderResource(resource, labels);
+    item.dataset.yearBucket = bucket;
+    list.append(item);
+  }
   section.append(list);
   return section;
 }
@@ -814,10 +977,15 @@ function renderResource(resource, labels) {
   if (facts.length > 0 || markers.length > 0) {
     const badgeRow = el('div', 'resource-badges mode-compact');
     for (const fact of facts) {
-      badgeRow.append(el('span', 'badge fact-badge', fact));
+      const factBadge = el('span', 'badge fact-badge', fact);
+      if (fact === '含解答') factBadge.dataset.fact = 'solution-yes';
+      else if (fact === '无解答') factBadge.dataset.fact = 'solution-no';
+      badgeRow.append(factBadge);
     }
     for (const marker of markers) {
-      badgeRow.append(el('span', 'badge kind', marker));
+      const markerBadge = el('span', 'badge kind', marker);
+      if (access && marker === access) markerBadge.dataset.marker = 'access';
+      badgeRow.append(markerBadge);
     }
     titleWrap.append(badgeRow);
   }
@@ -889,6 +1057,9 @@ function renderResource(resource, labels) {
 
   article.append(detail);
   const item = el('li');
+  item.dataset.resourceItem = 'true';
+  item.dataset.hasSolution = String(resource?.coverage?.has_solutions === true);
+  item.dataset.isOpen = String((resource?.locations ?? []).some((location) => location?.access === 'public'));
   item.append(article);
   return item;
 }

@@ -21,6 +21,9 @@
         <p class="brand">
           <a href="./">
             <img class="brand-logo" src="assets/logo.png" alt="" width="28" height="28">
+            <svg class="brand-slash" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true">
+              <path d="M13 2L3 20"></path>
+            </svg>
             <span class="brand-text">也西书架</span>
           </a>
         </p>
@@ -68,12 +71,11 @@
         <div class="hero-main">
           <img class="hero-logo" src="assets/logo.png" alt="" width="72" height="72">
           <h1>也西书架</h1>
+          <p class="hero-tagline">中国科学技术大学本科课程学习资料导航 · 仅收录可核实的原站入口</p>
           <p class="intro mode-detail">
             覆盖 25 秋、26 春、26 夏、26 秋本科开课。资料按课程代码归属；试题保留各自年份与卷型，来源附在条目下。
           </p>
         </div>
-        <p class="hero-star">如果这个页面对你有帮助，希望你到<a href="https://github.com/TwinJades/USTC_Study_Materials_Navigation">我的仓库</a>点一个 Star。<br>
-          这对我非常重要，谢谢！</p>
       </header>
 
       <search>
@@ -104,6 +106,7 @@
                     <path d="M3.5 3.5l13 13M16.5 3.5l-13 13"></path>
                   </svg>
                 </button>
+                <kbd class="search-kbd" aria-hidden="true">/</kbd>
               </div>
             </div>
             <div class="query-actions">
@@ -172,6 +175,7 @@
         <span id="hero-pulse-text" class="hero-pulse-text"></span>
         <button type="button" id="hero-browse-all" class="hero-browse-btn">浏览全部 →</button>
       </div>
+      <div id="hero-quick-links" class="hero-quick-links" hidden aria-label="热门课程快速直达"></div>
 
       <section class="results" aria-labelledby="results-heading">
         <div class="results-head">
@@ -205,7 +209,7 @@
       <div class="wrap footer-inner">
         <div class="footer-notes">
           <p>资料版权归原作者所有；本站只提供导航链接，不托管、不转载第三方文件。外链健康状态来自定期匿名检查，HTTP 可访问不代表课程、年份或授权已确认。</p>
-          <p><a href="sources.html">来源、检索记录与致谢</a></p>
+          <p><a href="sources.html">来源、检索记录与致谢</a> · 如果这个页面对你有帮助，欢迎到<a href="https://github.com/TwinJades/USTC_Study_Materials_Navigation">我的仓库</a>点一个 Star，谢谢！</p>
         </div>
         <dl id="site-stats" class="site-stats" aria-label="访问统计" hidden>
           <div class="stat-pill" data-stat-item="repo_views_yesterday" hidden>

@@ -716,6 +716,9 @@ function renderSourcesHtml(report) {
         <p class="brand">
           <a href="./">
             <img class="brand-logo" src="assets/logo.png" alt="" width="28" height="28">
+            <svg class="brand-slash" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true">
+              <path d="M13 2L3 20"></path>
+            </svg>
             <span class="brand-text">也西书架</span>
           </a>
         </p>
