@@ -231,7 +231,7 @@ export function resourceAcademicYears(resource) {
 }
 
 /**
- * 年份展示文本：有公历年先写公历年；只有学年时只写学年；都没有时为“年份待确认”。
+ * 年份展示文本：有公历年先写公历年；只有学年时只写学年；都没有时为「年份待确认」。
  * 任何情况下都不把学年折算成公历年。
  */
 export function resourceYearText(resource) {
@@ -277,8 +277,8 @@ export function resourceMatchesYear(resource, year) {
 }
 
 /**
- * 资料类型/试题年份必须在同一条资料上同时满足。
- * 否则“2025 试题 + 其他年份笔记”会被错误地当成“2025 资料”。
+ * 资料类型 / 试题年份必须在同一条资料上同时满足，
+ * 避免将「2025 试题 + 其他年份笔记」误判为「2025 资料」。
  * 访问要求字段仍保留在资料数据中，但不再参与首页筛选。
  */
 export function courseMatchesResourceFilters(course, type, year = 'all') {
