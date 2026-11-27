@@ -5,6 +5,7 @@ coverage/
 .task-work/
 /data/traffic.local.json
 /data/monitoring.json
+handoff.local.md
 
 # 环境变量与日志
 .env
