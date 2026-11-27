@@ -31,6 +31,7 @@ import {
   PAGE_KIND_IDS,
   paginate,
   parseFilters,
+  pickQuickCourses,
   RESOURCE_TYPE_IDS,
   resourceAcademicYears,
   resourceFacts,
@@ -389,9 +390,12 @@ test('首页筛选结构：顶栏圆按钮、单一清除叉、学科抽屉与�
   assert.match(html, /<div id="tag-options" class="tag-options" role="group" aria-labelledby="tag-group-label"><\/div>/);
   assert.match(html, /本站整理的学科标签，支持多选/);
   assert.match(html, /name="status" value="with" checked/);
-  assert.match(html, /name="status" value="without" checked/);
+  assert.doesNotMatch(html, /name="status" value="without" checked/);
+  assert.match(html, /name="status" value="without">/);
   assert.doesNotMatch(html, /name="access"|id="access"/);
   assert.match(html, /id="clear-search"[^>]*aria-label="清除搜索与筛选"/);
+  assert.match(html, /id="show-without-courses"/);
+  assert.match(html, /class="search-shortcut-hint"/);
   assert.doesNotMatch(html, /id="clear-filters"|id="no-results-clear"/);
   assert.match(html, /<nav id="pagination" class="pagination" aria-label="课程结果翻页" hidden>/);
   assert.match(
@@ -441,6 +445,41 @@ test('URLSearchParams 往返保持筛选条件，默认值不写入', () => {
 
   const defaults = serializeFilters({ q: '', kind: 'all', tags: [], type: 'all', year: '2025', status: 'all' });
   assert.equal(defaults.toString(), '', '非试题类型不应写出 year');
+
+  assert.equal(
+    serializeFilters({ status: 'with' }, undefined, { defaultStatus: 'with' }).toString(),
+    '',
+    '指定默认 status 为 with 时省略默认参数',
+  );
+  assert.equal(
+    serializeFilters({ status: 'with' }, undefined, { defaultStatus: '' }).get('status'),
+    'with',
+    'defaultStatus 为空时显式写出 status',
+  );
+});
+
+test('课程直达挑选：本地访问次数优先，其余按资料数排序，总数保持 6 门', () => {
+  const courses = Array.from({ length: 8 }, (_, idx) => {
+    const code = `C${idx + 1}`;
+    return {
+      code,
+      name: `课程 ${idx + 1}`,
+      resources: Array.from({ length: idx + 1 }, (__, rIdx) => ({ id: `${code}-${rIdx}` })),
+    };
+  });
+  courses.push({ code: 'EMPTY0', name: '无资料课', resources: [] });
+
+  assert.deepEqual(
+    pickQuickCourses(courses, {}, 6).map((c) => c.code),
+    ['C8', 'C7', 'C6', 'C5', 'C4', 'C3'],
+  );
+
+  const ranked = pickQuickCourses(courses, { C1: 3, C2: 5, C999: 9, C4: -1, C5: 'bad' }, 6);
+  assert.equal(ranked.length, 6);
+  assert.deepEqual(
+    ranked.map((c) => c.code),
+    ['C2', 'C1', 'C8', 'C7', 'C6', 'C5'],
+  );
 });
 
 test('详情排序：五类资料固定顺序，试题年份新到旧、未知最后', () => {
@@ -1013,8 +1052,10 @@ test('公告栏入口图标、配置数据与衍生项目边界', async () => {
   assert.match(courseHtml, togglePattern);
   assert.match(sourcesHtml, togglePattern);
 
-  assert.equal(ANNOUNCEMENTS.news.length >= 2, true);
-  assert.match(ANNOUNCEMENTS.news[0].title, /公告栏/);
+  assert.equal(ANNOUNCEMENTS.news.length >= 3, true);
+  assert.match(ANNOUNCEMENTS.news[0].title, /界面优化|快捷筛选/);
+  assert.match(ANNOUNCEMENTS.news[0].summary, /记住/);
+  assert.equal(ANNOUNCEMENTS.news.some((item) => /公告栏上线/.test(item.title)), true);
   assert.match(ANNOUNCEMENTS.news.map((item) => item.summary).join('\n'), /2,782/);
   assert.equal(new Set(ANNOUNCEMENTS.news.map((item) => item.id)).size, ANNOUNCEMENTS.news.length);
   assert.match(ANNOUNCEMENTS.submitProjectUrl, /template=suggest-project\.yml$/);
