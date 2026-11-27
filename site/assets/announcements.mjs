@@ -11,11 +11,20 @@ export const ANNOUNCEMENTS = {
   seenStorageKey: 'ustc-course-nav.announcements.seen',
   news: [
     {
+      id: '2026-11-27-ui-filters',
+      date: '2026-11-27',
+      tag: '体验优化',
+      tagTone: 'ui',
+      isLatest: true,
+      title: '界面优化与课程资料快捷筛选上线',
+      summary:
+        '优化了全站 UI，削减了冗余装饰与 AI 味，在课程详情新增「仅看含解答」「仅看免登录」快捷筛选与试卷按年份分组；本站会在当前浏览器记住你的主题、显示模式、筛选偏好和课程直达排序。',
+    },
+    {
       id: '2026-11-25-announcements',
       date: '2026-11-25',
       tag: '新功能',
       tagTone: 'feature',
-      isLatest: true,
       title: '公告栏上线，随时查看站内更新与衍生项目',
       summary:
         '点击顶栏图标即可打开，集中查看近期重要更新和同学们基于本站做的衍生项目。',
