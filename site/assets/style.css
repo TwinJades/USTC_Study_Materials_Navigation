@@ -1091,7 +1091,7 @@
     text-align: center;
   }
 
-  @media (hover: none), (pointer: coarse) {
+  @media (pointer: coarse) {
     .search-shortcut-hint {
       display: none;
     }

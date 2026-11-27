@@ -40,6 +40,7 @@ import { classifyHealth, HEALTH_EVIDENCE_LABELS } from './health-evidence.mjs';
 const HEALTH_NOW = Date.now();
 const STORAGE_KEY_INDEX_STATUS = 'ustc-course-nav.index.status';
 const DEFAULT_INDEX_STATUS = 'with';
+const PERSISTED_INDEX_STATUSES = ['all', 'with', 'without'];
 const STORAGE_KEY_COURSE_ONLY_SOLUTION = 'ustc-course-nav.course.only-solution';
 const STORAGE_KEY_COURSE_ONLY_OPEN = 'ustc-course-nav.course.only-open';
 const STORAGE_KEY_COURSE_VISITS = 'ustc-course-nav.course.visits';
@@ -50,19 +51,26 @@ const state = { schema: null };
 function readIndexStatus() {
   try {
     const stored = localStorage.getItem(STORAGE_KEY_INDEX_STATUS);
-    return STATUS_FILTER_IDS.includes(stored) ? stored : DEFAULT_INDEX_STATUS;
+    return PERSISTED_INDEX_STATUSES.includes(stored) ? stored : DEFAULT_INDEX_STATUS;
   } catch {
     return DEFAULT_INDEX_STATUS;
   }
 }
 
 function saveIndexStatus(status) {
-  if (!STATUS_FILTER_IDS.includes(status)) return;
+  if (!PERSISTED_INDEX_STATUSES.includes(status)) return;
   try {
     localStorage.setItem(STORAGE_KEY_INDEX_STATUS, status);
   } catch {
     // 存储不可用时仅在当前页生效。
   }
+}
+
+function resourceHasSolution(resource) {
+  return (
+    resource?.coverage?.has_solutions === true ||
+    (resource?.locations ?? []).some((location) => location?.role === 'solution')
+  );
 }
 
 function readBoolPref(key, fallback) {
@@ -962,8 +970,8 @@ function initCoursePage(catalog) {
 
   const isOpenResource = (resource) =>
     (resource?.locations ?? []).some((location) => location?.access === 'public');
-  const hasSol = resources.some((resource) => resource?.coverage?.has_solutions === true);
-  const hasNoSol = resources.some((resource) => resource?.coverage?.has_solutions !== true);
+  const hasSol = resources.some(resourceHasSolution);
+  const hasNoSol = resources.some((resource) => !resourceHasSolution(resource));
   const hasOpen = resources.some(isOpenResource);
   const hasClosed = resources.some((resource) => !isOpenResource(resource));
   const showSolFilter = hasSol && hasNoSol;
@@ -1295,7 +1303,7 @@ function renderResource(resource, labels) {
   article.append(detail);
   const item = el('li');
   item.dataset.resourceItem = 'true';
-  item.dataset.hasSolution = String(resource?.coverage?.has_solutions === true);
+  item.dataset.hasSolution = String(resourceHasSolution(resource));
   item.dataset.isOpen = String((resource?.locations ?? []).some((location) => location?.access === 'public'));
   item.append(article);
   return item;

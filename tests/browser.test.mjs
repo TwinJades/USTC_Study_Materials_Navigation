@@ -1498,6 +1498,17 @@ test(
     assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="without"]').checked`), false);
     assert.equal(await cdp.evaluate(`localStorage.getItem('ustc-course-nav.index.status')`), 'all');
 
+    // 取消勾选两项使状态为 none 时，不将 none 写入 localStorage；已有 none 也回退到默认 with。
+    await cdp.evaluate(`document.querySelector('input[name="status"][value="with"]').click()`);
+    await cdp.waitFor(`location.search.includes('status=none') && document.querySelectorAll('#course-list li').length === 0`);
+    assert.equal(await cdp.evaluate(`localStorage.getItem('ustc-course-nav.index.status')`), 'all');
+
+    await cdp.evaluate(`localStorage.setItem('ustc-course-nav.index.status', 'none')`);
+    await cdp.send('Page.navigate', { url: `${origin}/` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 7`);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="with"]').checked`), true);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="without"]').checked`), false);
+
     // 多次访问 C001（包含一次刷新，刷新不重复计次）后回到首页，「课程直达」应把 C001 排到第一位，总数仍为 6。
     await cdp.send('Page.navigate', { url: `${origin}/course.html?code=C001` });
     await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('#course-content') && !document.querySelector('#course-content').hidden`);
@@ -1595,6 +1606,31 @@ test(
           verified_at: SNAPSHOT_DATE,
         },
         {
+          id: 'hw-role-sol',
+          course_codes: ['EXAM2001'],
+          type: 'homework',
+          title: '课后作业带配套解答',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [
+            { source_id: 'fixture-source', page_url: 'https://example.org/hw-q', download_page: null, download_url: null, access: 'public', page_kind: 'page' },
+            { source_id: 'fixture-source', page_url: 'https://example.org/hw-sol', download_page: null, download_url: 'https://example.org/hw-sol.pdf', access: 'public', page_kind: 'file', role: 'solution' },
+          ],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'study-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'study',
+          title: '学习讲义无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/study', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
           id: 'ns-1',
           course_codes: ['NOSOL2002'],
           type: 'exams',
@@ -1668,30 +1704,34 @@ test(
     const state1 = await cdp.evaluate(readCourseDetail);
     assert.equal(state1.solPressed, 'true');
     assert.equal(state1.openPressed, 'false');
-    assert.equal(state1.visibleItems, 2);
+    assert.equal(state1.visibleItems, 3);
     assert.deepEqual(state1.dividers['2025'], { hidden: false, count: '1 条' });
     assert.deepEqual(state1.dividers['2024'], { hidden: false, count: '1 条' });
     assert.deepEqual(state1.secCounts.exams, { hidden: false, count: '2 条' });
-    assert.equal(state1.secCounts.homework.hidden, true);
+    assert.deepEqual(state1.secCounts.homework, { hidden: false, count: '1 条' });
+    assert.equal(state1.secCounts.study.hidden, true);
     assert.deepEqual(state1.nav.exams, { hidden: false, count: '2' });
-    assert.equal(state1.nav.homework.hidden, true, '空分类对应跳转入口应同时隐藏');
-    assert.match(state1.statusText, /当前显示 2 \/ 共 5 条资料/);
+    assert.deepEqual(state1.nav.homework, { hidden: false, count: '1' });
+    assert.equal(state1.nav.study.hidden, true, '空分类对应跳转入口应同时隐藏');
+    assert.match(state1.statusText, /当前显示 3 \/ 共 7 条资料/);
 
     // 叠加「仅看免登录」后，2024（需登录）分组整组隐藏，2025 保持 1 条，刷新后仍记住两项状态。
     await cdp.evaluate(`document.querySelector('[data-filter-kind="only-open"]').click()`);
     await cdp.waitFor(`document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'true'`);
     const state2 = await cdp.evaluate(readCourseDetail);
-    assert.equal(state2.visibleItems, 1);
+    assert.equal(state2.visibleItems, 2);
     assert.equal(state2.dividers['2024'].hidden, true);
     assert.deepEqual(state2.dividers['2025'], { hidden: false, count: '1 条' });
     assert.deepEqual(state2.nav.exams, { hidden: false, count: '1' });
+    assert.deepEqual(state2.nav.homework, { hidden: false, count: '1' });
+    assert.equal(state2.nav.study.hidden, true);
 
     await cdp.send('Page.reload', { ignoreCache: true });
     await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('[data-filter-kind="only-open"]') !== null`);
     const reloadedOn = await cdp.evaluate(readCourseDetail);
     assert.equal(reloadedOn.solPressed, 'true');
     assert.equal(reloadedOn.openPressed, 'true');
-    assert.equal(reloadedOn.visibleItems, 1);
+    assert.equal(reloadedOn.visibleItems, 2);
 
     // 全部关闭后计数与隐藏的分类/跳转恢复，并持久化关闭状态。
     await cdp.evaluate(`document.querySelector('[data-filter-kind="only-solution"]').click()`);
@@ -1699,18 +1739,20 @@ test(
     await cdp.waitFor(`document.querySelector('[data-filter-kind="only-solution"]').getAttribute('aria-pressed') === 'false' && document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'false'`);
 
     const stateOff = await cdp.evaluate(readCourseDetail);
-    assert.equal(stateOff.visibleItems, 5);
+    assert.equal(stateOff.visibleItems, 7);
     assert.deepEqual(stateOff.dividers['2025'], { hidden: false, count: '2 条' });
     assert.deepEqual(stateOff.dividers['2024'], { hidden: false, count: '2 条' });
     assert.deepEqual(stateOff.nav.exams, { hidden: false, count: '4' });
-    assert.deepEqual(stateOff.nav.homework, { hidden: false, count: '1' });
+    assert.deepEqual(stateOff.nav.homework, { hidden: false, count: '2' });
+    assert.deepEqual(stateOff.nav.study, { hidden: false, count: '1' });
     assert.equal(stateOff.secCounts.homework.hidden, false);
+    assert.equal(stateOff.secCounts.study.hidden, false);
 
     await cdp.send('Page.reload', { ignoreCache: true });
     await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('[data-filter-kind="only-solution"]') !== null`);
     const reloadedOff = await cdp.evaluate(readCourseDetail);
     assert.equal(reloadedOff.solPressed, 'false');
     assert.equal(reloadedOff.openPressed, 'false');
-    assert.equal(reloadedOff.visibleItems, 5);
+    assert.equal(reloadedOff.visibleItems, 7);
   },
 );
