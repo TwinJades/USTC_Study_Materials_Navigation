@@ -988,8 +988,8 @@ function initCoursePage(catalog) {
     const visibleByType = new Map();
     for (const sec of sections.querySelectorAll('.resource-type')) {
       let visibleInSec = 0;
-      const items = [...sec.querySelectorAll('[data-resource-item]')];
-      for (const item of items) {
+      const visibleByYear = new Map();
+      for (const item of sec.querySelectorAll('[data-resource-item]')) {
         const solOk = !filterState.onlySolution || item.dataset.hasSolution === 'true';
         const openOk = !filterState.onlyOpen || item.dataset.isOpen === 'true';
         const show = solOk && openOk;
@@ -997,13 +997,12 @@ function initCoursePage(catalog) {
         if (show) {
           visibleInSec += 1;
           totalVisible += 1;
+          const bucket = item.dataset.yearBucket;
+          if (bucket !== undefined) visibleByYear.set(bucket, (visibleByYear.get(bucket) ?? 0) + 1);
         }
       }
       for (const divider of sec.querySelectorAll('.year-divider')) {
-        const bucket = divider.dataset.yearGroup;
-        const countInBucket = items.filter(
-          (item) => item.dataset.yearBucket === bucket && !item.hidden,
-        ).length;
+        const countInBucket = visibleByYear.get(divider.dataset.yearGroup) ?? 0;
         divider.hidden = countInBucket === 0;
         const dividerCount = divider.querySelector('.year-divider-count');
         if (dividerCount) dividerCount.textContent = `${countInBucket} 条`;
@@ -1151,36 +1150,29 @@ function renderTypeSection(group, labels) {
 
   const list = el('ul', 'resource-list');
   list.setAttribute('role', 'list');
-  const yearBucketOf = (resource) => {
-    const years = resourceYears(resource);
-    return years.length > 0 ? String(years[0]) : 'unknown';
-  };
-  const useYearDividers =
-    group.type === 'exams' && new Set(group.resources.map(yearBucketOf)).size >= 2;
-  const bucketCounts = new Map();
-  if (useYearDividers) {
-    for (const resource of group.resources) {
-      const bucket = yearBucketOf(resource);
-      bucketCounts.set(bucket, (bucketCounts.get(bucket) ?? 0) + 1);
-    }
-  }
-  let currentBucket = null;
-  for (const resource of group.resources) {
-    const bucket = yearBucketOf(resource);
-    if (useYearDividers && bucket !== currentBucket) {
-      currentBucket = bucket;
+  const buckets = group.type === 'exams' ? Map.groupBy(group.resources, (resource) =>
+    String(resourceYears(resource)[0] ?? resourceAcademicYears(resource)[0] ?? ''),
+  ) : null;
+  if (buckets && buckets.size > 1) {
+    // 公历年与学年都按起始年份从新到旧，空键（日期未知）排最后。
+    for (const bucket of [...buckets.keys()].sort().reverse()) {
+      const resources = buckets.get(bucket);
       const divider = el('li', 'year-divider');
       divider.setAttribute('role', 'presentation');
       divider.dataset.yearGroup = bucket;
       divider.append(
-        el('span', 'year-divider-label', bucket === 'unknown' ? '年份待确认' : bucket),
-        el('span', 'year-divider-count', `${bucketCounts.get(bucket)} 条`),
+        el('span', 'year-divider-label', formatAcademicYear(bucket) || bucket || '年份待确认'),
+        el('span', 'year-divider-count', `${resources.length} 条`),
       );
       list.append(divider);
+      for (const resource of resources) {
+        const item = renderResource(resource, labels);
+        item.dataset.yearBucket = bucket;
+        list.append(item);
+      }
     }
-    const item = renderResource(resource, labels);
-    item.dataset.yearBucket = bucket;
-    list.append(item);
+  } else {
+    for (const resource of group.resources) list.append(renderResource(resource, labels));
   }
   section.append(list);
   return section;

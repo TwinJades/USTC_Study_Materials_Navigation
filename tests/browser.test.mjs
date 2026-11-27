@@ -1595,6 +1595,39 @@ test(
           verified_at: SNAPSHOT_DATE,
         },
         {
+          id: 'e-academic-sol',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: 'A 学年期末含解',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: ['2023-2024'], exam_kind: 'final', exam_form: 'original', has_solutions: true, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/academic-sol', access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'e-unknown',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: 'B 年代不详的期末卷',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: false, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/unknown-year', access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'e-academic-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: 'C 学年期末无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: ['2023-2024'], exam_kind: 'final', exam_form: 'original', has_solutions: false, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/academic-nosol', access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
           id: 'hw-nosol',
           course_codes: ['EXAM2001'],
           type: 'homework',
@@ -1678,6 +1711,9 @@ test(
           { hidden: el.hidden, count: el.querySelector('.year-divider-count')?.textContent ?? '' },
         ]),
       );
+      const examList = [...document.querySelector('#section-exams .resource-list').children]
+        .filter((el) => !el.hidden)
+        .map((el) => el.querySelector('.year-divider-label, .resource-title')?.textContent);
       const nav = Object.fromEntries(
         [...document.querySelectorAll('#section-nav .section-nav-link')].map((el) => [
           el.dataset.sectionType,
@@ -1696,6 +1732,7 @@ test(
         statusText: document.querySelector('#course-status')?.textContent ?? '',
         visibleItems,
         dividers,
+        examList,
         nav,
         secCounts,
       };
@@ -1704,25 +1741,27 @@ test(
     const state1 = await cdp.evaluate(readCourseDetail);
     assert.equal(state1.solPressed, 'true');
     assert.equal(state1.openPressed, 'false');
-    assert.equal(state1.visibleItems, 3);
+    assert.equal(state1.visibleItems, 4);
     assert.deepEqual(state1.dividers['2025'], { hidden: false, count: '1 条' });
     assert.deepEqual(state1.dividers['2024'], { hidden: false, count: '1 条' });
-    assert.deepEqual(state1.secCounts.exams, { hidden: false, count: '2 条' });
+    assert.deepEqual(state1.dividers['2023-2024'], { hidden: false, count: '1 条' });
+    assert.equal(state1.dividers[''].hidden, true);
+    assert.deepEqual(state1.secCounts.exams, { hidden: false, count: '3 条' });
     assert.deepEqual(state1.secCounts.homework, { hidden: false, count: '1 条' });
     assert.equal(state1.secCounts.study.hidden, true);
-    assert.deepEqual(state1.nav.exams, { hidden: false, count: '2' });
+    assert.deepEqual(state1.nav.exams, { hidden: false, count: '3' });
     assert.deepEqual(state1.nav.homework, { hidden: false, count: '1' });
     assert.equal(state1.nav.study.hidden, true, '空分类对应跳转入口应同时隐藏');
-    assert.match(state1.statusText, /当前显示 3 \/ 共 7 条资料/);
+    assert.match(state1.statusText, /当前显示 4 \/ 共 10 条资料/);
 
     // 叠加「仅看免登录」后，2024（需登录）分组整组隐藏，2025 保持 1 条，刷新后仍记住两项状态。
     await cdp.evaluate(`document.querySelector('[data-filter-kind="only-open"]').click()`);
     await cdp.waitFor(`document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'true'`);
     const state2 = await cdp.evaluate(readCourseDetail);
-    assert.equal(state2.visibleItems, 2);
+    assert.equal(state2.visibleItems, 3);
     assert.equal(state2.dividers['2024'].hidden, true);
     assert.deepEqual(state2.dividers['2025'], { hidden: false, count: '1 条' });
-    assert.deepEqual(state2.nav.exams, { hidden: false, count: '1' });
+    assert.deepEqual(state2.nav.exams, { hidden: false, count: '2' });
     assert.deepEqual(state2.nav.homework, { hidden: false, count: '1' });
     assert.equal(state2.nav.study.hidden, true);
 
@@ -1731,7 +1770,7 @@ test(
     const reloadedOn = await cdp.evaluate(readCourseDetail);
     assert.equal(reloadedOn.solPressed, 'true');
     assert.equal(reloadedOn.openPressed, 'true');
-    assert.equal(reloadedOn.visibleItems, 2);
+    assert.equal(reloadedOn.visibleItems, 3);
 
     // 全部关闭后计数与隐藏的分类/跳转恢复，并持久化关闭状态。
     await cdp.evaluate(`document.querySelector('[data-filter-kind="only-solution"]').click()`);
@@ -1739,10 +1778,18 @@ test(
     await cdp.waitFor(`document.querySelector('[data-filter-kind="only-solution"]').getAttribute('aria-pressed') === 'false' && document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'false'`);
 
     const stateOff = await cdp.evaluate(readCourseDetail);
-    assert.equal(stateOff.visibleItems, 7);
+    assert.equal(stateOff.visibleItems, 10);
     assert.deepEqual(stateOff.dividers['2025'], { hidden: false, count: '2 条' });
     assert.deepEqual(stateOff.dividers['2024'], { hidden: false, count: '2 条' });
-    assert.deepEqual(stateOff.nav.exams, { hidden: false, count: '4' });
+    assert.deepEqual(stateOff.dividers['2023-2024'], { hidden: false, count: '2 条' });
+    assert.deepEqual(stateOff.dividers[''], { hidden: false, count: '1 条' });
+    assert.deepEqual(stateOff.examList, [
+      '2025', '2025 期末含解', '2025 期末无解',
+      '2024', '2024 期末含解需登录', '2024 期末无解',
+      '2023—2024 学年', 'A 学年期末含解', 'C 学年期末无解',
+      '年份待确认', 'B 年代不详的期末卷',
+    ]);
+    assert.deepEqual(stateOff.nav.exams, { hidden: false, count: '7' });
     assert.deepEqual(stateOff.nav.homework, { hidden: false, count: '2' });
     assert.deepEqual(stateOff.nav.study, { hidden: false, count: '1' });
     assert.equal(stateOff.secCounts.homework.hidden, false);
@@ -1753,6 +1800,6 @@ test(
     const reloadedOff = await cdp.evaluate(readCourseDetail);
     assert.equal(reloadedOff.solPressed, 'false');
     assert.equal(reloadedOff.openPressed, 'false');
-    assert.equal(reloadedOff.visibleItems, 7);
+    assert.equal(reloadedOff.visibleItems, 10);
   },
 );
