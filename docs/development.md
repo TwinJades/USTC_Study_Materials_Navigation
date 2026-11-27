@@ -4,6 +4,12 @@
 
 协作流程见 [协作流程](workflow.md)，跨轮次待办见 [GitHub Project「也西书架」](https://github.com/users/TwinJades/projects/1)。
 
+## 项目范围与边界
+
+- 目录覆盖 2025 秋、2026 春、2026 夏和 2026 秋官方本科开课，按课号合并；36 个学科标签用于检索，不是官方分类。「暂未收录」只表示本站索引未收录。
+- [正式站点](https://twinjades.github.io/USTC_Study_Materials_Navigation/)由 GitHub Actions 从 `main` 发布。只登记稳定原站入口，不托管文件、不保存临时签名、不绕过登录。教材与参考书是补充资料，不等于学校指定教材。
+- 搜索和详情页只读取构建生成的 `dist/data/catalog.json`；页面使用相对路径，兼容子路径部署。
+
 ## 目录结构
 
 ```
@@ -113,7 +119,9 @@ docs/sources-and-search.md   构建生成：来源、检索记录与致谢
 ```
 
 - `scope`：`source / course / query`；`channel`：`github / icourse / web / catalog`；`outcome`：`reviewed / no_relevant_result / candidate / duplicate / tool / stub / blocked`。
-- 每门课程在 GitHub、评课社区与公开网页三条路径各至少有一条终态记录（`reviewed / no_relevant_result / blocked`）方算完成首轮检索；`blocked` 仅记录访问受阻状态。
+- 每门课程的 GitHub、评课社区与公开网页路径，各有一条 `reviewed / no_relevant_result / blocked` 记录才算记录齐全；`blocked` 表示受阻，不是零结果。
+
+历史核验记录见 [`data/research-log.jsonl`](../data/research-log.jsonl)，按 ID 前缀查找：`feixu-review-`（我的科大）、`homework-review-`（作业与解答）、`oldindex-`（旧试卷索引）、`ustcgit-`、`ustcguide-`、`ustc-cs4005-huang-`（定向来源核验）。
 
 ## 构建与校验
 
@@ -161,10 +169,20 @@ npm run monitor -- --publish
 
 未知参数或枚举值忽略，旧 `access` 参数自动从地址栏清理。表单提交写入 `pushState`，输入或勾选使用 `replaceState`。外链仅允许 `http / https`。
 
+## 页面与改版约束
+
+- 首页两种模式的课程卡片保留课号、课名、收录状态、类别、标签、资料计数和已知试题年份。模式切换不改变筛选结果或页码；两项收录状态都取消时，显示恢复指引。
+- 课程详情只显示非空分类；没有资料时只显示一个空态。仅核实到学年的资料按学年显示，修正归属或标签时保留原资料 ID。
+- 「原始页面」是来源介绍或原帖，「文件页面」是原站文件详情或预览，「打开文件」直达文件但可能由浏览器预览，「前往原站」用于无法确认直达文件的下载页。简洁模式保留首个登记的原始出处和最直接入口（直链优先，其次文件页），同一网址只显示一次。
+- 详细模式保留其他入口和核验依据，显示已取样文件的 SHA-256、字节数和取样日期；仅有目录或预览页的入口不显示哈希。配套解答在两种模式均可见。页面展示证据，不加「AI 已审核」徽章。
+- 保留键盘操作、焦点提示、窄屏换行和筛选反馈。
+
 ## 资料复核
 
 - 旧考试清单与来源索引采用只读对账：凭卷头、正文、课程主页与文件内容确认归属与同卷关系；同卷保留既有资料 ID，本地摘录不作为公开来源。
 - 「我的科大」按匿名公开目录分页遍历并按实际路径去重；入库前须核实文件内容、年份、归属与授权（HTTP 200 仅作可访问线索），且仅登记稳定文件页（不存临时签名链接）。
+- 目录可访问、文件可读取、课程归属与授权分开核验。评课原帖匿名可定位、附件登录要求与外链巡检分开记录；同帖同类附件合为一条。教师专用答案、限校内发布的文件和来源不明的整书扫描不新增公开入口。
+- 优先复核证据缺失、结论冲突或来源变更的旧条目。重点回归：`DMA23M`、`DMA23F`、`DMA24F` 归 `229001`；`001548` 复变函数 B 指向具体文件页；线代 B1 2026 春期末 `2026SLAB1Final.pdf` 保留大小写；Oscar Levin 教材是 `229001` 的补充参考。
 
 ## 本地服务器
 
@@ -185,6 +203,9 @@ npm run monitor -- --publish
 ## 测试
 
 `npm test` 运行 `node --test`，基于隔离 fixture 与本地回环服务运行，完全独立于正式数据。`tests/data.test.mjs`、`tests/search.test.mjs`、`tests/monitor.test.mjs`、`tests/traffic-archive.test.mjs` 与 `tests/browser.test.mjs` 分别覆盖数据契约与合并、搜索与模板输出、外链监控、流量归档及双模式 / 公告栏浏览器回归。
+
+- 改资料或数据契约：用 Node.js 24 或以上运行 `npm run validate -- --strict-research`、`npm test` 和 `npm run build`。
+- 改界面：构建后用 `npm run serve` 打开实际页面检查。浏览器测试可通过 `CHROME_PATH` 或 `EDGE_PATH` 指定路径；确认实际运行而非跳过。课程页回归覆盖两种模式下题面与配套解答的文件摘要、日期和大小。
 
 ## 部署路径
 
