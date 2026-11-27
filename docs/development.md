@@ -211,6 +211,8 @@ npm run monitor -- --publish
 
 构建产物全量使用相对路径以兼容 GitHub Pages 项目子路径，并生成 `.nojekyll`；Pages 由 `actions/upload-pages-artifact@v3` 与 `actions/deploy-pages@v4` 部署。
 
+vLab 内测版独立于 GitHub Pages：Node 24 下以 `YEXI_SELF_HOSTED=1` 构建，`npm run serve:vlab` 运行，`YEXI_STATS_DB` 指向发布目录外的绝对 SQLite 路径。`deploy/vlab` 定时同步 `main` 与 `monitoring-data`，构建或校验失败时保留旧站。
+
 ## 访问统计
 
 - **采集入口**：发布工作流在构建前运行 `scripts/collect-traffic.mjs`，优先使用 `TRAFFIC_TOKEN`（回退 `GITHUB_TOKEN`）拉取仓库 Traffic，配置 `GOATCOUNTER_SITE` 后网页上报浏览并同步拉取公开计数。

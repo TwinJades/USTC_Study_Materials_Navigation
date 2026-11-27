@@ -12,6 +12,8 @@
     "validate": "node scripts/validate.mjs",
     "build": "node scripts/build.mjs",
     "serve": "node scripts/serve.mjs",
+    "serve:vlab": "node scripts/serve.mjs --vlab",
+    "sync:vlab": "bash scripts/sync-vlab.sh",
     "monitor": "node scripts/monitor.mjs",
     "test": "node --test"
   },

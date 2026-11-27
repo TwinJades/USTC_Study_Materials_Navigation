@@ -206,9 +206,10 @@ function renderSiteStats(stats) {
   const container = document.getElementById('site-stats');
   if (!container) return;
   const keys = ['repo_views_yesterday', 'repo_views_14d', 'site_views_yesterday', 'site_total_views', 'collected_at'];
-  let visibleCount = 0;
+  const selfHosted = document.querySelector('[data-self-hosted-stats]') !== null;
 
   for (const key of keys) {
+    if (selfHosted && (key === 'site_views_yesterday' || key === 'site_total_views')) continue;
     const item = container.querySelector(`[data-stat-item="${key}"]`);
     const valueNode = container.querySelector(`[data-stat-value="${key}"]`);
     if (!item || !valueNode) continue;
@@ -223,9 +224,8 @@ function renderSiteStats(stats) {
         : date ? '暂无数据' : null;
     valueNode.textContent = text ?? '';
     item.hidden = !text;
-    if (text) visibleCount += 1;
   }
-  container.hidden = visibleCount === 0;
+  container.hidden = !container.querySelector('[data-stat-item]:not([hidden])');
 }
 
 /* ============================== 首页 ============================== */
