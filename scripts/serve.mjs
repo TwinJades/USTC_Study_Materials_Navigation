@@ -24,6 +24,7 @@ const MIME_TYPES = new Map([
   ['.jsonl', 'application/x-ndjson; charset=utf-8'],
   ['.md', 'text/markdown; charset=utf-8'],
   ['.txt', 'text/plain; charset=utf-8'],
+  ['.woff2', 'font/woff2'],
   ['.svg', 'image/svg+xml'],
   ['.png', 'image/png'],
   ['.ico', 'image/x-icon'],

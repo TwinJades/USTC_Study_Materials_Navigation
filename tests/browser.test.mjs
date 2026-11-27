@@ -277,6 +277,7 @@ const MIME_TYPES = new Map([
   ['.mjs', 'text/javascript; charset=utf-8'],
   ['.js', 'text/javascript; charset=utf-8'],
   ['.json', 'application/json; charset=utf-8'],
+  ['.woff2', 'font/woff2'],
   ['.svg', 'image/svg+xml'],
   ['.png', 'image/png'],
   ['.ico', 'image/x-icon'],
@@ -783,8 +784,8 @@ test(
   },
 );
 
-async function openBrowserEnv(t, options) {
-  const catalog = createFixtureCatalog();
+async function openBrowserEnv(t, options = {}) {
+  const catalog = options.catalog ?? createFixtureCatalog();
   const { server, origin } = await startSiteServer(catalog, options);
   const userDataDir = await mkdtemp(path.join(os.tmpdir(), 'ustc-nav-browser-'));
   const browser = launchBrowser(BROWSER_PATH, userDataDir);
@@ -1050,7 +1051,7 @@ test(
       windowsVirtualKeyCode: 13,
       nativeVirtualKeyCode: 13,
     });
-    await cdp.waitFor(`location.search === '' && document.querySelectorAll('#course-list li').length === 3`);
+    await cdp.waitFor(`location.search === '' && document.querySelectorAll('#course-list li').length === 2`);
 
     const afterClear = await cdp.evaluate(readFormState);
     assert.equal(afterClear.hero, 'expanded', '一键清除后应停留在展开态');
@@ -1059,7 +1060,7 @@ test(
     assert.equal(afterClear.type, 'all');
     assert.equal(afterClear.yearHidden, true);
     assert.equal(afterClear.statusWith, true);
-    assert.equal(afterClear.statusWithout, true);
+    assert.equal(afterClear.statusWithout, false);
     assert.equal(afterClear.tagMath, false);
     assert.equal(afterClear.tagDrawerOpen, 'false');
     assert.equal(afterClear.tagExpanded, 'false');
@@ -1100,16 +1101,25 @@ test(
       await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: viewport.mobile });
 
       await cdp.send('Page.navigate', { url: `${origin}/` });
-      await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 3`);
-      const indexLayout = await cdp.evaluate(`(() => ({
-        scrollWidth: document.documentElement.scrollWidth,
-        innerWidth: window.innerWidth,
-        toggleRect: document.querySelector('[data-mode-toggle]').getBoundingClientRect().toJSON(),
-        inputRect: document.querySelector('#q').getBoundingClientRect().toJSON(),
-        clearRect: document.querySelector('#clear-search').getBoundingClientRect().toJSON(),
-        submitRect: document.querySelector('.query-actions button').getBoundingClientRect().toJSON(),
-      }))()`);
+      await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 2`);
+      const indexLayout = await cdp.evaluate(`(() => {
+        const hint = document.querySelector('.search-shortcut-hint');
+        return {
+          scrollWidth: document.documentElement.scrollWidth,
+          innerWidth: window.innerWidth,
+          hintDisplay: hint ? getComputedStyle(hint).display : null,
+          toggleRect: document.querySelector('[data-mode-toggle]').getBoundingClientRect().toJSON(),
+          inputRect: document.querySelector('#q').getBoundingClientRect().toJSON(),
+          clearRect: document.querySelector('#clear-search').getBoundingClientRect().toJSON(),
+          submitRect: document.querySelector('.query-actions button').getBoundingClientRect().toJSON(),
+        };
+      })()`);
       assert.equal(indexLayout.scrollWidth <= indexLayout.innerWidth, true, `首页在 ${viewport.width}px 下不应水平溢出`);
+      assert.equal(
+        indexLayout.hintDisplay !== 'none',
+        !viewport.mobile,
+        `${viewport.width}px ${viewport.mobile ? '触屏端应隐藏' : '桌面端应显示'}搜索快捷键提示`,
+      );
       assert.equal(indexLayout.clearRect.right <= indexLayout.inputRect.right + 1, true);
       assert.equal(indexLayout.toggleRect.right <= viewport.width + 1, true);
       assert.ok(Math.abs(indexLayout.inputRect.top - indexLayout.submitRect.top) < 2, `搜索按钮在 ${viewport.width}px 应与输入框同排`);
@@ -1356,5 +1366,393 @@ test(
       });
       await cdp.waitFor(`document.querySelector('.announcement-toggle').getAttribute('aria-expanded') === 'false'`);
     }
+  },
+);
+
+test(
+  '首页默认只勾已收录、绿框白勾、空结果引导、本地记住偏好与课程直达点击排序',
+  {
+    skip: BROWSER_PATH
+      ? false
+      : '未找到 Chrome/Edge 可执行文件；设置 CHROME_PATH 或 EDGE_PATH 后运行。',
+    timeout: 90000,
+  },
+  async (t) => {
+    const courses = Array.from({ length: 7 }, (_, i) => ({
+      code: `C00${i + 1}`,
+      name: `测试课程 ${i + 1}`,
+    }));
+    courses.push({ code: 'PHYS9999', name: '尚未收录测试课' });
+    const courseMetadata = Object.fromEntries(
+      courses.map((c) => [c.code, { kind: 'common', tags: ['math'] }]),
+    );
+    const resources = [];
+    for (let i = 0; i < 7; i += 1) {
+      const code = `C00${i + 1}`;
+      for (let j = 0; j <= i; j += 1) {
+        resources.push({
+          id: `res-${code}-${j}`,
+          course_codes: [code],
+          type: 'study',
+          title: `${code} 资料 ${j}`,
+          authors: ['测试署名'],
+          notes: '',
+          coverage: {
+            years: [],
+            academic_years: [],
+            exam_kind: null,
+            exam_form: null,
+            has_solutions: null,
+            evidence_url: null,
+            note: '',
+          },
+          locations: [
+            {
+              source_id: 'fixture-source',
+              page_url: `https://example.org/${code}/${j}`,
+              download_page: null,
+              download_url: null,
+              access: 'public',
+              page_kind: 'page',
+            },
+          ],
+          verified_at: SNAPSHOT_DATE,
+        });
+      }
+    }
+    const richCatalog = buildCatalog({
+      ...createFixtureDataset(),
+      courses,
+      courseMetadata,
+      resources,
+    });
+
+    const { origin, cdp } = await openBrowserEnv(t, { catalog: richCatalog });
+    await cdp.send('Page.navigate', { url: `${origin}/` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#hero-quick-links .hero-quick-chip').length === 6`);
+
+    const initial = await cdp.evaluate(`(() => {
+      const label = document.querySelector('.hero-quick-label')?.textContent ?? '';
+      const codes = [...document.querySelectorAll('#hero-quick-links .hero-quick-code')].map((n) => n.textContent);
+      const hint = document.querySelector('.search-shortcut-hint');
+      const withBox = document.querySelector('input[name="status"][value="with"]');
+      const withoutBox = document.querySelector('input[name="status"][value="without"]');
+      return {
+        label,
+        codes,
+        hintText: hint?.textContent.replace(/\\s+/g, ' ').trim() ?? '',
+        hintVisible: getComputedStyle(hint).display !== 'none',
+        withChecked: withBox?.checked ?? null,
+        withoutChecked: withoutBox?.checked ?? null,
+        withCheckBg: getComputedStyle(withBox).backgroundColor,
+        listCount: document.querySelectorAll('#course-list li').length,
+      };
+    })()`);
+    assert.equal(initial.label, '课程直达：');
+    assert.deepEqual(initial.codes, ['C007', 'C006', 'C005', 'C004', 'C003', 'C002']);
+    assert.equal(initial.hintText, '按 / 聚焦搜索');
+    assert.equal(initial.hintVisible, true);
+    assert.equal(initial.withChecked, true);
+    assert.equal(initial.withoutChecked, false);
+    assert.equal(initial.withCheckBg, 'rgb(16, 125, 50)', '浅色下「已收录」复选框应为深绿底');
+    assert.equal(initial.listCount, 7, '默认不展示暂未收录课程 PHYS9999');
+
+    // 切换深色主题检查绿色复选框颜色。
+    await cdp.evaluate(`document.querySelector('[data-theme-toggle]').click()`);
+    await cdp.waitFor(`document.documentElement.dataset.theme === 'dark'`);
+    assert.equal(
+      await cdp.evaluate(`getComputedStyle(document.querySelector('input[name="status"][value="with"]')).backgroundColor`),
+      'rgb(21, 128, 61)',
+      '深色下「已收录」复选框应为协调的深绿底',
+    );
+    await cdp.evaluate(`document.querySelector('[data-theme-toggle]').click()`);
+    await cdp.evaluate(`document.querySelector('[data-theme-toggle]').click()`);
+    await cdp.waitFor(`document.documentElement.dataset.theme === 'light'`);
+
+    // 搜未收录课程出现提示与「显示尚未收录课程」出口，点击后写入 localStorage。
+    await cdp.evaluate(`(() => {
+      const q = document.querySelector('#q');
+      q.focus();
+      q.value = '尚未收录测试课';
+      q.dispatchEvent(new Event('input', { bubbles: true }));
+    })()`);
+    await cdp.waitFor(`document.querySelector('#show-without-courses') && !document.querySelector('#show-without-courses').hidden`);
+    assert.match(
+      await cdp.evaluate(`document.querySelector('#no-results-text').textContent`),
+      /有匹配课程尚未收录资料/,
+    );
+    await cdp.evaluate(`document.querySelector('#show-without-courses').click()`);
+    await cdp.waitFor(`document.querySelectorAll('#course-list li').length === 1 && document.querySelector('#show-without-courses').hidden`);
+    assert.equal(
+      await cdp.evaluate(`localStorage.getItem('ustc-course-nav.index.status')`),
+      'all',
+    );
+
+    // 新打开干净首页应记住上次勾选；显式 URL ?status=with 优先于 localStorage 且不覆盖记忆。
+    await cdp.send('Page.navigate', { url: `${origin}/` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 8`);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="without"]').checked`), true);
+
+    await cdp.send('Page.navigate', { url: `${origin}/?status=with` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 7`);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="without"]').checked`), false);
+    assert.equal(await cdp.evaluate(`localStorage.getItem('ustc-course-nav.index.status')`), 'all');
+
+    // 取消勾选两项使状态为 none 时，不将 none 写入 localStorage；已有 none 也回退到默认 with。
+    await cdp.evaluate(`document.querySelector('input[name="status"][value="with"]').click()`);
+    await cdp.waitFor(`location.search.includes('status=none') && document.querySelectorAll('#course-list li').length === 0`);
+    assert.equal(await cdp.evaluate(`localStorage.getItem('ustc-course-nav.index.status')`), 'all');
+
+    await cdp.evaluate(`localStorage.setItem('ustc-course-nav.index.status', 'none')`);
+    await cdp.send('Page.navigate', { url: `${origin}/` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#course-list li').length === 7`);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="with"]').checked`), true);
+    assert.equal(await cdp.evaluate(`document.querySelector('input[name="status"][value="without"]').checked`), false);
+
+    // 多次访问 C001（包含一次刷新，刷新不重复计次）后回到首页，「课程直达」应把 C001 排到第一位，总数仍为 6。
+    await cdp.send('Page.navigate', { url: `${origin}/course.html?code=C001` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('#course-content') && !document.querySelector('#course-content').hidden`);
+    await cdp.send('Page.reload', { ignoreCache: true });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('#course-content') && !document.querySelector('#course-content').hidden`);
+    await cdp.send('Page.navigate', { url: `${origin}/course.html?code=C001` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('#course-content') && !document.querySelector('#course-content').hidden`);
+
+    const visitsCount = await cdp.evaluate(`JSON.parse(localStorage.getItem('ustc-course-nav.course.visits') || '{}').C001`);
+    assert.equal(visitsCount, 2, '刷新页面不应重复增加访问计数');
+
+    await cdp.send('Page.navigate', { url: `${origin}/` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelectorAll('#hero-quick-links .hero-quick-chip').length === 6`);
+    const reorderedCodes = await cdp.evaluate(
+      `[...document.querySelectorAll('#hero-quick-links .hero-quick-code')].map((n) => n.textContent)`,
+    );
+    assert.equal(reorderedCodes.length, 6);
+    assert.equal(reorderedCodes[0], 'C001');
+  },
+);
+
+test(
+  '课程详情筛选联动计数与隐藏、默认仅看含解答、零解答兜底与持久化记忆',
+  {
+    skip: BROWSER_PATH
+      ? false
+      : '未找到 Chrome/Edge 可执行文件；设置 CHROME_PATH 或 EDGE_PATH 后运行。',
+    timeout: 90000,
+  },
+  async (t) => {
+    const courseCatalog = buildCatalog({
+      ...createFixtureDataset(),
+      courses: [
+        { code: 'EXAM2001', name: '混杂课程回归' },
+        { code: 'NOSOL2002', name: '无解答课程回归' },
+      ],
+      courseMetadata: {
+        EXAM2001: { kind: 'common', tags: ['math'] },
+        NOSOL2002: { kind: 'common', tags: ['math'] },
+      },
+      resources: [
+        {
+          id: 'e-2025-sol',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: '2025 期末含解',
+          authors: [],
+          notes: '',
+          coverage: { years: [2025], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: true, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/2025-sol', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'e-2025-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: '2025 期末无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [2025], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: false, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/2025-nosol', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'e-2024-sol-login',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: '2024 期末含解需登录',
+          authors: [],
+          notes: '',
+          coverage: { years: [2024], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: true, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/2024-sol-login', download_page: null, download_url: null, access: 'login', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'e-2024-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'exams',
+          title: '2024 期末无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [2024], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: false, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/2024-nosol', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'hw-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'homework',
+          title: '课后作业无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/hw', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'hw-role-sol',
+          course_codes: ['EXAM2001'],
+          type: 'homework',
+          title: '课后作业带配套解答',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [
+            { source_id: 'fixture-source', page_url: 'https://example.org/hw-q', download_page: null, download_url: null, access: 'public', page_kind: 'page' },
+            { source_id: 'fixture-source', page_url: 'https://example.org/hw-sol', download_page: null, download_url: 'https://example.org/hw-sol.pdf', access: 'public', page_kind: 'file', role: 'solution' },
+          ],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'study-nosol',
+          course_codes: ['EXAM2001'],
+          type: 'study',
+          title: '学习讲义无解',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/study', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'ns-1',
+          course_codes: ['NOSOL2002'],
+          type: 'exams',
+          title: '无解答试卷',
+          authors: [],
+          notes: '',
+          coverage: { years: [2025], academic_years: [], exam_kind: 'final', exam_form: 'original', has_solutions: false, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/ns-1', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+        {
+          id: 'ns-2',
+          course_codes: ['NOSOL2002'],
+          type: 'study',
+          title: '无解答讲义',
+          authors: [],
+          notes: '',
+          coverage: { years: [], academic_years: [], exam_kind: null, exam_form: null, has_solutions: null, evidence_url: null, note: '' },
+          locations: [{ source_id: 'fixture-source', page_url: 'https://example.org/ns-2', download_page: null, download_url: null, access: 'public', page_kind: 'page' }],
+          verified_at: SNAPSHOT_DATE,
+        },
+      ],
+    });
+
+    const { origin, cdp } = await openBrowserEnv(t, { catalog: courseCatalog });
+
+    // 先验证零解答课程即使首次默认「仅看含解答」，也不会隐藏已有资料。
+    await cdp.send('Page.navigate', { url: `${origin}/course.html?code=NOSOL2002` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('#course-content') && !document.querySelector('#course-content').hidden`);
+    assert.equal(
+      await cdp.evaluate(`[...document.querySelectorAll('[data-resource-item]')].filter((el) => !el.hidden).length`),
+      2,
+      '无解答资料课程不应被默认「仅看含解答」全部藏掉',
+    );
+
+    // 打开有混合解答与需登录资料的课程：默认开启「仅看含解答」。
+    await cdp.send('Page.navigate', { url: `${origin}/course.html?code=EXAM2001` });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('[data-filter-kind="only-solution"]') !== null`);
+
+    const readCourseDetail = `(() => {
+      const visibleItems = [...document.querySelectorAll('[data-resource-item]')].filter((el) => !el.hidden).length;
+      const dividers = Object.fromEntries(
+        [...document.querySelectorAll('.year-divider')].map((el) => [
+          el.dataset.yearGroup,
+          { hidden: el.hidden, count: el.querySelector('.year-divider-count')?.textContent ?? '' },
+        ]),
+      );
+      const nav = Object.fromEntries(
+        [...document.querySelectorAll('#section-nav .section-nav-link')].map((el) => [
+          el.dataset.sectionType,
+          { hidden: el.hidden, count: el.querySelector('.section-nav-count')?.textContent ?? '' },
+        ]),
+      );
+      const secCounts = Object.fromEntries(
+        [...document.querySelectorAll('.resource-type')].map((el) => [
+          el.dataset.type,
+          { hidden: el.hidden, count: el.querySelector('.type-count')?.textContent ?? '' },
+        ]),
+      );
+      return {
+        solPressed: document.querySelector('[data-filter-kind="only-solution"]')?.getAttribute('aria-pressed'),
+        openPressed: document.querySelector('[data-filter-kind="only-open"]')?.getAttribute('aria-pressed'),
+        statusText: document.querySelector('#course-status')?.textContent ?? '',
+        visibleItems,
+        dividers,
+        nav,
+        secCounts,
+      };
+    })()`;
+
+    const state1 = await cdp.evaluate(readCourseDetail);
+    assert.equal(state1.solPressed, 'true');
+    assert.equal(state1.openPressed, 'false');
+    assert.equal(state1.visibleItems, 3);
+    assert.deepEqual(state1.dividers['2025'], { hidden: false, count: '1 条' });
+    assert.deepEqual(state1.dividers['2024'], { hidden: false, count: '1 条' });
+    assert.deepEqual(state1.secCounts.exams, { hidden: false, count: '2 条' });
+    assert.deepEqual(state1.secCounts.homework, { hidden: false, count: '1 条' });
+    assert.equal(state1.secCounts.study.hidden, true);
+    assert.deepEqual(state1.nav.exams, { hidden: false, count: '2' });
+    assert.deepEqual(state1.nav.homework, { hidden: false, count: '1' });
+    assert.equal(state1.nav.study.hidden, true, '空分类对应跳转入口应同时隐藏');
+    assert.match(state1.statusText, /当前显示 3 \/ 共 7 条资料/);
+
+    // 叠加「仅看免登录」后，2024（需登录）分组整组隐藏，2025 保持 1 条，刷新后仍记住两项状态。
+    await cdp.evaluate(`document.querySelector('[data-filter-kind="only-open"]').click()`);
+    await cdp.waitFor(`document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'true'`);
+    const state2 = await cdp.evaluate(readCourseDetail);
+    assert.equal(state2.visibleItems, 2);
+    assert.equal(state2.dividers['2024'].hidden, true);
+    assert.deepEqual(state2.dividers['2025'], { hidden: false, count: '1 条' });
+    assert.deepEqual(state2.nav.exams, { hidden: false, count: '1' });
+    assert.deepEqual(state2.nav.homework, { hidden: false, count: '1' });
+    assert.equal(state2.nav.study.hidden, true);
+
+    await cdp.send('Page.reload', { ignoreCache: true });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('[data-filter-kind="only-open"]') !== null`);
+    const reloadedOn = await cdp.evaluate(readCourseDetail);
+    assert.equal(reloadedOn.solPressed, 'true');
+    assert.equal(reloadedOn.openPressed, 'true');
+    assert.equal(reloadedOn.visibleItems, 2);
+
+    // 全部关闭后计数与隐藏的分类/跳转恢复，并持久化关闭状态。
+    await cdp.evaluate(`document.querySelector('[data-filter-kind="only-solution"]').click()`);
+    await cdp.evaluate(`document.querySelector('[data-filter-kind="only-open"]').click()`);
+    await cdp.waitFor(`document.querySelector('[data-filter-kind="only-solution"]').getAttribute('aria-pressed') === 'false' && document.querySelector('[data-filter-kind="only-open"]').getAttribute('aria-pressed') === 'false'`);
+
+    const stateOff = await cdp.evaluate(readCourseDetail);
+    assert.equal(stateOff.visibleItems, 7);
+    assert.deepEqual(stateOff.dividers['2025'], { hidden: false, count: '2 条' });
+    assert.deepEqual(stateOff.dividers['2024'], { hidden: false, count: '2 条' });
+    assert.deepEqual(stateOff.nav.exams, { hidden: false, count: '4' });
+    assert.deepEqual(stateOff.nav.homework, { hidden: false, count: '2' });
+    assert.deepEqual(stateOff.nav.study, { hidden: false, count: '1' });
+    assert.equal(stateOff.secCounts.homework.hidden, false);
+    assert.equal(stateOff.secCounts.study.hidden, false);
+
+    await cdp.send('Page.reload', { ignoreCache: true });
+    await cdp.waitFor(`document.readyState === 'complete' && document.querySelector('[data-filter-kind="only-solution"]') !== null`);
+    const reloadedOff = await cdp.evaluate(readCourseDetail);
+    assert.equal(reloadedOff.solPressed, 'false');
+    assert.equal(reloadedOff.openPressed, 'false');
+    assert.equal(reloadedOff.visibleItems, 7);
   },
 );

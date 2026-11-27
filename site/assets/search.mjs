@@ -149,7 +149,7 @@ export function parseFilters(searchParams, schema = DEFAULT_SCHEMA) {
 }
 
 /** 把筛选条件写回 URLSearchParams；只写非默认值，顺序稳定，旧 access 参数会被清除。 */
-export function serializeFilters(filters, base = new URLSearchParams()) {
+export function serializeFilters(filters, base = new URLSearchParams(), options = {}) {
   const params = base instanceof URLSearchParams ? base : new URLSearchParams(base ?? '');
   for (const key of ['q', 'kind', 'tag', 'type', 'year', 'access', 'status']) {
     params.delete(key);
@@ -168,7 +168,11 @@ export function serializeFilters(filters, base = new URLSearchParams()) {
       params.set('year', state.year);
     }
   }
-  if (state.status && state.status !== 'all') params.set('status', state.status);
+  const status = STATUS_FILTER_IDS.includes(state.status) ? state.status : 'all';
+  const defaultStatus = options?.defaultStatus === undefined ? 'all' : options.defaultStatus;
+  if (defaultStatus === '' || defaultStatus === null || status !== defaultStatus) {
+    params.set('status', status);
+  }
   return params;
 }
 
@@ -719,4 +723,33 @@ export function courseSummary(course, typeLabels = {}) {
     examYears: examYears.years,
     hasUnknownExamYear: examYears.unknown,
   };
+}
+
+/** 为首页「课程直达」挑选课程：本地访问次数优先，其次按收录资料条数与课号排序。 */
+export function pickQuickCourses(courses, visits = {}, limit = 6) {
+  const size = Number.isInteger(limit) && limit >= 0 ? limit : 6;
+  if (size === 0) return [];
+  const visitCounts = new Map();
+  if (visits && typeof visits === 'object') {
+    for (const [code, raw] of Object.entries(visits)) {
+      if (typeof code === 'string' && Number.isSafeInteger(raw) && raw > 0) {
+        visitCounts.set(code, raw);
+      }
+    }
+  }
+  const candidates = [];
+  for (const course of asList(courses)) {
+    if (!course || typeof course.code !== 'string') continue;
+    const visitCount = visitCounts.get(course.code) ?? 0;
+    const resourceCount = courseResources(course).length;
+    if (visitCount === 0 && resourceCount === 0) continue;
+    candidates.push({ course, visitCount, resourceCount });
+  }
+  candidates.sort(
+    (a, b) =>
+      b.visitCount - a.visitCount ||
+      b.resourceCount - a.resourceCount ||
+      compareCourseCodes(a.course, b.course),
+  );
+  return candidates.slice(0, size).map((entry) => entry.course);
 }
